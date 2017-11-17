@@ -41,7 +41,7 @@ namespace api
         virtual void free(void* ptr) = 0;
         
         /**
-         * Sets an allocated memory.
+         * Sets a context switching locker.
          *
          * The method allows disabling and enabling thread context switching 
          * when memory is being allocated or freed. Thus, the best way is 
@@ -52,6 +52,11 @@ namespace api
          * @param toggle reference to pointer to some controller.
          */      
         virtual void setToggle(::api::Toggle*& toggle) = 0;
+        
+        /**
+         * Resets a context switching locker.
+         */
+        virtual void resetToggle() = 0;        
   
     };
 }

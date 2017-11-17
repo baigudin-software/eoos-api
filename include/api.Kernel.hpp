@@ -17,6 +17,7 @@
 #include "api.Interrupt.hpp"
 #include "api.Task.hpp"
 #include "api.Toggle.hpp"
+#include "api.Heap.hpp"
 
 namespace api
 {
@@ -35,7 +36,14 @@ namespace api
          *
          * @return a size of stack in bytes.
          */ 
-        virtual int32 getStackSize() = 0;        
+        virtual int32 getStackSize() = 0;
+          
+        /**
+         * Returns a kernel constructed object.
+         *
+         * @return a kernel constructed object.
+         */
+        virtual ::api::Heap& getHeap() = 0;
         
         /** 
          * Returns a kernel runtime environment.
