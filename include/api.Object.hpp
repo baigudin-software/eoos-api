@@ -38,7 +38,7 @@ namespace api
         template<class Type>
         static inline bool isObject(const Type* obj)
         {
-          return obj != NULL ? obj->isConstructed() : false;    
+            return obj != NULL ? obj->isConstructed() : false;    
         }
       
     };
