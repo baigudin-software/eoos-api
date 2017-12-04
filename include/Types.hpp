@@ -69,7 +69,7 @@ typedef unsigned char       uint8;
 typedef float               float32;
 typedef long double         float64;
 // The type returned by sizeof
-typedef uint32              size_t;
+typedef unsigned            size_t;
 // Type of minimal addressable memory cell
 typedef signed char         cell;
 
