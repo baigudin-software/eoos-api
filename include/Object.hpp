@@ -42,7 +42,9 @@ public:
      * @param obj reference to source object.
      */ 
     Object(const ::api::Object& obj) :
-        isConstructed_ (obj.isConstructed()){
+        isConstructed_ (true){
+        bool isConstructed = obj.isConstructed();
+        setConstruct( isConstructed );
     }    
     
     /** 
