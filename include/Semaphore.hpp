@@ -66,8 +66,14 @@ public:
      */  
     virtual bool acquire()
     {
-        if( not isConstructed_ ) return false;
-        return semaphore_->acquire();    
+        if( isConstructed_ )
+        {
+            return semaphore_->acquire();    
+        }
+        else
+        {
+             return false;
+        }
     }        
     
     /**
@@ -78,8 +84,14 @@ public:
      */  
     virtual bool acquire(int32 permits)
     {
-        if( not isConstructed_ ) return false;
-        return semaphore_->acquire(permits);        
+        if( isConstructed_ )
+        {
+            return semaphore_->acquire(permits);        
+        }
+        else
+        {
+            return false;            
+        }
     }    
     
     /**
@@ -87,8 +99,10 @@ public:
      */
     virtual void release()
     {
-        if( not isConstructed_ ) return;
-        semaphore_->release();        
+        if( isConstructed_ )
+        {
+            semaphore_->release();        
+        }
     }            
     
     /**
@@ -98,8 +112,10 @@ public:
      */  
     virtual void release(int32 permits)
     {
-        if( not isConstructed_ ) return;
-        semaphore_->release(permits);            
+        if( isConstructed_ )
+        {
+            semaphore_->release(permits);            
+        }
     }
     
     /**
@@ -109,8 +125,14 @@ public:
      */  
     virtual bool isFair() const
     {
-        if( not isConstructed_ ) return false;    
-        return semaphore_->isFair(); 
+        if( isConstructed_ )
+        {
+            return semaphore_->isFair(); 
+        }
+        else
+        {
+            return false;                
+        }
     }        
     
     /** 
@@ -120,8 +142,14 @@ public:
      */ 
     virtual bool isBlocked()
     {
-        if( not isConstructed_ ) return false;
-        return semaphore_->isBlocked();        
+        if( isConstructed_ )
+        {
+            return semaphore_->isBlocked();        
+        }
+        else
+        {
+            return false;
+        }
     }        
 
 private:
@@ -135,7 +163,10 @@ private:
      */
     bool construct(int32 permits, bool* isFair)
     {
-        if( not isConstructed_ ) return false;
+        if( not isConstructed_ ) 
+        {
+            return false;
+        }
         ::api::Kernel& kernel = ::system::System::call().getKernel();
         if( isFair == NULL )
         {

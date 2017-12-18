@@ -78,8 +78,10 @@ public:
      */
     virtual void start()
     {
-        if( not isConstructed_ ) return; 
-        return thread_->start();    
+        if( isConstructed_ )
+        {
+            thread_->start();    
+        }
     }
     
     /**
@@ -87,8 +89,10 @@ public:
      */  
     virtual void join()
     {
-        if( not isConstructed_ ) return; 
-        return thread_->join();
+        if( isConstructed_ )
+        {
+            thread_->join();
+        }
     }
   
     /**
@@ -99,8 +103,10 @@ public:
      */  
     virtual void sleep(int64 millis, int32 nanos=0)
     {
-        if( not isConstructed_ ) return; 
-        return thread_->sleep(millis, nanos);    
+        if( isConstructed_ )
+        {
+            thread_->sleep(millis, nanos);    
+        }
     }        
     
     /**
@@ -110,8 +116,10 @@ public:
      */  
     virtual void block(::api::Resource& res)
     {
-        if( not isConstructed_ ) return; 
-        return thread_->block(res);    
+        if( isConstructed_ )
+        {
+            return thread_->block(res);    
+        }
     }
     
     /**
@@ -121,8 +129,14 @@ public:
      */
     virtual int64 getId() const
     {
-        if( not isConstructed_ ) return -1; 
-        return thread_->getId();
+        if( isConstructed_ ) 
+        {
+            return thread_->getId();
+        }
+        else
+        {
+            return -1;             
+        }
     }
 
     /**
@@ -132,8 +146,14 @@ public:
      */  
     virtual ::api::Thread::Status getStatus() const
     {
-        if( not isConstructed_ ) return DEAD; 
-        return thread_->getStatus();    
+        if( isConstructed_ ) 
+        {
+            return thread_->getStatus();    
+        }
+        else
+        {
+            return DEAD;             
+        }
     }                
   
     /**
@@ -143,8 +163,14 @@ public:
      */  
     virtual int32 getPriority() const
     {
-        if( not isConstructed_ ) return -1; 
-        return thread_->getPriority();    
+        if( isConstructed_ ) 
+        {
+            return thread_->getPriority();    
+        }
+        else
+        {
+            return -1;             
+        }
     }        
   
     /**
@@ -154,8 +180,10 @@ public:
      */  
     virtual void setPriority(int32 priority)
     {
-        if( not isConstructed_ ) return; 
-        return thread_->setPriority(priority);
+        if( isConstructed_ )
+        {
+            thread_->setPriority(priority);
+        }
     }
   
     /**
@@ -208,10 +236,12 @@ private:
      */
     bool construct(::api::Task& task)
     {
-        if( not isConstructed_ ) return false; 
+        if( not isConstructed_ ) 
+        {
+            return false; 
+        }
         thread_ = ::system::System::call().getKernel().getScheduler().createThread(task);
-        if( thread_ == NULL || not thread_->isConstructed() ) return false; 
-        return true;
+        return thread_ == NULL || not thread_->isConstructed() ? false : true; 
     }        
             
     /**

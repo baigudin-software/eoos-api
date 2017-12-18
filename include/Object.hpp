@@ -119,7 +119,10 @@ protected:
      */      
     virtual void setConstruct(bool flag)
     {
-        if(isConstructed_ == true) isConstructed_ = flag;
+        if( isConstructed_ ) 
+        {
+            isConstructed_ = flag;
+        }
     }
     
     /**
@@ -127,7 +130,7 @@ protected:
      *
      * @return reference to the constructed flag.
      */      
-    virtual const bool& getConstruct()
+    virtual const bool& getConstruct() const
     {
         return isConstructed_;
     }  

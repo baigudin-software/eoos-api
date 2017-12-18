@@ -52,8 +52,14 @@ public:
      */      
     virtual bool lock()
     {
-        if( not isConstructed_ ) return false;
-        return mutex_->lock();
+        if( isConstructed_ ) 
+        {
+            return mutex_->lock();            
+        }
+        else
+        {
+            return false;
+        }
     }
     
     /**
@@ -61,8 +67,10 @@ public:
      */      
     virtual void unlock()
     {
-        if( not isConstructed_ ) return ;
-        mutex_->unlock();
+        if( isConstructed_ ) 
+        {
+            mutex_->unlock();            
+        }
     }
     
     /** 
@@ -72,8 +80,14 @@ public:
      */ 
     virtual bool isBlocked()
     {
-        if( not isConstructed_ ) return false;
-        return mutex_->isBlocked();
+        if( isConstructed_ ) 
+        {
+            return mutex_->isBlocked();            
+        }
+        else
+        {
+            return false;
+        }
     }
 
 private:
@@ -85,7 +99,10 @@ private:
      */
     bool construct()
     {
-        if( not isConstructed_ ) return false;
+        if( not isConstructed_ ) 
+        {
+            return false;
+        }
         ::api::Kernel& kernel = ::system::System::call().getKernel();
         mutex_ = kernel.createMutex();
         return mutex_ != NULL ? mutex_->isConstructed() : false;        
