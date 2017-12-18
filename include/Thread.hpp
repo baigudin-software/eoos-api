@@ -176,7 +176,8 @@ public:
      */  
     static void sleepCurrent(int64 millis, int32 nanos=0)
     {
-        getCurrent().sleep(millis, nanos);
+        ::api::Thread& thread = getCurrent();
+        thread.sleep(millis, nanos);
     }        
     
     /**

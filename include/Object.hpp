@@ -42,7 +42,9 @@ public:
      * @param obj reference to source object.
      */ 
     Object(const ::api::Object& obj) :
-        isConstructed_ (obj.isConstructed()){
+        isConstructed_ (true){
+        bool isConstructed = obj.isConstructed();
+        setConstruct( isConstructed );
     }    
     
     /** 
@@ -93,7 +95,7 @@ public:
      * @param ptr  pointer to reserved memory area
      * @return given pointer.
      */  
-    void* operator new(size_t size, void* ptr)
+    void* operator new(size_t, void* ptr)
     {
         return ptr;
     }
