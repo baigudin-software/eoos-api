@@ -11,10 +11,9 @@
 // NULL definition
 #ifndef NULL
 #if __cplusplus >= 201103L  // Since C++11
-typedef decltype(nullptr)  nullptr_t;
-const nullptr_t NULL = nullptr;
+#define NULL nullptr
 #else                       // Until C++11
-const int NULL = 0;
+#define NULL 0
 #endif
 #endif // NULL
 
