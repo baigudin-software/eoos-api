@@ -21,20 +21,14 @@ public:
      * @param size number of bytes to allocate.
      * @return allocated memory address or a null pointer.
      */    
-    static void* allocate(size_t size)
-    {
-        return ::system::System::call().getKernel().getHeap().allocate(size, NULL);
-    }
+    static void* allocate(size_t size);
   
     /**
      * Frees an allocated memory.
      *
      * @param ptr address of allocated memory block or a null pointer.
      */      
-    static void free(void* ptr)
-    {
-        return ::system::System::call().getKernel().getHeap().free(ptr);
-    }
+    static void free(void* ptr);
 
 };
 #endif // ALLOCATOR_HPP_
