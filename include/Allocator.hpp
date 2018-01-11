@@ -2,13 +2,13 @@
  * Memory allocator.
  * 
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2017, Embedded Team, Sergey Baigudin
+ * @copyright 2016-2017, Embedded Team, Sergey Baigudin
  * @license   http://embedded.team/license/
  */
 #ifndef ALLOCATOR_HPP_
 #define ALLOCATOR_HPP_
 
-#include "system.System.hpp"
+#include "Types.hpp"
 
 class Allocator
 {
