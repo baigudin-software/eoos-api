@@ -76,7 +76,7 @@ namespace api
         /** 
          * Creates a new mutex resource.
          *
-         * @return a new mutex resource, or NULL if error has been occurred.
+         * @return a new mutex resource, or NULL if an error has been occurred.
          */      
         virtual ::api::Mutex* createMutex() = 0;
         
@@ -84,7 +84,7 @@ namespace api
          * Creates a new unfair semaphore resource.
          *
          * @param permits the initial number of permits available.   
-         * @return a new semaphore resource, or NULL if error has been occurred.
+         * @return a new semaphore resource, or NULL if an error has been occurred.
          */      
         virtual ::api::Semaphore* createSemaphore(int32 permits) = 0;
         
@@ -93,7 +93,7 @@ namespace api
          *
          * @param permits the initial number of permits available.      
          * @param isFair  true if this semaphore will guarantee FIFO granting of permits under contention.
-         * @return a new semaphore resource, or NULL if error has been occurred.         
+         * @return a new semaphore resource, or NULL if an error has been occurred.         
          */      
         virtual ::api::Semaphore* createSemaphore(int32 permits, bool isFair) = 0;
         
@@ -102,7 +102,7 @@ namespace api
          *
          * @param handler user class which implements an interrupt handler interface.
          * @param source  available interrupt source number.
-         * @return a new interrupt resource, or NULL if error has been occurred.
+         * @return a new interrupt resource, or NULL if an error has been occurred.
          */  
         virtual ::api::Interrupt* createInterrupt(::api::Task& handler, int32 source) = 0;
 

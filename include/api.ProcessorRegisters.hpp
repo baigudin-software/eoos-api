@@ -37,7 +37,7 @@ namespace api
         /** 
          * Returns a pointer to the first register of CPU registers context.
          *
-         * @return memory address of registers order, or NULL if error has been occurred.
+         * @return memory address of registers order, or NULL if an error has been occurred.
          */    
         virtual void* getRegisters() = 0;
       
