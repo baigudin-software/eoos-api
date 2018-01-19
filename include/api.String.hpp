@@ -13,10 +13,10 @@
 namespace api
 {
     /** 
-     * @param Char data type of string chars.
+     * @param Type data type of string characters.
      */ 
-    template <typename Char>
-    class String : public ::api::Collection<Char>
+    template <typename Type>
+    class String : public ::api::Collection<Type>
     {
       
     public:
@@ -34,7 +34,7 @@ namespace api
          *         a value less than 0 if this string is less than given string; 
          *         a value greater than 0 if this string is greater than given string.
          */
-        virtual int32 compareTo(const ::api::String<Char>& obj) const = 0;        
+        virtual int32 compareTo(const ::api::String<Type>& obj) const = 0;        
         
         /** 
          * Compares two strings lexicographically.
@@ -44,7 +44,7 @@ namespace api
          *         a value less than 0 if this string is less than given string; 
          *         a value greater than 0 if this string is greater than given string.
          */
-        virtual int32 compareTo(const Char* data) const = 0;
+        virtual int32 compareTo(const Type* data) const = 0;
         
         /**
          * Returns pointer to the first char of containing string.
@@ -55,7 +55,7 @@ namespace api
          *
          * @param first char of containing string characters, or NULL if no string contained.
          */
-        virtual const Char* getChar() const = 0;        
+        virtual const Type* getChar() const = 0;        
   
     };
 }

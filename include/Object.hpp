@@ -9,11 +9,12 @@
 #define OBJECT_HPP_
 
 #include "api.Object.hpp"
+#include "Allocator.hpp"
 
 /** 
  * @param Alloc heap memory allocator class.
  */ 
-template <class Alloc>
+template <class Alloc = Allocator>
 class Object : public ::api::Object
 {
   
