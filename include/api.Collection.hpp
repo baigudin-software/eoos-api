@@ -8,7 +8,7 @@
 #ifndef API_COLLECTION_HPP_
 #define API_COLLECTION_HPP_
 
-#include "api.IllegalValue.hpp"
+#include "api.Object.hpp"
 
 namespace api
 {
@@ -16,7 +16,7 @@ namespace api
      * @param Type data type of collection element.
      */ 
     template <typename Type>
-    class Collection : public ::api::IllegalValue<Type>
+    class Collection : public ::api::Object
     {
       
     public:

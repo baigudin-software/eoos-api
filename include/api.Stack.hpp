@@ -9,6 +9,7 @@
 #define API_STACK_HPP_
 
 #include "api.Collection.hpp"
+#include "api.IllegalValue.hpp"
 
 namespace api
 {
@@ -16,7 +17,7 @@ namespace api
      * @param Type data type of default stack element.
      */ 
     template <typename Type>  
-    class Stack : public ::api::Collection<Type>
+    class Stack : public ::api::Collection<Type>, public ::api::IllegalValue<Type>
     { 
     
     public:
@@ -58,6 +59,13 @@ namespace api
          * Destructor.
          */    
         virtual ~Stack(){}
+        
+        /**
+         * Tests if this object has been constructed.
+         *
+         * @return true if object has been constructed successfully.
+         */    
+        virtual bool isConstructed() const = 0;        
         
         /** 
          * Returns an initial top of stack.
