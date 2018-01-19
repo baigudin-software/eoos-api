@@ -11,7 +11,7 @@
 #include "Object.hpp"
 #include "api.Interrupt.hpp"
 #include "api.Task.hpp"
-#include "system.System.hpp"
+#include "System.hpp"
 
 class Interrupt : public ::Object<>, public ::api::Interrupt
 {
@@ -127,7 +127,7 @@ private:
         {
             return false;    
         }
-        interrupt_ = ::system::System::call().getKernel().createInterrupt(handler, source);
+        interrupt_ = System::call().getKernel().createInterrupt(handler, source);
         return interrupt_ != NULL ? interrupt_->isConstructed() : false;
     }        
 

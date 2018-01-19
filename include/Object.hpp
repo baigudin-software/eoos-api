@@ -1,5 +1,5 @@
 /** 
- * Root class of the system class hierarchy.
+ * Root class of the class hierarchy.
  * 
  * @author    Sergey Baigudin, sergey@baigudin.software
  * @copyright 2014-2016, Embedded Team, Sergey Baigudin

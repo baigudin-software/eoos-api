@@ -10,7 +10,7 @@
 
 #include "Object.hpp"
 #include "api.Thread.hpp"
-#include "system.System.hpp"
+#include "System.hpp"
 
 class Thread : public ::Object<>, public ::api::Thread, public ::api::Task
 {
@@ -193,7 +193,7 @@ public:
      */
     static ::api::Thread& getCurrent()
     {
-        return ::system::System::call().getKernel().getScheduler().getCurrentThread();
+        return System::call().getKernel().getScheduler().getCurrentThread();
     }        
     
     /**
@@ -213,7 +213,7 @@ public:
      */
     static void yield()
     {
-        return ::system::System::call().getKernel().getScheduler().yield();     
+        return System::call().getKernel().getScheduler().yield();     
     }
     
     /** 
@@ -223,7 +223,7 @@ public:
      */ 
     static ::api::Toggle& toggle()
     {
-        return ::system::System::call().getKernel().getScheduler().toggle();    
+        return System::call().getKernel().getScheduler().toggle();    
     }
         
 private:
@@ -240,7 +240,7 @@ private:
         {
             return false; 
         }
-        thread_ = ::system::System::call().getKernel().getScheduler().createThread(task);
+        thread_ = System::call().getKernel().getScheduler().createThread(task);
         return thread_ == NULL || not thread_->isConstructed() ? false : true; 
     }        
             

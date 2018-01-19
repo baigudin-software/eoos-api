@@ -10,7 +10,7 @@
 
 #include "Object.hpp"
 #include "api.Mutex.hpp"
-#include "system.System.hpp"
+#include "System.hpp"
 
 class Mutex : public ::Object<>, public ::api::Mutex
 {
@@ -103,7 +103,7 @@ private:
         {
             return false;
         }
-        ::api::Kernel& kernel = ::system::System::call().getKernel();
+        ::api::Kernel& kernel = System::call().getKernel();
         mutex_ = kernel.createMutex();
         return mutex_ != NULL ? mutex_->isConstructed() : false;        
     }

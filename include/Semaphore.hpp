@@ -10,7 +10,7 @@
 
 #include "Object.hpp"
 #include "api.Semaphore.hpp"
-#include "system.System.hpp"
+#include "System.hpp"
 
 class Semaphore : public ::Object<>, public ::api::Semaphore
 {
@@ -167,7 +167,7 @@ private:
         {
             return false;
         }
-        ::api::Kernel& kernel = ::system::System::call().getKernel();
+        ::api::Kernel& kernel = System::call().getKernel();
         if( isFair == NULL )
         {
             semaphore_ = kernel.createSemaphore(permits);
