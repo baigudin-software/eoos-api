@@ -29,7 +29,7 @@ namespace api
         /** 
          * Copies a passed string into this string.
          *
-         * @param string a string object to be copied.         
+         * @param string a string object interface to be copied.         
          * @return true if a passed string has been copied successfully.
          */
         virtual bool copy(const ::api::String<Type>& string) = 0;        
@@ -37,7 +37,7 @@ namespace api
         /** 
          * Concatenates a passed string to this string.             
          *
-         * @param string a string object to be appended.
+         * @param string a string object interface to be appended.
          * @return true if a passed string has been appended successfully.          
          */
         virtual bool concatenate(const ::api::String<Type>& string) = 0;     
@@ -45,7 +45,7 @@ namespace api
         /** 
          * Compares this string with a passed string lexicographically.         
          *
-         * @param string a string object to be compared.
+         * @param string a string object interface to be compared.
          * @return the value 0 if a passed string is equal to this string; 
          *         a value less than 0 if this string is less than a passed string; 
          *         a value greater than 0 if this string is greater than a passed string,

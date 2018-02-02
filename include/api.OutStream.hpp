@@ -9,27 +9,32 @@
 #define API_OUT_STREAM_HPP_
 
 #include "api.Object.hpp"
+#include "api.String.hpp"
 
 namespace api
 {
-  class OutStream : public ::api::Object
-  {
-    
-  public:
-
-    /** 
-     * Destructor.
-     */
-    virtual ~OutStream(){}
-    
-    /** 
-     * Writes to an output stream passed string.
-     *
-     * @param str output string.
-     * @return this interface.
+    /**
+     * @param Type   data type of string characters.     
      */    
-    virtual OutStream& operator <<(const char* str) = 0;
+    template <typename Type>     
+    class OutStream : public ::api::Object
+    {
     
-  };
+    public:
+    
+        /** 
+         * Destructor.
+         */
+        virtual ~OutStream(){}
+        
+        /** 
+         * Writes to an output stream.
+         *
+         * @param source a source character string to be output.
+         * @return this interface.
+         */    
+        virtual ::api::OutStream<Type>& operator <<(const Type* source) = 0;
+
+    };
 }
 #endif // API_OUT_STREAM_HPP_
