@@ -23,7 +23,7 @@ public:
      *
      * @param permits the initial number of permits available.   
      */      
-    Semaphore(int32 permits) : Parent(),
+    Semaphore(const int32 permits) : Parent(),
         isConstructed_ (getConstruct()),
         semaphore_     (NULL){
         setConstruct( construct(permits, NULL) ); 
@@ -35,7 +35,7 @@ public:
      * @param permits the initial number of permits available.      
      * @param isFair  true if this semaphore will guarantee FIFO granting of permits under contention.
      */      
-    Semaphore(int32 permits, bool isFair) : Parent(),
+    Semaphore(const int32 permits, const bool isFair) : Parent(),
         isConstructed_ (getConstruct()),
         semaphore_     (NULL){
         setConstruct( construct(permits, &isFair) );   
@@ -82,7 +82,7 @@ public:
      * @param permits the number of permits to acquire.
      * @return true if the semaphore is acquired successfully.
      */  
-    virtual bool acquire(int32 permits)
+    virtual bool acquire(const int32 permits)
     {
         if( isConstructed_ )
         {
@@ -110,7 +110,7 @@ public:
      *
      * @param permits the number of permits to release.
      */  
-    virtual void release(int32 permits)
+    virtual void release(const int32 permits)
     {
         if( isConstructed_ )
         {
@@ -161,13 +161,13 @@ private:
      * @param isFair  true if this semaphore will guarantee FIFO granting of permits under contention.     
      * @return true if object has been constructed successfully.   
      */
-    bool construct(int32 permits, bool* isFair)
+    bool construct(const int32 permits, const bool* isFair)
     {
         if( not isConstructed_ ) 
         {
             return false;
         }
-        ::api::Kernel& kernel = System::call().getKernel();
+        const ::api::Kernel& kernel = System::call().getKernel();
         if( isFair == NULL )
         {
             semaphore_ = kernel.createSemaphore(permits);

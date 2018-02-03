@@ -32,7 +32,7 @@ public:
      *
      * @param task an task interface whose main method is invoked when this thread is started.
      */
-    Thread(::api::Task& task) : Parent(),
+    Thread(const ::api::Task& task) : Parent(),
         isConstructed_ (getConstruct()),
         thread_        (NULL){
         setConstruct( construct(task) );
@@ -47,6 +47,11 @@ public:
     }
     
     /**
+     * The method with self context which will be executed by default.
+     */  
+    virtual void main() = 0;    
+    
+    /**
      * Tests if this object has been constructed.
      *
      * @return true if object has been constructed successfully.
@@ -55,13 +60,6 @@ public:
     {
         return isConstructed_;
     } 
-    
-    /**
-     * The method with self context which will be executed by default.
-     */  
-    virtual void main()
-    {
-    }
     
     /**
      * Returns size of task stack.
@@ -101,7 +99,7 @@ public:
      * @param millis a time to sleep in milliseconds.
      * @param nanos  an additional nanoseconds to sleep.
      */  
-    virtual void sleep(int64 millis, int32 nanos=0)
+    virtual void sleep(const int64 millis, const int32 nanos=0)
     {
         if( isConstructed_ )
         {
@@ -114,7 +112,7 @@ public:
      *
      * @param res a resource.
      */  
-    virtual void block(::api::Resource& res)
+    virtual void block(const ::api::Resource& res)
     {
         if( isConstructed_ )
         {
@@ -178,7 +176,7 @@ public:
      *
      * @param priority number of priority in range [MIN_PRIORITY, MAX_PRIORITY], or LOCK_PRIORITY.
      */  
-    virtual void setPriority(int32 priority)
+    virtual void setPriority(const int32 priority)
     {
         if( isConstructed_ )
         {
@@ -202,9 +200,9 @@ public:
      * @param millis a time to sleep in milliseconds.
      * @param nanos  an additional nanoseconds to sleep.
      */  
-    static void sleepCurrent(int64 millis, int32 nanos=0)
+    static void sleepCurrent(const int64 millis, const int32 nanos=0)
     {
-        ::api::Thread& thread = getCurrent();
+        const ::api::Thread& thread = getCurrent();
         thread.sleep(millis, nanos);
     }        
     
@@ -234,7 +232,7 @@ private:
      * @param task an task interface whose main method is invoked when this thread is started.     
      * @return true if object has been constructed successfully.   
      */
-    bool construct(::api::Task& task)
+    bool construct(const ::api::Task& task)
     {
         if( not isConstructed_ ) 
         {
