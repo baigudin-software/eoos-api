@@ -25,7 +25,7 @@ public:
      * @param handler user class which implements an interrupt handler interface.
      * @param source  available interrupt source.
      */     
-    Interrupt(const ::api::Task& handler, const int32 source) : Parent(),
+    Interrupt(::api::Task& handler, const int32 source) : Parent(),
         isConstructed_ (getConstruct()),
         interrupt_     (NULL){
         setConstruct( construct(handler, source) );
@@ -121,7 +121,7 @@ private:
      * @param source  available interrupt source.     
      * @return true if object has been constructed successfully.     
      */    
-    bool construct(const ::api::Task& handler, const int32 source)
+    bool construct(::api::Task& handler, const int32 source)
     {
         if( not isConstructed_ ) 
         {

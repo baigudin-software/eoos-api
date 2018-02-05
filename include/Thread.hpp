@@ -32,7 +32,7 @@ public:
      *
      * @param task an task interface whose main method is invoked when this thread is started.
      */
-    Thread(const ::api::Task& task) : Parent(),
+    Thread(::api::Task& task) : Parent(),
         isConstructed_ (getConstruct()),
         thread_        (NULL){
         setConstruct( construct(task) );
@@ -112,7 +112,7 @@ public:
      *
      * @param res a resource.
      */  
-    virtual void block(const ::api::Resource& res)
+    virtual void block(::api::Resource& res)
     {
         if( isConstructed_ )
         {
@@ -202,8 +202,7 @@ public:
      */  
     static void sleepCurrent(const int64 millis, const int32 nanos=0)
     {
-        const ::api::Thread& thread = getCurrent();
-        thread.sleep(millis, nanos);
+        getCurrent().sleep(millis, nanos);
     }        
     
     /**
@@ -232,7 +231,7 @@ private:
      * @param task an task interface whose main method is invoked when this thread is started.     
      * @return true if object has been constructed successfully.   
      */
-    bool construct(const ::api::Task& task)
+    bool construct(::api::Task& task)
     {
         if( not isConstructed_ ) 
         {

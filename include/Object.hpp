@@ -97,7 +97,7 @@ public:
      * @param ptr  pointer to reserved memory area
      * @return given pointer.
      */  
-    void* operator new(size_t, void* ptr)
+    void* operator new(size_t, void* const ptr)
     {
         return ptr;
     }
@@ -107,7 +107,7 @@ public:
      *
      * @param ptr address of allocated memory block or a null pointer.
      */
-    void operator delete(void* ptr)
+    void operator delete(void* const ptr)
     {
         Alloc::free(ptr);
     }
@@ -159,7 +159,7 @@ protected:
      *
      * @param ptr address of allocated memory block or a null pointer.
      */      
-    static void free(const void* ptr)
+    static void free(void* const ptr)
     {
         Alloc::free(ptr);
     }

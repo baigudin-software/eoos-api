@@ -31,7 +31,7 @@ namespace api
          *             as memory address.
          * @return pointer to allocated memory or NULL.
          */    
-        virtual void* allocate(const size_t size, void* ptr) = 0;
+        virtual void* allocate(size_t size, void* ptr) = 0;
           
         /**
          * Frees an allocated memory.

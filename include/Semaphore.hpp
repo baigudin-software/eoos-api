@@ -167,7 +167,7 @@ private:
         {
             return false;
         }
-        const ::api::Kernel& kernel = System::call().getKernel();
+        ::api::Kernel& kernel = System::call().getKernel();
         if( isFair == NULL )
         {
             semaphore_ = kernel.createSemaphore(permits);

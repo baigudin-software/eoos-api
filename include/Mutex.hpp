@@ -103,8 +103,7 @@ private:
         {
             return false;
         }
-        const ::api::Kernel& kernel = System::call().getKernel();
-        mutex_ = kernel.createMutex();
+        mutex_ = System::call().getKernel().createMutex();
         return mutex_ != NULL ? mutex_->isConstructed() : false;        
     }
 
