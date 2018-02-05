@@ -43,7 +43,7 @@ public:
      */ 
     Object(const ::api::Object& obj) :
         isConstructed_ (true){
-        bool isConstructed = obj.isConstructed();
+        const bool isConstructed = obj.isConstructed();
         setConstruct( isConstructed );
     }    
     
@@ -76,6 +76,8 @@ public:
         isConstructed_ = obj.isConstructed_;
         return *this;
     }
+    
+    #ifdef NO_STRICT_MISRA_RULES
   
     /** 
      * Operator new.
@@ -83,7 +85,7 @@ public:
      * @param size number of bytes to allocate.
      * @return allocated memory address or a null pointer.
      */  
-    void* operator new(size_t size)
+    void* operator new(const size_t size)
     {
         return Alloc::allocate(size);
     }
@@ -109,6 +111,8 @@ public:
     {
         Alloc::free(ptr);
     }
+    
+    #endif // NO_STRICT_MISRA_RULES
 
 protected:
 
@@ -117,7 +121,7 @@ protected:
      *
      * @param flag constructed flag.
      */      
-    virtual void setConstruct(bool flag)
+    virtual void setConstruct(const bool flag)
     {
         if( isConstructed_ ) 
         {
@@ -145,7 +149,7 @@ protected:
      * @return allocated memory address or a null pointer.
      */    
     template<typename Type>
-    static Type allocate(size_t size)
+    static Type allocate(const size_t size)
     {
         return static_cast<Type>( Alloc::allocate(size) );
     }    
@@ -155,12 +159,14 @@ protected:
      *
      * @param ptr address of allocated memory block or a null pointer.
      */      
-    static void free(void* ptr)
+    static void free(const void* ptr)
     {
         Alloc::free(ptr);
     }
 
 private:
+
+    #ifdef NO_STRICT_MISRA_RULES
   
     /** 
      * Operator delete.
@@ -201,6 +207,8 @@ private:
      * @param place pointer used as the placement parameter in the matching placement new.
      */  
     void operator delete[](void* ptr, void* place);
+    
+    #endif // NO_STRICT_MISRA_RULES
     
     /** 
      * Object constructed flag.

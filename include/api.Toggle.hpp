@@ -47,7 +47,7 @@ namespace api
          * @return given value.
          */
         template<typename Type>
-        Type enable(bool status, Type ret)
+        Type enable(const bool status, const Type ret)
         {
             enable(status);
             return ret;
