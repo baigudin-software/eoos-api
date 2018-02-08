@@ -11,7 +11,7 @@
 #include "Object.hpp"
 #include "api.Interrupt.hpp"
 #include "api.Task.hpp"
-#include "system.System.hpp"
+#include "System.hpp"
 
 class Interrupt : public ::Object<>, public ::api::Interrupt
 {
@@ -25,7 +25,7 @@ public:
      * @param handler user class which implements an interrupt handler interface.
      * @param source  available interrupt source.
      */     
-    Interrupt(::api::Task& handler, int32 source) : Parent(),
+    Interrupt(::api::Task& handler, const int32 source) : Parent(),
         isConstructed_ (getConstruct()),
         interrupt_     (NULL){
         setConstruct( construct(handler, source) );
@@ -54,8 +54,10 @@ public:
      */      
     virtual void jump()
     {
-        if( not isConstructed_ ) return;
-        interrupt_->jump();
+        if( isConstructed_ ) 
+        { 
+            interrupt_->jump();
+        }
     }
     
     /**
@@ -63,8 +65,10 @@ public:
      */     
     virtual void clear()
     {
-        if( not isConstructed_ ) return;
-        interrupt_->clear();  
+        if( isConstructed_ ) 
+        {
+            interrupt_->clear();  
+        }
     }        
     
     /**
@@ -72,8 +76,10 @@ public:
      */    
     virtual void set()
     {
-        if( not isConstructed_ ) return;
-        interrupt_->set();  
+        if( isConstructed_ ) 
+        {
+            interrupt_->set();  
+        }
     }          
     
     /**
@@ -83,8 +89,14 @@ public:
      */    
     virtual bool disable()
     {
-        if( not isConstructed_ ) return false;  
-        return interrupt_->disable();
+        if( isConstructed_ ) 
+        {
+            return interrupt_->disable();            
+        }
+        else
+        {
+            return false;  
+        }
     }
     
     /**
@@ -92,10 +104,12 @@ public:
      *
      * @param status returned status by lock method.
      */
-    virtual void enable(bool status)
+    virtual void enable(const bool status)
     {
-        if( not isConstructed_ ) return;
-        interrupt_->enable(status);  
+        if( isConstructed_ ) 
+        {
+            interrupt_->enable(status);  
+        }
     }
 
 private:
@@ -107,10 +121,13 @@ private:
      * @param source  available interrupt source.     
      * @return true if object has been constructed successfully.     
      */    
-    bool construct(::api::Task& handler, int32 source)
+    bool construct(::api::Task& handler, const int32 source)
     {
-        if( not isConstructed_ ) return false;    
-        interrupt_ = ::system::System::call().getKernel().createInterrupt(handler, source);
+        if( not isConstructed_ ) 
+        {
+            return false;    
+        }
+        interrupt_ = System::call().getKernel().createInterrupt(handler, source);
         return interrupt_ != NULL ? interrupt_->isConstructed() : false;
     }        
 

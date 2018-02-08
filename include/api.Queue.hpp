@@ -9,6 +9,7 @@
 #define API_QUEUE_HPP_
 
 #include "api.Collection.hpp"
+#include "api.IllegalValue.hpp"
 
 namespace api
 {
@@ -16,7 +17,7 @@ namespace api
      * @param Type data type of queue element.
      */
     template <typename Type>
-    class Queue : public ::api::Collection<Type>
+    class Queue : public ::api::Collection<Type>, public ::api::IllegalValue<Type>
     {
       
     public:
@@ -25,6 +26,13 @@ namespace api
          * Destructor.
          */
         virtual ~Queue(){}
+        
+        /**
+         * Tests if this object has been constructed.
+         *
+         * @return true if object has been constructed successfully.
+         */    
+        virtual bool isConstructed() const = 0;        
         
         /**
          * Inserts new element to this container.

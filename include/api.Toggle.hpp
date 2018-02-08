@@ -37,7 +37,7 @@ namespace api
          * 
          * @param status returned status by disable method, or true for directly turning a controller on.
          */    
-        virtual void enable(bool status=true) = 0;
+        virtual void enable(bool status = true) = 0;
         
         /** 
          * Enables a controller.
@@ -47,7 +47,7 @@ namespace api
          * @return given value.
          */
         template<typename Type>
-        Type enable(bool status, Type ret)
+        Type enable(const bool status, Type const ret)
         {
             enable(status);
             return ret;

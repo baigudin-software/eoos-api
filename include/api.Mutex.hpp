@@ -41,7 +41,7 @@ namespace api
          * @return given argument value.
          */
         template<typename Type> 
-        Type unlock(Type value)
+        Type unlock(Type const value)
         {
             unlock();
             return value;

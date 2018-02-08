@@ -1,5 +1,5 @@
 /** 
- * Root class of the system class hierarchy.
+ * Root class of the class hierarchy.
  * 
  * @author    Sergey Baigudin, sergey@baigudin.software
  * @copyright 2014-2016, Embedded Team, Sergey Baigudin
@@ -14,7 +14,7 @@
 /** 
  * @param Alloc heap memory allocator class.
  */ 
-template <class Alloc=::Allocator>
+template <class Alloc = Allocator>
 class Object : public ::api::Object
 {
   
@@ -42,7 +42,9 @@ public:
      * @param obj reference to source object.
      */ 
     Object(const ::api::Object& obj) :
-        isConstructed_ (obj.isConstructed()){
+        isConstructed_ (true){
+        const bool isConstructed = obj.isConstructed();
+        setConstruct( isConstructed );
     }    
     
     /** 
@@ -51,18 +53,8 @@ public:
     virtual ~Object()
     {
         isConstructed_ = false;
-    }  
-    
-    /**
-     * Tests if this object has been constructed.
-     *
-     * @return true if object has been constructed successfully.
-     */    
-    virtual bool isConstructed() const
-    {
-        return isConstructed_;
     }
-    
+
     /** 
      * Assignment operator.
      *
@@ -74,6 +66,8 @@ public:
         isConstructed_ = obj.isConstructed_;
         return *this;
     }
+    
+    #ifdef NO_STRICT_MISRA_RULES
   
     /** 
      * Operator new.
@@ -81,7 +75,7 @@ public:
      * @param size number of bytes to allocate.
      * @return allocated memory address or a null pointer.
      */  
-    void* operator new(size_t size)
+    void* operator new(const size_t size)
     {
         return Alloc::allocate(size);
     }
@@ -93,7 +87,7 @@ public:
      * @param ptr  pointer to reserved memory area
      * @return given pointer.
      */  
-    void* operator new(size_t size, void* ptr)
+    void* operator new(size_t, void* const ptr)
     {
         return ptr;
     }
@@ -103,10 +97,12 @@ public:
      *
      * @param ptr address of allocated memory block or a null pointer.
      */
-    void operator delete(void* ptr)
+    void operator delete(void* const ptr)
     {
         Alloc::free(ptr);
     }
+    
+    #endif // NO_STRICT_MISRA_RULES
 
 protected:
 
@@ -115,9 +111,12 @@ protected:
      *
      * @param flag constructed flag.
      */      
-    virtual void setConstruct(bool flag)
+    virtual void setConstruct(const bool flag)
     {
-        if(isConstructed_ == true) isConstructed_ = flag;
+        if( isConstructed_ ) 
+        {
+            isConstructed_ = flag;
+        }
     }
     
     /**
@@ -125,7 +124,7 @@ protected:
      *
      * @return reference to the constructed flag.
      */      
-    virtual const bool& getConstruct()
+    virtual const bool& getConstruct() const
     {
         return isConstructed_;
     }  
@@ -140,7 +139,7 @@ protected:
      * @return allocated memory address or a null pointer.
      */    
     template<typename Type>
-    static Type allocate(size_t size)
+    static Type allocate(const size_t size)
     {
         return static_cast<Type>( Alloc::allocate(size) );
     }    
@@ -150,12 +149,14 @@ protected:
      *
      * @param ptr address of allocated memory block or a null pointer.
      */      
-    static void free(void* ptr)
+    static void free(void* const ptr)
     {
         Alloc::free(ptr);
     }
 
 private:
+
+    #ifdef NO_STRICT_MISRA_RULES
   
     /** 
      * Operator delete.
@@ -196,6 +197,8 @@ private:
      * @param place pointer used as the placement parameter in the matching placement new.
      */  
     void operator delete[](void* ptr, void* place);
+    
+    #endif // NO_STRICT_MISRA_RULES
     
     /** 
      * Object constructed flag.

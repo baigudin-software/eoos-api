@@ -39,70 +39,70 @@ namespace api
         virtual int32 getStackSize() = 0;
           
         /**
-         * Returns a kernel constructed object.
+         * Returns the kernel heap memory.
          *
-         * @return a kernel constructed object.
+         * @return the kernel heap memory.
          */
         virtual ::api::Heap& getHeap() = 0;
         
         /** 
-         * Returns a kernel runtime environment.
+         * Returns the kernel runtime environment.
          *
-         * @return a kernel runtime environment.
+         * @return the kernel runtime environment.
          */      
         virtual ::api::Runtime& getRuntime() = 0;        
         
         /** 
-         * Returns a value of a kernel running time in nanoseconds.
+         * Returns a value of the kernel running time in nanoseconds.
          *
-         * @return a running time in nanoseconds.
+         * @return the running time in nanoseconds.
          */      
         virtual ::api::Value<int64>& getExecutionTime() = 0;
         
         /** 
-         * Returns a kernel scheduler.
+         * Returns the kernel scheduler.
          *
-         * @return a kernel scheduler.
+         * @return the kernel scheduler.
          */      
         virtual ::api::Scheduler& getScheduler() = 0;        
         
         /** 
-         * Returns a global interrupt resource.
+         * Returns a global interrupt controller.
          *
-         * @return a global interrupt resource.
+         * @return a global interrupt controller.
          */      
         virtual ::api::Toggle& getGlobalInterrupt() = 0;
 
         /** 
-         * Creates new mutex resource.
+         * Creates a new mutex resource.
          *
-         * @return new mutex resource, or NULL if error has been occurred.
+         * @return a new mutex resource, or NULL if an error has been occurred.
          */      
         virtual ::api::Mutex* createMutex() = 0;
         
         /** 
-         * Creates new unfair semaphore resource.
+         * Creates a new unfair semaphore resource.
          *
          * @param permits the initial number of permits available.   
-         * @return new semaphore resource, or NULL if error has been occurred.
+         * @return a new semaphore resource, or NULL if an error has been occurred.
          */      
         virtual ::api::Semaphore* createSemaphore(int32 permits) = 0;
         
         /** 
-         * Creates new semaphore resource.
+         * Creates a new semaphore resource.
          *
          * @param permits the initial number of permits available.      
          * @param isFair  true if this semaphore will guarantee FIFO granting of permits under contention.
-         * @return new semaphore resource, or NULL if error has been occurred.         
+         * @return a new semaphore resource, or NULL if an error has been occurred.         
          */      
         virtual ::api::Semaphore* createSemaphore(int32 permits, bool isFair) = 0;
         
         /**
-         * Creates new interrupt resource.
+         * Creates a new interrupt resource.
          *
          * @param handler user class which implements an interrupt handler interface.
          * @param source  available interrupt source number.
-         * @return new interrupt resource, or NULL if error has been occurred.
+         * @return a new interrupt resource, or NULL if an error has been occurred.
          */  
         virtual ::api::Interrupt* createInterrupt(::api::Task& handler, int32 source) = 0;
 

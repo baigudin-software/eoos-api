@@ -10,7 +10,7 @@
 
 #include "Object.hpp"
 #include "api.Thread.hpp"
-#include "system.System.hpp"
+#include "System.hpp"
 
 class Thread : public ::Object<>, public ::api::Thread, public ::api::Task
 {
@@ -47,6 +47,11 @@ public:
     }
     
     /**
+     * The method with self context which will be executed by default.
+     */  
+    virtual void main() = 0;    
+    
+    /**
      * Tests if this object has been constructed.
      *
      * @return true if object has been constructed successfully.
@@ -55,13 +60,6 @@ public:
     {
         return isConstructed_;
     } 
-    
-    /**
-     * The method with self context which will be executed by default.
-     */  
-    virtual void main()
-    {
-    }
     
     /**
      * Returns size of task stack.
@@ -78,8 +76,10 @@ public:
      */
     virtual void start()
     {
-        if( not isConstructed_ ) return; 
-        return thread_->start();    
+        if( isConstructed_ )
+        {
+            thread_->start();    
+        }
     }
     
     /**
@@ -87,8 +87,10 @@ public:
      */  
     virtual void join()
     {
-        if( not isConstructed_ ) return; 
-        return thread_->join();
+        if( isConstructed_ )
+        {
+            thread_->join();
+        }
     }
   
     /**
@@ -97,10 +99,12 @@ public:
      * @param millis a time to sleep in milliseconds.
      * @param nanos  an additional nanoseconds to sleep.
      */  
-    virtual void sleep(int64 millis, int32 nanos=0)
+    virtual void sleep(const int64 millis, const int32 nanos=0)
     {
-        if( not isConstructed_ ) return; 
-        return thread_->sleep(millis, nanos);    
+        if( isConstructed_ )
+        {
+            thread_->sleep(millis, nanos);    
+        }
     }        
     
     /**
@@ -110,8 +114,10 @@ public:
      */  
     virtual void block(::api::Resource& res)
     {
-        if( not isConstructed_ ) return; 
-        return thread_->block(res);    
+        if( isConstructed_ )
+        {
+            return thread_->block(res);    
+        }
     }
     
     /**
@@ -121,8 +127,14 @@ public:
      */
     virtual int64 getId() const
     {
-        if( not isConstructed_ ) return -1; 
-        return thread_->getId();
+        if( isConstructed_ ) 
+        {
+            return thread_->getId();
+        }
+        else
+        {
+            return -1;             
+        }
     }
 
     /**
@@ -132,8 +144,14 @@ public:
      */  
     virtual ::api::Thread::Status getStatus() const
     {
-        if( not isConstructed_ ) return DEAD; 
-        return thread_->getStatus();    
+        if( isConstructed_ ) 
+        {
+            return thread_->getStatus();    
+        }
+        else
+        {
+            return DEAD;             
+        }
     }                
   
     /**
@@ -143,8 +161,14 @@ public:
      */  
     virtual int32 getPriority() const
     {
-        if( not isConstructed_ ) return -1; 
-        return thread_->getPriority();    
+        if( isConstructed_ ) 
+        {
+            return thread_->getPriority();    
+        }
+        else
+        {
+            return -1;             
+        }
     }        
   
     /**
@@ -152,10 +176,12 @@ public:
      *
      * @param priority number of priority in range [MIN_PRIORITY, MAX_PRIORITY], or LOCK_PRIORITY.
      */  
-    virtual void setPriority(int32 priority)
+    virtual void setPriority(const int32 priority)
     {
-        if( not isConstructed_ ) return; 
-        return thread_->setPriority(priority);
+        if( isConstructed_ )
+        {
+            thread_->setPriority(priority);
+        }
     }
   
     /**
@@ -165,7 +191,7 @@ public:
      */
     static ::api::Thread& getCurrent()
     {
-        return ::system::System::call().getKernel().getScheduler().getCurrentThread();
+        return System::call().getKernel().getScheduler().getCurrentThread();
     }        
     
     /**
@@ -174,7 +200,7 @@ public:
      * @param millis a time to sleep in milliseconds.
      * @param nanos  an additional nanoseconds to sleep.
      */  
-    static void sleepCurrent(int64 millis, int32 nanos=0)
+    static void sleepCurrent(const int64 millis, const int32 nanos=0)
     {
         getCurrent().sleep(millis, nanos);
     }        
@@ -184,7 +210,7 @@ public:
      */
     static void yield()
     {
-        return ::system::System::call().getKernel().getScheduler().yield();     
+        return System::call().getKernel().getScheduler().yield();     
     }
     
     /** 
@@ -194,7 +220,7 @@ public:
      */ 
     static ::api::Toggle& toggle()
     {
-        return ::system::System::call().getKernel().getScheduler().toggle();    
+        return System::call().getKernel().getScheduler().toggle();    
     }
         
 private:
@@ -207,10 +233,12 @@ private:
      */
     bool construct(::api::Task& task)
     {
-        if( not isConstructed_ ) return false; 
-        thread_ = ::system::System::call().getKernel().getScheduler().createThread(task);
-        if( thread_ == NULL || not thread_->isConstructed() ) return false; 
-        return true;
+        if( not isConstructed_ ) 
+        {
+            return false; 
+        }
+        thread_ = System::call().getKernel().getScheduler().createThread(task);
+        return thread_ == NULL || not thread_->isConstructed() ? false : true; 
     }        
             
     /**

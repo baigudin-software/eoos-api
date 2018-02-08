@@ -10,7 +10,7 @@
 
 #include "Object.hpp"
 #include "api.Semaphore.hpp"
-#include "system.System.hpp"
+#include "System.hpp"
 
 class Semaphore : public ::Object<>, public ::api::Semaphore
 {
@@ -23,7 +23,7 @@ public:
      *
      * @param permits the initial number of permits available.   
      */      
-    Semaphore(int32 permits) : Parent(),
+    Semaphore(const int32 permits) : Parent(),
         isConstructed_ (getConstruct()),
         semaphore_     (NULL){
         setConstruct( construct(permits, NULL) ); 
@@ -35,7 +35,7 @@ public:
      * @param permits the initial number of permits available.      
      * @param isFair  true if this semaphore will guarantee FIFO granting of permits under contention.
      */      
-    Semaphore(int32 permits, bool isFair) : Parent(),
+    Semaphore(const int32 permits, const bool isFair) : Parent(),
         isConstructed_ (getConstruct()),
         semaphore_     (NULL){
         setConstruct( construct(permits, &isFair) );   
@@ -66,8 +66,14 @@ public:
      */  
     virtual bool acquire()
     {
-        if( not isConstructed_ ) return false;
-        return semaphore_->acquire();    
+        if( isConstructed_ )
+        {
+            return semaphore_->acquire();    
+        }
+        else
+        {
+             return false;
+        }
     }        
     
     /**
@@ -76,10 +82,16 @@ public:
      * @param permits the number of permits to acquire.
      * @return true if the semaphore is acquired successfully.
      */  
-    virtual bool acquire(int32 permits)
+    virtual bool acquire(const int32 permits)
     {
-        if( not isConstructed_ ) return false;
-        return semaphore_->acquire(permits);        
+        if( isConstructed_ )
+        {
+            return semaphore_->acquire(permits);        
+        }
+        else
+        {
+            return false;            
+        }
     }    
     
     /**
@@ -87,8 +99,10 @@ public:
      */
     virtual void release()
     {
-        if( not isConstructed_ ) return;
-        semaphore_->release();        
+        if( isConstructed_ )
+        {
+            semaphore_->release();        
+        }
     }            
     
     /**
@@ -96,10 +110,12 @@ public:
      *
      * @param permits the number of permits to release.
      */  
-    virtual void release(int32 permits)
+    virtual void release(const int32 permits)
     {
-        if( not isConstructed_ ) return;
-        semaphore_->release(permits);            
+        if( isConstructed_ )
+        {
+            semaphore_->release(permits);            
+        }
     }
     
     /**
@@ -109,8 +125,14 @@ public:
      */  
     virtual bool isFair() const
     {
-        if( not isConstructed_ ) return false;    
-        return semaphore_->isFair(); 
+        if( isConstructed_ )
+        {
+            return semaphore_->isFair(); 
+        }
+        else
+        {
+            return false;                
+        }
     }        
     
     /** 
@@ -120,8 +142,14 @@ public:
      */ 
     virtual bool isBlocked()
     {
-        if( not isConstructed_ ) return false;
-        return semaphore_->isBlocked();        
+        if( isConstructed_ )
+        {
+            return semaphore_->isBlocked();        
+        }
+        else
+        {
+            return false;
+        }
     }        
 
 private:
@@ -133,10 +161,13 @@ private:
      * @param isFair  true if this semaphore will guarantee FIFO granting of permits under contention.     
      * @return true if object has been constructed successfully.   
      */
-    bool construct(int32 permits, bool* isFair)
+    bool construct(const int32 permits, const bool* isFair)
     {
-        if( not isConstructed_ ) return false;
-        ::api::Kernel& kernel = ::system::System::call().getKernel();
+        if( not isConstructed_ ) 
+        {
+            return false;
+        }
+        ::api::Kernel& kernel = System::call().getKernel();
         if( isFair == NULL )
         {
             semaphore_ = kernel.createSemaphore(permits);

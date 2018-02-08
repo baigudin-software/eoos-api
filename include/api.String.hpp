@@ -2,7 +2,7 @@
  * String interface.
  * 
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2017, Embedded Team, Sergey Baigudin
+ * @copyright 2017-2018, Embedded Team, Sergey Baigudin
  * @license   http://embedded.team/license/
  */
 #ifndef API_STRING_HPP_
@@ -13,10 +13,10 @@
 namespace api
 {
     /** 
-     * @param Char data type of string chars.
+     * @param Type data type of string characters.
      */ 
-    template <typename Char>
-    class String : public ::api::Collection<Char>
+    template <typename Type>
+    class String : public ::api::Collection<Type>
     {
       
     public:
@@ -27,35 +27,42 @@ namespace api
         virtual ~String(){}
         
         /** 
-         * Compares two strings lexicographically.
+         * Copies a passed string into this string.
          *
-         * @param obj a string object.
-         * @return the value 0 if given string is equal to this string; 
-         *         a value less than 0 if this string is less than given string; 
-         *         a value greater than 0 if this string is greater than given string.
+         * @param string a string object interface to be copied.         
+         * @return true if a passed string has been copied successfully.
          */
-        virtual int32 compareTo(const ::api::String<Char>& obj) const = 0;        
+        virtual bool copy(const ::api::String<Type>& string) = 0;        
+
+        /** 
+         * Concatenates a passed string to this string.             
+         *
+         * @param string a string object interface to be appended.
+         * @return true if a passed string has been appended successfully.          
+         */
+        virtual bool concatenate(const ::api::String<Type>& string) = 0;     
         
         /** 
-         * Compares two strings lexicographically.
+         * Compares this string with a passed string lexicographically.         
          *
-         * @param data a sequence of string characters.
-         * @return the value 0 if given string is equal to this string; 
-         *         a value less than 0 if this string is less than given string; 
-         *         a value greater than 0 if this string is greater than given string.
+         * @param string a string object interface to be compared.
+         * @return the value 0 if a passed string is equal to this string; 
+         *         a value less than 0 if this string is less than a passed string; 
+         *         a value greater than 0 if this string is greater than a passed string,
+         *         or the minimum possible value if an error has been occurred.
          */
-        virtual int32 compareTo(const Char* data) const = 0;
+        virtual int32 compare(const ::api::String<Type>& string) const = 0;
         
         /**
-         * Returns pointer to the first char of containing string.
+         * Returns pointer to the first character of containing string.
          *
          * NOTE: Be careful, some action with the object might relocate internal buffer 
          * that contains characters. By this reason, a returned address will be actual 
-         * until you do not call no constant method of the object.
+         * until you do not call no constant method of this class for an object.
          *
-         * @param first char of containing string characters, or NULL if no string contained.
+         * @return first character of containing string characters, or NULL if no string contained.
          */
-        virtual const Char* getChar() const = 0;        
+        virtual const Type* getChar() const = 0;        
   
     };
 }
