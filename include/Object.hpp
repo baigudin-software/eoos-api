@@ -111,7 +111,7 @@ protected:
      *
      * @param flag constructed flag.
      */      
-    virtual void setConstruct(const bool flag)
+    void setConstruct(const bool flag)
     {
         if( isConstructed_ ) 
         {
@@ -124,7 +124,7 @@ protected:
      *
      * @return reference to the constructed flag.
      */      
-    virtual const bool& getConstruct() const
+    const bool& getConstruct() const
     {
         return isConstructed_;
     }  

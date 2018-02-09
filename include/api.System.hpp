@@ -22,34 +22,32 @@ namespace api
          * Destructor.
          */
         virtual ~System(){}
-        
-        /** 
-         * Returns the operating system kernel interface.
+          
+        /**
+         * Returns the operating system heap memory.
          *
-         * @return the operating system kernel interface.
-         */      
-        virtual ::api::Kernel& getKernel() = 0;
+         * @return the heap memory.
+         */
+        virtual ::api::Heap& getHeap() const = 0;
         
         /**
          * Returns running time of the operating system in milliseconds.
          *
          * @return time in milliseconds.
          */
-        virtual int64 getTimeMs() = 0;
+        virtual int64 getTimeMs() const = 0;
            
         /**
          * Returns running time of the operating system in nanoseconds.
          *
          * @return time in nanoseconds.
          */
-        virtual int64 getTimeNs() = 0;
+        virtual int64 getTimeNs() const = 0;
         
         /**
          * Terminates the operating system execution.
-         *
-         * @param status a termination status.
          */
-        virtual void terminate() = 0;
+        virtual void terminate() const = 0;
 
     };
 }

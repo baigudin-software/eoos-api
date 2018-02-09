@@ -8,7 +8,7 @@
 #ifndef API_HEAP_HPP_
 #define API_HEAP_HPP_
 
-#include "api.Toggle.hpp"
+#include "api.Object.hpp"
 
 namespace api
 {
@@ -39,24 +39,6 @@ namespace api
          * @param ptr pointer to allocated memory.
          */      
         virtual void free(void* ptr) = 0;
-        
-        /**
-         * Sets a context switching locker.
-         *
-         * The method allows disabling and enabling thread context switching 
-         * when memory is being allocated or freed. Thus, the best way is 
-         * to pass an interface of global interrupt toggling. The parameter type 
-         * is reference to pointer, as when referenced pointer equals to NULL, 
-         * no blocks are happening.
-         *
-         * @param toggle reference to pointer to some controller.
-         */      
-        virtual void setToggle(::api::Toggle*& toggle) = 0;
-        
-        /**
-         * Resets a context switching locker.
-         */
-        virtual void resetToggle() = 0;        
   
     };
 }

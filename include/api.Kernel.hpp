@@ -36,42 +36,42 @@ namespace api
          *
          * @return a size of stack in bytes.
          */ 
-        virtual int32 getStackSize() = 0;
+        virtual int32 getStackSize() const = 0;
           
         /**
          * Returns the kernel heap memory.
          *
          * @return the kernel heap memory.
          */
-        virtual ::api::Heap& getHeap() = 0;
+        virtual ::api::Heap& getHeap() const = 0;
         
         /** 
          * Returns the kernel runtime environment.
          *
          * @return the kernel runtime environment.
          */      
-        virtual ::api::Runtime& getRuntime() = 0;        
+        virtual ::api::Runtime& getRuntime() const = 0;        
         
         /** 
          * Returns a value of the kernel running time in nanoseconds.
          *
          * @return the running time in nanoseconds.
          */      
-        virtual ::api::Value<int64>& getExecutionTime() = 0;
+        virtual ::api::Value<int64>& getExecutionTime() const = 0;
         
         /** 
          * Returns the kernel scheduler.
          *
          * @return the kernel scheduler.
          */      
-        virtual ::api::Scheduler& getScheduler() = 0;        
+        virtual ::api::Scheduler& getScheduler() const = 0;        
         
         /** 
          * Returns a global interrupt controller.
          *
          * @return a global interrupt controller.
          */      
-        virtual ::api::Toggle& getGlobalInterrupt() = 0;
+        virtual ::api::Toggle& getGlobalInterrupt() const = 0;
 
         /** 
          * Creates a new mutex resource.
