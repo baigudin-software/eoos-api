@@ -5,8 +5,8 @@
  * @copyright 2014-2018, Embedded Team, Sergey Baigudin
  * @license   http://embedded.team/license/
  */
-#ifndef GLOBAL_SYSTEM_HPP_
-#define GLOBAL_SYSTEM_HPP_
+#ifndef SYSTEM_HPP_
+#define SYSTEM_HPP_
 
 #include "system.System.hpp"
 
@@ -22,11 +22,11 @@ namespace global
        *
        * @return the operating system syscall interface.
        */      
-      static ::api::System& call()
+      static api::System& call()
       {
-          return ::system::System::call();
+          return system::System::call();
       }
     
   };
 }
-#endif // GLOBAL_SYSTEM_HPP_
+#endif // SYSTEM_HPP_

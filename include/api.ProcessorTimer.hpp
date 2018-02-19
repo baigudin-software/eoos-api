@@ -10,39 +10,42 @@
 
 #include "api.Timer.hpp"
 
-namespace api
+namespace global
 {
-    class ProcessorTimer : public ::api::Timer
+    namespace api
     {
-    
-    public:
-           
-        /** 
-         * Destructor.
-         */                               
-        virtual ~ProcessorTimer(){}
+        class ProcessorTimer : public api::Timer
+        {
         
-        /**
-         * Returns number of timer digits.
-         *
-         * @return timer digits.
-         */  
-        virtual int32 getDigit() const = 0;
+        public:
+            
+            /** 
+            * Destructor.
+            */                               
+            virtual ~ProcessorTimer(){}
+            
+            /**
+            * Returns number of timer digits.
+            *
+            * @return timer digits.
+            */  
+            virtual int32 getDigit() const = 0;
+            
+            /**
+            * Returns this timer internal clock in Hz.
+            *
+            * @return timer internal clock.
+            */  
+            virtual int64 getInternalClock() const = 0;  
+            
+            /**
+            * Returns an available interrupt source for this timer.
+            *
+            * @return available interrupt source, or -1 if an error has been occurred.
+            */  
+            virtual int32 getInterrupSource() const = 0;
         
-        /**
-         * Returns this timer internal clock in Hz.
-         *
-         * @return timer internal clock.
-         */  
-        virtual int64 getInternalClock() const = 0;  
-        
-        /**
-         * Returns an available interrupt source for this timer.
-         *
-         * @return available interrupt source, or -1 if an error has been occurred.
-         */  
-        virtual int32 getInterrupSource() const = 0;
-      
-    };
+        };
+    }
 }
 #endif // API_PROCESSOR_TIMER_HPP_

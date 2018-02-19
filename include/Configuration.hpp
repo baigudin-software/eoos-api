@@ -5,14 +5,14 @@
  * @copyright 2016-2018, Embedded Team, Sergey Baigudin
  * @license   http://embedded.team/license/
  */
-#ifndef GLOBAL_CONFIGURATION_HPP_
-#define GLOBAL_CONFIGURATION_HPP_
+#ifndef CONFIGURATION_HPP_
+#define CONFIGURATION_HPP_
 
 #include "api.Constant.hpp"
 
 namespace global
 {
-    struct Configuration : public ::api::Constant
+    struct Configuration : public api::Constant
     {
 
     public:

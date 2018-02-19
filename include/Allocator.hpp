@@ -12,7 +12,7 @@
 
 namespace global
 {
-    class Allocator : public ::api::Constant
+    class Allocator : public api::Constant
     {
 
     public:

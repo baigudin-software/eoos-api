@@ -5,19 +5,19 @@
  * @copyright 2014-2018, Embedded Team, Sergey Baigudin
  * @license   http://embedded.team/license/
  */
-#ifndef GLOBAL_INTERRUPT_HPP_
-#define GLOBAL_INTERRUPT_HPP_
+#ifndef INTERRUPT_HPP_
+#define INTERRUPT_HPP_
 
-#include "global.Object.hpp"
+#include "Object.hpp"
 #include "api.Interrupt.hpp"
 #include "api.Task.hpp"
-#include "global.System.hpp"
+#include "System.hpp"
 
 namespace global
 {
-    class Interrupt : public ::global::Object<>, public ::api::Interrupt
+    class Interrupt : public Object<>, public api::Interrupt
     {
-        typedef ::global::Object<> Parent;
+        typedef Object<> Parent;
     
     public:
     
@@ -27,7 +27,7 @@ namespace global
          * @param handler user class which implements an interrupt handler interface.
          * @param source  available interrupt source.
          */     
-        Interrupt(::api::Task& handler, const int32 source) : Parent(),
+        Interrupt(api::Task& handler, const int32 source) : Parent(),
             isConstructed_ (getConstruct()),
             interrupt_     (NULL){
             setConstruct( construct(handler, source) );
@@ -123,7 +123,7 @@ namespace global
          * @param source  available interrupt source.     
          * @return true if object has been constructed successfully.     
          */    
-        bool construct(::api::Task& handler, const int32 source)
+        bool construct(api::Task& handler, const int32 source)
         {
             if( not isConstructed_ ) 
             {
@@ -156,8 +156,8 @@ namespace global
         /**
          * System interrupt controller interface.
          */    
-        ::api::Interrupt* interrupt_;
+        api::Interrupt* interrupt_;
     
     };
 }
-#endif // GLOBAL_INTERRUPT_HPP_
+#endif // INTERRUPT_HPP_

@@ -10,30 +10,33 @@
 
 #include "api.Resource.hpp"
 
-namespace api
-{  
-    class Mutex : public ::api::Resource
-    {
-  
-    public:
+namespace global
+{
+    namespace api
+    {  
+        class Mutex : public api::Resource
+        {
     
-        /** 
-         * Destructor.
-         */
-        virtual ~Mutex(){}
+        public:
         
-        /**
-         * Locks this mutex.
-         *
-         * @return true if this mutex is locked successfully.
-         */
-        virtual bool lock() = 0;
-        
-        /**
-         * Unlocks this mutex.
-         */
-        virtual void unlock() = 0;   
-
-    };
+            /** 
+            * Destructor.
+            */
+            virtual ~Mutex(){}
+            
+            /**
+            * Locks this mutex.
+            *
+            * @return true if this mutex is locked successfully.
+            */
+            virtual bool lock() = 0;
+            
+            /**
+            * Unlocks this mutex.
+            */
+            virtual void unlock() = 0;   
+    
+        };
+    }
 }
 #endif // API_MUTEX_HPP_

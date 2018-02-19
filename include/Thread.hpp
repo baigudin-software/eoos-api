@@ -5,18 +5,18 @@
  * @copyright 2014-2018, Embedded Team, Sergey Baigudin
  * @license   http://embedded.team/license/
  */
-#ifndef GLOBAL_THREAD_HPP_
-#define GLOBAL_THREAD_HPP_
+#ifndef THREAD_HPP_
+#define THREAD_HPP_
 
-#include "global.Object.hpp"
+#include "Object.hpp"
 #include "api.Thread.hpp"
-#include "global.System.hpp"
+#include "System.hpp"
 
 namespace global
 {
-    class Thread : public ::global::Object<>, public ::api::Thread, public ::api::Task
+    class Thread : public Object<>, public api::Thread, public api::Task
     {
-        typedef ::global::Object<> Parent;
+        typedef Object<> Parent;
       
     public:
     
@@ -34,7 +34,7 @@ namespace global
          *
          * @param task an task interface whose main method is invoked when this thread is started.
          */
-        Thread(::api::Task& task) : Parent(),
+        Thread(api::Task& task) : Parent(),
             isConstructed_ (getConstruct()),
             thread_        (NULL){
             setConstruct( construct(task) );
@@ -114,7 +114,7 @@ namespace global
          *
          * @param res a resource.
          */  
-        virtual void block(::api::Resource& res)
+        virtual void block(api::Resource& res)
         {
             if( isConstructed_ )
             {
@@ -144,7 +144,7 @@ namespace global
          *
          * @return this thread status.
          */  
-        virtual ::api::Thread::Status getStatus() const
+        virtual api::Thread::Status getStatus() const
         {
             if( isConstructed_ ) 
             {
@@ -191,7 +191,7 @@ namespace global
          *
          * @return executing thread.
          */
-        static ::api::Thread& getCurrent()
+        static api::Thread& getCurrent()
         {
             return System::call().getKernel().getScheduler().getCurrentThread();
         }        
@@ -220,7 +220,7 @@ namespace global
          *
          * @return toggle interface.
          */ 
-        static ::api::Toggle& toggle()
+        static api::Toggle& toggle()
         {
             return System::call().getKernel().getScheduler().toggle();    
         }
@@ -233,7 +233,7 @@ namespace global
          * @param task an task interface whose main method is invoked when this thread is started.     
          * @return true if object has been constructed successfully.   
          */
-        bool construct(::api::Task& task)
+        bool construct(api::Task& task)
         {
             if( not isConstructed_ ) 
             {
@@ -266,8 +266,8 @@ namespace global
         /** 
          * A kernel scheduler thread.
          */          
-        ::api::Thread* thread_;
+        api::Thread* thread_;
     
     };
 }
-#endif // GLOBAL_THREAD_HPP_
+#endif // THREAD_HPP_

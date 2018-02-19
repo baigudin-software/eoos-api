@@ -10,25 +10,28 @@
 
 #include "api.Constant.hpp"
 
-namespace api
-{  
-    class Object : public ::api::Constant
-    {
-  
-    public:
+namespace global
+{
+    namespace api
+    {  
+        class Object : public api::Constant
+        {
     
-        /** 
-         * Destructor.
-         */
-        virtual ~Object(){}
+        public:
         
-        /**
-         * Tests if this object has been constructed.
-         *
-         * @return true if object has been constructed successfully.
-         */    
-        virtual bool isConstructed() const = 0;
-    
-    };
+            /** 
+            * Destructor.
+            */
+            virtual ~Object(){}
+            
+            /**
+            * Tests if this object has been constructed.
+            *
+            * @return true if object has been constructed successfully.
+            */    
+            virtual bool isConstructed() const = 0;
+        
+        };
+    }
 }
 #endif // API_OBJECT_HPP_

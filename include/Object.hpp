@@ -5,11 +5,11 @@
  * @copyright 2014-2018, Embedded Team, Sergey Baigudin
  * @license   http://embedded.team/license/
  */
-#ifndef GLOBAL_OBJECT_HPP_
-#define GLOBAL_OBJECT_HPP_
+#ifndef OBJECT_HPP_
+#define OBJECT_HPP_
 
 #include "api.Object.hpp"
-#include "global.Allocator.hpp"
+#include "Allocator.hpp"
 
 namespace global
 {
@@ -17,7 +17,7 @@ namespace global
      * @param A heap memory allocator class.
      */ 
     template <class A = Allocator>
-    class Object : public ::api::Object
+    class Object : public api::Object
     {
       
     public:
@@ -34,7 +34,7 @@ namespace global
          *
          * @param obj reference to source object.
          */ 
-        Object(const ::api::Object& obj) :
+        Object(const api::Object& obj) :
             isConstructed_ (true){
             const bool isConstructed = obj.isConstructed();
             setConstruct( isConstructed );
@@ -144,4 +144,4 @@ namespace global
     
     };
 }
-#endif // GLOBAL_OBJECT_HPP_
+#endif // OBJECT_HPP_

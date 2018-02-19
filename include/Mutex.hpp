@@ -5,18 +5,18 @@
  * @copyright 2015-2017, Embedded Team, Sergey Baigudin
  * @license   http://embedded.team/license/
  */
-#ifndef GLOBAL_MUTEX_HPP_
-#define GLOBAL_MUTEX_HPP_
+#ifndef MUTEX_HPP_
+#define MUTEX_HPP_
 
-#include "global.Object.hpp"
+#include "Object.hpp"
 #include "api.Mutex.hpp"
-#include "global.System.hpp"
+#include "System.hpp"
 
 namespace global
 {
-    class Mutex : public ::global::Object<>, public ::api::Mutex
+    class Mutex : public Object<>, public api::Mutex
     {
-        typedef ::global::Object<> Parent;
+        typedef Object<> Parent;
     
     public:
     
@@ -132,8 +132,8 @@ namespace global
         /**
          * System mutex interface.
          */    
-        ::api::Mutex* mutex_;
+        api::Mutex* mutex_;
     
     };
 }
-#endif // GLOBAL_SYSTEM_MUTEX_HPP_
+#endif // SYSTEM_MUTEX_HPP_

@@ -11,30 +11,33 @@
 #include "api.Object.hpp"
 #include "api.String.hpp"
 
-namespace api
+namespace global
 {
-    /**
-     * @param T data type of string characters.     
-     */    
-    template <typename T>     
-    class OutStream : public ::api::Object
+    namespace api
     {
-    
-    public:
-    
-        /** 
-         * Destructor.
-         */
-        virtual ~OutStream(){}
+        /**
+        * @param T data type of string characters.     
+        */    
+        template <typename T>     
+        class OutStream : public api::Object
+        {
         
-        /** 
-         * Writes to an output stream.
-         *
-         * @param source a source character string to be output.
-         * @return this interface.
-         */    
-        virtual ::api::OutStream<T>& operator <<(const T* source) = 0;
-
-    };
+        public:
+        
+            /** 
+            * Destructor.
+            */
+            virtual ~OutStream(){}
+            
+            /** 
+            * Writes to an output stream.
+            *
+            * @param source a source character string to be output.
+            * @return this interface.
+            */    
+            virtual api::OutStream<T>& operator <<(const T* source) = 0;
+    
+        };
+    }
 }
 #endif // API_OUT_STREAM_HPP_

@@ -11,36 +11,39 @@
 #include "api.Heap.hpp"
 #include "api.Toggle.hpp"
 
-namespace api
+namespace global
 {
-    class SystemHeap : public ::api::Heap
+    namespace api
     {
-      
-    public:
-  
-        /** 
-         * Destructor.
-         */
-        virtual ~SystemHeap(){}
-       
-        /**
-         * Sets a context switching locker.
-         *
-         * The method allows disabling and enabling thread context switching 
-         * when memory is being allocated or freed. Thus, the best way is 
-         * to pass an interface of global interrupt toggling. The parameter type 
-         * is reference to pointer, as when referenced pointer equals to NULL, 
-         * no blocks are happening.
-         *
-         * @param toggle reference to pointer to some controller.
-         */      
-        virtual void setToggle(::api::Toggle*& toggle) = 0;
+        class SystemHeap : public api::Heap
+        {
         
-        /**
-         * Resets a context switching locker.
-         */
-        virtual void resetToggle() = 0;        
-  
-    };
+        public:
+    
+            /** 
+            * Destructor.
+            */
+            virtual ~SystemHeap(){}
+        
+            /**
+            * Sets a context switching locker.
+            *
+            * The method allows disabling and enabling thread context switching 
+            * when memory is being allocated or freed. Thus, the best way is 
+            * to pass an interface of global interrupt toggling. The parameter type 
+            * is reference to pointer, as when referenced pointer equals to NULL, 
+            * no blocks are happening.
+            *
+            * @param toggle reference to pointer to some controller.
+            */      
+            virtual void setToggle(api::Toggle*& toggle) = 0;
+            
+            /**
+            * Resets a context switching locker.
+            */
+            virtual void resetToggle() = 0;        
+    
+        };
+    }
 }
 #endif // API_SYSTEM_HEAP_HPP_

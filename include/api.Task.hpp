@@ -12,34 +12,37 @@
 
 #include "api.Object.hpp"
 
-namespace api
+namespace global
 {
-    class Task : public ::api::Object
+    namespace api
     {
-      
-    public:
-  
-        /** 
-         * Destructor.
-         */
-        virtual ~Task(){}
+        class Task : public api::Object
+        {
         
-        /**
-         * Starts executing an operating system prorgam in itsself context.
-         *
-         * @return zero, or error code if an error has been occurred.         
-         */  
-        virtual int32 start() = 0;
-        
-        /**
-         * Returns size of stack.
-         *
-         * The method returns size of stack in bytes which should be allocated for the task.
-         *
-         * @return stack size in bytes.
-         */  
-        virtual int32 getStackSize() const = 0;
-  
-    };
+        public:
+    
+            /** 
+            * Destructor.
+            */
+            virtual ~Task(){}
+            
+            /**
+            * Starts executing an operating system prorgam in itsself context.
+            *
+            * @return zero, or error code if an error has been occurred.         
+            */  
+            virtual int32 start() = 0;
+            
+            /**
+            * Returns size of stack.
+            *
+            * The method returns size of stack in bytes which should be allocated for the task.
+            *
+            * @return stack size in bytes.
+            */  
+            virtual int32 getStackSize() const = 0;
+    
+        };
+    }
 }
 #endif // API_TASK_HPP_

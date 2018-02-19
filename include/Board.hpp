@@ -5,15 +5,15 @@
  * @copyright 2016-2018, Embedded Team, Sergey Baigudin
  * @license   http://embedded.team/license/
  */
-#ifndef GLOBAL_BOARD_HPP_
-#define GLOBAL_BOARD_HPP_
+#ifndef BOARD_HPP_
+#define BOARD_HPP_
 
 #include "api.Constant.hpp"
 #include "Configuration.hpp"
 
 namespace global
 {
-    class Board : ::api::Constant
+    class Board : api::Constant
     {
     
     public:
@@ -24,7 +24,7 @@ namespace global
          * @param config the operating system configuration.
          * @return true if no errors have been occurred.
          */   
-        static bool initialize(const ::Configuration config);
+        static bool initialize(const Configuration config);
         
         /**
          * Deinitializes a processor board.
@@ -33,4 +33,4 @@ namespace global
       
     };
 }
-#endif // GLOBAL_BOARD_HPP_ 
+#endif // BOARD_HPP_ 

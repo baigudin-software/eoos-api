@@ -5,18 +5,18 @@
  * @copyright 2014-2017, Embedded Team, Sergey Baigudin
  * @license   http://embedded.team/license/
  */
-#ifndef GLOBAL_SEMAPHORE_HPP_
-#define GLOBAL_SEMAPHORE_HPP_
+#ifndef SEMAPHORE_HPP_
+#define SEMAPHORE_HPP_
 
-#include "global.Object.hpp"
+#include "Object.hpp"
 #include "api.Semaphore.hpp"
-#include "global.System.hpp"
+#include "System.hpp"
 
 namespace global
 {
-    class Semaphore : public ::global::Object<>, public ::api::Semaphore
+    class Semaphore : public Object<>, public api::Semaphore
     {
-        typedef ::global::Object<> Parent;
+        typedef Object<> Parent;
     
     public:
     
@@ -169,7 +169,7 @@ namespace global
             {
                 return false;
             }
-            ::api::Kernel& kernel = System::call().getKernel();
+            api::Kernel& kernel = System::call().getKernel();
             if( isFair == NULL )
             {
                 semaphore_ = kernel.createSemaphore(permits);
@@ -204,8 +204,8 @@ namespace global
         /**
          * System semaphore interface.
          */    
-        ::api::Semaphore* semaphore_;
+        api::Semaphore* semaphore_;
     
     };
 }
-#endif // GLOBAL_SEMAPHORE_HPP_
+#endif // SEMAPHORE_HPP_

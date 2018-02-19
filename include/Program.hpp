@@ -5,14 +5,14 @@
  * @copyright 2014-2018, Embedded Team, Sergey Baigudin
  * @license   http://embedded.team/license/
  */
-#ifndef GLOBAL_PROGRAM_HPP_
-#define GLOBAL_PROGRAM_HPP_
+#ifndef PROGRAM_HPP_
+#define PROGRAM_HPP_
 
 #include "api.Constant.hpp"
 
 namespace global
 {
-    class Program : public ::api::Constant
+    class Program : public api::Constant
     {
 
     public:
@@ -26,4 +26,4 @@ namespace global
 
     };
 }
-#endif // GLOBAL_PROGRAM_HPP_
+#endif // PROGRAM_HPP_
