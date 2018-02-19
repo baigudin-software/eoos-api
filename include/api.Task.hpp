@@ -4,7 +4,7 @@
  * The interface of a task that is being executed in self context.
  *
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2016, Embedded Team, Sergey Baigudin
+ * @copyright 2016-2018, Embedded Team, Sergey Baigudin
  * @license   http://embedded.team/license/
  */
 #ifndef API_TASK_HPP_
@@ -25,9 +25,11 @@ namespace api
         virtual ~Task(){}
         
         /**
-         * The method with self context.
+         * Starts executing an operating system prorgam in itsself context.
+         *
+         * @return zero, or error code if an error has been occurred.         
          */  
-        virtual void main() = 0;
+        virtual int32 start() = 0;
         
         /**
          * Returns size of stack.

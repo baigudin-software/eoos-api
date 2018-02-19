@@ -29,20 +29,13 @@ namespace api
          * @return the heap memory.
          */
         virtual ::api::Heap& getHeap() const = 0;
-        
-        /**
-         * Returns running time of the operating system in milliseconds.
-         *
-         * @return time in milliseconds.
-         */
-        virtual int64 getTimeMs() const = 0;
            
         /**
          * Returns running time of the operating system in nanoseconds.
          *
          * @return time in nanoseconds.
          */
-        virtual int64 getTimeNs() const = 0;
+        virtual int64 getTime() const = 0;
         
         /**
          * Terminates the operating system execution.

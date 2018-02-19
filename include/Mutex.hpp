@@ -5,132 +5,135 @@
  * @copyright 2015-2017, Embedded Team, Sergey Baigudin
  * @license   http://embedded.team/license/
  */
-#ifndef MUTEX_HPP_
-#define MUTEX_HPP_
+#ifndef GLOBAL_MUTEX_HPP_
+#define GLOBAL_MUTEX_HPP_
 
-#include "Object.hpp"
+#include "global.Object.hpp"
 #include "api.Mutex.hpp"
-#include "System.hpp"
+#include "global.System.hpp"
 
-class Mutex : public ::Object<>, public ::api::Mutex
+namespace global
 {
-    typedef ::Object<> Parent;
-
-public:
-
-    /** 
-     * Constructor.
-     */    
-    Mutex() : Parent(),
-        isConstructed_ (getConstruct()),
-        mutex_         (NULL){
-        setConstruct( construct() ); 
-    }    
-    
-    /** 
-     * Destructor.
-     */      
-    virtual ~Mutex()
+    class Mutex : public ::global::Object<>, public ::api::Mutex
     {
-        delete mutex_;
-    }
+        typedef ::global::Object<> Parent;
+    
+    public:
+    
+        /** 
+         * Constructor.
+         */    
+        Mutex() : Parent(),
+            isConstructed_ (getConstruct()),
+            mutex_         (NULL){
+            setConstruct( construct() ); 
+        }    
         
-    /**
-     * Tests if this object has been constructed.
-     *
-     * @return true if object has been constructed successfully.
-     */    
-    virtual bool isConstructed() const
-    {
-        return isConstructed_;  
-    }        
+        /** 
+         * Destructor.
+         */      
+        virtual ~Mutex()
+        {
+            delete mutex_;
+        }
+            
+        /**
+         * Tests if this object has been constructed.
+         *
+         * @return true if object has been constructed successfully.
+         */    
+        virtual bool isConstructed() const
+        {
+            return isConstructed_;  
+        }        
+        
+        /**
+         * Locks the mutex.
+         *
+         * @return true if the mutex is lock successfully.
+         */      
+        virtual bool lock()
+        {
+            if( isConstructed_ ) 
+            {
+                return mutex_->lock();            
+            }
+            else
+            {
+                return false;
+            }
+        }
+        
+        /**
+         * Unlocks the mutex.
+         */      
+        virtual void unlock()
+        {
+            if( isConstructed_ ) 
+            {
+                mutex_->unlock();            
+            }
+        }
+        
+        /** 
+         * Tests if this resource is blocked.
+         *
+         * @return true if this resource is blocked.
+         */ 
+        virtual bool isBlocked()
+        {
+            if( isConstructed_ ) 
+            {
+                return mutex_->isBlocked();            
+            }
+            else
+            {
+                return false;
+            }
+        }
     
-    /**
-     * Locks the mutex.
-     *
-     * @return true if the mutex is lock successfully.
-     */      
-    virtual bool lock()
-    {
-        if( isConstructed_ ) 
+    private:
+      
+        /**
+         * Constructor.
+         *
+         * @return true if object has been constructed successfully.   
+         */
+        bool construct()
         {
-            return mutex_->lock();            
+            if( not isConstructed_ ) 
+            {
+                return false;
+            }
+            mutex_ = System::call().getKernel().createMutex();
+            return mutex_ != NULL ? mutex_->isConstructed() : false;        
         }
-        else
-        {
-            return false;
-        }
-    }
     
-    /**
-     * Unlocks the mutex.
-     */      
-    virtual void unlock()
-    {
-        if( isConstructed_ ) 
-        {
-            mutex_->unlock();            
-        }
-    }
+        /**
+         * Copy constructor.
+         *
+         * @param obj reference to source object.
+         */
+        Mutex(const Mutex& obj);
+      
+        /**
+         * Assignment operator.
+         *
+         * @param obj reference to source object.
+         * @return reference to this object.     
+         */
+        Mutex& operator =(const Mutex& obj);
+        
+        /** 
+         * The root object constructed flag.
+         */  
+        const bool& isConstructed_;    
+      
+        /**
+         * System mutex interface.
+         */    
+        ::api::Mutex* mutex_;
     
-    /** 
-     * Tests if this resource is blocked.
-     *
-     * @return true if this resource is blocked.
-     */ 
-    virtual bool isBlocked()
-    {
-        if( isConstructed_ ) 
-        {
-            return mutex_->isBlocked();            
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-private:
-  
-    /**
-     * Constructor.
-     *
-     * @return true if object has been constructed successfully.   
-     */
-    bool construct()
-    {
-        if( not isConstructed_ ) 
-        {
-            return false;
-        }
-        mutex_ = System::call().getKernel().createMutex();
-        return mutex_ != NULL ? mutex_->isConstructed() : false;        
-    }
-
-    /**
-     * Copy constructor.
-     *
-     * @param obj reference to source object.
-     */
-    Mutex(const Mutex& obj);
-  
-    /**
-     * Assignment operator.
-     *
-     * @param obj reference to source object.
-     * @return reference to this object.     
-     */
-    Mutex& operator =(const Mutex& obj);
-    
-    /** 
-     * The root object constructed flag.
-     */  
-    const bool& isConstructed_;    
-  
-    /**
-     * System mutex interface.
-     */    
-    ::api::Mutex* mutex_;
-
-};
-#endif // SYSTEM_MUTEX_HPP_
+    };
+}
+#endif // GLOBAL_SYSTEM_MUTEX_HPP_

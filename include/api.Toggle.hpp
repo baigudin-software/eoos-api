@@ -38,21 +38,7 @@ namespace api
          * @param status returned status by disable method, or true for directly turning a controller on.
          */    
         virtual void enable(bool status = true) = 0;
-        
-        /** 
-         * Enables a controller.
-         *
-         * @param status returned status by disable method.
-         * @param ret    value which will be returned.
-         * @return given value.
-         */
-        template<typename Type>
-        Type enable(const bool status, Type const ret)
-        {
-            enable(status);
-            return ret;
-        }
-  
+
     };
 }
 #endif // API_TOGGLE_HPP_

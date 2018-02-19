@@ -13,12 +13,12 @@
 namespace api
 {
     /** 
-     * @param Type data type of list element.
+     * @param T data type of list element.
      */ 
-    template <typename Type>    
-    class Value : public ::api::IllegalValue<Type>
+    template <typename T>    
+    class Value : public ::api::IllegalValue<T>    
     {
-      
+
     public:
   
         /** 
@@ -29,16 +29,20 @@ namespace api
         /**
          * Sets a value.
          *
+         * NOTE: A passed value must be copied to an internal data structure of 
+         * a realizing class by calling a copy constructor so that the variable 
+         * might be invalidated after the function called.                  
+         *
          * @param value a value for setting.
          */    
-        virtual void setValue(Type value) = 0;
+        virtual void setValue(const T& value) = 0;
           
         /**
          * Returns set value.
          *
          * @return the set value.
          */      
-        virtual Type getValue() const = 0;
+        virtual const T& getValue() const = 0;
 
     };
 }

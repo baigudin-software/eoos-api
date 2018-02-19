@@ -15,10 +15,10 @@
 namespace api
 {
     /** 
-     * @param Type data type of list element.
+     * @param T data type of list element.
      */ 
-    template <typename Type>
-    class List : public ::api::Collection<Type>, public ::api::IllegalValue<Type>
+    template <typename T>
+    class List : public ::api::Collection<T>, public ::api::IllegalValue<T>
     {
       
     public:
@@ -38,19 +38,27 @@ namespace api
         /**
          * Inserts new element to the end of this container.
          *
-         * @param element inserting element.
+         * NOTE: A passed element must be copied to an internal data structure of 
+         * a realizing class by calling a copy constructor so that the element 
+         * might be invalidated after the function called.
+         *
+         * @param element an inserting element.
          * @return true if element is added.
          */      
-        virtual bool add(Type element) = 0;
+        virtual bool add(const T& element) = 0;
         
         /**
          * Inserts new element to the specified position in this container.
          *
-         * @param index   position in this container.  
-         * @param element inserting element.
+         * NOTE: A passed element must be copied to an internal data structure of 
+         * a realizing class by calling a copy constructor so that the element 
+         * might be invalidated after the function called.
+         *
+         * @param index   a position in this container.  
+         * @param element an inserting element.
          * @return true if element is inserted.
          */
-        virtual bool add(int32 index, Type element) = 0;
+        virtual bool add(int32 index, const T& element) = 0;
         
         /**
          * Removes all elements from this container.
@@ -85,7 +93,7 @@ namespace api
          * @param element reference to element.
          * @return true if an element is removed successfully.
          */
-        virtual bool removeElement(const Type& element) = 0;
+        virtual bool removeElement(const T& element) = 0;
         
         /**
          * Returns an element from this container by index.
@@ -93,21 +101,21 @@ namespace api
          * @param index position in this container.  
          * @return indexed element of this container.
          */
-        virtual Type get(int32 index) const = 0;
+        virtual const T& get(int32 index) const = 0;
         
         /**
          * Returns the first element in this container.
          *
          * @return the first element in this container.
          */
-        virtual Type getFirst() const = 0;
+        virtual const T& getFirst() const = 0;
         
         /**
          * Returns the last element in this container.
          *
          * @return the last element in this container.
          */
-        virtual Type getLast() const = 0;
+        virtual const T& getLast() const = 0;
         
         /**
          * Returns a list iterator of this container elements.
@@ -118,7 +126,7 @@ namespace api
          * @param index start position in this container.  
          * @return pointer to new list iterator.
          */
-        virtual ::api::ListIterator<Type>* getListIterator(int32 index) = 0;
+        virtual ::api::ListIterator<T>* getListIterator(int32 index) = 0;
         
         /**
          * Returns the index of the first occurrence of the specified element in this container.
@@ -126,7 +134,7 @@ namespace api
          * @param element reference to the element.
          * @return index or -1 if this container does not contain the element.
          */
-        virtual int32 getIndexOf(const Type& element) const = 0;
+        virtual int32 getIndexOf(const T& element) const = 0;
         
         /**
          * Tests if given index is available.

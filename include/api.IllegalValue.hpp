@@ -13,10 +13,10 @@
 namespace api
 {
     /** 
-     * @param Type data type of illegal value.
+     * @param T data type of element.
      */ 
-    template <typename Type>
-    class IllegalValue  : public ::api::Object
+    template <typename T>
+    class IllegalValue : public ::api::Object
     {
       
     public:
@@ -31,22 +31,26 @@ namespace api
          *
          * @return illegal element.
          */
-        virtual Type getIllegal() const = 0;
+        virtual const T& getIllegal() const = 0;
         
         /**
          * Sets illegal element which will be returned as error value.
          *
-         * @param value illegal value.
+         * NOTE: A passed value must be copied to an internal data structure of 
+         * a realizing class by calling a copy constructor so that the variable 
+         * might be invalidated after the function called.
+         *
+         * @param value an illegal value.
          */
-        virtual void setIllegal(Type value) = 0;
+        virtual void setIllegal(const T& value) = 0;
         
         /**
          * Tests if given value is an illegal.
          *
-         * @param value testing value.
+         * @param value a testing value.
          * @param true if value is an illegal.
          */
-        virtual bool isIllegal(const Type& value) const = 0;
+        virtual bool isIllegal(const T& value) const = 0;
   
     };
 }

@@ -13,10 +13,10 @@
 namespace api
 {
     /** 
-     * @param Type data type of list iterator element.
+     * @param T data type of list iterator element.
      */
-    template <typename Type>
-    class ListIterator : public ::api::Iterator<Type>
+    template <typename T>
+    class ListIterator : public ::api::Iterator<T>
     {
       
     public:
@@ -34,17 +34,21 @@ namespace api
          * Therefore subsequent call to next will be unaffected, 
          * and a subsequent call to prev will return the inserted element. 
          *
+         * NOTE: A passed element must be copied to an internal data structure of 
+         * a realizing class by calling a copy constructor so that the element 
+         * might be invalidated after the function called.         
+         *
          * @param element inserting element.
          * @return true if element is added.
          */      
-        virtual bool add(Type element) = 0;
+        virtual bool add(const T& element) = 0;
         
         /**
          * Returns previous element and advances the cursor backwards.
          *
          * @return reference to element.
          */      
-        virtual Type getPrevious() = 0;
+        virtual const T& getPrevious() = 0;
         
         /**
          * Tests if this iteration may return a previous element.

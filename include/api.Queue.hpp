@@ -14,10 +14,10 @@
 namespace api
 {
     /** 
-     * @param Type data type of queue element.
+     * @param T data type of queue element.
      */
-    template <typename Type>
-    class Queue : public ::api::Collection<Type>, public ::api::IllegalValue<Type>
+    template <typename T>
+    class Queue : public ::api::Collection<T>, public ::api::IllegalValue<T>
     {
       
     public:
@@ -37,10 +37,14 @@ namespace api
         /**
          * Inserts new element to this container.
          *
+         * NOTE: A passed element must be copied to an internal data structure of 
+         * a realizing class by calling a copy constructor so that the element 
+         * might be invalidated after the function called.         
+         *
          * @param element inserting element.
          * @return true if element is added.
          */      
-        virtual bool add(Type element) = 0;
+        virtual bool add(const T& element) = 0;
         
         /**
          * Removes the head element of this container.
@@ -54,7 +58,7 @@ namespace api
          *
          * @return the head element.
          */
-        virtual Type peek() const = 0;
+        virtual const T& peek() const = 0;
       
     };
 }

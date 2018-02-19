@@ -13,10 +13,10 @@
 namespace api
 {
     /** 
-     * @param Type data type of string characters.
+     * @param T data type of string characters.
      */ 
-    template <typename Type>
-    class String : public ::api::Collection<Type>
+    template <typename T>
+    class String : public ::api::Collection<T>
     {
       
     public:
@@ -29,18 +29,24 @@ namespace api
         /** 
          * Copies a passed string into this string.
          *
+         * NOTE: A passed string must be copied to an internal containing string of 
+         * a realizing class so that the passed string might be invalidated after the function called.
+         *
          * @param string a string object interface to be copied.         
          * @return true if a passed string has been copied successfully.
          */
-        virtual bool copy(const ::api::String<Type>& string) = 0;        
+        virtual bool copy(const ::api::String<T>& string) = 0;        
 
         /** 
          * Concatenates a passed string to this string.             
          *
+         * NOTE: A passed string must be appended to an internal containing string of 
+         * a realizing class so that the passed string might be invalidated after the function called.
+         *
          * @param string a string object interface to be appended.
          * @return true if a passed string has been appended successfully.          
          */
-        virtual bool concatenate(const ::api::String<Type>& string) = 0;     
+        virtual bool concatenate(const ::api::String<T>& string) = 0;     
         
         /** 
          * Compares this string with a passed string lexicographically.         
@@ -51,7 +57,7 @@ namespace api
          *         a value greater than 0 if this string is greater than a passed string,
          *         or the minimum possible value if an error has been occurred.
          */
-        virtual int32 compare(const ::api::String<Type>& string) const = 0;
+        virtual int32 compare(const ::api::String<T>& string) const = 0;
         
         /**
          * Returns pointer to the first character of containing string.
@@ -62,7 +68,7 @@ namespace api
          *
          * @return first character of containing string characters, or NULL if no string contained.
          */
-        virtual const Type* getChar() const = 0;        
+        virtual const T* getChar() const = 0;        
   
     };
 }

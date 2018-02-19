@@ -33,20 +33,7 @@ namespace api
          * Unlocks this mutex.
          */
         virtual void unlock() = 0;   
-        
-        /**
-         * Unlocks this mutex.       
-         *
-         * @param value a value which will be returned.
-         * @return given argument value.
-         */
-        template<typename Type> 
-        Type unlock(Type const value)
-        {
-            unlock();
-            return value;
-        }
-  
+
     };
 }
 #endif // API_MUTEX_HPP_

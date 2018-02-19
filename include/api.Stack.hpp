@@ -14,10 +14,10 @@
 namespace api
 {
     /** 
-     * @param Type data type of default stack element.
+     * @param T data type of default stack element.
      */ 
-    template <typename Type>  
-    class Stack : public ::api::Collection<Type>, public ::api::IllegalValue<Type>
+    template <typename T>  
+    class Stack : public ::api::Collection<T>, public ::api::IllegalValue<T>
     { 
     
     public:
@@ -72,7 +72,7 @@ namespace api
          *
          * @return a memory address to top of this stack when object was built.
          */    
-        virtual const Type* getTos() = 0;
+        virtual const T* getTos() = 0;
         
         /** 
          * Returns an type of stack operation.

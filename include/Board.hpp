@@ -2,32 +2,35 @@
  * Processor board initialization.
  * 
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2016-2017, Embedded Team, Sergey Baigudin
+ * @copyright 2016-2018, Embedded Team, Sergey Baigudin
  * @license   http://embedded.team/license/
  */
-#ifndef BOARD_HPP_
-#define BOARD_HPP_
+#ifndef GLOBAL_BOARD_HPP_
+#define GLOBAL_BOARD_HPP_
 
-#include "Types.hpp"
+#include "api.Constant.hpp"
 #include "Configuration.hpp"
 
-class Board
+namespace global
 {
-
-public:
-
-    /**
-     * Initializes a processor board.
-     *
-     * @param config the operating system configuration.
-     * @return true if no errors have been occurred.
-     */   
-    static bool initialize(const ::Configuration config);
+    class Board : ::api::Constant
+    {
     
-    /**
-     * Deinitializes a processor board.
-     */
-    static void deinitialize();
-  
-};
-#endif // BOARD_HPP_ 
+    public:
+    
+        /**
+         * Initializes a processor board.
+         *
+         * @param config the operating system configuration.
+         * @return true if no errors have been occurred.
+         */   
+        static bool initialize(const ::Configuration config);
+        
+        /**
+         * Deinitializes a processor board.
+         */
+        static void deinitialize();
+      
+    };
+}
+#endif // GLOBAL_BOARD_HPP_ 

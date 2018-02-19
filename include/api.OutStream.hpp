@@ -14,9 +14,9 @@
 namespace api
 {
     /**
-     * @param Type   data type of string characters.     
+     * @param T data type of string characters.     
      */    
-    template <typename Type>     
+    template <typename T>     
     class OutStream : public ::api::Object
     {
     
@@ -33,7 +33,7 @@ namespace api
          * @param source a source character string to be output.
          * @return this interface.
          */    
-        virtual ::api::OutStream<Type>& operator <<(const Type* source) = 0;
+        virtual ::api::OutStream<T>& operator <<(const T* source) = 0;
 
     };
 }

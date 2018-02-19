@@ -30,13 +30,6 @@ namespace api
          * Destructor.
          */
         virtual ~Kernel(){}
-        
-        /** 
-         * Returns a default size of stack in bytes.
-         *
-         * @return a size of stack in bytes.
-         */ 
-        virtual int32 getStackSize() const = 0;
           
         /**
          * Returns the kernel heap memory.

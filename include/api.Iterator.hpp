@@ -13,10 +13,10 @@
 namespace api
 {
     /** 
-     * @param Type data type of iterator element.
+     * @param T data type of iterator element.
      */ 
-    template <typename Type>
-    class Iterator : public ::api::IllegalValue<Type>
+    template <typename T>
+    class Iterator : public ::api::IllegalValue<T>
     {
       
     public:
@@ -31,7 +31,7 @@ namespace api
          *
          * @return reference to element.
          */      
-        virtual Type getNext() = 0;
+        virtual const T& getNext() = 0;
         
         /**
          * Tests if this iteration may return a next element.

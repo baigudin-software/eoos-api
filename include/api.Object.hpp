@@ -8,15 +8,15 @@
 #ifndef API_OBJECT_HPP_
 #define API_OBJECT_HPP_
 
-#include "Types.hpp"
+#include "api.Constant.hpp"
 
 namespace api
 {  
-    class Object
+    class Object : public ::api::Constant
     {
   
     public:
-  
+    
         /** 
          * Destructor.
          */

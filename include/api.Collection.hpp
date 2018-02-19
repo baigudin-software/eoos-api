@@ -13,9 +13,9 @@
 namespace api
 {
     /** 
-     * @param Type data type of collection element.
+     * @param T data type of collection element.
      */ 
-    template <typename Type>
+    template <typename T>
     class Collection : public ::api::Object
     {
       

@@ -5,30 +5,34 @@
  * @copyright 2016-2017, Embedded Team, Sergey Baigudin
  * @license   http://embedded.team/license/
  */
-#ifndef ALLOCATOR_HPP_
-#define ALLOCATOR_HPP_
+#ifndef GLOBAL_ALLOCATOR_HPP_
+#define GLOBAL_ALLOCATOR_HPP_
 
-#include "Types.hpp"
+#include "api.Constant.hpp"
 
-class Allocator
+namespace global
 {
+    class Allocator : public ::api::Constant
+    {
 
-public:
+    public:
 
-    /**
-     * Allocates memory.
-     *
-     * @param size number of bytes to allocate.
-     * @return allocated memory address or a null pointer.
-     */    
-    static void* allocate(size_t size);
-  
-    /**
-     * Frees an allocated memory.
-     *
-     * @param ptr address of allocated memory block or a null pointer.
-     */      
-    static void free(void* ptr);
+        /**
+         * Allocates memory.
+         *
+         * @param size number of bytes to allocate.
+         * @return allocated memory address or a null pointer.
+         */    
+        static void* allocate(size_t size);
+    
+        /**
+         * Frees an allocated memory.
+         *
+         * @param ptr address of allocated memory block or a null pointer.
+         */      
+        static void free(void* ptr);
 
-};
-#endif // ALLOCATOR_HPP_
+    };
+}
+#endif // GLOBAL_ALLOCATOR_HPP_
+
