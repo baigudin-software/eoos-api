@@ -16,8 +16,8 @@ namespace global
     namespace api
     {
         /**
-        * @param T data type of string characters.     
-        */    
+         * @param T data type of string characters.     
+         */    
         template <typename T>     
         class OutStream : public api::Object
         {
@@ -25,16 +25,16 @@ namespace global
         public:
         
             /** 
-            * Destructor.
-            */
+             * Destructor.
+             */
             virtual ~OutStream(){}
             
             /** 
-            * Writes to an output stream.
-            *
-            * @param source a source character string to be output.
-            * @return this interface.
-            */    
+             * Writes to an output stream.
+             *
+             * @param source a source character string to be output.
+             * @return this interface.
+             */    
             virtual api::OutStream<T>& operator <<(const T* source) = 0;
     
         };

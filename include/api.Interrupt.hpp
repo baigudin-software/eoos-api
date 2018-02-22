@@ -20,23 +20,23 @@ namespace global
         public:
         
             /** 
-            * Destructor.
-            */                               
+             * Destructor.
+             */                               
             virtual ~Interrupt(){}
             
             /**
-            * Jumps to interrupt hardware vector.
-            */      
+             * Jumps to interrupt hardware vector.
+             */      
             virtual void jump() = 0;
             
             /**
-            * Clears an interrupt status of this source.
-            */     
+             * Clears an interrupt status of this source.
+             */     
             virtual void clear() = 0;
             
             /**
-            * Sets an interrupt status of this source.
-            */    
+             * Sets an interrupt status of this source.
+             */    
             virtual void set() = 0;
         
         };

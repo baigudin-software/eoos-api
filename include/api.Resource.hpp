@@ -20,15 +20,15 @@ namespace global
         public:
         
             /** 
-            * Destructor.
-            */
+             * Destructor.
+             */
             virtual ~Resource(){}
             
             /** 
-            * Tests if this resource is blocked.
-            *
-            * @return true if this resource is blocked.
-            */ 
+             * Tests if this resource is blocked.
+             *
+             * @return true if this resource is blocked.
+             */ 
             virtual bool isBlocked() = 0;
     
         };

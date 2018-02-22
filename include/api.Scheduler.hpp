@@ -23,35 +23,35 @@ namespace global
         public:
     
             /** 
-            * Destructor.
-            */
+             * Destructor.
+             */
             virtual ~Scheduler(){}
             
             /**
-            * Creates a new thread.
-            *
-            * @param task an user task which main method will be invoked when created thread is started.
-            * @return a new thread.
-            */
+             * Creates a new thread.
+             *
+             * @param task an user task which main method will be invoked when created thread is started.
+             * @return a new thread.
+             */
             virtual api::Thread* createThread(api::Task& task) = 0;
             
             /**
-            * Returns currently executing thread.
-            *
-            * @return executing thread.
-            */
+             * Returns currently executing thread.
+             *
+             * @return executing thread.
+             */
             virtual api::Thread& getCurrentThread() = 0;
             
             /**
-            * Yields to next thread.
-            */
+             * Yields to next thread.
+             */
             virtual void yield() = 0;
             
             /** 
-            * Returns the toggle interface for controlling global thread switching.
-            *
-            * @return toggle interface.
-            */ 
+             * Returns the toggle interface for controlling global thread switching.
+             *
+             * @return toggle interface.
+             */ 
             virtual api::Toggle& toggle() = 0;
     
         };

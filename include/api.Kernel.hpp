@@ -29,76 +29,76 @@ namespace global
         public:
         
             /** 
-            * Destructor.
-            */
+             * Destructor.
+             */
             virtual ~Kernel(){}
             
             /**
-            * Returns the kernel heap memory.
-            *
-            * @return the kernel heap memory.
-            */
+             * Returns the kernel heap memory.
+             *
+             * @return the kernel heap memory.
+             */
             virtual api::Heap& getHeap() const = 0;
             
             /** 
-            * Returns the kernel runtime environment.
-            *
-            * @return the kernel runtime environment.
-            */      
+             * Returns the kernel runtime environment.
+             *
+             * @return the kernel runtime environment.
+             */      
             virtual api::Runtime& getRuntime() const = 0;        
             
             /** 
-            * Returns a value of the kernel running time in nanoseconds.
-            *
-            * @return the running time in nanoseconds.
-            */      
+             * Returns a value of the kernel running time in nanoseconds.
+             *
+             * @return the running time in nanoseconds.
+             */      
             virtual api::Value<int64>& getExecutionTime() const = 0;
             
             /** 
-            * Returns the kernel scheduler.
-            *
-            * @return the kernel scheduler.
-            */      
+             * Returns the kernel scheduler.
+             *
+             * @return the kernel scheduler.
+             */      
             virtual api::Scheduler& getScheduler() const = 0;        
             
             /** 
-            * Returns a global interrupt controller.
-            *
-            * @return a global interrupt controller.
-            */      
+             * Returns a global interrupt controller.
+             *
+             * @return a global interrupt controller.
+             */      
             virtual api::Toggle& getGlobalInterrupt() const = 0;
     
             /** 
-            * Creates a new mutex resource.
-            *
-            * @return a new mutex resource, or NULL if an error has been occurred.
-            */      
+             * Creates a new mutex resource.
+             *
+             * @return a new mutex resource, or NULL if an error has been occurred.
+             */      
             virtual api::Mutex* createMutex() = 0;
             
             /** 
-            * Creates a new unfair semaphore resource.
-            *
-            * @param permits the initial number of permits available.   
-            * @return a new semaphore resource, or NULL if an error has been occurred.
-            */      
+             * Creates a new unfair semaphore resource.
+             *
+             * @param permits the initial number of permits available.   
+             * @return a new semaphore resource, or NULL if an error has been occurred.
+             */      
             virtual api::Semaphore* createSemaphore(int32 permits) = 0;
             
             /** 
-            * Creates a new semaphore resource.
-            *
-            * @param permits the initial number of permits available.      
-            * @param isFair  true if this semaphore will guarantee FIFO granting of permits under contention.
-            * @return a new semaphore resource, or NULL if an error has been occurred.         
-            */      
+             * Creates a new semaphore resource.
+             *
+             * @param permits the initial number of permits available.      
+             * @param isFair  true if this semaphore will guarantee FIFO granting of permits under contention.
+             * @return a new semaphore resource, or NULL if an error has been occurred.         
+             */      
             virtual api::Semaphore* createSemaphore(int32 permits, bool isFair) = 0;
             
             /**
-            * Creates a new interrupt resource.
-            *
-            * @param handler user class which implements an interrupt handler interface.
-            * @param source  available interrupt source number.
-            * @return a new interrupt resource, or NULL if an error has been occurred.
-            */  
+             * Creates a new interrupt resource.
+             *
+             * @param handler user class which implements an interrupt handler interface.
+             * @param source  available interrupt source number.
+             * @return a new interrupt resource, or NULL if an error has been occurred.
+             */  
             virtual api::Interrupt* createInterrupt(api::Task& handler, int32 source) = 0;
     
         };

@@ -20,15 +20,15 @@ namespace global
         public:
         
             /** 
-            * Destructor.
-            */
+             * Destructor.
+             */
             virtual ~Object(){}
             
             /**
-            * Tests if this object has been constructed.
-            *
-            * @return true if object has been constructed successfully.
-            */    
+             * Tests if this object has been constructed.
+             *
+             * @return true if object has been constructed successfully.
+             */    
             virtual bool isConstructed() const = 0;
         
         };

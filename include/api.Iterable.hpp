@@ -16,8 +16,8 @@ namespace global
     namespace api
     {
         /** 
-        * @param T data type of element.
-        */ 
+         * @param T data type of element.
+         */ 
         template <typename T>
         class Iterable : public api::Object
         {
@@ -25,18 +25,18 @@ namespace global
         public:
         
             /**
-            * Destructor.
-            */
+             * Destructor.
+             */
             virtual ~Iterable(){}
         
             /**
-            * Returns an iterator of elements.
-            *
-            * NOTE: The delete operator must be called for returned value when 
-            * the iterating of a collection has been completed.
-            *
-            * @return pointer to new iterator.
-            */
+             * Returns an iterator of elements.
+             *
+             * NOTE: The delete operator must be called for returned value when 
+             * the iterating of a collection has been completed.
+             *
+             * @return pointer to new iterator.
+             */
             virtual api::Iterator<T>* getIterator() = 0;
     
         };

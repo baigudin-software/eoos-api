@@ -56,7 +56,7 @@ namespace global
     typedef unsigned char       uint8;
     // Floating point types
     typedef float               float32;
-    typedef long double         float64;
+    typedef double              float64;
     // The type returned by sizeof
     typedef unsigned            size_t;
     // Type of minimal addressable memory cell

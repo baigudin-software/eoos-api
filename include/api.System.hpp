@@ -21,27 +21,27 @@ namespace global
         public:
     
             /**
-            * Destructor.
-            */
+             * Destructor.
+             */
             virtual ~System(){}
             
             /**
-            * Returns the operating system heap memory.
-            *
-            * @return the heap memory.
-            */
+             * Returns the operating system heap memory.
+             *
+             * @return the heap memory.
+             */
             virtual api::Heap& getHeap() const = 0;
             
             /**
-            * Returns running time of the operating system in nanoseconds.
-            *
-            * @return time in nanoseconds.
-            */
+             * Returns running time of the operating system in nanoseconds.
+             *
+             * @return time in nanoseconds.
+             */
             virtual int64 getTime() const = 0;
             
             /**
-            * Terminates the operating system execution.
-            */
+             * Terminates the operating system execution.
+             */
             virtual void terminate() const = 0;
     
         };

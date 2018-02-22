@@ -15,8 +15,8 @@ namespace global
     namespace api
     {
         /** 
-        * @param T data type of iterator element.
-        */ 
+         * @param T data type of iterator element.
+         */ 
         template <typename T>
         class Iterator : public api::IllegalValue<T>
         {
@@ -24,29 +24,29 @@ namespace global
         public:
         
             /**
-            * Destructor.
-            */
+             * Destructor.
+             */
             virtual ~Iterator(){}
             
             /**
-            * Returns next element and advances the cursor position.
-            *
-            * @return reference to element.
-            */      
+             * Returns next element and advances the cursor position.
+             *
+             * @return reference to element.
+             */      
             virtual const T& getNext() = 0;
             
             /**
-            * Tests if this iteration may return a next element.
-            *
-            * @return true if next element is had.
-            */      
+             * Tests if this iteration may return a next element.
+             *
+             * @return true if next element is had.
+             */      
             virtual bool hasNext() const = 0;
             
             /**
-            * Removes the last element returned by this iterator.
-            *
-            * @return true if an element is removed successfully.
-            */
+             * Removes the last element returned by this iterator.
+             *
+             * @return true if an element is removed successfully.
+             */
             virtual bool remove() = 0;
     
         };

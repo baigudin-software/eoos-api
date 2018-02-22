@@ -20,22 +20,22 @@ namespace global
         public:
         
             /**
-            * Destructor.
-            */                               
+             * Destructor.
+             */                               
             virtual ~ProcessorPll(){}
     
             /**
-            * Returns source clock of CPU oscillator in Hz.
-            *
-            * @return frequency value in Hz.         
-            */      
+             * Returns source clock of CPU oscillator in Hz.
+             *
+             * @return frequency value in Hz.         
+             */      
             virtual int64 getSourceClock() = 0;
         
             /**
-            * Returns source clock of CPU in Hz.
-            *
-            * @return frequency value in Hz.
-            */  
+             * Returns source clock of CPU in Hz.
+             *
+             * @return frequency value in Hz.
+             */  
             virtual int64 getCpuClock() = 0;
     
         };

@@ -20,20 +20,20 @@ namespace global
         public:
         
             /** 
-            * Destructor.
-            */
+             * Destructor.
+             */
             virtual ~Mutex(){}
             
             /**
-            * Locks this mutex.
-            *
-            * @return true if this mutex is locked successfully.
-            */
+             * Locks this mutex.
+             *
+             * @return true if this mutex is locked successfully.
+             */
             virtual bool lock() = 0;
             
             /**
-            * Unlocks this mutex.
-            */
+             * Unlocks this mutex.
+             */
             virtual void unlock() = 0;   
     
         };

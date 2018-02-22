@@ -20,29 +20,29 @@ namespace global
         public:
             
             /** 
-            * Destructor.
-            */                               
+             * Destructor.
+             */                               
             virtual ~ProcessorTimer(){}
             
             /**
-            * Returns number of timer digits.
-            *
-            * @return timer digits.
-            */  
+             * Returns number of timer digits.
+             *
+             * @return timer digits.
+             */  
             virtual int32 getDigit() const = 0;
             
             /**
-            * Returns this timer internal clock in Hz.
-            *
-            * @return timer internal clock.
-            */  
+             * Returns this timer internal clock in Hz.
+             *
+             * @return timer internal clock.
+             */  
             virtual int64 getInternalClock() const = 0;  
             
             /**
-            * Returns an available interrupt source for this timer.
-            *
-            * @return available interrupt source, or -1 if an error has been occurred.
-            */  
+             * Returns an available interrupt source for this timer.
+             *
+             * @return available interrupt source, or -1 if an error has been occurred.
+             */  
             virtual int32 getInterrupSource() const = 0;
         
         };
