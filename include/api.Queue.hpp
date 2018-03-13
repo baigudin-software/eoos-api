@@ -16,7 +16,7 @@ namespace global
     namespace api
     {
         /** 
-         * @param T data type of queue element.
+         * @param T - data type of queue element.
          */
         template <typename T>
         class Queue : public api::Collection<T>, public api::IllegalValue<T>
@@ -43,7 +43,7 @@ namespace global
              * a realizing class by calling a copy constructor so that the element 
              * might be invalidated after the function called.         
              *
-             * @param element inserting element.
+             * @param element - inserting element.
              * @return true if element is added.
              */      
             virtual bool add(const T& element) = 0;

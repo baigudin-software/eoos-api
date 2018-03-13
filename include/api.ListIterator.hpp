@@ -15,7 +15,7 @@ namespace global
     namespace api
     {
         /** 
-         * @param T data type of list iterator element.
+         * @param T - data type of list iterator element.
          */
         template <typename T>
         class ListIterator : public api::Iterator<T>
@@ -40,7 +40,7 @@ namespace global
              * a realizing class by calling a copy constructor so that the element 
              * might be invalidated after the function called.         
              *
-             * @param element inserting element.
+             * @param element - inserting element.
              * @return true if element is added.
              */      
             virtual bool add(const T& element) = 0;
@@ -50,7 +50,7 @@ namespace global
              *
              * @return reference to element.
              */      
-            virtual const T& getPrevious() = 0;
+            virtual const T& getPrevious() const = 0;
             
             /**
              * Tests if this iteration may return a previous element.

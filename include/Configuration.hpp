@@ -8,11 +8,11 @@
 #ifndef CONFIGURATION_HPP_
 #define CONFIGURATION_HPP_
 
-#include "api.Constant.hpp"
+#include "Types.hpp"
 
 namespace global
 {
-    struct Configuration : public api::Constant
+    struct Configuration
     {
 
     public:

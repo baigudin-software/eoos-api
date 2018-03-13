@@ -32,7 +32,7 @@ namespace global
         /** 
          * Constructor.
          *
-         * @param task an task interface whose main method is invoked when this thread is started.
+         * @param task - an task interface whose main method is invoked when this thread is started.
          */
         Thread(api::Task& task) : Parent(),
             isConstructed_ (getConstruct()),
@@ -98,8 +98,8 @@ namespace global
         /**
          * Causes this thread to sleep.
          *
-         * @param millis a time to sleep in milliseconds.
-         * @param nanos  an additional nanoseconds to sleep.
+         * @param millis - a time to sleep in milliseconds.
+         * @param nanos  - an additional nanoseconds to sleep.
          */  
         virtual void sleep(const int64 millis, const int32 nanos=0)
         {
@@ -112,7 +112,7 @@ namespace global
         /**
          * Blocks this thread on given resource and yields the task.
          *
-         * @param res a resource.
+         * @param res - a resource.
          */  
         virtual void block(api::Resource& res)
         {
@@ -176,7 +176,7 @@ namespace global
         /**
          * Sets this thread priority.
          *
-         * @param priority number of priority in range [MIN_PRIORITY, MAX_PRIORITY], or LOCK_PRIORITY.
+         * @param priority - number of priority in range [MIN_PRIORITY, MAX_PRIORITY], or LOCK_PRIORITY.
          */  
         virtual void setPriority(const int32 priority)
         {
@@ -199,8 +199,8 @@ namespace global
         /**
          * Causes current thread to sleep.
          *
-         * @param millis a time to sleep in milliseconds.
-         * @param nanos  an additional nanoseconds to sleep.
+         * @param millis - a time to sleep in milliseconds.
+         * @param nanos  - an additional nanoseconds to sleep.
          */  
         static void sleepCurrent(const int64 millis, const int32 nanos=0)
         {
@@ -230,7 +230,7 @@ namespace global
         /**
          * Constructor.
          *
-         * @param task an task interface whose main method is invoked when this thread is started.     
+         * @param task - an task interface whose main method is invoked when this thread is started.     
          * @return true if object has been constructed successfully.   
          */
         bool construct(api::Task& task)
@@ -246,14 +246,14 @@ namespace global
         /**
          * Copy constructor.
          *
-         * @param obj reference to source object.
+         * @param obj - reference to source object.
          */
         Thread(const Thread& obj);
         
         /**
          * Assignment operator.
          *
-         * @param obj reference to source object.
+         * @param obj - reference to source object.
          * @return reference to this object.     
          */
         Thread& operator =(const Thread& obj);

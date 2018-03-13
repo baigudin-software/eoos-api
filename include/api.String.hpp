@@ -15,7 +15,7 @@ namespace global
     namespace api
     {
         /** 
-         * @param T data type of string characters.
+         * @param T - data type of string characters.
          */ 
         template <typename T>
         class String : public api::Collection<T>
@@ -34,7 +34,7 @@ namespace global
              * NOTE: A passed string must be copied to an internal containing string of 
              * a realizing class so that the passed string might be invalidated after the function called.
              *
-             * @param string a string object interface to be copied.         
+             * @param string - a string object interface to be copied.         
              * @return true if a passed string has been copied successfully.
              */
             virtual bool copy(const api::String<T>& string) = 0;        
@@ -45,7 +45,7 @@ namespace global
              * NOTE: A passed string must be appended to an internal containing string of 
              * a realizing class so that the passed string might be invalidated after the function called.
              *
-             * @param string a string object interface to be appended.
+             * @param string - a string object interface to be appended.
              * @return true if a passed string has been appended successfully.          
              */
             virtual bool concatenate(const api::String<T>& string) = 0;     
@@ -53,7 +53,7 @@ namespace global
             /** 
              * Compares this string with a passed string lexicographically.         
              *
-             * @param string a string object interface to be compared.
+             * @param string - a string object interface to be compared.
              * @return the value 0 if a passed string is equal to this string; 
              *         a value less than 0 if this string is less than a passed string; 
              *         a value greater than 0 if this string is greater than a passed string,

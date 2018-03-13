@@ -23,7 +23,7 @@ namespace global
         /** 
          * Constructor.
          *
-         * @param permits the initial number of permits available.   
+         * @param permits - the initial number of permits available.   
          */      
         Semaphore(const int32 permits) : Parent(),
             isConstructed_ (getConstruct()),
@@ -34,8 +34,8 @@ namespace global
         /** 
          * Constructor.
          *
-         * @param permits the initial number of permits available.      
-         * @param isFair  true if this semaphore will guarantee FIFO granting of permits under contention.
+         * @param permits - the initial number of permits available.      
+         * @param isFair  - true if this semaphore will guarantee FIFO granting of permits under contention.
          */      
         Semaphore(const int32 permits, const bool isFair) : Parent(),
             isConstructed_ (getConstruct()),
@@ -81,7 +81,7 @@ namespace global
         /**
          * Acquires the given number of permits from this semaphore.
          *
-         * @param permits the number of permits to acquire.
+         * @param permits - the number of permits to acquire.
          * @return true if the semaphore is acquired successfully.
          */  
         virtual bool acquire(const int32 permits)
@@ -110,7 +110,7 @@ namespace global
         /**
          * Releases the given number of permits.
          *
-         * @param permits the number of permits to release.
+         * @param permits - the number of permits to release.
          */  
         virtual void release(const int32 permits)
         {
@@ -159,8 +159,8 @@ namespace global
         /**
          * Constructor.
          *
-         * @param permits the initial number of permits available.      
-         * @param isFair  true if this semaphore will guarantee FIFO granting of permits under contention.     
+         * @param permits - the initial number of permits available.      
+         * @param isFair  - true if this semaphore will guarantee FIFO granting of permits under contention.     
          * @return true if object has been constructed successfully.   
          */
         bool construct(const int32 permits, const bool* isFair)
@@ -184,14 +184,14 @@ namespace global
         /**
          * Copy constructor.
          *
-         * @param obj reference to source object.
+         * @param obj - reference to source object.
          */
         Semaphore(const Semaphore& obj);
       
         /**
          * Assignment operator.
          *
-         * @param obj reference to source object.
+         * @param obj - reference to source object.
          * @return reference to this object.     
          */
         Semaphore& operator =(const Semaphore& obj);

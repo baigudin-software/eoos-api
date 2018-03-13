@@ -72,15 +72,15 @@ namespace global
             /**
              * Causes this thread to sleep.
              *
-             * @param millis a time to sleep in milliseconds.
-             * @param nanos  an additional nanoseconds to sleep.
+             * @param millis - a time to sleep in milliseconds.
+             * @param nanos  - an additional nanoseconds to sleep.
              */  
             virtual void sleep(int64 millis, int32 nanos=0) = 0;
             
             /**
              * Blocks this thread on given resource and yields the task.
              *
-             * @param res a resource.
+             * @param res - a resource.
              */  
             virtual void block(api::Resource& res) = 0;        
             
@@ -101,7 +101,7 @@ namespace global
             /**
              * Sets this thread priority.
              *
-             * @param priority number of priority in range [MIN_PRIORITY, MAX_PRIORITY], or LOCK_PRIORITY.
+             * @param priority - number of priority in range [MIN_PRIORITY, MAX_PRIORITY], or LOCK_PRIORITY.
              */  
             virtual void setPriority(int32 priority) = 0;
             

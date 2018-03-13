@@ -15,7 +15,7 @@ namespace global
     namespace api
     {
         /** 
-         * @param T data type of list element.
+         * @param T - data type of list element.
          */ 
         template <typename T>    
         class Value : public api::IllegalValue<T>    
@@ -35,7 +35,7 @@ namespace global
              * a realizing class by calling a copy constructor so that the variable 
              * might be invalidated after the function called.                  
              *
-             * @param value a value for setting.
+             * @param value - a value for setting.
              */    
             virtual void setValue(const T& value) = 0;
               

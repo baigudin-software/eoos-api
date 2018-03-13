@@ -16,7 +16,7 @@ namespace global
     namespace api
     {
         /** 
-         * @param T data type of default stack element.
+         * @param T - data type of default stack element.
          */ 
         template <typename T>  
         class Stack : public api::Collection<T>, public api::IllegalValue<T>

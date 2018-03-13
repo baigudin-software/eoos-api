@@ -8,13 +8,13 @@
 #ifndef API_OBJECT_HPP_
 #define API_OBJECT_HPP_
 
-#include "api.Constant.hpp"
+#include "Types.hpp"
 
 namespace global
 {
     namespace api
     {  
-        class Object : public api::Constant
+        class Object
         {
     
         public:

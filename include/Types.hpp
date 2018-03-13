@@ -10,6 +10,22 @@
 
 namespace global
 {
+    /**
+     * NULL definition since C++11.
+     */    
+    #if __cplusplus >= 201103L  
+    typedef decltype(nullptr)  nullptr_t;                
+    static const nullptr_t NULL = nullptr;
+
+    /**
+     * NULL definition until C++11.
+     */            
+    #else
+    typedef signed int nullptr_t;
+    static const nullptr_t NULL = 0;
+    
+    #endif // __cplusplus
+
     // LP32 or 2/4/4 (int is 16-bit, long and pointer are 32-bit)
     #if defined(EOOS_TYPE_WIDTH_LP32)
     typedef signed   int        int16;

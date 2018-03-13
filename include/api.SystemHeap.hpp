@@ -34,7 +34,7 @@ namespace global
              * is reference to pointer, as when referenced pointer equals to NULL, 
              * no blocks are happening.
              *
-             * @param toggle reference to pointer to some controller.
+             * @param toggle - reference to pointer to some controller.
              */      
             virtual void setToggle(api::Toggle*& toggle) = 0;
             

@@ -112,14 +112,14 @@ namespace global
         /**
          * Copy constructor.
          *
-         * @param obj reference to source object.
+         * @param obj - reference to source object.
          */
         Mutex(const Mutex& obj);
       
         /**
          * Assignment operator.
          *
-         * @param obj reference to source object.
+         * @param obj - reference to source object.
          * @return reference to this object.     
          */
         Mutex& operator =(const Mutex& obj);

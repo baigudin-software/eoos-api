@@ -29,8 +29,8 @@ namespace global
             /**
              * Sets interrupt source handler.
              *
-             * @param handler pointer to user class which implements an interrupt handler interface.
-             * @param source  available interrupt source.
+             * @param handler - pointer to user class which implements an interrupt handler interface.
+             * @param source  - available interrupt source.
              * @return true if handler is set successfully.
              */      
             virtual bool setHandler(api::Task& handler, int32 source) = 0;
@@ -47,7 +47,7 @@ namespace global
              * This method may be called in an user interrupt handler, it means
              * given conxet will be restored by the context restore procedure.
              *
-             * @param reg new registers context.
+             * @param reg - a new registers context.
              */
             virtual void setContext(api::ProcessorRegisters& reg) = 0;
     

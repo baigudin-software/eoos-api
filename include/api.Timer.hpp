@@ -41,14 +41,14 @@ namespace global
             /**
              * Sets this timer counter.
              *
-             * @param count timer counter register value.
+             * @param count - timer counter register value.
              */      
             virtual void setCount(int64 count) = 0;
             
             /**
              * Sets this timer period.
              *
-             * @param us timer period in microseconds, zero value sets a period to maximum value.
+             * @param us - timer period in microseconds, zero value sets a period to maximum value.
              */      
             virtual void setPeriod(int64 us=0) = 0;
             

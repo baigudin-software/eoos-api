@@ -15,7 +15,7 @@ namespace global
     namespace api
     {
         /** 
-         * @param T data type of iterator element.
+         * @param T - data type of iterator element.
          */ 
         template <typename T>
         class Iterator : public api::IllegalValue<T>
@@ -33,7 +33,7 @@ namespace global
              *
              * @return reference to element.
              */      
-            virtual const T& getNext() = 0;
+            virtual const T& getNext() const = 0;
             
             /**
              * Tests if this iteration may return a next element.

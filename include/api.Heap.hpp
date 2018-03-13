@@ -27,10 +27,10 @@ namespace global
             /**
              * Allocates memory.
              *
-             * @param size required memory size in byte.
-             * @param ptr  NULL value becomes to allocate memory, and 
-             *             other given values are simply returned 
-             *             as memory address.
+             * @param size - required memory size in byte.
+             * @param ptr  - NULL value becomes to allocate memory, and 
+             *               other given values are simply returned 
+             *               as memory address.
              * @return pointer to allocated memory or NULL.
              */    
             virtual void* allocate(size_t size, void* ptr) = 0;
@@ -38,7 +38,7 @@ namespace global
             /**
              * Frees an allocated memory.
              *
-             * @param ptr pointer to allocated memory.
+             * @param ptr - pointer to allocated memory.
              */      
             virtual void free(void* ptr) = 0;
     

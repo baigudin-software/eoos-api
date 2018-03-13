@@ -40,7 +40,7 @@ namespace global
              * The method acquires given permits number or waits
              * while the number will be released.
              *
-             * @param permits the number of permits to acquire.
+             * @param permits - the number of permits to acquire.
              * @return true if the semaphore is acquired successfully.
              */  
             virtual bool acquire(int32 permits) = 0;
@@ -57,7 +57,7 @@ namespace global
              *
              * The method releases from the permits and returns these to the semaphore.     
              *
-             * @param permits the number of permits to release.
+             * @param permits - the number of permits to release.
              */  
             virtual void release(int32 permits) = 0;
             

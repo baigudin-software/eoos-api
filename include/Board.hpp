@@ -21,7 +21,7 @@ namespace global
         /**
          * Initializes a processor board.
          *
-         * @param config the operating system configuration.
+         * @param config - the operating system configuration.
          * @return true if no errors have been occurred.
          */   
         static bool initialize(const Configuration config);

@@ -16,7 +16,7 @@ namespace global
     namespace api
     {
         /** 
-         * @param T data type of element.
+         * @param T - data type of element.
          */ 
         template <typename T>
         class Iterable : public api::Object

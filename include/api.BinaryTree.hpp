@@ -15,7 +15,7 @@ namespace global
     namespace api
     {
         /** 
-         * @param T data type of an element.
+         * @param T - data type of an element.
          */ 
         template <typename T>
         class BinaryTree : public api::Object
@@ -35,7 +35,7 @@ namespace global
              * a realizing class by calling a copy constructor so that the element 
              * might be invalidated after the function called.
              *
-             * @param element an inserting element.
+             * @param element - an inserting element.
              * @return true if element has been added successfully.
              */      
             virtual bool add(const T& element) = 0;

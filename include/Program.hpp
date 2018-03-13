@@ -8,11 +8,11 @@
 #ifndef PROGRAM_HPP_
 #define PROGRAM_HPP_
 
-#include "api.Constant.hpp"
+#include "Types.hpp"
 
 namespace global
 {
-    class Program : public api::Constant
+    class Program
     {
 
     public:

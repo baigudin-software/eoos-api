@@ -30,9 +30,9 @@ namespace global
              *
              * The method is mostly used for restoring from an interrupt service routine.
              *
-             * @param stack    a routine stack.
-             * @param entry    a routine entry address.
-             * @param argument a routine argument.
+             * @param stack    - a routine stack.
+             * @param entry    - a routine entry address.
+             * @param argument - a routine argument.
              */  
             virtual void setInitialization(api::Stack<int64>& stack, void* entry, int32 argument) = 0;
             

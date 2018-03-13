@@ -27,7 +27,7 @@ namespace global
             /**
              * Loads a program for executing.
              *
-             * @param path a system path to a program.
+             * @param path - a system path to a program.
              * @return true if program has been loaded successfully.
              */    
             virtual bool load(const char* path) = 0;        
@@ -35,7 +35,7 @@ namespace global
             /**
              * Terminates a program execution.
              *
-             * @param status a termination status.
+             * @param status - a termination status.
              */    
             virtual void terminate(int32 status=0) = 0;
     

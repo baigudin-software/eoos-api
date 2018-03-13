@@ -14,7 +14,7 @@
 namespace global
 {
     /** 
-     * @param A heap memory allocator class.
+     * @param A - heap memory allocator class.
      */ 
     template <class A = Allocator>
     class Object : public api::Object
@@ -32,12 +32,10 @@ namespace global
         /** 
          * Copy constructor.
          *
-         * @param obj reference to source object.
+         * @param obj - a source object interface.
          */ 
-        Object(const api::Object& obj) :
-            isConstructed_ (true){
-            const bool isConstructed = obj.isConstructed();
-            setConstruct( isConstructed );
+        explicit Object(const api::Object& obj) :
+            isConstructed_ ( obj.isConstructed() ){
         }    
         
         /** 
@@ -53,7 +51,7 @@ namespace global
         /** 
          * Operator new.
          *
-         * @param size number of bytes to allocate.
+         * @param size - a number of bytes to allocate.
          * @return allocated memory address or a null pointer.
          */  
         void* operator new(const size_t size)
@@ -64,8 +62,8 @@ namespace global
         /** 
          * Operator new.
          *
-         * @param size unused.
-         * @param ptr  pointer to reserved memory area
+         * @param size - unused.
+         * @param ptr - a pointer to reserved memory area.
          * @return given pointer.
          */  
         void* operator new(size_t, void* const ptr)
@@ -76,7 +74,7 @@ namespace global
         /**
          * Operator delete.
          *
-         * @param ptr address of allocated memory block or a null pointer.
+         * @param ptr - an address of allocated memory block or a null pointer.
          */
         void operator delete(void* const ptr)
         {
@@ -90,11 +88,11 @@ namespace global
         /**
          * Sets the object constructed flag.
          *
-         * @param flag constructed flag.
+         * @param flag - a new constructed flag.
          */      
         void setConstruct(const bool flag)
         {
-            if( isConstructed_ ) 
+            if( isConstructed_ == true ) 
             {
                 isConstructed_ = flag;
             }
@@ -105,40 +103,15 @@ namespace global
          *
          * @return reference to the constructed flag.
          */      
-        const bool& getConstruct() const
+        bool getConstruct() const
         {
             return isConstructed_;
         }  
-        
-        /**
-         * Allocates memory.
-         *
-         * NOTE: You need to use "this->template allocate<Type>(size);" 
-         * syntax, if your class is a template and inherits this class.
-         *
-         * @param size number of bytes to allocate.
-         * @return allocated memory address or a null pointer.
-         */    
-        template<typename T0>
-        static T0 allocate(const size_t size)
-        {
-            return static_cast<T0>( A::allocate(size) );
-        }    
-    
-        /**
-         * Frees an allocated memory.
-         *
-         * @param ptr address of allocated memory block or a null pointer.
-         */      
-        static void free(void* const ptr)
-        {
-            A::free(ptr);
-        }
     
     private:
     
         /** 
-         * Object constructed flag.
+         * This object constructed flag.
          */  
         bool isConstructed_;
     

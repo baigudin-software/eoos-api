@@ -41,9 +41,9 @@ namespace global
              * The method compares given data with a gauge and recasts to it 
              * if the data does not equal to the gauge.
              *
-             * @param ptr     address of data for synchronizing.
-             * @param size    number of bytes for synchronizing.
-             * @param channel number of processor core which data is the gauge of synchronization.
+             * @param ptr     - address of data for synchronizing.
+             * @param size    - number of bytes for synchronizing.
+             * @param channel - number of processor core which data is the gauge of synchronization.
              * @return true if given data was recast to the gauge.
              */ 
             virtual bool recast(void* ptr, int32 size, int32 channel) = 0;
@@ -51,9 +51,9 @@ namespace global
             /** 
              * Tests if given data equals the gauge.
              *
-             * @param ptr     address of data for synchronizing.
-             * @param size    number of bytes for synchronizing.
-             * @param channel number of processor core which data is the gauge of synchronization.
+             * @param ptr     - address of data for synchronizing.
+             * @param size    - number of bytes for synchronizing.
+             * @param channel - number of processor core which data is the gauge of synchronization.
              * @return true if given data equals to the gauge.
              */ 
              virtual bool isEqual(void* ptr, int32 size, int32 channel) = 0;    

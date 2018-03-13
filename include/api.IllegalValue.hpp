@@ -15,7 +15,7 @@ namespace global
     namespace api
     {
         /** 
-         * @param T data type of element.
+         * @param T - data type of element.
          */ 
         template <typename T>
         class IllegalValue : public api::Object
@@ -42,15 +42,15 @@ namespace global
              * a realizing class by calling a copy constructor so that the variable 
              * might be invalidated after the function called.
              *
-             * @param value an illegal value.
+             * @param value - an illegal value.
              */
             virtual void setIllegal(const T& value) = 0;
             
             /**
              * Tests if given value is an illegal.
              *
-             * @param value a testing value.
-             * @param true if value is an illegal.
+             * @param value - a testing value.
+             * @return true if value is an illegal.
              */
             virtual bool isIllegal(const T& value) const = 0;
     

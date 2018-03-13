@@ -24,8 +24,8 @@ namespace global
         /** 
          * Constructor.
          *
-         * @param handler user class which implements an interrupt handler interface.
-         * @param source  available interrupt source.
+         * @param handler - user class which implements an interrupt handler interface.
+         * @param source  - available interrupt source.
          */     
         Interrupt(api::Task& handler, const int32 source) : Parent(),
             isConstructed_ (getConstruct()),
@@ -104,7 +104,7 @@ namespace global
         /**
          * Unlocks this interrupt source.
          *
-         * @param status returned status by lock method.
+         * @param status - returned status by lock method.
          */
         virtual void enable(const bool status)
         {
@@ -119,8 +119,8 @@ namespace global
         /**
          * Constructor.
          *
-         * @param handler pointer to user class which implements an interrupt handler interface.   
-         * @param source  available interrupt source.     
+         * @param handler - pointer to user class which implements an interrupt handler interface.   
+         * @param source  - available interrupt source.     
          * @return true if object has been constructed successfully.     
          */    
         bool construct(api::Task& handler, const int32 source)
@@ -136,14 +136,14 @@ namespace global
         /**
          * Copy constructor.
          *
-         * @param obj reference to source object.
+         * @param obj - reference to source object.
          */
         Interrupt(const Interrupt& obj);
       
         /**
          * Assignment operator.
          *
-         * @param obj reference to source object.
+         * @param obj - reference to source object.
          * @return reference to this object.     
          */
         Interrupt& operator =(const Interrupt& obj);

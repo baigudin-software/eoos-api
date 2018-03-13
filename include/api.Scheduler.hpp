@@ -30,7 +30,7 @@ namespace global
             /**
              * Creates a new thread.
              *
-             * @param task an user task which main method will be invoked when created thread is started.
+             * @param task - an user task which main method will be invoked when created thread is started.
              * @return a new thread.
              */
             virtual api::Thread* createThread(api::Task& task) = 0;
