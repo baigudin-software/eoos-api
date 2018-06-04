@@ -16,6 +16,8 @@ namespace global
     namespace api
     {
         /** 
+         * Primary template implementation.
+         *
          * @param T - data type of default stack element.
          */ 
         template <typename T>  
