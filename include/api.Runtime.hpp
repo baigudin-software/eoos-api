@@ -10,33 +10,36 @@
 
 #include "api.Object.hpp"
 
-namespace api
+namespace global
 {
-    class Runtime : public ::api::Object    
+    namespace api
     {
-      
-    public:
-  
-        /** 
-         * Destructor.
-         */
-        virtual ~Runtime(){}
+        class Runtime : public api::Object    
+        {
         
-        /**
-         * Loads a program for executing.
-         *
-         * @param path a system path to a program.
-         * @return true if program has been loaded successfully.
-         */    
-        virtual bool load(const char* path) = 0;        
-        
-        /**
-         * Terminates a program execution.
-         *
-         * @param status a termination status.
-         */    
-        virtual void terminate(int32 status=0) = 0;
-
-    };
+        public:
+    
+            /** 
+             * Destructor.
+             */
+            virtual ~Runtime(){}
+            
+            /**
+             * Loads a program for executing.
+             *
+             * @param path - a system path to a program.
+             * @return true if program has been loaded successfully.
+             */    
+            virtual bool load(const char* path) = 0;        
+            
+            /**
+             * Terminates a program execution.
+             *
+             * @param status - a termination status.
+             */    
+            virtual void terminate(int32 status=0) = 0;
+    
+        };
+    }
 }
 #endif // API_RUNTIME_HPP_

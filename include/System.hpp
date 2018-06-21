@@ -10,21 +10,23 @@
 
 #include "system.System.hpp"
 
-class System
+namespace global
 {
+  class System
+  {
+    
+  public:
   
-public:
-
-    /** 
-     * Returns the operating system syscall interface.
-     *
-     * @return the operating system syscall interface.
-     */      
-    static ::api::System& call()
-    {
-        return ::system::System::call();
-    }
-  
-};
-
+      /** 
+       * Returns the operating system syscall interface.
+       *
+       * @return the operating system syscall interface.
+       */      
+      static api::System& call()
+      {
+          return system::System::call();
+      }
+    
+  };
+}
 #endif // SYSTEM_HPP_

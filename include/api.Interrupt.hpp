@@ -10,33 +10,36 @@
 
 #include "api.Toggle.hpp"
 
-namespace api
+namespace global
 {
-    class Interrupt : public ::api::Toggle
+    namespace api
     {
-  
-    public:
-      
-        /** 
-         * Destructor.
-         */                               
-        virtual ~Interrupt(){}
+        class Interrupt : public api::Toggle
+        {
+    
+        public:
         
-        /**
-         * Jumps to interrupt hardware vector.
-         */      
-        virtual void jump() = 0;
+            /** 
+             * Destructor.
+             */                               
+            virtual ~Interrupt(){}
+            
+            /**
+             * Jumps to interrupt hardware vector.
+             */      
+            virtual void jump() = 0;
+            
+            /**
+             * Clears an interrupt status of this source.
+             */     
+            virtual void clear() = 0;
+            
+            /**
+             * Sets an interrupt status of this source.
+             */    
+            virtual void set() = 0;
         
-        /**
-         * Clears an interrupt status of this source.
-         */     
-        virtual void clear() = 0;
-        
-        /**
-         * Sets an interrupt status of this source.
-         */    
-        virtual void set() = 0;
-      
-    };
+        };
+    }
 }
 #endif // API_INTERRUPT_HPP_

@@ -10,43 +10,48 @@
 
 #include "api.IllegalValue.hpp"
 
-namespace api
+namespace global
 {
-    /** 
-     * @param Type data type of iterator element.
-     */ 
-    template <typename Type>
-    class Iterator : public ::api::IllegalValue<Type>
+    namespace api
     {
-      
-    public:
+        /** 
+         * Primary template implementation.
+         *
+         * @param T - data type of iterator element.
+         */ 
+        template <typename T>
+        class Iterator : public api::IllegalValue<T>
+        {
+        
+        public:
+        
+            /**
+             * Destructor.
+             */
+            virtual ~Iterator(){}
+            
+            /**
+             * Returns next element and advances the cursor position.
+             *
+             * @return reference to element.
+             */      
+            virtual const T& getNext() const = 0;
+            
+            /**
+             * Tests if this iteration may return a next element.
+             *
+             * @return true if next element is had.
+             */      
+            virtual bool hasNext() const = 0;
+            
+            /**
+             * Removes the last element returned by this iterator.
+             *
+             * @return true if an element is removed successfully.
+             */
+            virtual bool remove() = 0;
     
-        /**
-         * Destructor.
-         */
-        virtual ~Iterator(){}
-        
-        /**
-         * Returns next element and advances the cursor position.
-         *
-         * @return reference to element.
-         */      
-        virtual Type getNext() = 0;
-        
-        /**
-         * Tests if this iteration may return a next element.
-         *
-         * @return true if next element is had.
-         */      
-        virtual bool hasNext() const = 0;
-        
-        /**
-         * Removes the last element returned by this iterator.
-         *
-         * @return true if an element is removed successfully.
-         */
-        virtual bool remove() = 0;
-
-    };
+        };
+    }
 }
 #endif // API_ITERATOR_HPP_

@@ -11,46 +11,40 @@
 #include "api.Object.hpp"
 #include "api.Kernel.hpp"
 
-namespace api
+namespace global
 {
-    class System : public ::api::Object    
+    namespace api
     {
-      
-    public:
-  
-        /**
-         * Destructor.
-         */
-        virtual ~System(){}
+        class System : public api::Object    
+        {
         
-        /** 
-         * Returns the operating system kernel interface.
-         *
-         * @return the operating system kernel interface.
-         */      
-        virtual ::api::Kernel& getKernel() = 0;
-        
-        /**
-         * Returns running time of the operating system in milliseconds.
-         *
-         * @return time in milliseconds.
-         */
-        virtual int64 getTimeMs() = 0;
-           
-        /**
-         * Returns running time of the operating system in nanoseconds.
-         *
-         * @return time in nanoseconds.
-         */
-        virtual int64 getTimeNs() = 0;
-        
-        /**
-         * Terminates the operating system execution.
-         *
-         * @param status a termination status.
-         */
-        virtual void terminate() = 0;
-
-    };
+        public:
+    
+            /**
+             * Destructor.
+             */
+            virtual ~System(){}
+            
+            /**
+             * Returns the operating system heap memory.
+             *
+             * @return the heap memory.
+             */
+            virtual api::Heap& getHeap() const = 0;
+            
+            /**
+             * Returns running time of the operating system in nanoseconds.
+             *
+             * @return time in nanoseconds.
+             */
+            virtual int64 getTime() const = 0;
+            
+            /**
+             * Terminates the operating system execution.
+             */
+            virtual void terminate() const = 0;
+    
+        };
+    }
 }
 #endif // API_SYSTEM_HPP_

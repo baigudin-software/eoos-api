@@ -10,32 +10,35 @@
 
 #include "api.Object.hpp"
 
-namespace api
+namespace global
 {
-    class ProcessorPll : public ::api::Object
+    namespace api
     {
-
-    public:
+        class ProcessorPll : public api::Object
+        {
     
-        /**
-         * Destructor.
-         */                               
-        virtual ~ProcessorPll(){}
-
-        /**
-         * Returns source clock of CPU oscillator in Hz.
-         *
-         * @return frequency value in Hz.         
-         */      
-        virtual int64 getSourceClock() = 0;
+        public:
+        
+            /**
+             * Destructor.
+             */                               
+            virtual ~ProcessorPll(){}
     
-        /**
-         * Returns source clock of CPU in Hz.
-         *
-         * @return frequency value in Hz.
-         */  
-        virtual int64 getCpuClock() = 0;
-
-    };
+            /**
+             * Returns source clock of CPU oscillator in Hz.
+             *
+             * @return frequency value in Hz.         
+             */      
+            virtual int64 getSourceClock() = 0;
+        
+            /**
+             * Returns source clock of CPU in Hz.
+             *
+             * @return frequency value in Hz.
+             */  
+            virtual int64 getCpuClock() = 0;
+    
+        };
+    }
 }
 #endif // API_PROCESSOR_PLL_HPP_

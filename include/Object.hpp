@@ -2,7 +2,7 @@
  * Root class of the class hierarchy.
  * 
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2014-2016, Embedded Team, Sergey Baigudin
+ * @copyright 2014-2018, Embedded Team, Sergey Baigudin
  * @license   http://embedded.team/license/
  */
 #ifndef OBJECT_HPP_
@@ -11,199 +11,103 @@
 #include "api.Object.hpp"
 #include "Allocator.hpp"
 
-/** 
- * @param Alloc heap memory allocator class.
- */ 
-template <class Alloc = Allocator>
-class Object : public ::api::Object
+namespace global
 {
-  
-public:
-
     /** 
-     * Constructor.
-     */  
-    Object() : 
-        isConstructed_ (true){
-    }
-    
-    /** 
-     * Copy constructor.
+     * Primary template implementation.
      *
-     * @param obj reference to source object.
+     * @param A - heap memory allocator class.
      */ 
-    Object(const Object& obj) :
-        isConstructed_ (obj.isConstructed_){
-    }
+    template <class A = Allocator>
+    class Object : public api::Object
+    {
+      
+    public:
     
-    /** 
-     * Copy constructor.
-     *
-     * @param obj reference to source object.
-     */ 
-    Object(const ::api::Object& obj) :
-        isConstructed_ (true){
-        const bool isConstructed = obj.isConstructed();
-        setConstruct( isConstructed );
-    }    
-    
-    /** 
-     * Destructor.
-     */    
-    virtual ~Object()
-    {
-        isConstructed_ = false;
-    }
-
-    /** 
-     * Assignment operator.
-     *
-     * @param obj reference to source object.
-     * @return reference to this object.   
-     */  
-    Object& operator =(const Object& obj)
-    {
-        isConstructed_ = obj.isConstructed_;
-        return *this;
-    }
-    
-    #ifdef NO_STRICT_MISRA_RULES
-  
-    /** 
-     * Operator new.
-     *
-     * @param size number of bytes to allocate.
-     * @return allocated memory address or a null pointer.
-     */  
-    void* operator new(const size_t size)
-    {
-        return Alloc::allocate(size);
-    }
-  
-    /** 
-     * Operator new.
-     *
-     * @param size unused.
-     * @param ptr  pointer to reserved memory area
-     * @return given pointer.
-     */  
-    void* operator new(size_t, void* const ptr)
-    {
-        return ptr;
-    }
-    
-    /**
-     * Operator delete.
-     *
-     * @param ptr address of allocated memory block or a null pointer.
-     */
-    void operator delete(void* const ptr)
-    {
-        Alloc::free(ptr);
-    }
-    
-    #endif // NO_STRICT_MISRA_RULES
-
-protected:
-
-    /**
-     * Sets the object constructed flag.
-     *
-     * @param flag constructed flag.
-     */      
-    virtual void setConstruct(const bool flag)
-    {
-        if( isConstructed_ ) 
-        {
-            isConstructed_ = flag;
+        /** 
+         * Constructor.
+         */  
+        Object() : 
+            isConstructed_ (true){
         }
-    }
+                 
+        /** 
+         * Destructor.
+         */    
+        virtual ~Object()
+        {
+            isConstructed_ = false;
+        }
     
-    /**
-     * Returns the object constructed flag.
-     *
-     * @return reference to the constructed flag.
-     */      
-    virtual const bool& getConstruct() const
-    {
-        return isConstructed_;
-    }  
+        #ifdef NO_STRICT_MISRA_RULES
+      
+        /** 
+         * Operator new.
+         *
+         * @param size - a number of bytes to allocate.
+         * @return allocated memory address or a null pointer.
+         */  
+        void* operator new(const size_t size)
+        {
+            return A::allocate(size);
+        }
+      
+        /** 
+         * Operator new.
+         *
+         * @param size - unused.
+         * @param ptr - a pointer to reserved memory area.
+         * @return given pointer.
+         */  
+        void* operator new(size_t, void* const ptr)
+        {
+            return ptr;
+        }
+        
+        /**
+         * Operator delete.
+         *
+         * @param ptr - an address of allocated memory block or a null pointer.
+         */
+        void operator delete(void* const ptr)
+        {
+            A::free(ptr);
+        }
+        
+        #endif // NO_STRICT_MISRA_RULES
     
-    /**
-     * Allocates memory.
-     *
-     * NOTE: You need to use "this->template allocate<Type>(size);" 
-     * syntax, if your class is a template and inherits this class.
-     *
-     * @param size number of bytes to allocate.
-     * @return allocated memory address or a null pointer.
-     */    
-    template<typename Type>
-    static Type allocate(const size_t size)
-    {
-        return static_cast<Type>( Alloc::allocate(size) );
-    }    
-
-    /**
-     * Frees an allocated memory.
-     *
-     * @param ptr address of allocated memory block or a null pointer.
-     */      
-    static void free(void* const ptr)
-    {
-        Alloc::free(ptr);
-    }
-
-private:
-
-    #ifdef NO_STRICT_MISRA_RULES
-  
-    /** 
-     * Operator delete.
-     *
-     * @param ptr   address of allocated memory block or a null pointer.
-     * @param place pointer used as the placement parameter in the matching placement new.
-     */  
-    void operator delete(void* ptr, void* place);
+    protected:
     
-    /** 
-     * Operator new.
-     *
-     * @param size number of bytes to allocate.
-     * @return allocated memory address or a null pointer.
-     */  
-    void* operator new[](size_t size);
+        /**
+         * Sets the object constructed flag.
+         *
+         * @param flag - a new constructed flag.
+         */      
+        void setConstruct(const bool flag)
+        {
+            if( isConstructed_ == true ) 
+            {
+                isConstructed_ = flag;
+            }
+        }
+        
+        /**
+         * Returns the object constructed flag.
+         *
+         * @return reference to the constructed flag.
+         */      
+        bool getConstruct() const
+        {
+            return isConstructed_;
+        }  
     
-    /** 
-     * Operator delete.
-     *
-     * @param ptr address of allocated memory block or a null pointer.
-     */  
-    void operator delete[](void* ptr);
+    private:
     
-    /** 
-     * Operator new.
-     *
-     * @param size number of bytes to allocate.
-     * @param ptr  pointer to a memory area to initialize the object
-     * @return allocated memory address or a null pointer.
-     */  
-    void* operator new[](size_t size, void* ptr);
+        /** 
+         * This object constructed flag.
+         */  
+        bool isConstructed_;
     
-    /** 
-     * Operator delete.
-     *
-     * @param ptr   address of allocated memory block or a null pointer.
-     * @param place pointer used as the placement parameter in the matching placement new.
-     */  
-    void operator delete[](void* ptr, void* place);
-    
-    #endif // NO_STRICT_MISRA_RULES
-    
-    /** 
-     * Object constructed flag.
-     */  
-    bool isConstructed_;
-
-};
+    };
+}
 #endif // OBJECT_HPP_

@@ -10,25 +10,28 @@
 
 #include "api.Object.hpp"
 
-namespace api
+namespace global
 {
-    class Resource : public ::api::Object
+    namespace api
     {
-  
-    public:
+        class Resource : public api::Object
+        {
     
-        /** 
-         * Destructor.
-         */
-        virtual ~Resource(){}
+        public:
         
-        /** 
-         * Tests if this resource is blocked.
-         *
-         * @return true if this resource is blocked.
-         */ 
-        virtual bool isBlocked() = 0;
-  
-    };
+            /** 
+             * Destructor.
+             */
+            virtual ~Resource(){}
+            
+            /** 
+             * Tests if this resource is blocked.
+             *
+             * @return true if this resource is blocked.
+             */ 
+            virtual bool isBlocked() = 0;
+    
+        };
+    }
 }
 #endif // API_RESOURCE_HPP_

@@ -10,25 +10,28 @@
 
 #include "Types.hpp"
 
-namespace api
-{  
-    class Object
-    {
-  
-    public:
-  
-        /** 
-         * Destructor.
-         */
-        virtual ~Object(){}
-        
-        /**
-         * Tests if this object has been constructed.
-         *
-         * @return true if object has been constructed successfully.
-         */    
-        virtual bool isConstructed() const = 0;
+namespace global
+{
+    namespace api
+    {  
+        class Object
+        {
     
-    };
+        public:
+        
+            /** 
+             * Destructor.
+             */
+            virtual ~Object(){}
+            
+            /**
+             * Tests if this object has been constructed.
+             *
+             * @return true if object has been constructed successfully.
+             */    
+            virtual bool isConstructed() const = 0;
+        
+        };
+    }
 }
 #endif // API_OBJECT_HPP_

@@ -10,36 +10,45 @@
 
 #include "api.IllegalValue.hpp"
 
-namespace api
+namespace global
 {
-    /** 
-     * @param Type data type of list element.
-     */ 
-    template <typename Type>    
-    class Value : public ::api::IllegalValue<Type>
+    namespace api
     {
-      
-    public:
-  
         /** 
-         * Destructor.
-         */
-        virtual ~Value(){}
-        
-        /**
-         * Sets a value.
+         * Primary template implementation.        
          *
-         * @param value a value for setting.
-         */    
-        virtual void setValue(Type value) = 0;
-          
-        /**
-         * Returns set value.
-         *
-         * @return the set value.
-         */      
-        virtual Type getValue() const = 0;
-
-    };
+         * @param T - data type of list element.
+         */ 
+        template <typename T>    
+        class Value : public api::IllegalValue<T>    
+        {
+    
+        public:
+      
+            /** 
+             * Destructor.
+             */
+            virtual ~Value(){}
+            
+            /**
+             * Sets a value.
+             *
+             * NOTE: A passed value must be copied to an internal data structure of 
+             * a realizing class by calling a copy constructor so that the variable 
+             * might be invalidated after the function called.                  
+             *
+             * @param value - a value for setting.
+             */    
+            virtual void setValue(const T& value) = 0;
+              
+            /**
+             * Returns set value.
+             *
+             * @return the set value.
+             */      
+            virtual const T& getValue() const = 0;
+    
+        };
+    }
 }
 #endif // API_VALUE_HPP_
