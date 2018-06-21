@@ -30,16 +30,7 @@ namespace global
         Object() : 
             isConstructed_ (true){
         }
-        
-        /** 
-         * Copy constructor.
-         *
-         * @param obj - a source object interface.
-         */ 
-        explicit Object(const api::Object& obj) :
-            isConstructed_ ( obj.isConstructed() ){
-        }    
-        
+                 
         /** 
          * Destructor.
          */    

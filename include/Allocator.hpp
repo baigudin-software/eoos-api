@@ -2,11 +2,11 @@
  * Memory allocator.
  * 
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2016-2017, Embedded Team, Sergey Baigudin
+ * @copyright 2016-2018, Embedded Team, Sergey Baigudin
  * @license   http://embedded.team/license/
  */
-#ifndef GLOBAL_ALLOCATOR_HPP_
-#define GLOBAL_ALLOCATOR_HPP_
+#ifndef ALLOCATOR_HPP_
+#define ALLOCATOR_HPP_
 
 #include "Types.hpp"
 
@@ -34,5 +34,5 @@ namespace global
 
     };
 }
-#endif // GLOBAL_ALLOCATOR_HPP_
+#endif // ALLOCATOR_HPP_
 
