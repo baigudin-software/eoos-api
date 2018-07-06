@@ -24,6 +24,14 @@ namespace global
          */
         static int32 start();
 
+        /**
+         * Starts executing an operating system main program.
+         *
+         * @param arg - application arguments.
+         * @return zero, or error code if an error has been occurred.
+         */
+        static int32 start(void* args);
+
     };
 }
 #endif // PROGRAM_HPP_
