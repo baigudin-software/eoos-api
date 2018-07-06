@@ -20,22 +20,22 @@ namespace global
         /**
          * Error of the operating system kernel syscall calling.
          */
-        ERROR_SYSCALL_CALLED,
+        ERROR_SYSCALL_CALLED = 1,
        
         /**
          * Error of a no strinct MISRA C++ function calling.
          */
-        ERROR_NO_MISRA_FUNCTION_CALLED,
+        ERROR_NO_MISRA_FUNCTION_CALLED = 2,
 
         /**
          * Error of a user program occurred.
          */            
-        ERROR_USER_TERMINATION,
+        ERROR_USER_TERMINATION = 3,
         
         /**
          * An undefined error has been occurred.
          */  
-        ERROR_UNDEFINED,
+        ERROR_UNDEFINED = 4,
         
         /**
          * An undefined error has been occurred.
