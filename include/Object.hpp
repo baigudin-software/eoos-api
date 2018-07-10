@@ -38,6 +38,13 @@ namespace global
         {
             isConstructed_ = false;
         }
+        
+        /**
+         * Tests if this object has been constructed.
+         *
+         * @return true if object has been constructed successfully.
+         */    
+        virtual bool isConstructed() const = 0;        
     
         #ifdef NO_STRICT_MISRA_RULES
       
@@ -83,23 +90,13 @@ namespace global
          *
          * @param flag - a new constructed flag.
          */      
-        void setConstruct(const bool flag)
+        void setConstructed(bool const flag)
         {
             if( isConstructed_ == true ) 
             {
                 isConstructed_ = flag;
             }
-        }
-        
-        /**
-         * Returns the object constructed flag.
-         *
-         * @return reference to the constructed flag.
-         */      
-        bool getConstruct() const
-        {
-            return isConstructed_;
-        }  
+        }         
     
     private:
     
@@ -109,5 +106,22 @@ namespace global
         bool isConstructed_;
     
     };
+    
+    /**
+     * Tests if this object has been constructed.
+     *
+     * NOTE: This is an implementation of the pure virtual function. 
+     * It has to be called for getting the default state of objects, 
+     * otherwise developers have to implement their own behaviors of
+     * the interface function.
+     *
+     * @return true if object has been constructed successfully.
+     */ 
+    template <class A>       
+    inline bool Object<A>::isConstructed() const
+    {
+        return isConstructed_;
+    }
+
 }
 #endif // OBJECT_HPP_
