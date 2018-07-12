@@ -54,7 +54,7 @@ namespace global
          * @param size - a number of bytes to allocate.
          * @return allocated memory address or a null pointer.
          */  
-        void* operator new(const size_t size)
+        void* operator new(size_t const size)
         {
             return A::allocate(size);
         }
