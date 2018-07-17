@@ -22,10 +22,7 @@ namespace global
        *
        * @return the operating system syscall interface.
        */      
-      static api::System& call()
-      {
-          return system::System::call();
-      }
+      static api::System& call();
     
   };
 }
