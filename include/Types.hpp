@@ -8,7 +8,7 @@
 #ifndef TYPES_HPP_
 #define TYPES_HPP_
 
-namespace global
+namespace local
 {
     /**
      * NULL definition since C++11.

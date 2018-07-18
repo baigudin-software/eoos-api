@@ -11,7 +11,7 @@
 #include "api.Collection.hpp"
 #include "api.IllegalValue.hpp"
 
-namespace global
+namespace local
 {
     namespace api
     {

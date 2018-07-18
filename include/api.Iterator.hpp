@@ -10,7 +10,7 @@
 
 #include "api.IllegalValue.hpp"
 
-namespace global
+namespace local
 {
     namespace api
     {

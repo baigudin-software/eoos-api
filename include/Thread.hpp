@@ -12,7 +12,7 @@
 #include "api.Thread.hpp"
 #include "System.hpp"
 
-namespace global
+namespace local
 {
     class Thread : public Object<>, public api::Thread, public api::Task
     {

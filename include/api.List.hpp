@@ -12,7 +12,7 @@
 #include "api.IllegalValue.hpp"
 #include "api.ListIterator.hpp"
 
-namespace global
+namespace local
 {
     namespace api
     {

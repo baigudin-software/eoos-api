@@ -19,7 +19,7 @@
 #include "api.Toggle.hpp"
 #include "api.Heap.hpp"
 
-namespace global
+namespace local
 {
     namespace api
     {

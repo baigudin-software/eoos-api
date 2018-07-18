@@ -10,7 +10,7 @@
 
 #include "api.Object.hpp" 
 
-namespace global
+namespace local
 {
     namespace api
     {

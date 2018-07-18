@@ -12,7 +12,7 @@
 #include "api.Task.hpp"
 #include "api.ProcessorRegisters.hpp"
 
-namespace global
+namespace local
 {
     namespace api
     {
