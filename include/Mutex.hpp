@@ -12,7 +12,7 @@
 #include "api.Mutex.hpp"
 #include "System.hpp"
 
-namespace global
+namespace local
 {
     class Mutex : public Object<>, public api::Mutex
     {

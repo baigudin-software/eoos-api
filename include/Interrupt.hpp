@@ -13,7 +13,7 @@
 #include "api.Task.hpp"
 #include "System.hpp"
 
-namespace global
+namespace local
 {
     class Interrupt : public Object<>, public api::Interrupt
     {

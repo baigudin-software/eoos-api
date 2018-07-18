@@ -11,7 +11,7 @@
 #include "api.Object.hpp"
 #include "Allocator.hpp"
 
-namespace global
+namespace local
 {
     /** 
      * Primary template implementation.

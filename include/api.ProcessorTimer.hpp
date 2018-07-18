@@ -10,7 +10,7 @@
 
 #include "api.Timer.hpp"
 
-namespace global
+namespace local
 {
     namespace api
     {

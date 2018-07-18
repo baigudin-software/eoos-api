@@ -12,7 +12,7 @@
 #include "api.Semaphore.hpp"
 #include "System.hpp"
 
-namespace global
+namespace local
 {
     class Semaphore : public Object<>, public api::Semaphore
     {

@@ -10,7 +10,7 @@
 
 #include "system.System.hpp"
 
-namespace global
+namespace local
 {
   class System
   {
