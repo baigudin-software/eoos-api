@@ -46,7 +46,7 @@ namespace local
          */    
         virtual bool isConstructed() const = 0;        
     
-        #ifdef NO_STRICT_MISRA_RULES
+        #ifdef EOOS_NO_STRICT_MISRA_RULES
       
         /** 
          * Operator new.
@@ -81,7 +81,7 @@ namespace local
             A::free(ptr);
         }
         
-        #endif // NO_STRICT_MISRA_RULES
+        #endif // EOOS_NO_STRICT_MISRA_RULES
     
     protected:
     

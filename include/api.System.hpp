@@ -9,7 +9,17 @@
 #define API_SYSTEM_HPP_
 
 #include "api.Object.hpp"
-#include "api.Kernel.hpp"
+#include "api.Heap.hpp"
+#include "api.Interrupt.hpp"
+#include "api.Task.hpp"
+
+#include "api.Runtime.hpp"
+#include "api.Value.hpp"
+#include "api.Scheduler.hpp"
+#include "api.Mutex.hpp"
+#include "api.Semaphore.hpp"
+#include "api.Toggle.hpp"
+
 
 namespace local
 {
@@ -39,6 +49,15 @@ namespace local
              */
             virtual int64 getTime() const = 0;
             
+            /**
+             * Creates a new interrupt resource.
+             *
+             * @param handler - user class which implements an interrupt handler interface.
+             * @param source  - available interrupt source number.
+             * @return a new interrupt resource, or NULL if an error has been occurred.
+             */
+            virtual api::Interrupt* createInterrupt(api::Task& handler, int32 source) = 0;
+
             /**
              * Terminates the operating system execution.
              */
