@@ -21,9 +21,10 @@ namespace local
      * NULL definition until C++11.
      */            
     #else
+    #ifndef NULL
     typedef signed int nullptr_t;
     static const nullptr_t NULL = 0;
-    
+    #endif // NULL
     #endif // __cplusplus
 
     // LP32 or 2/4/4 (int is 16-bit, long and pointer are 32-bit)

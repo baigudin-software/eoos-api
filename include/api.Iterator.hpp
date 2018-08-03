@@ -35,7 +35,7 @@ namespace local
              *
              * @return reference to element.
              */      
-            virtual const T& getNext() const = 0;
+            virtual T& getNext() const = 0;
             
             /**
              * Tests if this iteration may return a next element.

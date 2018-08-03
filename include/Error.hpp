@@ -33,12 +33,17 @@ namespace local
         ERROR_USER_TERMINATION = 3,
         
         /**
-         * An undefined error has been occurred.
-         */  
-        ERROR_UNDEFINED = 4,
-        
+         * Error of searching of a resource.
+         */
+        ERROR_RESOURCE_NOT_FOUND = 4,
+
         /**
          * An undefined error has been occurred.
+         */  
+        ERROR_UNDEFINED = 127,
+        
+        /**
+         * The last unused error code.
          */  
         ERROR_LAST = 128          
         

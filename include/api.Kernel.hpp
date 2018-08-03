@@ -61,11 +61,11 @@ namespace local
              */      
             virtual api::Scheduler& getScheduler() const = 0;        
             
-            /** 
+            /**
              * Returns a global interrupt controller.
              *
              * @return a global interrupt controller.
-             */      
+             */
             virtual api::Toggle& getGlobalInterrupt() const = 0;
     
             /** 

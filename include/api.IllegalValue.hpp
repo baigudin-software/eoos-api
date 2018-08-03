@@ -35,7 +35,7 @@ namespace local
              *
              * @return illegal element.
              */
-            virtual const T& getIllegal() const = 0;
+            virtual T& getIllegal() const = 0;
             
             /**
              * Sets illegal element which will be returned as error value.

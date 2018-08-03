@@ -105,21 +105,21 @@ namespace local
              * @param index - position in this container.  
              * @return indexed element of this container.
              */
-            virtual const T& get(int32 index) const = 0;
+            virtual T& get(int32 index) const = 0;
             
             /**
              * Returns the first element in this container.
              *
              * @return the first element in this container.
              */
-            virtual const T& getFirst() const = 0;
+            virtual T& getFirst() const = 0;
             
             /**
              * Returns the last element in this container.
              *
              * @return the last element in this container.
              */
-            virtual const T& getLast() const = 0;
+            virtual T& getLast() const = 0;
             
             /**
              * Returns a list iterator of this container elements.

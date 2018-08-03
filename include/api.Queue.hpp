@@ -62,7 +62,7 @@ namespace local
              *
              * @return the head element.
              */
-            virtual const T& peek() const = 0;
+            virtual T& peek() const = 0;
         
         };
     }

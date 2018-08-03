@@ -14,9 +14,10 @@
 
 namespace local
 {
-    class Thread : public Object<>, public api::Thread, public api::Task
+    class Thread : public ::local::Object<>, public api::Thread, public api::Task
     {
-        typedef Object<> Parent;
+        typedef Thread            Self;
+        typedef ::local::Object<> Parent;
       
     public:
     
@@ -24,9 +25,9 @@ namespace local
          * Constructor.
          */
         Thread() : Parent(),
-            isConstructed_ (getConstruct()),
-            thread_        (NULL){
-            setConstruct( construct(*this) );
+            thread_ (NULL){
+            bool const isConstructed = construct(*this);
+            setConstructed( isConstructed );
         }        
     
         /** 
@@ -35,9 +36,9 @@ namespace local
          * @param task - an task interface whose main method is invoked when this thread is started.
          */
         Thread(api::Task& task) : Parent(),
-            isConstructed_ (getConstruct()),
-            thread_        (NULL){
-            setConstruct( construct(task) );
+            thread_    (NULL){
+            bool const isConstructed = construct(task);
+            setConstructed( isConstructed );
         }
         
         /** 
@@ -49,20 +50,36 @@ namespace local
         }
         
         /**
-         * The method with self context which will be executed by default.
-         */  
-        virtual void main() = 0;    
-        
-        /**
          * Tests if this object has been constructed.
          *
          * @return true if object has been constructed successfully.
          */    
         virtual bool isConstructed() const
         {
-            return isConstructed_;
-        } 
-        
+            return Parent::isConstructed();
+        }
+
+        /**
+         * The method with self context which will be executed by default.
+         *
+         * @return zero, or error code if an error has been occurred.
+         */
+        virtual int32 start()
+        {
+            return 0;
+        }
+
+        /**
+         * Causes this thread to begin execution.
+         */
+        virtual void execute()
+        {
+            if( Self::isConstructed() )
+            {
+                thread_->execute();
+            }
+        }
+
         /**
          * Returns size of task stack.
          *
@@ -74,22 +91,11 @@ namespace local
         }
         
         /**
-         * Causes this thread to begin execution.
-         */
-        virtual void start()
-        {
-            if( isConstructed_ )
-            {
-                thread_->start();    
-            }
-        }
-        
-        /**
          * Waits for this thread to die.
          */  
         virtual void join()
         {
-            if( isConstructed_ )
+            if( Self::isConstructed() )
             {
                 thread_->join();
             }
@@ -101,9 +107,9 @@ namespace local
          * @param millis - a time to sleep in milliseconds.
          * @param nanos  - an additional nanoseconds to sleep.
          */  
-        virtual void sleep(const int64 millis, const int32 nanos=0)
+        virtual void sleep(int64 const millis, int32 const nanos = 0)
         {
-            if( isConstructed_ )
+            if( Self::isConstructed() )
             {
                 thread_->sleep(millis, nanos);    
             }
@@ -116,7 +122,7 @@ namespace local
          */  
         virtual void block(api::Resource& res)
         {
-            if( isConstructed_ )
+            if( Self::isConstructed() )
             {
                 return thread_->block(res);    
             }
@@ -129,7 +135,7 @@ namespace local
          */
         virtual int64 getId() const
         {
-            if( isConstructed_ ) 
+            if( Self::isConstructed() )
             {
                 return thread_->getId();
             }
@@ -146,7 +152,7 @@ namespace local
          */  
         virtual api::Thread::Status getStatus() const
         {
-            if( isConstructed_ ) 
+            if( Self::isConstructed() )
             {
                 return thread_->getStatus();    
             }
@@ -163,7 +169,7 @@ namespace local
          */  
         virtual int32 getPriority() const
         {
-            if( isConstructed_ ) 
+            if( Self::isConstructed() )
             {
                 return thread_->getPriority();    
             }
@@ -178,9 +184,9 @@ namespace local
          *
          * @param priority - number of priority in range [MIN_PRIORITY, MAX_PRIORITY], or LOCK_PRIORITY.
          */  
-        virtual void setPriority(const int32 priority)
+        virtual void setPriority(int32 const priority)
         {
-            if( isConstructed_ )
+            if( Self::isConstructed() )
             {
                 thread_->setPriority(priority);
             }
@@ -193,7 +199,7 @@ namespace local
          */
         static api::Thread& getCurrent()
         {
-            return System::call().getKernel().getScheduler().getCurrentThread();
+            return System::call().getScheduler().getCurrentThread();
         }        
         
         /**
@@ -202,7 +208,7 @@ namespace local
          * @param millis - a time to sleep in milliseconds.
          * @param nanos  - an additional nanoseconds to sleep.
          */  
-        static void sleepCurrent(const int64 millis, const int32 nanos=0)
+        static void sleepCurrent(int64 const millis, int32 const nanos = 0)
         {
             getCurrent().sleep(millis, nanos);
         }        
@@ -212,7 +218,7 @@ namespace local
          */
         static void yield()
         {
-            return System::call().getKernel().getScheduler().yield();     
+            return System::call().getScheduler().yield();
         }
         
         /** 
@@ -222,7 +228,7 @@ namespace local
          */ 
         static api::Toggle& toggle()
         {
-            return System::call().getKernel().getScheduler().toggle();    
+            return System::call().getScheduler().toggle();
         }
             
     private:
@@ -235,12 +241,16 @@ namespace local
          */
         bool construct(api::Task& task)
         {
-            if( not isConstructed_ ) 
+            bool res = Self::isConstructed();
+            if( res == true )
             {
-                return false; 
+                thread_ = System::call().getScheduler().createThread(task);
+                if(thread_ == NULL || not thread_->isConstructed() )
+                {
+                    res = false;
+                }
             }
-            thread_ = System::call().getKernel().getScheduler().createThread(task);
-            return thread_ == NULL || not thread_->isConstructed() ? false : true; 
+            return res;
         }        
                 
         /**
@@ -257,15 +267,10 @@ namespace local
          * @return reference to this object.     
          */
         Thread& operator =(const Thread& obj);
-        
+
         /** 
-         * The root object constructed flag.
-         */  
-        const bool& isConstructed_;
-        
-        /** 
-         * A kernel scheduler thread.
-         */          
+         * A system scheduler thread.
+         */
         api::Thread* thread_;
     
     };

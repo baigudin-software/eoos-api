@@ -52,7 +52,7 @@ namespace local
              *
              * @return reference to element.
              */      
-            virtual const T& getPrevious() const = 0;
+            virtual T& getPrevious() const = 0;
             
             /**
              * Tests if this iteration may return a previous element.

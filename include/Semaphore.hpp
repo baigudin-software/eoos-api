@@ -14,9 +14,10 @@
 
 namespace local
 {
-    class Semaphore : public Object<>, public api::Semaphore
+    class Semaphore : public ::local::Object<>, public api::Semaphore
     {
-        typedef Object<> Parent;
+        typedef Semaphore         Self;
+        typedef ::local::Object<> Parent;
     
     public:
     
@@ -26,9 +27,9 @@ namespace local
          * @param permits - the initial number of permits available.   
          */      
         Semaphore(const int32 permits) : Parent(),
-            isConstructed_ (getConstruct()),
-            semaphore_     (NULL){
-            setConstruct( construct(permits, NULL) ); 
+            semaphore_ (NULL){
+            bool const isConstructed = construct(permits, NULL);
+            setConstructed( isConstructed );
         }    
         
         /** 
@@ -38,9 +39,9 @@ namespace local
          * @param isFair  - true if this semaphore will guarantee FIFO granting of permits under contention.
          */      
         Semaphore(const int32 permits, const bool isFair) : Parent(),
-            isConstructed_ (getConstruct()),
-            semaphore_     (NULL){
-            setConstruct( construct(permits, &isFair) );   
+            semaphore_ (NULL){
+            bool const isConstructed = construct(permits, &isFair);
+            setConstructed( isConstructed );
         }
     
         /** 
@@ -58,7 +59,7 @@ namespace local
          */    
         virtual bool isConstructed() const
         {
-            return isConstructed_;
+            return Parent::isConstructed();
         }        
         
         /**
@@ -68,13 +69,13 @@ namespace local
          */  
         virtual bool acquire()
         {
-            if( isConstructed_ )
+            if( Self::isConstructed() )
             {
                 return semaphore_->acquire();    
             }
             else
             {
-                 return false;
+                return false;
             }
         }        
         
@@ -84,9 +85,9 @@ namespace local
          * @param permits - the number of permits to acquire.
          * @return true if the semaphore is acquired successfully.
          */  
-        virtual bool acquire(const int32 permits)
+        virtual bool acquire(int32 const permits)
         {
-            if( isConstructed_ )
+            if( Self::isConstructed() )
             {
                 return semaphore_->acquire(permits);        
             }
@@ -101,7 +102,7 @@ namespace local
          */
         virtual void release()
         {
-            if( isConstructed_ )
+            if( Self::isConstructed() )
             {
                 semaphore_->release();        
             }
@@ -112,9 +113,9 @@ namespace local
          *
          * @param permits - the number of permits to release.
          */  
-        virtual void release(const int32 permits)
+        virtual void release(int32 const permits)
         {
-            if( isConstructed_ )
+            if( Self::isConstructed() )
             {
                 semaphore_->release(permits);            
             }
@@ -127,7 +128,7 @@ namespace local
          */  
         virtual bool isFair() const
         {
-            if( isConstructed_ )
+            if( Self::isConstructed() )
             {
                 return semaphore_->isFair(); 
             }
@@ -142,9 +143,9 @@ namespace local
          *
          * @return true if this resource is blocked.
          */ 
-        virtual bool isBlocked()
+        virtual bool isBlocked() const
         {
-            if( isConstructed_ )
+            if( Self::isConstructed() )
             {
                 return semaphore_->isBlocked();        
             }
@@ -163,20 +164,20 @@ namespace local
          * @param isFair  - true if this semaphore will guarantee FIFO granting of permits under contention.     
          * @return true if object has been constructed successfully.   
          */
-        bool construct(const int32 permits, const bool* isFair)
+        bool construct(const int32 permits, const bool* const isFair)
         {
-            if( not isConstructed_ ) 
+            bool res = Self::isConstructed();
+            if( res == true )
             {
                 return false;
             }
-            api::Kernel& kernel = System::call().getKernel();
             if( isFair == NULL )
             {
-                semaphore_ = kernel.createSemaphore(permits);
+                semaphore_ = System::call().createSemaphore(permits, false);
             }
             else
             {
-                semaphore_ = kernel.createSemaphore(permits, *isFair);
+                semaphore_ = System::call().createSemaphore(permits, *isFair);
             }
             return semaphore_ != NULL ? semaphore_->isConstructed() : false;        
         }        
@@ -195,11 +196,6 @@ namespace local
          * @return reference to this object.     
          */
         Semaphore& operator =(const Semaphore& obj);
-        
-        /** 
-         * The root object constructed flag.
-         */  
-        const bool& isConstructed_;    
       
         /**
          * System semaphore interface.

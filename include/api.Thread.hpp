@@ -62,7 +62,7 @@ namespace local
             /**
              * Causes this thread to begin execution.
              */
-            virtual void start() = 0;       
+            virtual void execute() = 0;
             
             /**
              * Waits for this thread to die.
@@ -75,7 +75,7 @@ namespace local
              * @param millis - a time to sleep in milliseconds.
              * @param nanos  - an additional nanoseconds to sleep.
              */  
-            virtual void sleep(int64 millis, int32 nanos=0) = 0;
+            virtual void sleep(int64 millis, int32 nanos = 0) = 0;
             
             /**
              * Blocks this thread on given resource and yields the task.

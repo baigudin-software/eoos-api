@@ -46,7 +46,7 @@ namespace local
              *
              * @return the set value.
              */      
-            virtual const T& getValue() const = 0;
+            virtual T& getValue() const = 0;
     
         };
     }

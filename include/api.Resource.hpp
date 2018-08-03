@@ -29,7 +29,7 @@ namespace local
              *
              * @return true if this resource is blocked.
              */ 
-            virtual bool isBlocked() = 0;
+            virtual bool isBlocked() const = 0;
     
         };
     }

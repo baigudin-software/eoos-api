@@ -40,7 +40,7 @@ namespace local
              *
              * @return executing thread.
              */
-            virtual api::Thread& getCurrentThread() = 0;
+            virtual api::Thread& getCurrentThread() const = 0;
             
             /**
              * Yields to next thread.

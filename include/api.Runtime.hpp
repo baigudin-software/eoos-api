@@ -37,7 +37,7 @@ namespace local
              *
              * @param status - a termination status.
              */    
-            virtual void terminate(int32 status=0) = 0;
+            virtual void exit(int32 status = 0) = 0;
     
         };
     }

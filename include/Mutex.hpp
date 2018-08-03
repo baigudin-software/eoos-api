@@ -14,9 +14,10 @@
 
 namespace local
 {
-    class Mutex : public Object<>, public api::Mutex
+    class Mutex : public ::local::Object<>, public api::Mutex
     {
-        typedef Object<> Parent;
+        typedef Mutex             Self;
+        typedef ::local::Object<> Parent;
     
     public:
     
@@ -24,9 +25,9 @@ namespace local
          * Constructor.
          */    
         Mutex() : Parent(),
-            isConstructed_ (getConstruct()),
             mutex_         (NULL){
-            setConstruct( construct() ); 
+            bool const isConstructed = construct();
+            setConstructed( isConstructed );
         }    
         
         /** 
@@ -44,8 +45,8 @@ namespace local
          */    
         virtual bool isConstructed() const
         {
-            return isConstructed_;  
-        }        
+            return Parent::isConstructed();
+        }
         
         /**
          * Locks the mutex.
@@ -54,7 +55,7 @@ namespace local
          */      
         virtual bool lock()
         {
-            if( isConstructed_ ) 
+            if( Self::isConstructed() )
             {
                 return mutex_->lock();            
             }
@@ -69,7 +70,7 @@ namespace local
          */      
         virtual void unlock()
         {
-            if( isConstructed_ ) 
+            if( Self::isConstructed() )
             {
                 mutex_->unlock();            
             }
@@ -80,9 +81,9 @@ namespace local
          *
          * @return true if this resource is blocked.
          */ 
-        virtual bool isBlocked()
+        virtual bool isBlocked() const
         {
-            if( isConstructed_ ) 
+            if( Self::isConstructed() )
             {
                 return mutex_->isBlocked();            
             }
@@ -101,12 +102,16 @@ namespace local
          */
         bool construct()
         {
-            if( not isConstructed_ ) 
+            bool res = Self::isConstructed();
+            if( res == true )
             {
-                return false;
+                mutex_ = System::call().createMutex();
+                if(mutex_ == NULL || not mutex_->isConstructed() )
+                {
+                    res = false;
+                }
             }
-            mutex_ = System::call().getKernel().createMutex();
-            return mutex_ != NULL ? mutex_->isConstructed() : false;        
+            return res;
         }
     
         /**
@@ -123,11 +128,6 @@ namespace local
          * @return reference to this object.     
          */
         Mutex& operator =(const Mutex& obj);
-        
-        /** 
-         * The root object constructed flag.
-         */  
-        const bool& isConstructed_;    
       
         /**
          * System mutex interface.
