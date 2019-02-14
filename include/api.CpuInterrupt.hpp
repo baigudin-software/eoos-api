@@ -2,21 +2,21 @@
  * A central processing unit interrupt resource interface.
  * 
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2016-2017, Embedded Team, Sergey Baigudin
+ * @copyright 2016-2018, Embedded Team, Sergey Baigudin
  * @license   http://embedded.team/license/
  */
-#ifndef API_PROCESSOR_INTERRUPT_HPP_
-#define API_PROCESSOR_INTERRUPT_HPP_
+#ifndef API_CPU_INTERRUPT_HPP_
+#define API_CPU_INTERRUPT_HPP_
 
 #include "api.Interrupt.hpp"
 #include "api.Task.hpp"
-#include "api.ProcessorRegisters.hpp"
+#include "api.CpuRegisters.hpp"
 
 namespace local
 {
     namespace api
     {
-        class ProcessorInterrupt : public api::Interrupt
+        class CpuInterrupt : public api::Interrupt
         {
     
         public:
@@ -24,7 +24,7 @@ namespace local
             /** 
              * Destructor.
              */                               
-            virtual ~ProcessorInterrupt(){}
+            virtual ~CpuInterrupt(){}
             
             /**
              * Sets interrupt source handler.
@@ -49,7 +49,7 @@ namespace local
              *
              * @param reg - a new registers context.
              */
-            virtual void setContext(api::ProcessorRegisters& reg) = 0;
+            virtual void setContext(api::CpuRegisters& reg) = 0;
     
             /**
              * Restores registers context for storing to the default.
@@ -63,4 +63,4 @@ namespace local
         };
     }
 }
-#endif // API_PROCESSOR_INTERRUPT_HPP_
+#endif // API_CPU_INTERRUPT_HPP_

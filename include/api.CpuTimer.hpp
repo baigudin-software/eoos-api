@@ -2,11 +2,11 @@
  * A central processing unit timer resource interface.
  * 
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2016-2017, Embedded Team, Sergey Baigudin
+ * @copyright 2016-2018, Embedded Team, Sergey Baigudin
  * @license   http://embedded.team/license/
  */
-#ifndef API_PROCESSOR_TIMER_HPP_
-#define API_PROCESSOR_TIMER_HPP_
+#ifndef API_CPU_TIMER_HPP_
+#define API_CPU_TIMER_HPP_
 
 #include "api.Timer.hpp"
 
@@ -14,7 +14,7 @@ namespace local
 {
     namespace api
     {
-        class ProcessorTimer : public api::Timer
+        class CpuTimer : public api::Timer
         {
         
         public:
@@ -22,7 +22,7 @@ namespace local
             /** 
              * Destructor.
              */                               
-            virtual ~ProcessorTimer(){}
+            virtual ~CpuTimer(){}
             
             /**
              * Returns number of timer digits.
@@ -48,4 +48,4 @@ namespace local
         };
     }
 }
-#endif // API_PROCESSOR_TIMER_HPP_
+#endif // API_CPU_TIMER_HPP_

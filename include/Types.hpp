@@ -8,24 +8,28 @@
 #ifndef TYPES_HPP_
 #define TYPES_HPP_
 
+#include "Definitions.hpp"
+
 namespace local
 {
+    #ifndef NULL
+	
     /**
      * NULL definition since C++11.
-     */    
-    #if __cplusplus >= 201103L  
-    typedef decltype(nullptr)  nullptr_t;                
+     */
+    #if __cplusplus >= 201103L
+    typedef decltype(nullptr)  nullptr_t;
     static const nullptr_t NULL = nullptr;
 
     /**
      * NULL definition until C++11.
-     */            
+     */
     #else
-    #ifndef NULL
     typedef signed int nullptr_t;
     static const nullptr_t NULL = 0;
-    #endif // NULL
     #endif // __cplusplus
+
+    #endif // NULL
 
     // LP32 or 2/4/4 (int is 16-bit, long and pointer are 32-bit)
     #if defined(EOOS_TYPE_WIDTH_LP32)
@@ -35,6 +39,7 @@ namespace local
     typedef unsigned long       uint32;
     typedef signed   long long  int64;
     typedef unsigned long long  uint64;
+    typedef unsigned int        intptr;
     // ILP32 or 4/4/4 (int, long, and pointer are 32-bit)
     #elif defined(EOOS_TYPE_WIDTH_ILP32)
     typedef signed   short      int16;
@@ -43,6 +48,7 @@ namespace local
     typedef unsigned int        uint32;
     typedef signed   long long  int64;
     typedef unsigned long long  uint64;
+    typedef unsigned int        intptr;
     // LLP64 or 4/4/8 (int and long are 32-bit, pointer is 64-bit)
     #elif defined(EOOS_TYPE_WIDTH_LLP64)
     typedef signed   short      int16;
@@ -51,6 +57,7 @@ namespace local
     typedef unsigned int        uint32;
     typedef signed   long long  int64;
     typedef unsigned long long  uint64;
+    typedef unsigned long long  intptr;
     // LP64 or 4/8/8 (int is 32-bit, long and pointer are 64-bit)
     #elif defined(EOOS_TYPE_WIDTH_LP64)
     typedef signed   short      int16;
@@ -58,7 +65,7 @@ namespace local
     typedef signed   int        int32;
     typedef unsigned int        uint32;
     typedef signed   long       int64;
-    typedef unsigned long       uint64;
+    typedef unsigned long long  intptr;
     // C++ standard
     #else
     typedef signed   short      int16;
@@ -67,6 +74,7 @@ namespace local
     typedef unsigned int        uint32;
     typedef signed   long long  int64;
     typedef unsigned long long  uint64;
+    typedef unsigned int        intptr;
     #endif
     // Byte types for byte addressing
     typedef signed char         int8;

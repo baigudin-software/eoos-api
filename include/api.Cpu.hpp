@@ -9,6 +9,10 @@
 #define API_CPU_HPP_
 
 #include "api.Object.hpp"
+#include "api.Task.hpp"
+#include "api.CpuPll.hpp"
+#include "api.CpuInterrupt.hpp"
+#include "api.CpuTimer.hpp"
 
 namespace local
 {
@@ -35,6 +39,37 @@ namespace local
              * @return a CPU name, or NULL if an error has been occurred.
              */      
             virtual const char* getName() const = 0;
+
+            /**
+             * Returns an ID of CPU core executing this program code.
+             *
+             * @return a CPU ID, or -1 if an error has been occurred.
+             */
+            virtual int32 getCoreId() const = 0;
+
+            /**
+             * Creates a new HW PLL resource.
+             *
+             * @return a new PLL resource, or NULL if an error has been occurred.
+             */
+            virtual api::CpuPll* createPll() = 0;
+
+            /**
+             * Creates a new HW interrupt resource.
+             *
+             * @param handler - user class which implements an interrupt handler interface.
+             * @param source  - available interrupt source number.
+             * @return a new interrupt resource, or NULL if an error has been occurred.
+             */
+            virtual api::CpuInterrupt* createInterrupt(api::Task& handler, int32 source) = 0;
+
+            /**
+             * Creates a new HW timer resource.
+             *
+             * @param index - an available timer index.
+             * @return a new timer resource, or NULL if an error has been occurred.
+             */
+            virtual api::CpuTimer* createTimer(int32 index) = 0;
         
         };
     }

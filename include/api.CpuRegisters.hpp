@@ -2,11 +2,11 @@
  * A central processing unit registers resource interface.
  * 
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2016-2017, Embedded Team, Sergey Baigudin
+ * @copyright 2016-2018, Embedded Team, Sergey Baigudin
  * @license   http://embedded.team/license/
  */
-#ifndef API_PROCESSOR_REGISTERS_HPP_
-#define API_PROCESSOR_REGISTERS_HPP_
+#ifndef API_CPU_REGISTERS_HPP_
+#define API_CPU_REGISTERS_HPP_
 
 #include "api.Object.hpp"
 #include "api.Stack.hpp"
@@ -15,7 +15,7 @@ namespace local
 {
     namespace api
     {
-        class ProcessorRegisters : public api::Object
+        class CpuRegisters : public api::Object
         {
           
         public:
@@ -23,7 +23,7 @@ namespace local
             /** 
              * Destructor.
              */    
-            virtual ~ProcessorRegisters(){}
+            virtual ~CpuRegisters(){}
             
             /** 
              * Initializes the CPU registers.
@@ -46,4 +46,4 @@ namespace local
         };
     }
 }
-#endif // API_PROCESSOR_REGISTERS_HPP_
+#endif // API_CPU_REGISTERS_HPP_
