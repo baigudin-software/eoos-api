@@ -36,6 +36,7 @@ namespace local
     #endif // NULL
 
     #if defined (EOOS_TYPE_STDLIB)
+    // C++ Standard Library types
     typedef ::std::int16_t      int16;
     typedef ::std::uint16_t     uint16;
     typedef ::std::int32_t      int32;
