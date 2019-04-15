@@ -2,7 +2,7 @@
  * Global definitions.
  * 
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2018, Embedded Team, Sergey Baigudin
+ * @copyright 2018-2019, Embedded Team, Sergey Baigudin
  * @license   http://embedded.team/license/
  */
 #ifndef DEFINITIONS_HPP_
@@ -14,6 +14,9 @@
  * Please, chose one of width in bits of the below Data Models.
  * No Data Model selected means C++ standard width in bits.
  */
+// C++ Standard Library types usage
+// #define EOOS_TYPE_STDLIB
+
 // LP32 or 2/4/4 (int is 16-bit, long and pointer are 32-bit)
 // #define EOOS_TYPE_WIDTH_LP32
 
