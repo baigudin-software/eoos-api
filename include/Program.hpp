@@ -1,6 +1,6 @@
-/** 
+/**
  * Entry point to an operating system main program.
- * 
+ *
  * @author    Sergey Baigudin, sergey@baigudin.software
  * @copyright 2014-2018, Embedded Team, Sergey Baigudin
  * @license   http://embedded.team/license/
@@ -16,7 +16,7 @@ namespace local
     {
 
     public:
-  
+
         /**
          * Starts executing an operating system main program.
          *
@@ -27,10 +27,11 @@ namespace local
         /**
          * Starts executing an operating system main program.
          *
-         * @param arg - application arguments.
+         * @param argc - The number of arguments passed to the program.
+         * @param argv - An array of c-string of arguments where the last one - argc + 1 is null.
          * @return zero, or error code if an error has been occurred.
          */
-        static int32 start(void* args);
+        static int32 start(int32 argc, char* argv[]);
 
     };
 }

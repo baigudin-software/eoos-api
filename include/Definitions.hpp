@@ -1,6 +1,6 @@
-/** 
+/**
  * Global definitions.
- * 
+ *
  * @author    Sergey Baigudin, sergey@baigudin.software
  * @copyright 2018-2019, Embedded Team, Sergey Baigudin
  * @license   http://embedded.team/license/

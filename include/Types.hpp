@@ -1,6 +1,6 @@
-/** 
+/**
  * Common type definitions.
- * 
+ *
  * @author    Sergey Baigudin, sergey@baigudin.software
  * @copyright 2014-2019, Embedded Team, Sergey Baigudin
  * @license   http://embedded.team/license/
@@ -17,7 +17,7 @@
 namespace local
 {
     #ifndef NULL
-	
+
     /**
      * NULL definition since C++11.
      */
