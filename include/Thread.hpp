@@ -33,7 +33,7 @@ namespace local
         /**
          * Constructor.
          *
-         * @param task - an task interface whose main method is invoked when this thread is started.
+         * @param task - a task interface whose start function is invoked when this thread is started.
          */
         Thread(api::Task& task) : Parent(),
             thread_    (NULL){
