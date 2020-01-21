@@ -2,7 +2,7 @@
  * Output stream interface.
  *
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2017-2018, Embedded Team, Sergey Baigudin
+ * @copyright 2017-2018, Sergey Baigudin, Baigudin Software
  * @license   http://embedded.team/license/
  */
 #ifndef API_OUT_STREAM_HPP_

@@ -1,8 +1,8 @@
-/** 
+/**
  * Resource interface.
- * 
+ *
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2015, Embedded Team, Sergey Baigudin
+ * @copyright 2015, Sergey Baigudin, Baigudin Software
  * @license   http://embedded.team/license/
  */
 #ifndef API_RESOURCE_HPP_
@@ -16,21 +16,21 @@ namespace local
     {
         class Resource : public api::Object
         {
-    
+
         public:
-        
-            /** 
+
+            /**
              * Destructor.
              */
             virtual ~Resource(){}
-            
-            /** 
+
+            /**
              * Tests if this resource is blocked.
              *
              * @return true if this resource is blocked.
-             */ 
+             */
             virtual bool isBlocked() const = 0;
-    
+
         };
     }
 }

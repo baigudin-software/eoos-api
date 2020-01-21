@@ -1,8 +1,8 @@
-/** 
- * Iterable interface. 
- * 
+/**
+ * Iterable interface.
+ *
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2016, Embedded Team, Sergey Baigudin
+ * @copyright 2016, Sergey Baigudin, Baigudin Software
  * @license   http://embedded.team/license/
  */
 #ifndef API_ITERABLE_HPP_
@@ -15,32 +15,32 @@ namespace local
 {
     namespace api
     {
-        /** 
+        /**
          * Primary template implementation.
          *
          * @param T - data type of element.
-         */ 
+         */
         template <typename T>
         class Iterable : public api::Object
         {
-        
+
         public:
-        
+
             /**
              * Destructor.
              */
             virtual ~Iterable(){}
-        
+
             /**
              * Returns an iterator of elements.
              *
-             * NOTE: The delete operator must be called for returned value when 
+             * NOTE: The delete operator must be called for returned value when
              * the iterating of a collection has been completed.
              *
              * @return pointer to new iterator.
              */
             virtual api::Iterator<T>* getIterator() = 0;
-    
+
         };
     }
 }

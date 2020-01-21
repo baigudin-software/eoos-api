@@ -2,7 +2,7 @@
  * Mutex class.
  *
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2015-2017, Embedded Team, Sergey Baigudin
+ * @copyright 2015-2017, Sergey Baigudin, Baigudin Software
  * @license   http://embedded.team/license/
  */
 #ifndef MUTEX_HPP_

@@ -2,7 +2,7 @@
  * Common type definitions.
  *
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2014-2019, Embedded Team, Sergey Baigudin
+ * @copyright 2014-2019, Sergey Baigudin, Baigudin Software
  * @license   http://embedded.team/license/
  */
 #ifndef TYPES_HPP_

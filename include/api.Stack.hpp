@@ -1,8 +1,8 @@
 /**
  * Stack interface.
- * 
+ *
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2016, Embedded Team, Sergey Baigudin
+ * @copyright 2016, Sergey Baigudin, Baigudin Software
  * @license   http://embedded.team/license/
  */
 #ifndef API_STACK_HPP_
@@ -15,17 +15,17 @@ namespace local
 {
     namespace api
     {
-        /** 
+        /**
          * Primary template implementation.
          *
          * @param T - data type of default stack element.
-         */ 
-        template <typename T>  
+         */
+        template <typename T>
         class Stack : public api::Collection<T>, public api::IllegalValue<T>
-        { 
-        
+        {
+
         public:
-        
+
             /**
              * Stack operations.
              *
@@ -41,50 +41,50 @@ namespace local
                  * Full Descending.
                  */
                 FD = 0,
-                
+
                 /**
                  * Empty Descending.
                  */
                 ED = 1,
-                
+
                 /**
                  * Full Ascending.
                  */
                 FA = 2,
-                
+
                 /**
                  * Empty Ascending.
                  */
                 EA = 3
-    
+
             };
-            
-            /** 
+
+            /**
              * Destructor.
-             */    
+             */
             virtual ~Stack(){}
-            
+
             /**
              * Tests if this object has been constructed.
              *
              * @return true if object has been constructed successfully.
-             */    
-            virtual bool isConstructed() const = 0;        
-            
-            /** 
+             */
+            virtual bool isConstructed() const = 0;
+
+            /**
              * Returns an initial top of stack.
              *
              * @return a memory address to top of this stack when object was built.
-             */    
+             */
             virtual const T* getTos() = 0;
-            
-            /** 
+
+            /**
              * Returns an type of stack operation.
              *
              * @return the stack operation.
-             */    
+             */
             virtual Operation getType() const = 0;
-    
+
         };
     }
 }

@@ -1,8 +1,8 @@
-/** 
+/**
  * A central processing unit phase-locked loop controller resource interface.
- * 
+ *
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2017-2018, Embedded Team, Sergey Baigudin
+ * @copyright 2017-2018, Sergey Baigudin, Baigudin Software
  * @license   http://embedded.team/license/
  */
 #ifndef API_CPU_PLL_HPP_
@@ -16,28 +16,28 @@ namespace local
     {
         class CpuPll : public api::Object
         {
-    
+
         public:
-        
+
             /**
              * Destructor.
-             */                               
+             */
             virtual ~CpuPll(){}
-    
+
             /**
              * Returns source clock of CPU oscillator in Hz.
              *
-             * @return frequency value in Hz.         
-             */      
+             * @return frequency value in Hz.
+             */
             virtual int64 getSourceClock() = 0;
-        
+
             /**
              * Returns source clock of CPU in Hz.
              *
              * @return frequency value in Hz.
-             */  
+             */
             virtual int64 getCpuClock() = 0;
-    
+
         };
     }
 }

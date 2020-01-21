@@ -2,7 +2,7 @@
  * Semaphore class.
  *
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2014-2017, Embedded Team, Sergey Baigudin
+ * @copyright 2014-2017, Sergey Baigudin, Baigudin Software
  * @license   http://embedded.team/license/
  */
 #ifndef SEMAPHORE_HPP_

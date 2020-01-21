@@ -1,8 +1,8 @@
 /**
  * Mutex interface.
- * 
+ *
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2015-2016, Embedded Team, Sergey Baigudin
+ * @copyright 2015-2016, Sergey Baigudin, Baigudin Software
  * @license   http://embedded.team/license/
  */
 #ifndef API_MUTEX_HPP_
@@ -13,29 +13,29 @@
 namespace local
 {
     namespace api
-    {  
+    {
         class Mutex : public api::Resource
         {
-    
+
         public:
-        
-            /** 
+
+            /**
              * Destructor.
              */
             virtual ~Mutex(){}
-            
+
             /**
              * Locks this mutex.
              *
              * @return true if this mutex is locked successfully.
              */
             virtual bool lock() = 0;
-            
+
             /**
              * Unlocks this mutex.
              */
-            virtual void unlock() = 0;   
-    
+            virtual void unlock() = 0;
+
         };
     }
 }
