@@ -44,7 +44,7 @@ namespace local
     typedef ::std::int64_t      int64;
     typedef ::std::uint64_t     uint64;
     typedef ::std::intptr_t     intptr;
-    typedef ::std::size_t       size_t;
+    typedef ::size_t            size_t;
     #elif defined(EOOS_TYPE_WIDTH_LP32)
     // LP32 or 2/4/4 (int is 16-bit, long and pointer are 32-bit)
     typedef signed   int        int16;
