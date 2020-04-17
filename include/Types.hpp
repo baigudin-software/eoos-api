@@ -16,24 +16,25 @@
 
 namespace local
 {
-    #ifndef NULL
 
-    /**
-     * NULL definition since C++11.
-     */
-    #if __cplusplus >= 201103L
+
+    #if EOOS_CPP_STANDARD >= 2011
     typedef decltype(nullptr)  nullptr_t;
-    static const nullptr_t NULL = nullptr;
-
-    /**
-     * NULL definition until C++11.
-     */
     #else
     typedef signed int nullptr_t;
-    static const nullptr_t NULL = 0;
     #endif // __cplusplus
 
-    #endif // NULL
+
+    #ifndef NULL
+    #if EOOS_CPP_STANDARD >= 2011
+    static const nullptr_t NULL = nullptr;
+    #else
+    static const nullptr_t NULL = 0;
+    #endif
+    #endif
+
+    // NULLPTR definition for EOOS implenemtation.
+    static const nullptr_t NULLPTR = NULL;
 
     #if defined (EOOS_TYPE_STDLIB)
     // C++ Standard Library types
@@ -43,8 +44,8 @@ namespace local
     typedef ::std::uint32_t     uint32;
     typedef ::std::int64_t      int64;
     typedef ::std::uint64_t     uint64;
-    typedef ::std::intptr_t     intptr;
-    typedef ::size_t            size_t;
+    typedef ::std::uintptr_t    intptr;
+    typedef ::std::uintptr_t    uintptr;
     #elif defined(EOOS_TYPE_WIDTH_LP32)
     // LP32 or 2/4/4 (int is 16-bit, long and pointer are 32-bit)
     typedef signed   int        int16;
@@ -53,8 +54,8 @@ namespace local
     typedef unsigned long       uint32;
     typedef signed   long long  int64;
     typedef unsigned long long  uint64;
-    typedef unsigned int        intptr;
-    typedef unsigned            size_t;
+    typedef signed   long       intptr;
+    typedef unsigned long       uintptr;
     #elif defined(EOOS_TYPE_WIDTH_ILP32)
     // ILP32 or 4/4/4 (int, long, and pointer are 32-bit)
     typedef signed   short      int16;
@@ -63,18 +64,18 @@ namespace local
     typedef unsigned int        uint32;
     typedef signed   long long  int64;
     typedef unsigned long long  uint64;
-    typedef unsigned int        intptr;
-    typedef unsigned            size_t;
+    typedef signed   int        intptr;
+    typedef unsigned int        uintptr;
     #elif defined(EOOS_TYPE_WIDTH_LLP64)
-    // ILP32 or 4/4/4 (int, long, and pointer are 32-bit)
+    // LLP64 or 4/4/8 (int and long are 32-bit, pointer is 64-bit)
     typedef signed   short      int16;
     typedef unsigned short      uint16;
     typedef signed   int        int32;
     typedef unsigned int        uint32;
     typedef signed   long long  int64;
     typedef unsigned long long  uint64;
-    typedef unsigned long long  intptr;
-    typedef unsigned            size_t;
+    typedef signed   long long  intptr;
+    typedef unsigned long long  uintptr;
     #elif defined(EOOS_TYPE_WIDTH_LP64)
     // LP64 or 4/8/8 (int is 32-bit, long and pointer are 64-bit)    )
     typedef signed   short      int16;
@@ -82,8 +83,9 @@ namespace local
     typedef signed   int        int32;
     typedef unsigned int        uint32;
     typedef signed   long       int64;
-    typedef unsigned long long  intptr;
-    typedef unsigned            size_t;
+    typedef unsigned long       uint64;
+    typedef signed   long       intptr;
+    typedef unsigned long       uintptr;
     #else
     // C++ standard
     typedef signed   short      int16;
@@ -92,8 +94,8 @@ namespace local
     typedef unsigned int        uint32;
     typedef signed   long long  int64;
     typedef unsigned long long  uint64;
-    typedef unsigned int        intptr;
-    typedef unsigned            size_t;
+    typedef signed   int        intptr;
+    typedef unsigned int        uintptr;
     #endif
 
     // Byte types for byte addressing
@@ -104,6 +106,8 @@ namespace local
     typedef double              float64;
     // Type of minimal addressable memory cell
     typedef signed char         cell;
+    // Typy of the maximum size of a theoretically possible object of any types including array
+    typedef EOOS_SIZE_TYPE      size_t;
 
 }
 #endif // TYPES_HPP_
