@@ -12,7 +12,7 @@
 
 #include "api.Object.hpp"
 
-namespace local
+namespace eoos
 {
     namespace api
     {
@@ -31,7 +31,7 @@ namespace local
              *
              * @return zero, or error code if an error has been occurred.
              */
-            virtual int32 start() = 0;
+            virtual int32_t start() = 0;
 
             /**
              * Returns size of stack.
@@ -40,7 +40,7 @@ namespace local
              *
              * @return stack size in bytes.
              */
-            virtual int32 getStackSize() const = 0;
+            virtual int32_t getStackSize() const = 0;
 
         };
     }

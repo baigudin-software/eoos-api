@@ -8,7 +8,9 @@
 #ifndef DEFINITIONS_HPP_
 #define DEFINITIONS_HPP_
 
-
+/**
+ * C++ language standard definition.
+ */
 #ifdef __cplusplus
     #if __cplusplus == 199711L
         #define EOOS_CPP_STANDARD 1998
@@ -26,7 +28,7 @@
 #endif
 
 /**
- * Microsoft C / C++ compiler (MSVC)
+ * Microsoft C/C++ compiler (MSVC).
  */
 #ifdef _MSC_VER
     // Resolves issue with error C2065: 'not': undeclared identifier.
@@ -39,8 +41,12 @@
         #define EOOS_TYPE_WIDTH_ILP32
         #define EOOS_SIZE_TYPE unsigned int
     #endif
+/**
+ * Undefined compiler 
+ */ 
 #else
-    #define EOOS_SIZE_TYPE unsigned int
+	#define EOOS_TYPE_STDLIB
+    #define EOOS_SIZE_TYPE std::size_t
 #endif
 
 /**

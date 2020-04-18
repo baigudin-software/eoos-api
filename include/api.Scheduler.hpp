@@ -13,7 +13,7 @@
 #include "api.Task.hpp"
 #include "api.Toggle.hpp"
 
-namespace local
+namespace eoos
 {
     namespace api
     {

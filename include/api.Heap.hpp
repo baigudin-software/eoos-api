@@ -10,7 +10,7 @@
 
 #include "api.Object.hpp"
 
-namespace local
+namespace eoos
 {
     namespace api
     {

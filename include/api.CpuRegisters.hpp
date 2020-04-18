@@ -11,7 +11,7 @@
 #include "api.Object.hpp"
 #include "api.Stack.hpp"
 
-namespace local
+namespace eoos
 {
     namespace api
     {
@@ -34,7 +34,7 @@ namespace local
              * @param entry    - a routine entry address.
              * @param argument - a routine argument.
              */
-            virtual void setInitialization(api::Stack<int64>& stack, void* entry, int32 argument) = 0;
+            virtual void setInitialization(api::Stack<int64_t>& stack, void* entry, int32_t argument) = 0;
 
             /**
              * Returns a pointer to the first register of CPU registers context.

@@ -10,7 +10,7 @@
 
 #include "api.Object.hpp"
 
-namespace local
+namespace eoos
 {
     namespace api
     {
@@ -29,7 +29,7 @@ namespace local
              *
              * @return true if this resource is blocked.
              */
-            virtual bool isBlocked() const = 0;
+            virtual bool_t isBlocked() const = 0;
 
         };
     }

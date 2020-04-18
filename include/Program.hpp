@@ -10,7 +10,7 @@
 
 #include "Types.hpp"
 
-namespace local
+namespace eoos
 {
     class Program
     {
@@ -22,7 +22,7 @@ namespace local
          *
          * @return zero, or error code if an error has been occurred.
          */
-        static int32 start();
+        static int32_t start();
 
         /**
          * Starts executing an operating system main program.
@@ -31,7 +31,7 @@ namespace local
          * @param argv - An array of c-string of arguments where the last one - argc + 1 is null.
          * @return zero, or error code if an error has been occurred.
          */
-        static int32 start(int32 argc, char* argv[]);
+        static int32_t start(int32_t argc, char_t* argv[]);
 
     };
 }

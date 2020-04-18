@@ -12,12 +12,12 @@
 #include "api.Semaphore.hpp"
 #include "System.hpp"
 
-namespace local
+namespace eoos
 {
-    class Semaphore : public ::local::Object<>, public api::Semaphore
+    class Semaphore : public Object<>, public api::Semaphore
     {
-        typedef Semaphore         Self;
-        typedef ::local::Object<> Parent;
+        typedef Semaphore  Self;
+        typedef Object<>   Parent;
 
     public:
 
@@ -26,9 +26,9 @@ namespace local
          *
          * @param permits - the initial number of permits available.
          */
-        Semaphore(const int32 permits) : Parent(),
+        Semaphore(const int32_t permits) : Parent(),
             semaphore_ (NULL){
-            bool const isConstructed = construct(permits, NULL);
+            bool_t const isConstructed = construct(permits, NULL);
             setConstructed( isConstructed );
         }
 
@@ -38,9 +38,9 @@ namespace local
          * @param permits - the initial number of permits available.
          * @param isFair  - true if this semaphore will guarantee FIFO granting of permits under contention.
          */
-        Semaphore(const int32 permits, const bool isFair) : Parent(),
+        Semaphore(const int32_t permits, const bool_t isFair) : Parent(),
             semaphore_ (NULL){
-            bool const isConstructed = construct(permits, &isFair);
+            bool_t const isConstructed = construct(permits, &isFair);
             setConstructed( isConstructed );
         }
 
@@ -57,7 +57,7 @@ namespace local
          *
          * @return true if object has been constructed successfully.
          */
-        virtual bool isConstructed() const
+        virtual bool_t isConstructed() const
         {
             return Parent::isConstructed();
         }
@@ -67,7 +67,7 @@ namespace local
          *
          * @return true if the semaphore is acquired successfully.
          */
-        virtual bool acquire()
+        virtual bool_t acquire()
         {
             if( Self::isConstructed() )
             {
@@ -85,7 +85,7 @@ namespace local
          * @param permits - the number of permits to acquire.
          * @return true if the semaphore is acquired successfully.
          */
-        virtual bool acquire(int32 const permits)
+        virtual bool_t acquire(int32_t const permits)
         {
             if( Self::isConstructed() )
             {
@@ -113,7 +113,7 @@ namespace local
          *
          * @param permits - the number of permits to release.
          */
-        virtual void release(int32 const permits)
+        virtual void release(int32_t const permits)
         {
             if( Self::isConstructed() )
             {
@@ -126,7 +126,7 @@ namespace local
          *
          * @return true if this semaphore has fairness set true.
          */
-        virtual bool isFair() const
+        virtual bool_t isFair() const
         {
             if( Self::isConstructed() )
             {
@@ -143,7 +143,7 @@ namespace local
          *
          * @return true if this resource is blocked.
          */
-        virtual bool isBlocked() const
+        virtual bool_t isBlocked() const
         {
             if( Self::isConstructed() )
             {
@@ -164,9 +164,9 @@ namespace local
          * @param isFair  - true if this semaphore will guarantee FIFO granting of permits under contention.
          * @return true if object has been constructed successfully.
          */
-        bool construct(const int32 permits, const bool* const isFair)
+        bool_t construct(const int32_t permits, const bool_t* const isFair)
         {
-            bool res = Self::isConstructed();
+            bool_t res = Self::isConstructed();
             if( res == true )
             {
                 return false;

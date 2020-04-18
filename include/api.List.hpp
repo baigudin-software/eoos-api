@@ -12,7 +12,7 @@
 #include "api.IllegalValue.hpp"
 #include "api.ListIterator.hpp"
 
-namespace local
+namespace eoos
 {
     namespace api
     {
@@ -37,7 +37,7 @@ namespace local
              *
              * @return true if object has been constructed successfully.
              */
-            virtual bool isConstructed() const = 0;
+            virtual bool_t isConstructed() const = 0;
 
             /**
              * Inserts new element to the end of this container.
@@ -49,7 +49,7 @@ namespace local
              * @param element - an inserting element.
              * @return true if element is added.
              */
-            virtual bool add(const T& element) = 0;
+            virtual bool_t add(const T& element) = 0;
 
             /**
              * Inserts new element to the specified position in this container.
@@ -62,7 +62,7 @@ namespace local
              * @param element - an inserting element.
              * @return true if element is inserted.
              */
-            virtual bool add(int32 index, const T& element) = 0;
+            virtual bool_t add(int32_t index, const T& element) = 0;
 
             /**
              * Removes all elements from this container.
@@ -75,21 +75,21 @@ namespace local
              * @param index - position in this container.
              * @return true if an element is removed successfully.
              */
-            virtual bool remove(int32 index) = 0;
+            virtual bool_t remove(int32_t index) = 0;
 
             /**
              * Removes the first element from this container.
              *
              * @return true if an element is removed successfully.
              */
-            virtual bool removeFirst() = 0;
+            virtual bool_t removeFirst() = 0;
 
             /**
              * Removes the last element from this container.
              *
              * @return true if an element is removed successfully.
              */
-            virtual bool removeLast() = 0;
+            virtual bool_t removeLast() = 0;
 
             /**
              * Removes the first occurrence of the specified element from this container.
@@ -97,7 +97,7 @@ namespace local
              * @param element - reference to element.
              * @return true if an element is removed successfully.
              */
-            virtual bool removeElement(const T& element) = 0;
+            virtual bool_t removeElement(const T& element) = 0;
 
             /**
              * Returns an element from this container by index.
@@ -105,7 +105,7 @@ namespace local
              * @param index - position in this container.
              * @return indexed element of this container.
              */
-            virtual T& get(int32 index) const = 0;
+            virtual T& get(int32_t index) const = 0;
 
             /**
              * Returns the first element in this container.
@@ -130,7 +130,7 @@ namespace local
              * @param index - start position in this container.
              * @return pointer to new list iterator.
              */
-            virtual api::ListIterator<T>* getListIterator(int32 index) = 0;
+            virtual api::ListIterator<T>* getListIterator(int32_t index) = 0;
 
             /**
              * Returns the index of the first occurrence of the specified element in this container.
@@ -138,7 +138,7 @@ namespace local
              * @param element - reference to the element.
              * @return index or -1 if this container does not contain the element.
              */
-            virtual int32 getIndexOf(const T& element) const = 0;
+            virtual int32_t getIndexOf(const T& element) const = 0;
 
             /**
              * Tests if given index is available.
@@ -146,7 +146,7 @@ namespace local
              * @param index - checking position in this container.
              * @return true if index is present.
              */
-            virtual bool isIndex(int32 index) const = 0;
+            virtual bool_t isIndex(int32_t index) const = 0;
 
         };
     }

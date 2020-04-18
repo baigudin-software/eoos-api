@@ -14,7 +14,7 @@
 #include "api.CpuInterrupt.hpp"
 #include "api.CpuTimer.hpp"
 
-namespace local
+namespace eoos
 {
     namespace api
     {
@@ -38,14 +38,14 @@ namespace local
              *
              * @return a CPU name, or NULL if an error has been occurred.
              */
-            virtual const char* getName() const = 0;
+            virtual const char_t* getName() const = 0;
 
             /**
              * Returns an ID of CPU core executing this program code.
              *
              * @return a CPU ID, or -1 if an error has been occurred.
              */
-            virtual int32 getCoreId() const = 0;
+            virtual int32_t getCoreId() const = 0;
 
             /**
              * Creates a new HW PLL resource.
@@ -61,7 +61,7 @@ namespace local
              * @param source  - available interrupt source number.
              * @return a new interrupt resource, or NULL if an error has been occurred.
              */
-            virtual api::CpuInterrupt* createInterrupt(api::Task& handler, int32 source) = 0;
+            virtual api::CpuInterrupt* createInterrupt(api::Task& handler, int32_t source) = 0;
 
             /**
              * Creates a new HW timer resource.
@@ -69,7 +69,7 @@ namespace local
              * @param index - an available timer index.
              * @return a new timer resource, or NULL if an error has been occurred.
              */
-            virtual api::CpuTimer* createTimer(int32 index) = 0;
+            virtual api::CpuTimer* createTimer(int32_t index) = 0;
 
         };
     }

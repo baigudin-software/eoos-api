@@ -13,7 +13,7 @@
 #include "api.Task.hpp"
 #include "System.hpp"
 
-namespace local
+namespace eoos
 {
     class Interrupt : public Object<>, public api::Interrupt
     {
@@ -27,7 +27,7 @@ namespace local
          * @param handler - user class which implements an interrupt handler interface.
          * @param source  - available interrupt source.
          */
-        Interrupt(api::Task& handler, const int32 source) : Parent(),
+        Interrupt(api::Task& handler, const int32_t source) : Parent(),
             isConstructed_ (getConstruct()),
             interrupt_     (NULL){
             setConstruct( construct(handler, source) );
@@ -46,7 +46,7 @@ namespace local
          *
          * @return true if object has been constructed successfully.
          */
-        virtual bool isConstructed() const
+        virtual bool_t isConstructed() const
         {
             return isConstructed_;
         }
@@ -89,7 +89,7 @@ namespace local
          *
          * @return an interrupt enable source bit value before method was called.
          */
-        virtual bool disable()
+        virtual bool_t disable()
         {
             if( isConstructed_ )
             {
@@ -106,7 +106,7 @@ namespace local
          *
          * @param status - returned status by lock method.
          */
-        virtual void enable(const bool status)
+        virtual void enable(const bool_t status)
         {
             if( isConstructed_ )
             {
@@ -123,7 +123,7 @@ namespace local
          * @param source  - available interrupt source.
          * @return true if object has been constructed successfully.
          */
-        bool construct(api::Task& handler, const int32 source)
+        bool_t construct(api::Task& handler, const int32_t source)
         {
             if( not isConstructed_ )
             {
@@ -151,7 +151,7 @@ namespace local
         /**
          * The root object constructed flag.
          */
-        const bool& isConstructed_;
+        const bool_t& isConstructed_;
 
         /**
          * System interrupt controller interface.

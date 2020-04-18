@@ -11,7 +11,7 @@
 #include "api.Collection.hpp"
 #include "api.IllegalValue.hpp"
 
-namespace local
+namespace eoos
 {
     namespace api
     {
@@ -36,7 +36,7 @@ namespace local
              *
              * @return true if object has been constructed successfully.
              */
-            virtual bool isConstructed() const = 0;
+            virtual bool_t isConstructed() const = 0;
 
             /**
              * Inserts a new element to this container.
@@ -48,14 +48,14 @@ namespace local
              * @param element - inserting element.
              * @return true if element is added.
              */
-            virtual bool add(const T& element) = 0;
+            virtual bool_t add(const T& element) = 0;
 
             /**
              * Removes the head element of this container.
              *
              * @return true if an element is removed successfully.
              */
-            virtual bool remove() = 0;
+            virtual bool_t remove() = 0;
 
             /**
              * Examines the head element of this container.

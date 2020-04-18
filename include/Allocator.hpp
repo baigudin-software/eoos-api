@@ -10,7 +10,7 @@
 
 #include "Types.hpp"
 
-namespace local
+namespace eoos
 {
     class Allocator
     {

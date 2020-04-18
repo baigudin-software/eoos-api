@@ -10,7 +10,7 @@
 
 #include "api.Timer.hpp"
 
-namespace local
+namespace eoos
 {
     namespace api
     {
@@ -29,21 +29,21 @@ namespace local
              *
              * @return timer digits.
              */
-            virtual int32 getDigit() const = 0;
+            virtual int32_t getDigit() const = 0;
 
             /**
              * Returns this timer internal clock in Hz.
              *
              * @return timer internal clock.
              */
-            virtual int64 getInternalClock() const = 0;
+            virtual int64_t getInternalClock() const = 0;
 
             /**
              * Returns an available interrupt source for this timer.
              *
              * @return available interrupt source, or -1 if an error has been occurred.
              */
-            virtual int32 getInterrupSource() const = 0;
+            virtual int32_t getInterrupSource() const = 0;
 
         };
     }

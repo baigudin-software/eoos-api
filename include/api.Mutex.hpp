@@ -10,7 +10,7 @@
 
 #include "api.Resource.hpp"
 
-namespace local
+namespace eoos
 {
     namespace api
     {
@@ -29,7 +29,7 @@ namespace local
              *
              * @return true if this mutex is locked successfully.
              */
-            virtual bool lock() = 0;
+            virtual bool_t lock() = 0;
 
             /**
              * Unlocks this mutex.

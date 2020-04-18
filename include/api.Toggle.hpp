@@ -10,7 +10,7 @@
 
 #include "api.Object.hpp"
 
-namespace local
+namespace eoos
 {
     namespace api
     {
@@ -29,7 +29,7 @@ namespace local
              *
              * @return an enable source bit value of a controller before method was called.
              */
-            virtual bool disable() = 0;
+            virtual bool_t disable() = 0;
 
             /**
              * Enables a controller.
@@ -39,7 +39,7 @@ namespace local
              *
              * @param status - returned status by disable method, or true for directly turning a controller on.
              */
-            virtual void enable(bool status = true) = 0;
+            virtual void enable(bool_t status = true) = 0;
 
         };
     }

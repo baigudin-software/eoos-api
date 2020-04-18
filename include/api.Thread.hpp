@@ -11,7 +11,7 @@
 #include "api.Object.hpp"
 #include "api.Resource.hpp"
 
-namespace local
+namespace eoos
 {
     namespace api
     {
@@ -23,22 +23,22 @@ namespace local
             /**
              * Maximum thead priority.
              */
-            static const int32 MAX_PRIORITY  = 10;
+            static const int32_t MAX_PRIORITY  = 10;
 
             /**
              * Minimum thead priority.
              */
-            static const int32 MIN_PRIORITY  = 1;
+            static const int32_t MIN_PRIORITY  = 1;
 
             /**
              * Normal thead priority.
              */
-            static const int32 NORM_PRIORITY = 5;
+            static const int32_t NORM_PRIORITY = 5;
 
             /**
              * Thead locked on executing priority.
              */
-            static const int32 LOCK_PRIORITY  = 0;
+            static const int32_t LOCK_PRIORITY  = 0;
 
             /**
              * Thread available statuses.
@@ -75,7 +75,7 @@ namespace local
              * @param millis - a time to sleep in milliseconds.
              * @param nanos  - an additional nanoseconds to sleep.
              */
-            virtual void sleep(int64 millis, int32 nanos = 0) = 0;
+            virtual void sleep(int64_t millis, int32_t nanos = 0) = 0;
 
             /**
              * Blocks this thread on given resource and yields the task.
@@ -89,21 +89,21 @@ namespace local
              *
              * @return the thread identifier, or -1 if an error has been occurred.
              */
-            virtual int64 getId() const = 0;
+            virtual int64_t getId() const = 0;
 
             /**
              * Returns this thread priority.
              *
              * @return priority value, or -1 if an error has been occurred.
              */
-            virtual int32 getPriority() const = 0;
+            virtual int32_t getPriority() const = 0;
 
             /**
              * Sets this thread priority.
              *
              * @param priority - number of priority in range [MIN_PRIORITY, MAX_PRIORITY], or LOCK_PRIORITY.
              */
-            virtual void setPriority(int32 priority) = 0;
+            virtual void setPriority(int32_t priority) = 0;
 
             /**
              * Returns a status of this thread.

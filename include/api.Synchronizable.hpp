@@ -13,7 +13,7 @@
 
 #include "api.Object.hpp"
 
-namespace local
+namespace eoos
 {
     namespace api
     {
@@ -46,7 +46,7 @@ namespace local
              * @param channel - number of processor core which data is the gauge of synchronization.
              * @return true if given data was recast to the gauge.
              */
-            virtual bool recast(void* ptr, int32 size, int32 channel) = 0;
+            virtual bool_t recast(void* ptr, int32_t size, int32_t channel) = 0;
 
             /**
              * Tests if given data equals the gauge.
@@ -56,7 +56,7 @@ namespace local
              * @param channel - number of processor core which data is the gauge of synchronization.
              * @return true if given data equals to the gauge.
              */
-             virtual bool isEqual(void* ptr, int32 size, int32 channel) = 0;
+             virtual bool_t isEqual(void* ptr, int32_t size, int32_t channel) = 0;
 
         };
     }

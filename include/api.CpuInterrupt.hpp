@@ -12,7 +12,7 @@
 #include "api.Task.hpp"
 #include "api.CpuRegisters.hpp"
 
-namespace local
+namespace eoos
 {
     namespace api
     {
@@ -33,7 +33,7 @@ namespace local
              * @param source  - available interrupt source.
              * @return true if handler is set successfully.
              */
-            virtual bool setHandler(api::Task& handler, int32 source) = 0;
+            virtual bool_t setHandler(api::Task& handler, int32_t source) = 0;
 
             /**
              * Removes this interrupt source handler.

@@ -7,7 +7,7 @@
 #include "Allocator.hpp"
 #include "System.hpp"
 
-namespace local
+namespace eoos
 {
     /**
      * Pointer to constructed the operating systenm heap memory.

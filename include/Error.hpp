@@ -8,7 +8,7 @@
 #ifndef ERROR_HPP_
 #define ERROR_HPP_
 
-namespace local
+namespace eoos
 {
     enum Error
     {

@@ -12,12 +12,12 @@
 #include "api.Mutex.hpp"
 #include "System.hpp"
 
-namespace local
+namespace eoos
 {
-    class Mutex : public ::local::Object<>, public api::Mutex
+    class Mutex : public Object<>, public api::Mutex
     {
-        typedef Mutex             Self;
-        typedef ::local::Object<> Parent;
+        typedef Mutex     Self;
+        typedef Object<>  Parent;
 
     public:
 
@@ -25,8 +25,8 @@ namespace local
          * Constructor.
          */
         Mutex() : Parent(),
-            mutex_         (NULL){
-            bool const isConstructed = construct();
+            mutex_ (NULL){
+            bool_t const isConstructed = construct();
             setConstructed( isConstructed );
         }
 
@@ -43,7 +43,7 @@ namespace local
          *
          * @return true if object has been constructed successfully.
          */
-        virtual bool isConstructed() const
+        virtual bool_t isConstructed() const
         {
             return Parent::isConstructed();
         }
@@ -53,7 +53,7 @@ namespace local
          *
          * @return true if the mutex is lock successfully.
          */
-        virtual bool lock()
+        virtual bool_t lock()
         {
             if( Self::isConstructed() )
             {
@@ -81,7 +81,7 @@ namespace local
          *
          * @return true if this resource is blocked.
          */
-        virtual bool isBlocked() const
+        virtual bool_t isBlocked() const
         {
             if( Self::isConstructed() )
             {
@@ -100,9 +100,9 @@ namespace local
          *
          * @return true if object has been constructed successfully.
          */
-        bool construct()
+        bool_t construct()
         {
-            bool res = Self::isConstructed();
+            bool_t res = Self::isConstructed();
             if( res == true )
             {
                 mutex_ = System::call().createMutex();

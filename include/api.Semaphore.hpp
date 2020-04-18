@@ -10,7 +10,7 @@
 
 #include "api.Resource.hpp"
 
-namespace local
+namespace eoos
 {
     namespace api
     {
@@ -32,7 +32,7 @@ namespace local
              *
              * @return true if the semaphore is acquired successfully.
              */
-            virtual bool acquire() = 0;
+            virtual bool_t acquire() = 0;
 
             /**
              * Acquires the given number of permits from this semaphore.
@@ -43,7 +43,7 @@ namespace local
              * @param permits - the number of permits to acquire.
              * @return true if the semaphore is acquired successfully.
              */
-            virtual bool acquire(int32 permits) = 0;
+            virtual bool_t acquire(int32_t permits) = 0;
 
             /**
              * Releases one permit.
@@ -59,14 +59,14 @@ namespace local
              *
              * @param permits - the number of permits to release.
              */
-            virtual void release(int32 permits) = 0;
+            virtual void release(int32_t permits) = 0;
 
             /**
              * Tests if this semaphore is fair.
              *
              * @return true if this semaphore has fairness set true.
              */
-            virtual bool isFair() const = 0;
+            virtual bool_t isFair() const = 0;
 
         };
     }

@@ -7,7 +7,7 @@
  */
 #include "System.hpp"
 
-namespace local
+namespace eoos
 {
     namespace system
     {

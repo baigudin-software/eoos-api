@@ -10,7 +10,7 @@
 
 #include "api.System.hpp"
 
-namespace local
+namespace eoos
 {
   class System
   {

@@ -10,7 +10,7 @@
 
 #include "Types.hpp"
 
-namespace local
+namespace eoos
 {
     struct Configuration
     {
@@ -20,31 +20,31 @@ namespace local
         /**
          * Stack size in bytes for the first user thread to be created.
          */
-        int32 stackSize;
+        int32_t stackSize;
 
         #ifdef EOOS_NO_STRICT_MISRA_RULES
 
         /**
          * Start address of heap memory.
          */
-        int32 heapAddr;
+        int32_t heapAddr;
 
         /**
          * Size of heap memory in bytes.
          */
-        int64 heapSize;
+        size_t heapSize;
 
         #endif // EOOS_NO_STRICT_MISRA_RULES
 
         /**
          * Source clock of CPU oscillator in Hz.
          */
-        int64 sourceClock;
+        int64_t sourceClock;
 
         /**
          * CPU clock in Hz.
          */
-        int64 cpuClock;
+        int64_t cpuClock;
 
         /**
          * Constructor.

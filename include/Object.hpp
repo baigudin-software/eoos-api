@@ -11,7 +11,7 @@
 #include "api.Object.hpp"
 #include "Allocator.hpp"
 
-namespace local
+namespace eoos
 {
     /**
      * Primary template implementation.
@@ -44,7 +44,7 @@ namespace local
          *
          * @return true if object has been constructed successfully.
          */
-        virtual bool isConstructed() const = 0;
+        virtual bool_t isConstructed() const = 0;
 
         #ifdef EOOS_NO_STRICT_MISRA_RULES
 
@@ -90,7 +90,7 @@ namespace local
          *
          * @param flag - a new constructed flag.
          */
-        void setConstructed(bool const flag)
+        void setConstructed(bool_t const flag)
         {
             if( isConstructed_ == true )
             {
@@ -103,7 +103,7 @@ namespace local
         /**
          * This object constructed flag.
          */
-        bool isConstructed_;
+        bool_t isConstructed_;
 
     };
 
@@ -118,7 +118,7 @@ namespace local
      * @return true if object has been constructed successfully.
      */
     template <class A>
-    inline bool Object<A>::isConstructed() const
+    inline bool_t Object<A>::isConstructed() const
     {
         return isConstructed_;
     }

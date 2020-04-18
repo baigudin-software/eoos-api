@@ -18,7 +18,7 @@
 #include "api.Task.hpp"
 #include "api.Toggle.hpp"
 
-namespace local
+namespace eoos
 {
     namespace api
     {
@@ -37,7 +37,7 @@ namespace local
              *
              * @return time in nanoseconds.
              */
-            virtual int64 getTime() const = 0;
+            virtual int64_t getTime() const = 0;
 
             /**
              * Returns the operating system heap memory.
@@ -81,7 +81,7 @@ namespace local
              * @param isFair  - true if this semaphore will guarantee FIFO granting of permits under contention.
              * @return a new semaphore resource, or NULL if an error has been occurred.
              */
-            virtual api::Semaphore* createSemaphore(int32 permits, bool isFair) = 0;
+            virtual api::Semaphore* createSemaphore(int32_t permits, bool_t isFair) = 0;
 
             /**
              * Creates a new interrupt resource.
@@ -90,7 +90,7 @@ namespace local
              * @param source  - available interrupt source number.
              * @return a new interrupt resource, or NULL if an error has been occurred.
              */
-            virtual api::Interrupt* createInterrupt(api::Task& handler, int32 source) = 0;
+            virtual api::Interrupt* createInterrupt(api::Task& handler, int32_t source) = 0;
 
             /**
              * Terminates the operating system execution.

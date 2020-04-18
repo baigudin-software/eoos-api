@@ -10,7 +10,7 @@
 
 #include "api.Iterator.hpp"
 
-namespace local
+namespace eoos
 {
     namespace api
     {
@@ -45,7 +45,7 @@ namespace local
              * @param element - inserting element.
              * @return true if element is added.
              */
-            virtual bool add(const T& element) = 0;
+            virtual bool_t add(const T& element) = 0;
 
             /**
              * Returns previous element and advances the cursor backwards.
@@ -59,21 +59,21 @@ namespace local
              *
              * @return true if previous element is had.
              */
-            virtual bool hasPrevious() const = 0;
+            virtual bool_t hasPrevious() const = 0;
 
             /**
              * Returns the index of the element that would be returned by a subsequent call to next().
              *
              * @return index of the next element or list size if the list iterator is at the end of the list.
              */
-            virtual int32 getNextIndex() const = 0;
+            virtual int32_t getNextIndex() const = 0;
 
             /**
              * Returns the index of the element that would be returned by a subsequent call to prev().
              *
              * @return index of the previous element or -1 if the list iterator is at the beginning of the list.
              */
-            virtual int32 getPreviousIndex() const = 0;
+            virtual int32_t getPreviousIndex() const = 0;
 
         };
     }

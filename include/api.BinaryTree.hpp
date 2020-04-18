@@ -10,7 +10,7 @@
 
 #include "api.Object.hpp"
 
-namespace local
+namespace eoos
 {
     namespace api
     {
@@ -40,7 +40,7 @@ namespace local
              * @param element - an inserting element.
              * @return true if element has been added successfully.
              */
-            virtual bool add(const T& element) = 0;
+            virtual bool_t add(const T& element) = 0;
 
         };
     }

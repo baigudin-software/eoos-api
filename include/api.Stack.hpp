@@ -11,7 +11,7 @@
 #include "api.Collection.hpp"
 #include "api.IllegalValue.hpp"
 
-namespace local
+namespace eoos
 {
     namespace api
     {
@@ -69,7 +69,7 @@ namespace local
              *
              * @return true if object has been constructed successfully.
              */
-            virtual bool isConstructed() const = 0;
+            virtual bool_t isConstructed() const = 0;
 
             /**
              * Returns an initial top of stack.

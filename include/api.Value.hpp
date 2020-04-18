@@ -10,7 +10,7 @@
 
 #include "api.IllegalValue.hpp"
 
-namespace local
+namespace eoos
 {
     namespace api
     {

@@ -11,7 +11,7 @@
 #include "api.Object.hpp"
 #include "api.Iterator.hpp"
 
-namespace local
+namespace eoos
 {
     namespace api
     {

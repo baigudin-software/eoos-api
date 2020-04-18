@@ -10,7 +10,7 @@
 
 #include "api.Collection.hpp"
 
-namespace local
+namespace eoos
 {
     namespace api
     {
@@ -39,7 +39,7 @@ namespace local
              * @param string - a string object interface to be copied.
              * @return true if a passed string has been copied successfully.
              */
-            virtual bool copy(const api::String<T>& string) = 0;
+            virtual bool_t copy(const api::String<T>& string) = 0;
 
             /**
              * Concatenates a passed string to this string.
@@ -50,7 +50,7 @@ namespace local
              * @param string - a string object interface to be appended.
              * @return true if a passed string has been appended successfully.
              */
-            virtual bool concatenate(const api::String<T>& string) = 0;
+            virtual bool_t concatenate(const api::String<T>& string) = 0;
 
             /**
              * Compares this string with a passed string lexicographically.
@@ -61,7 +61,7 @@ namespace local
              *         a value greater than 0 if this string is greater than a passed string,
              *         or the minimum possible value if an error has been occurred.
              */
-            virtual int32 compare(const api::String<T>& string) const = 0;
+            virtual int32_t compare(const api::String<T>& string) const = 0;
 
             /**
              * Returns pointer to the first character of containing string.

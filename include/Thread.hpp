@@ -12,12 +12,12 @@
 #include "api.Thread.hpp"
 #include "System.hpp"
 
-namespace local
+namespace eoos
 {
-    class Thread : public ::local::Object<>, public api::Thread, public api::Task
+    class Thread : public Object<>, public api::Thread, public api::Task
     {
-        typedef Thread            Self;
-        typedef ::local::Object<> Parent;
+        typedef Thread   Self;
+        typedef Object<> Parent;
 
     public:
 
@@ -26,7 +26,7 @@ namespace local
          */
         Thread() : Parent(),
             thread_ (NULL){
-            bool const isConstructed = construct(*this);
+            bool_t const isConstructed = construct(*this);
             setConstructed( isConstructed );
         }
 
@@ -37,7 +37,7 @@ namespace local
          */
         Thread(api::Task& task) : Parent(),
             thread_    (NULL){
-            bool const isConstructed = construct(task);
+            bool_t const isConstructed = construct(task);
             setConstructed( isConstructed );
         }
 
@@ -54,7 +54,7 @@ namespace local
          *
          * @return true if object has been constructed successfully.
          */
-        virtual bool isConstructed() const
+        virtual bool_t isConstructed() const
         {
             return Parent::isConstructed();
         }
@@ -64,7 +64,7 @@ namespace local
          *
          * @return zero, or error code if an error has been occurred.
          */
-        virtual int32 start()
+        virtual int32_t start()
         {
             return 0;
         }
@@ -85,7 +85,7 @@ namespace local
          *
          * @return stack size in bytes.
          */
-        virtual int32 getStackSize() const
+        virtual int32_t getStackSize() const
         {
             return 0x1000;
         }
@@ -107,7 +107,7 @@ namespace local
          * @param millis - a time to sleep in milliseconds.
          * @param nanos  - an additional nanoseconds to sleep.
          */
-        virtual void sleep(int64 const millis, int32 const nanos = 0)
+        virtual void sleep(int64_t const millis, int32_t const nanos = 0)
         {
             if( Self::isConstructed() )
             {
@@ -133,7 +133,7 @@ namespace local
          *
          * @return the thread identifier.
          */
-        virtual int64 getId() const
+        virtual int64_t getId() const
         {
             if( Self::isConstructed() )
             {
@@ -167,7 +167,7 @@ namespace local
          *
          * @return priority value.
          */
-        virtual int32 getPriority() const
+        virtual int32_t getPriority() const
         {
             if( Self::isConstructed() )
             {
@@ -184,7 +184,7 @@ namespace local
          *
          * @param priority - number of priority in range [MIN_PRIORITY, MAX_PRIORITY], or LOCK_PRIORITY.
          */
-        virtual void setPriority(int32 const priority)
+        virtual void setPriority(int32_t const priority)
         {
             if( Self::isConstructed() )
             {
@@ -208,7 +208,7 @@ namespace local
          * @param millis - a time to sleep in milliseconds.
          * @param nanos  - an additional nanoseconds to sleep.
          */
-        static void sleepCurrent(int64 const millis, int32 const nanos = 0)
+        static void sleepCurrent(int64_t const millis, int32_t const nanos = 0)
         {
             getCurrent().sleep(millis, nanos);
         }
@@ -239,9 +239,9 @@ namespace local
          * @param task - an task interface whose main method is invoked when this thread is started.
          * @return true if object has been constructed successfully.
          */
-        bool construct(api::Task& task)
+        bool_t construct(api::Task& task)
         {
-            bool res = Self::isConstructed();
+            bool_t res = Self::isConstructed();
             if( res == true )
             {
                 thread_ = System::call().getScheduler().createThread(task);

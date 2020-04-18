@@ -2,7 +2,7 @@
  * Common type definitions.
  *
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2014-2019, Sergey Baigudin, Baigudin Software
+ * @copyright 2014-2020, Sergey Baigudin, Baigudin Software
  * @license   http://embedded.team/license/
  */
 #ifndef TYPES_HPP_
@@ -14,10 +14,8 @@
 #include <cstdint>
 #endif
 
-namespace local
+namespace eoos
 {
-
-
     #if EOOS_CPP_STANDARD >= 2011
     typedef decltype(nullptr)  nullptr_t;
     #else
@@ -33,79 +31,81 @@ namespace local
     #endif
     #endif
 
-    // NULLPTR definition for EOOS implenemtation.
+    // NULLPTR definition for EOOS implenemtation
     static const nullptr_t NULLPTR = NULL;
 
     #if defined (EOOS_TYPE_STDLIB)
     // C++ Standard Library types
-    typedef ::std::int16_t      int16;
-    typedef ::std::uint16_t     uint16;
-    typedef ::std::int32_t      int32;
-    typedef ::std::uint32_t     uint32;
-    typedef ::std::int64_t      int64;
-    typedef ::std::uint64_t     uint64;
-    typedef ::std::uintptr_t    intptr;
-    typedef ::std::uintptr_t    uintptr;
-    #elif defined(EOOS_TYPE_WIDTH_LP32)
+    typedef ::std::int16_t      int16_t;
+    typedef ::std::uint16_t     uint16_t;
+    typedef ::std::int32_t      int32_t;
+    typedef ::std::uint32_t     uint32_t;
+    typedef ::std::int64_t      int64_t;
+    typedef ::std::uint64_t     uint64_t;
+    typedef ::std::uintptr_t    intptr_t;
+    typedef ::std::uintptr_t    uintptr_t;
+    #elif defined (EOOS_TYPE_WIDTH_LP32)
     // LP32 or 2/4/4 (int is 16-bit, long and pointer are 32-bit)
-    typedef signed   int        int16;
-    typedef unsigned int        uint16;
-    typedef signed   long       int32;
-    typedef unsigned long       uint32;
-    typedef signed   long long  int64;
-    typedef unsigned long long  uint64;
-    typedef signed   long       intptr;
-    typedef unsigned long       uintptr;
-    #elif defined(EOOS_TYPE_WIDTH_ILP32)
+    typedef signed   int        int16_t;
+    typedef unsigned int        uint16_t;
+    typedef signed   long       int32_t;
+    typedef unsigned long       uint32_t;
+    typedef signed   long long  int64_t;
+    typedef unsigned long long  uint64_t;
+    typedef signed   long       intptr_t;
+    typedef unsigned long       uintptr_t;
+    #elif defined (EOOS_TYPE_WIDTH_ILP32)
     // ILP32 or 4/4/4 (int, long, and pointer are 32-bit)
-    typedef signed   short      int16;
-    typedef unsigned short      uint16;
-    typedef signed   int        int32;
-    typedef unsigned int        uint32;
-    typedef signed   long long  int64;
-    typedef unsigned long long  uint64;
-    typedef signed   int        intptr;
-    typedef unsigned int        uintptr;
-    #elif defined(EOOS_TYPE_WIDTH_LLP64)
+    typedef signed   short      int16_t;
+    typedef unsigned short      uint16_t;
+    typedef signed   int        int32_t;
+    typedef unsigned int        uint32_t;
+    typedef signed   long long  int64_t;
+    typedef unsigned long long  uint64_t;
+    typedef signed   int        intptr_t;
+    typedef unsigned int        uintptr_t;
+    #elif defined (EOOS_TYPE_WIDTH_LLP64)
     // LLP64 or 4/4/8 (int and long are 32-bit, pointer is 64-bit)
-    typedef signed   short      int16;
-    typedef unsigned short      uint16;
-    typedef signed   int        int32;
-    typedef unsigned int        uint32;
-    typedef signed   long long  int64;
-    typedef unsigned long long  uint64;
-    typedef signed   long long  intptr;
-    typedef unsigned long long  uintptr;
-    #elif defined(EOOS_TYPE_WIDTH_LP64)
+    typedef signed   short      int16_t;
+    typedef unsigned short      uint16_t;
+    typedef signed   int        int32_t;
+    typedef unsigned int        uint32_t;
+    typedef signed   long long  int64_t;
+    typedef unsigned long long  uint64_t;
+    typedef signed   long long  intptr_t;
+    typedef unsigned long long  uintptr_t;
+    #elif defined (EOOS_TYPE_WIDTH_LP64)
     // LP64 or 4/8/8 (int is 32-bit, long and pointer are 64-bit)    )
-    typedef signed   short      int16;
-    typedef unsigned short      uint16;
-    typedef signed   int        int32;
-    typedef unsigned int        uint32;
-    typedef signed   long       int64;
-    typedef unsigned long       uint64;
-    typedef signed   long       intptr;
-    typedef unsigned long       uintptr;
+    typedef signed   short      int16_t;
+    typedef unsigned short      uint16_t;
+    typedef signed   int        int32_t;
+    typedef unsigned int        uint32_t;
+    typedef signed   long       int64_t;
+    typedef unsigned long       uint64_t;
+    typedef signed   long       intptr_t;
+    typedef unsigned long       uintptr_t;
     #else
     // C++ standard
-    typedef signed   short      int16;
-    typedef unsigned short      uint16;
-    typedef signed   int        int32;
-    typedef unsigned int        uint32;
-    typedef signed   long long  int64;
-    typedef unsigned long long  uint64;
-    typedef signed   int        intptr;
-    typedef unsigned int        uintptr;
+    typedef signed   short      int16_t;
+    typedef unsigned short      uint16_t;
+    typedef signed   int        int32_t;
+    typedef unsigned int        uint32_t;
+    typedef signed   long long  int64_t;
+    typedef unsigned long long  uint64_t;
+    typedef signed   int        intptr_t;
+    typedef unsigned int        uintptr_t;
     #endif
 
     // Byte types for byte addressing
-    typedef signed char         int8;
-    typedef unsigned char       uint8;
+    typedef signed char         int8_t;
+    typedef unsigned char       uint8_t;
     // Floating point types
-    typedef float               float32;
-    typedef double              float64;
+    typedef float               float32_t;
+    typedef double              float64_t;
+    // Boolean type
+    typedef bool                bool_t;  
     // Type of minimal addressable memory cell
-    typedef signed char         cell;
+    typedef signed char         cell_t;
     // Typy of the maximum size of a theoretically possible object of any types including array
     typedef EOOS_SIZE_TYPE      size_t;
 

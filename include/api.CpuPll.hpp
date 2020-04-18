@@ -10,7 +10,7 @@
 
 #include "api.Object.hpp"
 
-namespace local
+namespace eoos
 {
     namespace api
     {
@@ -29,14 +29,14 @@ namespace local
              *
              * @return frequency value in Hz.
              */
-            virtual int64 getSourceClock() = 0;
+            virtual int64_t getSourceClock() = 0;
 
             /**
              * Returns source clock of CPU in Hz.
              *
              * @return frequency value in Hz.
              */
-            virtual int64 getCpuClock() = 0;
+            virtual int64_t getCpuClock() = 0;
 
         };
     }

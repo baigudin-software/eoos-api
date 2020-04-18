@@ -10,7 +10,7 @@
 
 #include "api.Object.hpp"
 
-namespace local
+namespace eoos
 {
     namespace api
     {
@@ -35,14 +35,14 @@ namespace local
              *
              * @return number of elements.
              */
-             virtual int32 getLength() const = 0;
+             virtual int32_t getLength() const = 0;
 
              /**
               * Tests if this collection has elements.
               *
               * @return true if this collection does not contain any elements.
               */
-             virtual bool isEmpty() const = 0;
+             virtual bool_t isEmpty() const = 0;
 
         };
     }

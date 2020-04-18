@@ -11,7 +11,7 @@
 #include "api.Object.hpp"
 #include "api.String.hpp"
 
-namespace local
+namespace eoos
 {
     namespace api
     {

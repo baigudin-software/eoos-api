@@ -10,7 +10,7 @@
 
 #include "api.IllegalValue.hpp"
 
-namespace local
+namespace eoos
 {
     namespace api
     {
@@ -42,14 +42,14 @@ namespace local
              *
              * @return true if next element is had.
              */
-            virtual bool hasNext() const = 0;
+            virtual bool_t hasNext() const = 0;
 
             /**
              * Removes the last element returned by this iterator.
              *
              * @return true if an element is removed successfully.
              */
-            virtual bool remove() = 0;
+            virtual bool_t remove() = 0;
 
         };
     }

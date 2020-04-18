@@ -10,7 +10,7 @@
 
 #include "api.Object.hpp"
 
-namespace local
+namespace eoos
 {
     namespace api
     {
@@ -30,14 +30,14 @@ namespace local
              * @param path - a system path to a program.
              * @return true if program has been loaded successfully.
              */
-            virtual bool load(const char* path) = 0;
+            virtual bool_t load(const char_t* path) = 0;
 
             /**
              * Terminates a program execution.
              *
              * @param status - a termination status.
              */
-            virtual void exit(int32 status = 0) = 0;
+            virtual void exit(int32_t status = 0) = 0;
 
         };
     }

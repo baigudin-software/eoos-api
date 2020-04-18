@@ -10,7 +10,7 @@
 
 #include "api.Object.hpp"
 
-namespace local
+namespace eoos
 {
     namespace api
     {
@@ -54,7 +54,7 @@ namespace local
              * @param value - a testing value.
              * @return true if value is an illegal.
              */
-            virtual bool isIllegal(const T& value) const = 0;
+            virtual bool_t isIllegal(const T& value) const = 0;
 
         };
     }
