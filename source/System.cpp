@@ -2,14 +2,13 @@
  * System class of the operating system.
  *
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2014-2018, Sergey Baigudin, Baigudin Software
- * @license   http://embedded.team/license/
+ * @copyright 2014-2020, Sergey Baigudin, Baigudin Software
  */
 #include "System.hpp"
 
 namespace eoos
 {
-    namespace system
+    namespace sys
     {
         /**
          * Calls the operating system kernel.
@@ -22,7 +21,7 @@ namespace eoos
     /**
      * The operating system syscall interface.
      */
-    static api::System* system_ = NULL;
+    static api::System* system_ = NULLPTR;
 
     /**
      * Returns the operating system syscall interface.
@@ -31,9 +30,9 @@ namespace eoos
      */
     api::System& System::call()
     {
-        if(system_ == NULL)
+        if(system_ == NULLPTR)
         {
-            system_ = &system::syscall();
+            system_ = &sys::syscall();
         }
         return *system_;
     }

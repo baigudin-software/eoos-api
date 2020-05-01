@@ -2,7 +2,7 @@
  * The operating system modules memory allocator.
  * 
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2018, Sergey Baigudin
+ * @copyright 2018-2020, Sergey Baigudin
  */
 #include "Allocator.hpp"
 #include "System.hpp"
@@ -12,7 +12,7 @@ namespace eoos
     /**
      * Pointer to constructed the operating systenm heap memory.
      */
-    static api::Heap* heap_ = NULL;
+    static api::Heap* heap_ = NULLPTR;
     
     /**
      * Allocates memory.
@@ -22,11 +22,11 @@ namespace eoos
      */    
     void* Allocator::allocate(size_t const size)
     {
-        if(heap_ == NULL)
+        if(heap_ == NULLPTR)
         {
             heap_ = &System::call().getHeap();
         }
-        return heap_->allocate(size, NULL);
+        return heap_->allocate(size, NULLPTR);
     }
     
     /**
@@ -36,7 +36,7 @@ namespace eoos
      */      
     void Allocator::free(void* const ptr)
     {
-        if(heap_ != NULL)
+        if(heap_ != NULLPTR)
         {
             heap_->free(ptr);
         }
