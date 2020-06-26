@@ -32,14 +32,14 @@ namespace eoos
             virtual ~System(){}
 
             /**
-             * Returns running time of the operating system in nanoseconds.
+             * Returns running time of the system in nanoseconds.
              *
              * @return time in nanoseconds.
              */
             virtual int64_t getTime() const = 0;
 
             /**
-             * Returns the operating system heap memory.
+             * Returns the system heap memory.
              *
              * @return the heap memory.
              */
@@ -92,7 +92,10 @@ namespace eoos
             virtual Interrupt* createInterrupt(Task& handler, int32_t source) = 0;
 
             /**
-             * Terminates the operating system execution.
+             * Terminates the system execution.
+             *
+             * If the system is RTOS, all the operating system is terminated, and CPU goes to idle state.
+             * If the system is OS, a process of operating system executing a user program is terminated.
              */
             virtual void terminate() const = 0;
 

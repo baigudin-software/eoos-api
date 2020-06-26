@@ -30,6 +30,7 @@
  * Microsoft C/C++ compiler (MSVC).
  */
 #ifdef _MSC_VER
+    #define EOOS_WIN32
     // Resolves issue with error C2065: 'not': undeclared identifier.
     // TODO: To refactor source code to use '!' instead of 'not'.
     // #include <iso646.h>
@@ -45,7 +46,7 @@
  * Undefined compiler 
  */ 
 #else
-	#define EOOS_TYPE_STDLIB
+    #define EOOS_TYPE_STDLIB
     #define EOOS_SIZE_TYPE std::size_t
 #endif
 

@@ -18,22 +18,9 @@ namespace eoos
         extern api::System& syscall();
     }
 
-    /**
-     * The operating system syscall interface.
-     */
-    static api::System* system_ = NULLPTR;
-
-    /**
-     * Returns the operating system syscall interface.
-     *
-     * @return the operating system syscall interface.
-     */
     api::System& System::call()
     {
-        if(system_ == NULLPTR)
-        {
-            system_ = &sys::syscall();
-        }
-        return *system_;
+        static api::System& system = sys::syscall();
+        return system;
     }
 }

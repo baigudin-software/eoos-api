@@ -9,17 +9,11 @@
 
 namespace eoos
 {
-    /**
-     * Pointer to constructed the operating systenm heap memory.
-     */
-    static api::Heap* heap_ = NULLPTR;
-    
-    /**
-     * Allocates memory.
-     *
-     * @param size number of bytes to allocate.
-     * @return allocated memory address or a null pointer.
-     */    
+    namespace 
+    {
+        api::Heap* heap_ = NULLPTR;
+    }
+        
     void* Allocator::allocate(size_t const size)
     {
         if(heap_ == NULLPTR)
@@ -29,11 +23,6 @@ namespace eoos
         return heap_->allocate(size, NULLPTR);
     }
     
-    /**
-     * Frees an allocated memory.
-     *
-     * @param ptr address of allocated memory block or a null pointer.
-     */      
     void Allocator::free(void* const ptr)
     {
         if(heap_ != NULLPTR)
