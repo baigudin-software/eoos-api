@@ -1,5 +1,5 @@
 /**
- * Runtime program execution interface.
+ * @brief Runtime program execution interface.
  *
  * @author    Sergey Baigudin, sergey@baigudin.software
  * @copyright 2017-2020, Sergey Baigudin, Baigudin Software
@@ -11,34 +11,38 @@
 
 namespace eoos
 {
-    namespace api
-    {
-        class Runtime : public Object
-        {
+namespace api
+{
+    
+class Runtime : public Object
+{
 
-        public:
+public:
 
-            /**
-             * Destructor.
-             */
-            virtual ~Runtime(){}
+    /**
+     * @brief Destructor.
+     */
+    virtual ~Runtime() = 0;
 
-            /**
-             * Loads a program for executing.
-             *
-             * @param path - a system path to a program.
-             * @return true if program has been loaded successfully.
-             */
-            virtual bool_t load(const char_t* path) = 0;
+    /**
+     * @brief Loads a program for executing.
+     *
+     * @param path - a system path to a program.
+     * @return true if program has been loaded successfully.
+     */
+    virtual bool_t load(const char_t* path) = 0;
 
-            /**
-             * Terminates a program execution.
-             *
-             * @param status - a termination status.
-             */
-            virtual void exit(int32_t status = 0) = 0;
+    /**
+     * @brief Terminates a program execution.
+     *
+     * @param status - a termination status.
+     */
+    virtual void exit(int32_t status = 0) = 0;
 
-        };
-    }
-}
+};
+
+inline Runtime::~Runtime() {}
+
+} // namespace api
+} // namespace eoos
 #endif // API_RUNTIME_HPP_

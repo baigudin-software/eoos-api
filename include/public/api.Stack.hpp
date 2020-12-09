@@ -1,5 +1,5 @@
 /**
- * Stack interface.
+ * @brief Stack interface.
  *
  * @author    Sergey Baigudin, sergey@baigudin.software
  * @copyright 2016-2020, Sergey Baigudin, Baigudin Software
@@ -12,79 +12,84 @@
 
 namespace eoos
 {
-    namespace api
+namespace api
+{
+    
+/**
+ * @brief Primary template implementation.
+ *
+ * @param T - data type of default stack element.
+ */
+template <typename T>
+class Stack : public Collection<T>, public IllegalValue<T>
+{
+
+public:
+
+    /**
+     * @brief Stack operations.
+     *
+     * Stack operations:
+     * - Full stacks have stack pointers that point to the last used location.
+     * - Empty stacks have stack pointers that point to the first unused location.
+     * - Descending stacks grow towards decreasing memory addresses.
+     * - Ascending stacks grow towards increasing memory addresses.
+     */
+    enum Operation
     {
         /**
-         * Primary template implementation.
-         *
-         * @param T - data type of default stack element.
+         * @brief Full Descending.
          */
-        template <typename T>
-        class Stack : public Collection<T>, public IllegalValue<T>
-        {
+        FD = 0,
 
-        public:
+        /**
+         * @brief Empty Descending.
+         */
+        ED = 1,
 
-            /**
-             * Stack operations.
-             *
-             * Stack operations:
-             * - Full stacks have stack pointers that point to the last used location.
-             * - Empty stacks have stack pointers that point to the first unused location.
-             * - Descending stacks grow towards decreasing memory addresses.
-             * - Ascending stacks grow towards increasing memory addresses.
-             */
-            enum Operation
-            {
-                /**
-                 * Full Descending.
-                 */
-                FD = 0,
+        /**
+         * @brief Full Ascending.
+         */
+        FA = 2,
 
-                /**
-                 * Empty Descending.
-                 */
-                ED = 1,
+        /**
+         * @brief Empty Ascending.
+         */
+        EA = 3
 
-                /**
-                 * Full Ascending.
-                 */
-                FA = 2,
+    };
 
-                /**
-                 * Empty Ascending.
-                 */
-                EA = 3
+    /**
+     * @brief Destructor.
+     */
+    virtual ~Stack() = 0;
 
-            };
+    /**
+     * @brief Tests if this object has been constructed.
+     *
+     * @return true if object has been constructed successfully.
+     */
+    virtual bool_t isConstructed() const = 0;
 
-            /**
-             * Destructor.
-             */
-            virtual ~Stack(){}
+    /**
+     * @brief Returns an initial top of stack.
+     *
+     * @return a memory address to top of this stack when object was built.
+     */
+    virtual const T* getTos() = 0;
 
-            /**
-             * Tests if this object has been constructed.
-             *
-             * @return true if object has been constructed successfully.
-             */
-            virtual bool_t isConstructed() const = 0;
+    /**
+     * @brief Returns an type of stack operation.
+     *
+     * @return the stack operation.
+     */
+    virtual Operation getType() const = 0;
 
-            /**
-             * Returns an initial top of stack.
-             *
-             * @return a memory address to top of this stack when object was built.
-             */
-            virtual const T* getTos() = 0;
+};
 
-            /**
-             * Returns an type of stack operation.
-             *
-             * @return the stack operation.
-             */
-            virtual Operation getType() const = 0;
-
-        };
-    }
-}
+template <typename T>
+inline Stack<T>::~Stack() {}
+        
+} // namespace api
+} // namespace eoos
 #endif // API_STACK_HPP_

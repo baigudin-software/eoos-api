@@ -1,5 +1,5 @@
 /**
- * Global definitions.
+ * @brief Global definitions.
  *
  * @author    Sergey Baigudin, sergey@baigudin.software
  * @copyright 2018-2020, Sergey Baigudin, Baigudin Software
@@ -8,7 +8,7 @@
 #define DEFINITIONS_HPP_
 
 /**
- * C++ language standard definition.
+ * @brief C++ language standard definition.
  */
 #ifdef __cplusplus
     #if __cplusplus == 199711L
@@ -19,6 +19,8 @@
         #define EOOS_CPP_STANDARD 2014
     #elif __cplusplus == 201703L
         #define EOOS_CPP_STANDARD 2017
+    #elif __cplusplus == 202002L
+        #define EOOS_CPP_STANDARD 2020
     #else
         #error "C++ language standard set for compiler is not supported"
     #endif
@@ -27,7 +29,7 @@
 #endif
 
 /**
- * Microsoft C/C++ compiler (MSVC).
+ * @brief Microsoft C/C++ compiler (MSVC).
  */
 #ifdef _MSC_VER
     #define EOOS_WIN32
@@ -43,7 +45,7 @@
         #define EOOS_SIZE_TYPE unsigned int
     #endif
 /**
- * Undefined compiler 
+ * @brief Undefined compiler 
  */ 
 #else
     #define EOOS_TYPE_STDLIB
@@ -51,7 +53,7 @@
 #endif
 
 /**
- * Definitions of Data Model of a hardware system.
+ * @brief Definitions of Data Model of a hardware system.
  *
  * Please, chose one of width in bits of the below Data Models.
  * No Data Model selected means C++ standard width in bits.
@@ -72,10 +74,12 @@
 // #define EOOS_TYPE_WIDTH_LP64
 
 /**
- * Definition of no strict MISRA C++:2008 rules usage.
+ * @brief Definition of no strict MISRA C++:2008 rules usage.
  *
  * Commonly, the definition means that a system can use heap memory.
  */
-#define EOOS_NO_STRICT_MISRA_RULES
+#ifndef EOOS_NO_STRICT_MISRA_RULES
+    #define EOOS_NO_STRICT_MISRA_RULES
+#endif
 
 #endif // DEFINITIONS_HPP_

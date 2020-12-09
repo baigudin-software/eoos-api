@@ -1,5 +1,5 @@
 /**
- * Stream read interface.
+ * @brief Stream read interface.
  *
  * @author    Sergey Baigudin, sergey@baigudin.software
  * @copyright 2020, Sergey Baigudin, Baigudin Software
@@ -11,29 +11,32 @@
 
 namespace eoos
 {
-    namespace api
-    {
-        class Write : public Object
-        {
+namespace api
+{
+    
+class Write : public Object
+{
 
-        public:
+public:
 
-            /**
-             * Destructor.
-             */
-            virtual ~Write(){}
-        
-            /**
-             * Writes data to a stream.
-             *
-             * @param data - Pointer to data.
-             * @param size - Size of data in Bytes.
-             * @return number of bytes written.
-             */
-            virtual size_t write(const void* data, size_t size) = 0;
-            
-        };
+    /**
+     * @brief Destructor.
+     */
+    virtual ~Write() = 0;
 
-    }
-}
+    /**
+     * @brief Writes data to a stream.
+     *
+     * @param data - Pointer to data.
+     * @param size - Size of data in Bytes.
+     * @return number of bytes written.
+     */
+    virtual size_t write(const void* data, size_t size) = 0;
+    
+};
+
+inline Write::~Write() {}
+
+} // namespace api
+} // namespace eoos
 #endif // API_WRITE_HPP_

@@ -1,5 +1,5 @@
 /**
- * Mutex class.
+ * @brief Mutex class.
  *
  * @author    Sergey Baigudin, sergey@baigudin.software
  * @copyright 2015-2020, Sergey Baigudin, Baigudin Software
@@ -13,126 +13,128 @@
 
 namespace eoos
 {
-    class Mutex : public Object<>, public api::Mutex
+    
+class Mutex : public Object<>, public api::Mutex
+{
+    typedef Mutex Self;
+    typedef ::eoos::Object<> Parent;
+
+public:
+
+    /**
+     * @brief Constructor.
+     */
+    Mutex() : Parent(),
+        mutex_ (NULLPTR){
+        bool_t const isConstructed = construct();
+        setConstructed( isConstructed );
+    }
+
+    /**
+     * @brief Destructor.
+     */
+    virtual ~Mutex()
     {
-        typedef Mutex Self;
-        typedef ::eoos::Object<> Parent;
+        delete mutex_;
+    }
 
-    public:
+    /**
+     * @brief Tests if this object has been constructed.
+     *
+     * @return true if object has been constructed successfully.
+     */
+    virtual bool_t isConstructed() const
+    {
+        return Parent::isConstructed();
+    }
 
-        /**
-         * Constructor.
-         */
-        Mutex() : Parent(),
-            mutex_ (NULLPTR){
-            bool_t const isConstructed = construct();
-            setConstructed( isConstructed );
-        }
-
-        /**
-         * Destructor.
-         */
-        virtual ~Mutex()
+    /**
+     * @brief Locks the mutex.
+     *
+     * @return true if the mutex is lock successfully.
+     */
+    virtual bool_t lock()
+    {
+        if( Self::isConstructed() )
         {
-            delete mutex_;
+            return mutex_->lock();
         }
-
-        /**
-         * Tests if this object has been constructed.
-         *
-         * @return true if object has been constructed successfully.
-         */
-        virtual bool_t isConstructed() const
+        else
         {
-            return Parent::isConstructed();
+            return false;
         }
+    }
 
-        /**
-         * Locks the mutex.
-         *
-         * @return true if the mutex is lock successfully.
-         */
-        virtual bool_t lock()
+    /**
+     * @brief Unlocks the mutex.
+     */
+    virtual void unlock()
+    {
+        if( Self::isConstructed() )
         {
-            if( Self::isConstructed() )
-            {
-                return mutex_->lock();
-            }
-            else
-            {
-                return false;
-            }
+            mutex_->unlock();
         }
+    }
 
-        /**
-         * Unlocks the mutex.
-         */
-        virtual void unlock()
+    /**
+     * @brief Tests if this resource is blocked.
+     *
+     * @return true if this resource is blocked.
+     */
+    virtual bool_t isBlocked() const
+    {
+        if( Self::isConstructed() )
         {
-            if( Self::isConstructed() )
-            {
-                mutex_->unlock();
-            }
+            return mutex_->isBlocked();
         }
-
-        /**
-         * Tests if this resource is blocked.
-         *
-         * @return true if this resource is blocked.
-         */
-        virtual bool_t isBlocked() const
+        else
         {
-            if( Self::isConstructed() )
-            {
-                return mutex_->isBlocked();
-            }
-            else
-            {
-                return false;
-            }
+            return false;
         }
+    }
 
-    private:
+private:
 
-        /**
-         * Constructor.
-         *
-         * @return true if object has been constructed successfully.
-         */
-        bool_t construct()
+    /**
+     * @brief Constructor.
+     *
+     * @return true if object has been constructed successfully.
+     */
+    bool_t construct()
+    {
+        bool_t res = Self::isConstructed();
+        if( res == true )
         {
-            bool_t res = Self::isConstructed();
-            if( res == true )
+            mutex_ = System::call().createMutex();
+            if(mutex_ == NULLPTR || not mutex_->isConstructed() )
             {
-                mutex_ = System::call().createMutex();
-                if(mutex_ == NULLPTR || not mutex_->isConstructed() )
-                {
-                    res = false;
-                }
+                res = false;
             }
-            return res;
         }
+        return res;
+    }
 
-        /**
-         * Copy constructor.
-         *
-         * @param obj - reference to source object.
-         */
-        Mutex(const Mutex& obj);
+    /**
+     * @brief Copy constructor.
+     *
+     * @param obj - reference to source object.
+     */
+    Mutex(const Mutex& obj);
 
-        /**
-         * Assignment operator.
-         *
-         * @param obj - reference to source object.
-         * @return reference to this object.
-         */
-        Mutex& operator=(const Mutex& obj);
+    /**
+     * @brief Assignment operator.
+     *
+     * @param obj - reference to source object.
+     * @return reference to this object.
+     */
+    Mutex& operator=(const Mutex& obj);
 
-        /**
-         * System mutex interface.
-         */
-        api::Mutex* mutex_;
+    /**
+     * @brief System mutex interface.
+     */
+    api::Mutex* mutex_;
 
-    };
-}
+};
+
+} // namespace eoos
 #endif // SYSTEM_MUTEX_HPP_

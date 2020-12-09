@@ -1,5 +1,5 @@
 /**
- * Semaphore class.
+ * @brief Semaphore class.
  *
  * @author    Sergey Baigudin, sergey@baigudin.software
  * @copyright 2014-2020, Sergey Baigudin, Baigudin Software
@@ -13,194 +13,196 @@
 
 namespace eoos
 {
-    class Semaphore : public Object<>, public api::Semaphore
+    
+class Semaphore : public Object<>, public api::Semaphore
+{
+    typedef Semaphore Self;
+    typedef ::eoos::Object<> Parent;
+
+public:
+
+    /**
+     * @brief Constructor.
+     *
+     * @param permits - the initial number of permits available.
+     */
+    Semaphore(const int32_t permits) : Parent(),
+        semaphore_ (NULLPTR){
+        bool_t const isConstructed = construct(permits, NULLPTR);
+        setConstructed( isConstructed );
+    }
+
+    /**
+     * @brief Constructor.
+     *
+     * @param permits - the initial number of permits available.
+     * @param isFair  - true if this semaphore will guarantee FIFO granting of permits under contention.
+     */
+    Semaphore(const int32_t permits, const bool_t isFair) : Parent(),
+        semaphore_ (NULLPTR){
+        bool_t const isConstructed = construct(permits, &isFair);
+        setConstructed( isConstructed );
+    }
+
+    /**
+     * @brief Destructor.
+     */
+    virtual ~Semaphore()
     {
-        typedef Semaphore Self;
-        typedef ::eoos::Object<> Parent;
+        delete semaphore_;
+    }
 
-    public:
+    /**
+     * @brief Tests if this object has been constructed.
+     *
+     * @return true if object has been constructed successfully.
+     */
+    virtual bool_t isConstructed() const
+    {
+        return Parent::isConstructed();
+    }
 
-        /**
-         * Constructor.
-         *
-         * @param permits - the initial number of permits available.
-         */
-        Semaphore(const int32_t permits) : Parent(),
-            semaphore_ (NULLPTR){
-            bool_t const isConstructed = construct(permits, NULLPTR);
-            setConstructed( isConstructed );
-        }
-
-        /**
-         * Constructor.
-         *
-         * @param permits - the initial number of permits available.
-         * @param isFair  - true if this semaphore will guarantee FIFO granting of permits under contention.
-         */
-        Semaphore(const int32_t permits, const bool_t isFair) : Parent(),
-            semaphore_ (NULLPTR){
-            bool_t const isConstructed = construct(permits, &isFair);
-            setConstructed( isConstructed );
-        }
-
-        /**
-         * Destructor.
-         */
-        virtual ~Semaphore()
+    /**
+     * @brief Acquires one permit from this semaphore.
+     *
+     * @return true if the semaphore is acquired successfully.
+     */
+    virtual bool_t acquire()
+    {
+        if( Self::isConstructed() )
         {
-            delete semaphore_;
+            return semaphore_->acquire();
         }
-
-        /**
-         * Tests if this object has been constructed.
-         *
-         * @return true if object has been constructed successfully.
-         */
-        virtual bool_t isConstructed() const
+        else
         {
-            return Parent::isConstructed();
+            return false;
         }
+    }
 
-        /**
-         * Acquires one permit from this semaphore.
-         *
-         * @return true if the semaphore is acquired successfully.
-         */
-        virtual bool_t acquire()
+    /**
+     * @brief Acquires the given number of permits from this semaphore.
+     *
+     * @param permits - the number of permits to acquire.
+     * @return true if the semaphore is acquired successfully.
+     */
+    virtual bool_t acquire(int32_t const permits)
+    {
+        if( Self::isConstructed() )
         {
-            if( Self::isConstructed() )
-            {
-                return semaphore_->acquire();
-            }
-            else
-            {
-                return false;
-            }
+            return semaphore_->acquire(permits);
         }
-
-        /**
-         * Acquires the given number of permits from this semaphore.
-         *
-         * @param permits - the number of permits to acquire.
-         * @return true if the semaphore is acquired successfully.
-         */
-        virtual bool_t acquire(int32_t const permits)
+        else
         {
-            if( Self::isConstructed() )
-            {
-                return semaphore_->acquire(permits);
-            }
-            else
-            {
-                return false;
-            }
+            return false;
         }
+    }
 
-        /**
-         * Releases one permit.
-         */
-        virtual void release()
+    /**
+     * @brief Releases one permit.
+     */
+    virtual void release()
+    {
+        if( Self::isConstructed() )
         {
-            if( Self::isConstructed() )
-            {
-                semaphore_->release();
-            }
+            semaphore_->release();
         }
+    }
 
-        /**
-         * Releases the given number of permits.
-         *
-         * @param permits - the number of permits to release.
-         */
-        virtual void release(int32_t const permits)
+    /**
+     * @brief Releases the given number of permits.
+     *
+     * @param permits - the number of permits to release.
+     */
+    virtual void release(int32_t const permits)
+    {
+        if( Self::isConstructed() )
         {
-            if( Self::isConstructed() )
-            {
-                semaphore_->release(permits);
-            }
+            semaphore_->release(permits);
         }
+    }
 
-        /**
-         * Tests if this semaphore is fair.
-         *
-         * @return true if this semaphore has fairness set true.
-         */
-        virtual bool_t isFair() const
+    /**
+     * @brief Tests if this semaphore is fair.
+     *
+     * @return true if this semaphore has fairness set true.
+     */
+    virtual bool_t isFair() const
+    {
+        if( Self::isConstructed() )
         {
-            if( Self::isConstructed() )
-            {
-                return semaphore_->isFair();
-            }
-            else
-            {
-                return false;
-            }
+            return semaphore_->isFair();
         }
-
-        /**
-         * Tests if this resource is blocked.
-         *
-         * @return true if this resource is blocked.
-         */
-        virtual bool_t isBlocked() const
+        else
         {
-            if( Self::isConstructed() )
-            {
-                return semaphore_->isBlocked();
-            }
-            else
-            {
-                return false;
-            }
+            return false;
         }
+    }
 
-    private:
-
-        /**
-         * Constructor.
-         *
-         * @param permits - the initial number of permits available.
-         * @param isFair  - true if this semaphore will guarantee FIFO granting of permits under contention.
-         * @return true if object has been constructed successfully.
-         */
-        bool_t construct(const int32_t permits, const bool_t* const isFair)
+    /**
+     * @brief Tests if this resource is blocked.
+     *
+     * @return true if this resource is blocked.
+     */
+    virtual bool_t isBlocked() const
+    {
+        if( Self::isConstructed() )
         {
-            bool_t res = Self::isConstructed();
-            if( res == true )
-            {
-                return false;
-            }
-            if( isFair == NULLPTR )
-            {
-                semaphore_ = System::call().createSemaphore(permits, false);
-            }
-            else
-            {
-                semaphore_ = System::call().createSemaphore(permits, *isFair);
-            }
-            return semaphore_ != NULLPTR ? semaphore_->isConstructed() : false;
+            return semaphore_->isBlocked();
         }
+        else
+        {
+            return false;
+        }
+    }
 
-        /**
-         * Copy constructor.
-         *
-         * @param obj - reference to source object.
-         */
-        Semaphore(const Semaphore& obj);
+private:
 
-        /**
-         * Assignment operator.
-         *
-         * @param obj - reference to source object.
-         * @return reference to this object.
-         */
-        Semaphore& operator=(const Semaphore& obj);
+    /**
+     * @brief Constructor.
+     *
+     * @param permits - the initial number of permits available.
+     * @param isFair  - true if this semaphore will guarantee FIFO granting of permits under contention.
+     * @return true if object has been constructed successfully.
+     */
+    bool_t construct(const int32_t permits, const bool_t* const isFair)
+    {
+        bool_t res = Self::isConstructed();
+        if( res == true )
+        {
+            return false;
+        }
+        if( isFair == NULLPTR )
+        {
+            semaphore_ = System::call().createSemaphore(permits, false);
+        }
+        else
+        {
+            semaphore_ = System::call().createSemaphore(permits, *isFair);
+        }
+        return semaphore_ != NULLPTR ? semaphore_->isConstructed() : false;
+    }
 
-        /**
-         * System semaphore interface.
-         */
-        api::Semaphore* semaphore_;
+    /**
+     * @brief Copy constructor.
+     *
+     * @param obj - reference to source object.
+     */
+    Semaphore(const Semaphore& obj);
 
-    };
-}
+    /**
+     * @brief Assignment operator.
+     *
+     * @param obj - reference to source object.
+     * @return reference to this object.
+     */
+    Semaphore& operator=(const Semaphore& obj);
+
+    /**
+     * @brief System semaphore interface.
+     */
+    api::Semaphore* semaphore_;
+
+};
+
+} // namespace eoos
 #endif // SEMAPHORE_HPP_

@@ -1,5 +1,5 @@
 /**
- * Root interface of the system class hierarchy.
+ * @brief Root interface of the system class hierarchy.
  *
  * @author    Sergey Baigudin, sergey@baigudin.software
  * @copyright 2015-2020, Sergey Baigudin, Baigudin Software
@@ -11,26 +11,30 @@
 
 namespace eoos
 {
-    namespace api
-    {
-        class Object
-        {
+namespace api
+{
+    
+class Object
+{
 
-        public:
+public:
 
-            /**
-             * Destructor.
-             */
-            virtual ~Object(){}
+    /**
+     * @brief Destructor.
+     */
+    virtual ~Object() = 0;
 
-            /**
-             * Tests if this object has been constructed.
-             *
-             * @return true if object has been constructed successfully.
-             */
-            virtual bool_t isConstructed() const = 0;
+    /**
+     * @brief Tests if this object has been constructed.
+     *
+     * @return true if object has been constructed successfully.
+     */
+    virtual bool_t isConstructed() const = 0;
 
-        };
-    }
-}
+};
+
+inline Object::~Object() {}
+    
+} // namespace api
+} // namespace eoos
 #endif // API_OBJECT_HPP_

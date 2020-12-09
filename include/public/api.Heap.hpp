@@ -1,5 +1,5 @@
 /**
- * Heap memory interface.
+ * @brief Heap memory interface.
  *
  * @author    Sergey Baigudin, sergey@baigudin.software
  * @copyright 2016-2020, Sergey Baigudin, Baigudin Software
@@ -11,37 +11,41 @@
 
 namespace eoos
 {
-    namespace api
-    {
-        class Heap : public Object
-        {
+namespace api
+{
+    
+class Heap : public Object
+{
 
-        public:
+public:
 
-            /**
-             * Destructor.
-             */
-            virtual ~Heap(){}
+    /**
+     * @brief Destructor.
+     */
+    virtual ~Heap() = 0;
 
-            /**
-             * Allocates memory.
-             *
-             * @param size - required memory size in byte.
-             * @param ptr  - NULLPTR value becomes to allocate memory, and
-             *               other given values are simply returned
-             *               as memory address.
-             * @return pointer to allocated memory or NULLPTR.
-             */
-            virtual void* allocate(size_t size, void* ptr) = 0;
+    /**
+     * @brief Allocates memory.
+     *
+     * @param size - required memory size in byte.
+     * @param ptr  - NULLPTR value becomes to allocate memory, and
+     *               other given values are simply returned
+     *               as memory address.
+     * @return pointer to allocated memory or NULLPTR.
+     */
+    virtual void* allocate(size_t size, void* ptr) = 0;
 
-            /**
-             * Frees an allocated memory.
-             *
-             * @param ptr - pointer to allocated memory.
-             */
-            virtual void free(void* ptr) = 0;
+    /**
+     * @brief Frees an allocated memory.
+     *
+     * @param ptr - pointer to allocated memory.
+     */
+    virtual void free(void* ptr) = 0;
 
-        };
-    }
-}
+};
+
+inline Heap::~Heap() {}
+
+} // namespace api
+} // namespace eoos
 #endif // API_HEAP_HPP_

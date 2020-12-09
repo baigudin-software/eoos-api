@@ -1,5 +1,5 @@
 /**
- * System heap memory interface.
+ * @brief System heap memory interface.
  *
  * @author    Sergey Baigudin, sergey@baigudin.software
  * @copyright 2016-2020, Sergey Baigudin, Baigudin Software
@@ -12,37 +12,41 @@
 
 namespace eoos
 {
-    namespace api
-    {
-        class SystemHeap : public Heap
-        {
+namespace api
+{
+        
+class SystemHeap : public Heap
+{
 
-        public:
+public:
 
-            /**
-             * Destructor.
-             */
-            virtual ~SystemHeap(){}
+    /**
+     * @brief Destructor.
+     */
+    virtual ~SystemHeap() = 0;
 
-            /**
-             * Sets a context switching locker.
-             *
-             * The method allows disabling and enabling thread context switching
-             * when memory is being allocated or freed. Thus, the best way is
-             * to pass an interface of global interrupt toggling. The parameter type
-             * is reference to pointer, as when referenced pointer equals to NULLPTR,
-             * no blocks are happening.
-             *
-             * @param toggle - reference to pointer to some controller.
-             */
-            virtual void setToggle(Toggle*& toggle) = 0;
+    /**
+     * @brief Sets a context switching locker.
+     *
+     * The method allows disabling and enabling thread context switching
+     * when memory is being allocated or freed. Thus, the best way is
+     * to pass an interface of global interrupt toggling. The parameter type
+     * is reference to pointer, as when referenced pointer equals to NULLPTR,
+     * no blocks are happening.
+     *
+     * @param toggle - reference to pointer to some controller.
+     */
+    virtual void setToggle(Toggle*& toggle) = 0;
 
-            /**
-             * Resets a context switching locker.
-             */
-            virtual void resetToggle() = 0;
+    /**
+     * @brief Resets a context switching locker.
+     */
+    virtual void resetToggle() = 0;
 
-        };
-    }
-}
+};
+
+inline SystemHeap::~SystemHeap() {}
+
+} // namespace api
+} // namespace eoos
 #endif // API_SYSTEM_HEAP_HPP_

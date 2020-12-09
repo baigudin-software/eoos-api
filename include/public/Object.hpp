@@ -1,5 +1,5 @@
 /**
- * Root class of the class hierarchy.
+ * @brief Root class of the class hierarchy.
  *
  * @author    Sergey Baigudin, sergey@baigudin.software
  * @copyright 2014-2020, Sergey Baigudin, Baigudin Software
@@ -8,119 +8,120 @@
 #define OBJECT_HPP_
 
 #include "api.Object.hpp"
-#include "Allocator.hpp"
+#include "ObjectAllocator.hpp"
 
 namespace eoos
 {
+    
+/**
+ * @brief Primary template implementation.
+ *
+ * @param A - heap memory allocator class.
+ */
+template <class A = Allocator>
+class Object : public ObjectAllocator<A>, public api::Object
+{
+
+public:
+
     /**
-     * Primary template implementation.
-     *
-     * @param A - heap memory allocator class.
+     * @brief Constructor.
      */
-    template <class A = Allocator>
-    class Object : public api::Object
-    {
-
-    public:
-
-        /**
-         * Constructor.
-         */
-        Object() :
-            isConstructed_ (true){
-        }
-
-        /**
-         * Destructor.
-         */
-        virtual ~Object()
-        {
-            isConstructed_ = false;
-        }
-
-        /**
-         * Tests if this object has been constructed.
-         *
-         * @return true if object has been constructed successfully.
-         */
-        virtual bool_t isConstructed() const = 0;
-
-        #ifdef EOOS_NO_STRICT_MISRA_RULES
-
-        /**
-         * Operator new.
-         *
-         * @param size - a number of bytes to allocate.
-         * @return allocated memory address or a null pointer.
-         */
-        void* operator new(size_t const size)
-        {
-            return A::allocate(size);
-        }
-
-        /**
-         * Operator new.
-         *
-         * @param size - unused.
-         * @param ptr - a pointer to reserved memory area.
-         * @return given pointer.
-         */
-        void* operator new(size_t, void* const ptr)
-        {
-            return ptr;
-        }
-
-        /**
-         * Operator delete.
-         *
-         * @param ptr - an address of allocated memory block or a null pointer.
-         */
-        void operator delete(void* const ptr)
-        {
-            A::free(ptr);
-        }
-
-        #endif // EOOS_NO_STRICT_MISRA_RULES
-
-    protected:
-
-        /**
-         * Sets the object constructed flag.
-         *
-         * @param flag - a new constructed flag.
-         */
-        void setConstructed(bool_t const flag)
-        {
-            if( isConstructed_ == true )
-            {
-                isConstructed_ = flag;
-            }
-        }
-
-    private:
-
-        /**
-         * This object constructed flag.
-         */
-        bool_t isConstructed_;
-
-    };
+    Object() :
+        isConstructed_ (true){
+    }
 
     /**
-     * Tests if this object has been constructed.
+     * @brief Destructor.
+     */
+    virtual ~Object()
+    {
+        isConstructed_ = false;
+    }
+    
+    /**
+     * @brief Copy constructor.
      *
-     * NOTE: This is an implementation of the pure virtual function.
-     * It has to be called for getting the default state of objects,
-     * otherwise developers have to implement their own behaviors of
-     * the interface function.
+     * @param obj - reference to a source object.
+     */
+    Object(const Object& obj) :
+        isConstructed_(obj.isConstructed_){
+    }
+    
+    
+    /**
+     * @brief Copy assignment operator.
+     *
+     * @param obj - reference to a source object.
+     * @return reference to this object.
+     */       
+    Object& operator=(const Object& obj)
+    {
+        isConstructed_ = obj.isConstructed_;
+        return *this;
+    }    
+
+    #if EOOS_CPP_STANDARD >= 2011
+
+    /**
+     * @brief Move constructor.
+     *
+     * @param obj - right reference to a source object.     
+     */       
+    Object(Object&& obj) :
+        isConstructed_(obj.isConstructed_){
+        obj.setConstructed(false);
+    }   
+    
+    /**
+     * @brief Move assignment operator.
+     *
+     * @param obj - right reference to a source object.
+     * @return reference to this object.
+     */
+    Object& operator=(Object&& obj)
+    {
+        isConstructed_ = obj.isConstructed_;
+        obj.setConstructed(false);
+        return *this;
+    }        
+    
+    #endif // EOOS_CPP_STANDARD >= 2011
+
+    /**
+     * @brief Tests if this object has been constructed.
      *
      * @return true if object has been constructed successfully.
      */
-    template <class A>
-    inline bool_t Object<A>::isConstructed() const
+    virtual bool_t isConstructed() const
     {
         return isConstructed_;
     }
 
-}
+protected:
+
+    /**
+     * @brief Sets the object constructed flag.
+     *
+     * @param flag - a new constructed flag.
+     */
+    void setConstructed(bool_t const flag)
+    {
+        if( isConstructed_ == true )
+        {
+            isConstructed_ = flag;
+        }
+    }
+
+private:
+
+    /**
+     * @brief This object constructed flag.
+     */
+    bool_t isConstructed_;
+
+};
+  
+} // namespace eoos
+
 #endif // OBJECT_HPP_

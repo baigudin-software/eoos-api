@@ -8,19 +8,22 @@
 
 namespace eoos
 {
-    namespace sys
-    {
-        /**
-         * Calls the operating system kernel.
-         *
-         * @return the operating system syscall interface.
-         */
-        extern api::System& syscall();
-    }
+namespace sys
+{
+    
+    /**
+     * Calls the operating system kernel.
+     *
+     * @return the operating system syscall interface.
+     */
+    extern api::System& syscall();
+    
+} // namespace sys
 
-    api::System& System::call()
-    {
-        static api::System& system = sys::syscall();
-        return system;
-    }
+api::System& System::call()
+{
+    static api::System& system = sys::syscall();
+    return system;
 }
+
+} // namespace eoos

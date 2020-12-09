@@ -9,26 +9,25 @@
 
 namespace eoos
 {
-    namespace 
-    {
-        api::Heap* heap_ = NULLPTR;
-    }
-        
-    void* Allocator::allocate(size_t const size)
-    {
-        if(heap_ == NULLPTR)
-        {
-            heap_ = &System::call().getHeap();
-        }
-        return heap_->allocate(size, NULLPTR);
-    }
-    
-    void Allocator::free(void* const ptr)
-    {
-        if(heap_ != NULLPTR)
-        {
-            heap_->free(ptr);
-        }
-    }
-}   
+       
+void* Allocator::allocate(size_t const size)
+{
+    #ifdef EOOS_NO_STRICT_MISRA_RULES
+    return new cell_t[size];
+    #else
+    static_cast<void>(size); // Avoid MISRA-C++:2008 Rule 0–1–3 and AUTOSAR C++14 Rule A0-1-4
+    return NULLPTR;
+    #endif
+}
+
+void Allocator::free(void* const ptr)
+{
+    #ifdef EOOS_NO_STRICT_MISRA_RULES
+    delete[] ptr;
+    #else
+    static_cast<void>(ptr); // Avoid MISRA-C++:2008 Rule 0–1–3 and AUTOSAR C++14 Rule A0-1-4
+    #endif
+}
+
+} // namespace eoos
 

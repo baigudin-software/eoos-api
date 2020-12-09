@@ -1,5 +1,5 @@
 /**
- * The configuration of a target processor.
+ * @brief The configuration of a target processor.
  *
  * @author    Sergey Baigudin, sergey@baigudin.software
  * @copyright 2016-2020, Sergey Baigudin, Baigudin Software
@@ -11,52 +11,54 @@
 
 namespace eoos
 {
-    struct Configuration
+    
+struct Configuration
+{
+
+public:
+
+    /**
+     * @brief Stack size in bytes for the first user thread to be created.
+     */
+    int32_t stackSize;
+
+    #ifdef EOOS_NO_STRICT_MISRA_RULES
+
+    /**
+     * @brief Start address of heap memory.
+     */
+    int32_t heapAddr;
+
+    /**
+     * @brief Size of heap memory in bytes.
+     */
+    size_t heapSize;
+
+    #endif // EOOS_NO_STRICT_MISRA_RULES
+
+    /**
+     * @brief Source clock of CPU oscillator in Hz.
+     */
+    int64_t sourceClock;
+
+    /**
+     * @brief CPU clock in Hz.
+     */
+    int64_t cpuClock;
+
+    /**
+     * @brief Constructor.
+     */
+    Configuration();
+
+    /**
+     * @brief Destructor.
+     */
+   ~Configuration()
     {
+    }
 
-    public:
+};
 
-        /**
-         * Stack size in bytes for the first user thread to be created.
-         */
-        int32_t stackSize;
-
-        #ifdef EOOS_NO_STRICT_MISRA_RULES
-
-        /**
-         * Start address of heap memory.
-         */
-        int32_t heapAddr;
-
-        /**
-         * Size of heap memory in bytes.
-         */
-        size_t heapSize;
-
-        #endif // EOOS_NO_STRICT_MISRA_RULES
-
-        /**
-         * Source clock of CPU oscillator in Hz.
-         */
-        int64_t sourceClock;
-
-        /**
-         * CPU clock in Hz.
-         */
-        int64_t cpuClock;
-
-        /**
-         * Constructor.
-         */
-        Configuration();
-
-        /**
-         * Destructor.
-         */
-       ~Configuration()
-        {
-        }
-
-    };
-}
+} // namespace eoos
 #endif // CONFIGURATION_HPP_

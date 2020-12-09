@@ -1,5 +1,5 @@
 /**
- * Mutex interface.
+ * @brief Mutex interface.
  *
  * @author    Sergey Baigudin, sergey@baigudin.software
  * @copyright 2015-2020, Sergey Baigudin, Baigudin Software
@@ -11,31 +11,35 @@
 
 namespace eoos
 {
-    namespace api
-    {
-        class Mutex : public Resource
-        {
+namespace api
+{
+    
+class Mutex : public Resource
+{
 
-        public:
+public:
 
-            /**
-             * Destructor.
-             */
-            virtual ~Mutex(){}
+    /**
+     * @brief Destructor.
+     */
+    virtual ~Mutex() = 0;
 
-            /**
-             * Locks this mutex.
-             *
-             * @return true if this mutex is locked successfully.
-             */
-            virtual bool_t lock() = 0;
+    /**
+     * @brief Locks this mutex.
+     *
+     * @return true if this mutex is locked successfully.
+     */
+    virtual bool_t lock() = 0;
 
-            /**
-             * Unlocks this mutex.
-             */
-            virtual void unlock() = 0;
+    /**
+     * @brief Unlocks this mutex.
+     */
+    virtual void unlock() = 0;
 
-        };
-    }
-}
+};
+
+inline Mutex::~Mutex() {}
+
+} // namespace api
+} // namespace eoos
 #endif // API_MUTEX_HPP_

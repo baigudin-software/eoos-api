@@ -1,5 +1,5 @@
 /**
- * Task interface.
+ * @brief Task interface.
  *
  * The interface of a task that is being executed in self context.
  *
@@ -13,35 +13,39 @@
 
 namespace eoos
 {
-    namespace api
-    {
-        class Task : public Object
-        {
+namespace api
+{
+        
+class Task : public Object
+{
 
-        public:
+public:
 
-            /**
-             * Destructor.
-             */
-            virtual ~Task(){}
+    /**
+     * @brief Destructor.
+     */
+    virtual ~Task() = 0;
 
-            /**
-             * Starts executing an operating system prorgam in itsself context.
-             *
-             * @return zero, or error code if an error has been occurred.
-             */
-            virtual int32_t start() = 0;
+    /**
+     * @brief Starts executing an operating system prorgam in itsself context.
+     *
+     * @return zero, or error code if an error has been occurred.
+     */
+    virtual int32_t start() = 0;
 
-            /**
-             * Returns size of stack.
-             *
-             * The method returns size of stack in bytes which should be allocated for the task.
-             *
-             * @return stack size in bytes.
-             */
-            virtual int32_t getStackSize() const = 0;
+    /**
+     * @brief Returns size of stack.
+     *
+     * The method returns size of stack in bytes which should be allocated for the task.
+     *
+     * @return stack size in bytes.
+     */
+    virtual int32_t getStackSize() const = 0;
 
-        };
-    }
-}
+};
+
+inline Task::~Task() {}
+        
+} // namespace api
+} // namespace eoos
 #endif // API_TASK_HPP_
