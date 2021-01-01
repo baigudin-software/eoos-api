@@ -57,7 +57,10 @@ public:
      */       
     Object& operator=(const Object& obj)
     {
-        isConstructed_ = obj.isConstructed_;
+        if( this != &obj && isConstructed() )
+        {
+            isConstructed_ = obj.isConstructed_;
+        }
         return *this;
     }    
 
@@ -68,7 +71,7 @@ public:
      *
      * @param obj - right reference to a source object.     
      */       
-    Object(Object&& obj) :
+    Object(Object&& obj) noexcept :
         isConstructed_(obj.isConstructed_){
         obj.setConstructed(false);
     }   
@@ -79,10 +82,13 @@ public:
      * @param obj - right reference to a source object.
      * @return reference to this object.
      */
-    Object& operator=(Object&& obj)
+    Object& operator=(Object&& obj) noexcept
     {
-        isConstructed_ = obj.isConstructed_;
-        obj.setConstructed(false);
+        if( this != &obj && isConstructed() )
+        {
+            isConstructed_ = obj.isConstructed_;
+            obj.setConstructed(false);
+        }
         return *this;
     }        
     
@@ -97,6 +103,22 @@ public:
     {
         return isConstructed_;
     }
+    
+    /**
+     * @brief Tests if an object has been constructed.
+     *
+     * @param obj - object to be tested.
+     * @return true if object has been constructed successfully.
+     */
+    static bool_t isConstructed(api::Object* const obj)
+    {
+        bool_t isConstructed = false;
+        if(obj != NULLPTR)
+        {
+            isConstructed = obj->isConstructed();
+        }
+        return isConstructed;
+    }    
 
 protected:
 
