@@ -2,19 +2,19 @@
  * @brief Mutex interface.
  *
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2015-2020, Sergey Baigudin, Baigudin Software
+ * @copyright 2015-2021, Sergey Baigudin, Baigudin Software
  */
 #ifndef API_MUTEX_HPP_
 #define API_MUTEX_HPP_
 
-#include "api.Resource.hpp"
+#include "api.Object.hpp"
 
 namespace eoos
 {
 namespace api
 {
     
-class Mutex : public Resource
+class Mutex : public Object
 {
 
 public:
@@ -23,11 +23,18 @@ public:
      * @brief Destructor.
      */
     virtual ~Mutex() = 0;
+    
+    /**
+     * @brief Tries to locks this mutex.
+     *
+     * @return true if this mutex is locked successfully, or false if other thread locked on this mutex.
+     */
+    virtual bool_t tryLock() = 0;
 
     /**
      * @brief Locks this mutex.
      *
-     * @return true if this mutex is locked successfully.
+     * @return true if this mutex is locked successfully, or false if an error occurred.
      */
     virtual bool_t lock() = 0;
 

@@ -17,7 +17,7 @@ namespace api
 /**
  * @brief Primary template implementation.
  *
- * @param T - data type of list element.
+ * @tparam T - data type of list element.
  */
 template <typename T>
 class Value : public IllegalValue<T>

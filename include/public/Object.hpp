@@ -16,7 +16,7 @@ namespace eoos
 /**
  * @brief Primary template implementation.
  *
- * @param A - heap memory allocator class.
+ * @tparam A - heap memory allocator class.
  */
 template <class A = Allocator>
 class Object : public ObjectAllocator<A>, public api::Object

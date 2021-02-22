@@ -1,11 +1,11 @@
 /**
- * @brief Hardware interrupt interface.
+ * @brief Hardware system interrupt interface.
  *
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2015-2020, Sergey Baigudin, Baigudin Software
+ * @copyright 2015-2021, Sergey Baigudin, Baigudin Software
  */
-#ifndef API_INTERRUPT_HPP_
-#define API_INTERRUPT_HPP_
+#ifndef API_SYS_INTERRUPT_HPP_
+#define API_SYS_INTERRUPT_HPP_
 
 #include "api.Toggle.hpp"
 
@@ -14,7 +14,7 @@ namespace eoos
 namespace api
 {
     
-class Interrupt : public Toggle
+class SysInterrupt : public Toggle
 {
 
 public:
@@ -22,7 +22,7 @@ public:
     /**
      * @brief Destructor.
      */
-    virtual ~Interrupt() = 0;
+    virtual ~SysInterrupt() = 0;
 
     /**
      * @brief Jumps to interrupt hardware vector.
@@ -41,8 +41,8 @@ public:
 
 };
 
-inline Interrupt::~Interrupt() {}
+inline SysInterrupt::~SysInterrupt() {}
 
 } // namespace api
 } // namespace eoos
-#endif // API_INTERRUPT_HPP_
+#endif // API_SYS_INTERRUPT_HPP_

@@ -38,7 +38,7 @@ public:
      *
      * The method returns size of stack in bytes which should be allocated for the task.
      *
-     * @return stack size in bytes.
+     * @return stack size in bytes, or zero if OS default stack size is needed.
      */
     virtual int32_t getStackSize() const = 0;
 

@@ -8,7 +8,7 @@
 #define API_CPU_REGISTERS_HPP_
 
 #include "api.Object.hpp"
-#include "api.Stack.hpp"
+#include "api.SysStack.hpp"
 
 namespace eoos
 {
@@ -34,7 +34,7 @@ public:
      * @param entry    - a routine entry address.
      * @param argument - a routine argument.
      */
-    virtual void setInitialization(Stack<int64_t>& stack, void* entry, int32_t argument) = 0;
+    virtual void setInitialization(SysStack<int64_t>& stack, void* entry, int32_t argument) = 0;
 
     /**
      * @brief Returns a pointer to the first register of CPU registers context.

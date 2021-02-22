@@ -19,7 +19,7 @@ namespace api
 /**
  * @brief Primary template implementation.
  *
- * @param T - data type of list element.
+ * @tparam T - data type of list element.
  */
 template <typename T>
 class List : public Collection<T>, public IllegalValue<T>
@@ -31,13 +31,6 @@ public:
      * @brief Destructor.
      */
     virtual ~List() = 0;
-
-    /**
-     * @brief Tests if this object has been constructed.
-     *
-     * @return true if object has been constructed successfully.
-     */
-    virtual bool_t isConstructed() const = 0;
 
     /**
      * @brief Inserts new element to the end of this container.

@@ -1,11 +1,11 @@
 /**
- * @brief Resource interface.
+ * @brief System resource interface.
  *
  * @author    Sergey Baigudin, sergey@baigudin.software
  * @copyright 2015-2020, Sergey Baigudin, Baigudin Software
  */
-#ifndef API_RESOURCE_HPP_
-#define API_RESOURCE_HPP_
+#ifndef API_SYS_RESOURCE_HPP_
+#define API_SYS_RESOURCE_HPP_
 
 #include "api.Object.hpp"
 
@@ -14,7 +14,7 @@ namespace eoos
 namespace api
 {
     
-class Resource : public Object
+class SysResource : public Object
 {
 
 public:
@@ -22,7 +22,7 @@ public:
     /**
      * @brief Destructor.
      */
-    virtual ~Resource() = 0;
+    virtual ~SysResource() = 0;
 
     /**
      * @brief Tests if this resource is blocked.
@@ -33,8 +33,8 @@ public:
 
 };
 
-inline Resource::~Resource() {}
+inline SysResource::~SysResource() {}
 
 } // namespace api
 } // namespace eoos
-#endif // API_RESOURCE_HPP_
+#endif // API_SYS_RESOURCE_HPP_

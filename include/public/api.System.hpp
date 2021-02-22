@@ -13,7 +13,6 @@
 #include "api.Scheduler.hpp"
 #include "api.Mutex.hpp"
 #include "api.Semaphore.hpp"
-#include "api.Interrupt.hpp"
 #include "api.Task.hpp"
 #include "api.Toggle.hpp"
 
@@ -26,11 +25,6 @@ class System : public Object
 {
 
 public:
-
-    /**
-     * @brief Destructor.
-     */
-    virtual ~System() = 0;
 
     /**
      * @brief Returns running time of the system in nanoseconds.
@@ -52,13 +46,6 @@ public:
      * @return the system runtime environment.
      */
     virtual Runtime& getRuntime() const = 0;
-
-    /**
-     * @brief Returns a global interrupt controller.
-     *
-     * @return a global interrupt controller.
-     */
-    virtual Toggle& getGlobalInterrupt() const = 0;
 
     /**
      * @brief Returns the kernel scheduler.
@@ -84,21 +71,19 @@ public:
     virtual Semaphore* createSemaphore(int32_t permits, bool_t isFair) = 0;
 
     /**
-     * @brief Creates a new interrupt resource.
-     *
-     * @param handler - user class which implements an interrupt handler interface.
-     * @param source  - available interrupt source number.
-     * @return a new interrupt resource, or NULLPTR if an error has been occurred.
-     */
-    virtual Interrupt* createInterrupt(Task& handler, int32_t source) = 0;
-
-    /**
      * @brief Terminates the system execution.
      *
      * If the system is RTOS, all the operating system is terminated, and CPU goes to idle state.
      * If the system is OS, a process of operating system executing a user program is terminated.
      */
     virtual void terminate() const = 0;
+    
+protected:
+
+    /**
+     * @brief Destructor.
+     */
+    virtual ~System() = 0;
 
 };
 

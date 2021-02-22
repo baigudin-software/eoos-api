@@ -13,5 +13,4 @@ PRIVATE
 target_sources(target-eoos
 PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}/source/Allocator.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/source/System.cpp
 )

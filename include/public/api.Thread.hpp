@@ -8,7 +8,6 @@
 #define API_THREAD_HPP_
 
 #include "api.Object.hpp"
-#include "api.Resource.hpp"
 
 namespace eoos
 {
@@ -42,17 +41,26 @@ public:
 
     /**
      * @brief Thread available statuses.
+     *
+     * Thread status state machine:
+     * (NEW)->(RUNNABLE)<->(RUNNING)->(DEAD)
+     *           |<-(SLEEPING)<-|
+     *           |<-(BLOCKED) <-|
      */
     enum Status
     {
-        NEW      = 0,
-        RUNNABLE = 1,
-        RUNNING  = 2,
-        WAITING  = 3,
-        BLOCKED  = 4,
-        SLEEPING = 5,
-        DEAD     = 6
+        NEW      = 0, //< Thread is constructed
+        RUNNABLE = 1, //< Thread is set with execute()
+        RUNNING  = 2, //< Thread is run
+        BLOCKED  = 4, //< Thread is blocked on a resource
+        SLEEPING = 5, //< Thread is sleeping on a resource
+        DEAD     = 6  //< Thread is dead because it finished execution
     };
+    
+    /**
+     * @brief Maximum thead priority.
+     */
+    static const int32_t WRONG_ID = -1;    
 
     /**
      * @brief Destructor.
@@ -68,21 +76,6 @@ public:
      * @brief Waits for this thread to die.
      */
     virtual void join() = 0;
-
-    /**
-     * @brief Causes this thread to sleep.
-     *
-     * @param millis - a time to sleep in milliseconds.
-     * @param nanos  - an additional nanoseconds to sleep.
-     */
-    virtual void sleep(int64_t millis, int32_t nanos = 0) = 0;
-
-    /**
-     * @brief Blocks this thread on given resource and yields the task.
-     *
-     * @param res - a resource.
-     */
-    virtual void block(Resource& res) = 0;
 
     /**
      * @brief Returns the identifier of this thread.
@@ -111,6 +104,13 @@ public:
      * @return this thread status.
      */
     virtual Status getStatus() const = 0;
+    
+    /**
+     * @brief Returns an error of this thread task execution.
+     *
+     * @return an execution error.
+     */
+    virtual int32_t getExecutionError() const = 0;
 
 };
 

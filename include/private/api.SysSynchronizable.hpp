@@ -5,10 +5,10 @@
  * which is being executed by several processor units.
  *
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2016-2020, Sergey Baigudin, Baigudin Software
+ * @copyright 2016-2021, Sergey Baigudin, Baigudin Software
  */
-#ifndef API_SYNCHRONIZABLE_HPP_
-#define API_SYNCHRONIZABLE_HPP_
+#ifndef API_SYS_SYNCHRONIZABLE_HPP_
+#define API_SYS_SYNCHRONIZABLE_HPP_
 
 #include "api.Object.hpp"
 
@@ -17,7 +17,7 @@ namespace eoos
 namespace api
 {
 
-class Synchronizable : public Object
+class SysSynchronizable : public Object
 {
 
 public:
@@ -25,7 +25,7 @@ public:
     /**
      * @brief Destructor.
      */
-    virtual ~Synchronizable() = 0;
+    virtual ~SysSynchronizable() = 0;
 
     /**
      * @brief Synchronizes an executing code section.
@@ -60,8 +60,8 @@ public:
 
 };
         
-inline Synchronizable::~Synchronizable() {}
+inline SysSynchronizable::~SysSynchronizable() {}
 
 } // namespace api
 } // namespace eoos
-#endif // API_SYNCHRONIZABLE_HPP_
+#endif // API_SYS_SYNCHRONIZABLE_HPP_

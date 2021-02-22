@@ -41,6 +41,14 @@ public:
      * @return executing thread.
      */
     virtual Thread& getCurrentThread() const = 0;
+    
+    /**
+     * @brief Causes current thread to sleep.
+     *
+     * @param millis - a time to sleep in milliseconds.
+     * @param nanos  - an additional nanoseconds to sleep.
+     */
+    virtual void sleepCurrentThread(int64_t millis, int32_t nanos = 0) = 0;    
 
     /**
      * @brief Yields to next thread.
@@ -50,7 +58,7 @@ public:
     /**
      * @brief Returns the toggle interface for controlling global thread switching.
      *
-     * @return toggle interface.
+     * @return Toggle interface to disable and enable thread switching.
      */
     virtual Toggle& toggle() = 0;
 

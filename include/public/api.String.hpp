@@ -17,7 +17,7 @@ namespace api
 /**
  * @brief Primary template implementation.
  *
- * @param T - data type of string characters.
+ * @tparam T - data type of string characters.
  */
 template <typename T>
 class String : public Collection<T>

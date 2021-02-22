@@ -17,7 +17,7 @@ namespace eoos
 {
     
 #if EOOS_CPP_STANDARD >= 2011
-typedef decltype(nullptr)  nullptr_t;
+typedef decltype(nullptr) nullptr_t;
 #else
 typedef signed int nullptr_t;
 #endif // __cplusplus

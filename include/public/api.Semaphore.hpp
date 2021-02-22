@@ -2,19 +2,19 @@
  * @brief Semaphore interface.
  *
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2015-2020, Sergey Baigudin, Baigudin Software
+ * @copyright 2015-2021, Sergey Baigudin, Baigudin Software
  */
 #ifndef API_SEMAPHORE_HPP_
 #define API_SEMAPHORE_HPP_
 
-#include "api.Resource.hpp"
+#include "api.Object.hpp"
 
 namespace eoos
 {
 namespace api
 {
 
-class Semaphore : public Resource
+class Semaphore : public Object
 {
 
 public:

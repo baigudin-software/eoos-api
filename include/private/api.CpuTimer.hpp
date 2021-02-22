@@ -7,14 +7,14 @@
 #ifndef API_CPU_TIMER_HPP_
 #define API_CPU_TIMER_HPP_
 
-#include "api.Timer.hpp"
+#include "api.SysTimer.hpp"
 
 namespace eoos
 {
 namespace api
 {
     
-class CpuTimer : public Timer
+class CpuTimer : public SysTimer
 {
 
 public:

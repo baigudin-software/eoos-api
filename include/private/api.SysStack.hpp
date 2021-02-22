@@ -2,10 +2,10 @@
  * @brief Stack interface.
  *
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2016-2020, Sergey Baigudin, Baigudin Software
+ * @copyright 2016-2021, Sergey Baigudin, Baigudin Software
  */
-#ifndef API_STACK_HPP_
-#define API_STACK_HPP_
+#ifndef API_SYS_STACK_HPP_
+#define API_SYS_STACK_HPP_
 
 #include "api.Collection.hpp"
 #include "api.IllegalValue.hpp"
@@ -18,10 +18,10 @@ namespace api
 /**
  * @brief Primary template implementation.
  *
- * @param T - data type of default stack element.
+ * @tparam T - data type of default stack element.
  */
 template <typename T>
-class Stack : public Collection<T>, public IllegalValue<T>
+class SysStack : public Collection<T>, public IllegalValue<T>
 {
 
 public:
@@ -62,7 +62,7 @@ public:
     /**
      * @brief Destructor.
      */
-    virtual ~Stack() = 0;
+    virtual ~SysStack() = 0;
 
     /**
      * @brief Tests if this object has been constructed.
@@ -88,8 +88,8 @@ public:
 };
 
 template <typename T>
-inline Stack<T>::~Stack() {}
+inline SysStack<T>::~SysStack() {}
         
 } // namespace api
 } // namespace eoos
-#endif // API_STACK_HPP_
+#endif // API_SYS_STACK_HPP_

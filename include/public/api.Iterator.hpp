@@ -17,7 +17,7 @@ namespace api
 /**
  * @brief Primary template implementation.
  *
- * @param T - data type of iterator element.
+ * @tparam T - data type of iterator element.
  */
 template <typename T>
 class Iterator : public IllegalValue<T>

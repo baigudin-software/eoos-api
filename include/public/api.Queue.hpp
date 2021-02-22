@@ -18,7 +18,7 @@ namespace api
 /**
  * @brief Primary template implementation.
  *
- * @param T - data type of queue element.
+ * @tparam T - data type of queue element.
  */
 template <typename T>
 class Queue : public Collection<T>, public IllegalValue<T>

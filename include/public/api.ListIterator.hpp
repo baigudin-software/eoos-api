@@ -17,7 +17,7 @@ namespace api
 /**
  * @brief Primary template implementation.
  *
- * @param T - data type of list iterator element.
+ * @tparam T - data type of list iterator element.
  */
 template <typename T>
 class ListIterator : public Iterator<T>

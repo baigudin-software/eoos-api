@@ -17,7 +17,7 @@ namespace api
 /**
  * @brief Primary template implementation.
  *
- * @param T - data type of collection element.
+ * @tparam T - data type of collection element.
  */
 template <typename T>
 class Collection : public Object
