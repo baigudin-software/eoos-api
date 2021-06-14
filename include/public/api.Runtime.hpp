@@ -1,8 +1,7 @@
 /**
- * @brief Runtime program execution interface.
- *
+ * @file      api.Runtime.hpp
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2017-2020, Sergey Baigudin, Baigudin Software
+ * @copyright 2017-2021, Sergey Baigudin, Baigudin Software
  */
 #ifndef API_RUNTIME_HPP_
 #define API_RUNTIME_HPP_
@@ -13,7 +12,11 @@ namespace eoos
 {
 namespace api
 {
-    
+
+/**
+ * @class Runtime
+ * @brief Runtime program execution interface.
+ */    
 class Runtime : public Object
 {
 
@@ -27,15 +30,16 @@ public:
     /**
      * @brief Loads a program for executing.
      *
-     * @param path - a system path to a program.
-     * @return true if program has been loaded successfully.
+     * @param path A system path to a program.
+     * @return True if program has been loaded successfully.
      */
     virtual bool_t load(const char_t* path) = 0;
 
     /**
      * @brief Terminates a program execution.
      *
-     * @param status - a termination status.
+     * @param status A termination status.
+     * @todo This function shall be removed because AUTOSAR pohibits to explicitly terminate a program.
      */
     virtual void exit(int32_t status = 0) = 0;
 

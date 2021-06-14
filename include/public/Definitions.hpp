@@ -1,8 +1,9 @@
 /**
- * @brief Global definitions.
- *
+ * @file      Definitions.hpp
  * @author    Sergey Baigudin, sergey@baigudin.software
  * @copyright 2018-2020, Sergey Baigudin, Baigudin Software
+ *
+ * @brief Global definitions.
  */
 #ifndef DEFINITIONS_HPP_
 #define DEFINITIONS_HPP_
@@ -34,7 +35,7 @@
 #ifdef _MSC_VER
     #define EOOS_WIN32
     // Resolves issue with error C2065: 'not': undeclared identifier.
-    // TODO: To refactor source code to use '!' instead of 'not'.
+    // @todo To refactor source code to use '!' instead of 'not'.
     // #include <iso646.h>
     #define not !
     #ifdef _WIN64

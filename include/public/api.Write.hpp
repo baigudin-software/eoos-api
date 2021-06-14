@@ -1,8 +1,7 @@
 /**
- * @brief Stream read interface.
- *
+ * @file      api.Write.hpp
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2020, Sergey Baigudin, Baigudin Software
+ * @copyright 2020-2021, Sergey Baigudin, Baigudin Software
  */
 #ifndef API_WRITE_HPP_
 #define API_WRITE_HPP_
@@ -13,7 +12,11 @@ namespace eoos
 {
 namespace api
 {
-    
+
+/**
+ * @class Write
+ * @brief Stream write interface.
+ */
 class Write : public Object
 {
 
@@ -27,9 +30,9 @@ public:
     /**
      * @brief Writes data to a stream.
      *
-     * @param data - Pointer to data.
-     * @param size - Size of data in Bytes.
-     * @return number of bytes written.
+     * @param data Pointer to data.
+     * @param size Size of data in Bytes.
+     * @return Number of bytes written.
      */
     virtual size_t write(const void* data, size_t size) = 0;
     

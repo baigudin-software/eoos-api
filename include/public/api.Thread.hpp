@@ -1,8 +1,7 @@
 /**
- * @brief Thread interface.
- *
+ * @file      api.Thread.hpp
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2014-2020, Sergey Baigudin, Baigudin Software
+ * @copyright 2014-2021, Sergey Baigudin, Baigudin Software
  */
 #ifndef API_THREAD_HPP_
 #define API_THREAD_HPP_
@@ -13,33 +12,48 @@ namespace eoos
 {
 namespace api
 {
-        
+    
+/**
+ * @class Thread
+ * @brief Thread interface.
+ */
 class Thread : public Object
 {
 
 public:
+    
+    /**
+     * @brief Wrong thead ID.
+     */
+    static const int32_t ID_WRONG = -1;
+    
+    /**
+     * @brief Wrong thead priority.
+     */
+    static const int32_t PRIORITY_WRONG = -1;     
 
     /**
      * @brief Maximum thead priority.
      */
-    static const int32_t MAX_PRIORITY  = 10;
+    static const int32_t PRIORITY_MAX = 10;
 
     /**
      * @brief Minimum thead priority.
      */
-    static const int32_t MIN_PRIORITY  = 1;
+    static const int32_t PRIORITY_MIN = 1;
 
     /**
      * @brief Normal thead priority.
      */
-    static const int32_t NORM_PRIORITY = 5;
+    static const int32_t PRIORITY_NORM = 5;
 
     /**
      * @brief Thead locked on executing priority.
      */
-    static const int32_t LOCK_PRIORITY  = 0;
+    static const int32_t PRIORITY_LOCK  = 0;
 
     /**
+     * @enum Status
      * @brief Thread available statuses.
      *
      * Thread status state machine:
@@ -49,18 +63,13 @@ public:
      */
     enum Status
     {
-        NEW      = 0, //< Thread is constructed
-        RUNNABLE = 1, //< Thread is set with execute()
-        RUNNING  = 2, //< Thread is run
-        BLOCKED  = 4, //< Thread is blocked on a resource
-        SLEEPING = 5, //< Thread is sleeping on a resource
-        DEAD     = 6  //< Thread is dead because it finished execution
-    };
-    
-    /**
-     * @brief Maximum thead priority.
-     */
-    static const int32_t WRONG_ID = -1;    
+        STATUS_NEW      = 0, //< Thread is constructed
+        STATUS_RUNNABLE = 1, //< Thread is set with execute()
+        STATUS_RUNNING  = 2, //< Thread is run
+        STATUS_BLOCKED  = 4, //< Thread is blocked on a resource
+        STATUS_SLEEPING = 5, //< Thread is sleeping on a resource
+        STATUS_DEAD     = 6  //< Thread is dead because it finished execution
+    };  
 
     /**
      * @brief Destructor.
@@ -80,35 +89,36 @@ public:
     /**
      * @brief Returns the identifier of this thread.
      *
-     * @return the thread identifier, or -1 if an error has been occurred.
+     * @return The thread identifier, or ID_WRONG if an error has been occurred.
      */
     virtual int64_t getId() const = 0;
 
     /**
      * @brief Returns this thread priority.
      *
-     * @return priority value, or -1 if an error has been occurred.
+     * @return Priority value, or PRIORITY_WRONG if an error has been occurred.
      */
     virtual int32_t getPriority() const = 0;
 
     /**
      * @brief Sets this thread priority.
      *
-     * @param priority - number of priority in range [MIN_PRIORITY, MAX_PRIORITY], or LOCK_PRIORITY.
+     * @param priority Number of priority in range [PRIORITY_MIN, PRIORITY_MAX], or PRIORITY_LOCK.
+     * @return True if priority is set.
      */
-    virtual void setPriority(int32_t priority) = 0;
+    virtual bool_t setPriority(int32_t priority) = 0;
 
     /**
      * @brief Returns a status of this thread.
      *
-     * @return this thread status.
+     * @return This thread status.
      */
     virtual Status getStatus() const = 0;
     
     /**
      * @brief Returns an error of this thread task execution.
      *
-     * @return an execution error.
+     * @return An execution error.
      */
     virtual int32_t getExecutionError() const = 0;
 

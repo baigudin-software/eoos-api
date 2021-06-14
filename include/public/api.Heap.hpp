@@ -1,8 +1,7 @@
 /**
- * @brief Heap memory interface.
- *
+ * @file      api.Heap.hpp
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2016-2020, Sergey Baigudin, Baigudin Software
+ * @copyright 2016-2021, Sergey Baigudin, Baigudin Software
  */
 #ifndef API_HEAP_HPP_
 #define API_HEAP_HPP_
@@ -14,6 +13,10 @@ namespace eoos
 namespace api
 {
     
+/**
+ * @class Heap
+ * @brief Heap memory interface.
+ */
 class Heap : public Object
 {
 
@@ -27,18 +30,18 @@ public:
     /**
      * @brief Allocates memory.
      *
-     * @param size - required memory size in byte.
-     * @param ptr  - NULLPTR value becomes to allocate memory, and
-     *               other given values are simply returned
-     *               as memory address.
-     * @return pointer to allocated memory or NULLPTR.
+     * @param size Required memory size in byte.
+     * @param ptr  NULLPTR value becomes to allocate memory, and
+     *             other given values are simply returned
+     *             as memory address.
+     * @return Pointer to allocated memory or NULLPTR.
      */
     virtual void* allocate(size_t size, void* ptr) = 0;
 
     /**
      * @brief Frees an allocated memory.
      *
-     * @param ptr - pointer to allocated memory.
+     * @param ptr Pointer to allocated memory.
      */
     virtual void free(void* ptr) = 0;
 

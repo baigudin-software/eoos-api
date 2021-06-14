@@ -1,6 +1,5 @@
 /**
- * @brief Hardware system interrupt interface.
- *
+ * @file      api.SysInterrupt.hpp
  * @author    Sergey Baigudin, sergey@baigudin.software
  * @copyright 2015-2021, Sergey Baigudin, Baigudin Software
  */
@@ -13,7 +12,11 @@ namespace eoos
 {
 namespace api
 {
-    
+
+/**
+ * @class SysInterrupt
+ * @brief Hardware system interrupt interface.
+ */    
 class SysInterrupt : public Toggle
 {
 

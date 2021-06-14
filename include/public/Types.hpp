@@ -1,8 +1,9 @@
 /**
- * @brief Common type definitions.
- *
+ * @file      Types.hpp
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2014-2020, Sergey Baigudin, Baigudin Software
+ * @copyright 2014-2021, Sergey Baigudin, Baigudin Software
+ *
+ * @brief Common type definitions.
  */
 #ifndef TYPES_HPP_
 #define TYPES_HPP_

@@ -1,6 +1,5 @@
 /**
- * @brief Hardware system timer resource interface.
- *
+ * @file      api.SysTimer.hpp
  * @author    Sergey Baigudin, sergey@baigudin.software
  * @copyright 2014-2021, Sergey Baigudin, Baigudin Software
  */
@@ -14,6 +13,10 @@ namespace eoos
 namespace api
 {
     
+/**
+ * @class SysTimer
+ * @brief Hardware system timer resource interface.
+ */
 class SysTimer : public Object
 {
 
@@ -27,28 +30,28 @@ public:
     /**
      * @brief Gets this timer counter.
      *
-     * @return timer counter register value.
+     * @return Timer counter register value.
      */
     virtual int64_t getCount() const = 0;
 
     /**
      * @brief Gets this timer period.
      *
-     * @return timer period register value.
+     * @return Timer period register value.
      */
     virtual int64_t getPeriod() const = 0;
 
     /**
      * @brief Sets this timer counter.
      *
-     * @param count - timer counter register value.
+     * @param count Timer counter register value.
      */
     virtual void setCount(int64_t count) = 0;
 
     /**
      * @brief Sets this timer period.
      *
-     * @param us - timer period in microseconds, zero value sets a period to maximum value.
+     * @param us Timer period in microseconds, zero value sets a period to maximum value.
      */
     virtual void setPeriod(int64_t us=0) = 0;
 
@@ -65,7 +68,7 @@ public:
     /**
      * @brief Returns this timer index.
      *
-     * @return index of this timer, or -1 if an error has been occurred.
+     * @return Index of this timer, or -1 if an error has been occurred.
      */
     virtual int32_t getIndex() const = 0;
 

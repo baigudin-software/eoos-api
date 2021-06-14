@@ -1,6 +1,5 @@
 /**
- * @brief Mutex interface.
- *
+ * @file      api.SysMutex.hpp
  * @author    Sergey Baigudin, sergey@baigudin.software
  * @copyright 2021, Sergey Baigudin, Baigudin Software
  */
@@ -14,7 +13,11 @@ namespace eoos
 {
 namespace api
 {
-    
+
+/**
+ * @class SysMutex
+ * @brief System mutex interface.
+ */    
 class SysMutex : public Mutex, public SysResource
 {
 

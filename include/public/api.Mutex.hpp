@@ -1,6 +1,5 @@
 /**
- * @brief Mutex interface.
- *
+ * @file      api.Mutex.hpp
  * @author    Sergey Baigudin, sergey@baigudin.software
  * @copyright 2015-2021, Sergey Baigudin, Baigudin Software
  */
@@ -13,7 +12,11 @@ namespace eoos
 {
 namespace api
 {
-    
+
+/**
+ * @class Mutex
+ * @brief Mutex interface.
+ */    
 class Mutex : public Object
 {
 
@@ -27,14 +30,14 @@ public:
     /**
      * @brief Tries to locks this mutex.
      *
-     * @return true if this mutex is locked successfully, or false if other thread locked on this mutex.
+     * @return True if this mutex is locked successfully, or false if other thread locked on this mutex.
      */
     virtual bool_t tryLock() = 0;
 
     /**
      * @brief Locks this mutex.
      *
-     * @return true if this mutex is locked successfully, or false if an error occurred.
+     * @return True if this mutex is locked successfully, or false if an error occurred.
      */
     virtual bool_t lock() = 0;
 

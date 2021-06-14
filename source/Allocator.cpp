@@ -1,9 +1,8 @@
-/** 
- * The operating system modules memory allocator.
- * 
+/**
+ * @file      Allocator.cpp
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2018-2021, Sergey Baigudin
- */
+ * @copyright 2018-2021, Sergey Baigudin, Baigudin Software
+ */ 
 #include "Allocator.hpp"
 
 namespace eoos

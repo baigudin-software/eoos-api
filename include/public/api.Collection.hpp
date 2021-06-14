@@ -1,8 +1,7 @@
 /**
- * @brief The root interface of some collections.
- *
+ * @file      api.Collection.hpp
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2016-2020, Sergey Baigudin, Baigudin Software
+ * @copyright 2016-2021, Sergey Baigudin, Baigudin Software
  */
 #ifndef API_COLLECTION_HPP_
 #define API_COLLECTION_HPP_
@@ -15,9 +14,10 @@ namespace api
 {
     
 /**
- * @brief Primary template implementation.
+ * @class Collection<T>
+ * @brief The root interface of some collections.
  *
- * @tparam T - data type of collection element.
+ * @tparam T Data type of collection element.
  */
 template <typename T>
 class Collection : public Object
@@ -28,23 +28,26 @@ public:
     /**
      * @brief Destructor.
      */
-    virtual ~Collection(){}
+    virtual ~Collection() = 0;
 
     /**
      * @brief Returns a number of elements in this container.
      *
-     * @return number of elements.
+     * @return Number of elements.
      */
      virtual int32_t getLength() const = 0;
 
      /**
       * @brief Tests if this collection has elements.
       *
-      * @return true if this collection does not contain any elements.
+      * @return True if this collection does not contain any elements.
       */
      virtual bool_t isEmpty() const = 0;
 
 };
+
+template <typename T>
+inline Collection<T>::~Collection() {}
 
 } // namespace api
 } // namespace eoos

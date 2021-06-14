@@ -1,8 +1,7 @@
 /**
- * @brief System thread interface.
- *
+ * @file      api.SysThread.hpp
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2014-2020, Sergey Baigudin, Baigudin Software
+ * @copyright 2014-2021, Sergey Baigudin, Baigudin Software
  */
 #ifndef API_SYS_THREAD_HPP_
 #define API_SYS_THREAD_HPP_
@@ -14,7 +13,11 @@ namespace eoos
 {
 namespace api
 {
-        
+
+/**
+ * @class SysThread
+ * @brief System thread interface.
+ */        
 class SysThread : public Thread
 {
 
@@ -28,15 +31,15 @@ public:
     /**
      * @brief Causes this thread to sleep.
      *
-     * @param millis - a time to sleep in milliseconds.
-     * @param nanos  - an additional nanoseconds to sleep.
+     * @param millis A time to sleep in milliseconds.
+     * @param nanos  An additional nanoseconds to sleep.
      */
     virtual void sleep(int64_t millis, int32_t nanos = 0) = 0;
 
     /**
      * @brief Blocks this thread on given resource and yields the task.
      *
-     * @param res - a resource.
+     * @param res A resource.
      */
     virtual void block(SysResource& res) = 0;
 

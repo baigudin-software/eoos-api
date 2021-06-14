@@ -1,8 +1,7 @@
 /**
- * @brief String interface.
- *
+ * @file      api.String.hpp
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2017-2020, Sergey Baigudin, Baigudin Software
+ * @copyright 2017-2021, Sergey Baigudin, Baigudin Software
  */
 #ifndef API_STRING_HPP_
 #define API_STRING_HPP_
@@ -15,9 +14,10 @@ namespace api
 {
 
 /**
- * @brief Primary template implementation.
+ * @class String<T>
+ * @brief String interface.
  *
- * @tparam T - data type of string characters.
+ * @tparam T Data type of string characters.
  */
 template <typename T>
 class String : public Collection<T>
@@ -33,30 +33,30 @@ public:
     /**
      * @brief Copies a passed string into this string.
      *
-     * NOTE: A passed string must be copied to an internal containing string of
+     * @note A passed string must be copied to an internal containing string of
      * a realizing class so that the passed string might be invalidated after the function called.
      *
-     * @param string - a string object interface to be copied.
-     * @return true if a passed string has been copied successfully.
+     * @param string A string object interface to be copied.
+     * @return True if a passed string has been copied successfully.
      */
     virtual bool_t copy(const String<T>& string) = 0;
 
     /**
      * @brief Concatenates a passed string to this string.
      *
-     * NOTE: A passed string must be appended to an internal containing string of
+     * @note A passed string must be appended to an internal containing string of
      * a realizing class so that the passed string might be invalidated after the function called.
      *
-     * @param string - a string object interface to be appended.
-     * @return true if a passed string has been appended successfully.
+     * @param string A string object interface to be appended.
+     * @return True if a passed string has been appended successfully.
      */
     virtual bool_t concatenate(const String<T>& string) = 0;
 
     /**
      * @brief Compares this string with a passed string lexicographically.
      *
-     * @param string - a string object interface to be compared.
-     * @return the value 0 if a passed string is equal to this string;
+     * @param string A string object interface to be compared.
+     * @return The value 0 if a passed string is equal to this string;
      *         a value less than 0 if this string is less than a passed string;
      *         a value greater than 0 if this string is greater than a passed string,
      *         or the minimum possible value if an error has been occurred.
@@ -66,11 +66,11 @@ public:
     /**
      * @brief Returns pointer to the first character of containing string.
      *
-     * NOTE: Be careful, some action with the object might relocate internal buffer
+     * @note Be careful, some action with the object might relocate internal buffer
      * that contains characters. By this reason, a returned address will be actual
      * until you do not call no constant method of this class for an object.
      *
-     * @return first character of containing string characters, or NULLPTR if no string contained.
+     * @return First character of containing string characters, or NULLPTR if no string contained.
      */
     virtual const T* getChar() const = 0;
 

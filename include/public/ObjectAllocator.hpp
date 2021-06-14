@@ -1,8 +1,7 @@
 /**
- * @brief Object memory allocator.
- *
+ * @file      ObjectAllocator.hpp
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2020, Sergey Baigudin, Baigudin Software
+ * @copyright 2021, Sergey Baigudin, Baigudin Software
  */
 #ifndef OBJECT_ALLOCATOR_HPP_
 #define OBJECT_ALLOCATOR_HPP_
@@ -13,9 +12,10 @@ namespace eoos
 {
 
 /**
- * @brief Primary template implementation.
+ * @class ObjectAllocator<A>
+ * @brief Object memory allocator.
  *
- * @param A - heap memory allocator class.
+ * @param A Heap memory allocator class.
  */
 template <class A = Allocator>
 class ObjectAllocator
@@ -28,8 +28,8 @@ public:
     /**
      * @brief Operator new.
      *
-     * @param size - a number of bytes to allocate.
-     * @return allocated memory address or a null pointer.
+     * @param size A number of bytes to allocate.
+     * @return Allocated memory address or a null pointer.
      */
     void* operator new(size_t const size)
     {
@@ -39,7 +39,7 @@ public:
     /**
      * @brief Operator delete.
      *
-     * @param ptr - an address of allocated memory block or a null pointer.
+     * @param ptr An address of allocated memory block or a null pointer.
      */
     void operator delete(void* const ptr)
     {
@@ -49,9 +49,8 @@ public:
     /**
      * @brief Operator new.
      *
-     * @param size - unused.
-     * @param ptr - a pointer to reserved memory area.
-     * @return given pointer.
+     * @param ptr A pointer to reserved memory area.
+     * @return The given pointer.
      */
     void* operator new(size_t, void* const ptr)
     {

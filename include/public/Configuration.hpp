@@ -1,8 +1,7 @@
 /**
- * @brief The configuration of a target processor.
- *
+ * @file      Configuration.hpp
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2016-2020, Sergey Baigudin, Baigudin Software
+ * @copyright 2016-2021, Sergey Baigudin, Baigudin Software
  */
 #ifndef CONFIGURATION_HPP_
 #define CONFIGURATION_HPP_
@@ -11,7 +10,11 @@
 
 namespace eoos
 {
-    
+
+/**
+ * @struct Configuration
+ * @brief The configuration of a target processor.
+ */
 struct Configuration
 {
 

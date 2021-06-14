@@ -1,8 +1,7 @@
 /**
- * @brief Output stream interface.
- *
+ * @file      api.OutStream.hpp
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2017-2020, Sergey Baigudin, Baigudin Software
+ * @copyright 2017-2021, Sergey Baigudin, Baigudin Software
  */
 #ifndef API_OUT_STREAM_HPP_
 #define API_OUT_STREAM_HPP_
@@ -16,9 +15,10 @@ namespace api
 {
         
 /**
- * @brief Primary template implementation.
+ * @class OutStream<T>
+ * @brief Output stream interface.
  *
- * @tparam T - data type of string characters.
+ * @tparam T Data type of string characters.
  */
 template <typename T>
 class OutStream : public Object
@@ -34,8 +34,8 @@ public:
     /**
      * @brief Writes to an output stream.
      *
-     * @param source - a source character string to be output.
-     * @return this interface.
+     * @param source A source character string to be output.
+     * @return This interface.
      */
     virtual OutStream<T>& operator<<(const T* source) = 0;
 

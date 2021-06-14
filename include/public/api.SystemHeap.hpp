@@ -1,8 +1,7 @@
 /**
- * @brief System heap memory interface.
- *
+ * @file      api.SystemHeap.hpp
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2016-2020, Sergey Baigudin, Baigudin Software
+ * @copyright 2016-2021, Sergey Baigudin, Baigudin Software
  */
 #ifndef API_SYSTEM_HEAP_HPP_
 #define API_SYSTEM_HEAP_HPP_
@@ -14,7 +13,11 @@ namespace eoos
 {
 namespace api
 {
-        
+
+/**
+ * @class SystemHeap
+ * @brief System heap memory interface.
+ */        
 class SystemHeap : public Heap
 {
 
@@ -34,7 +37,7 @@ public:
      * is reference to pointer, as when referenced pointer equals to NULLPTR,
      * no blocks are happening.
      *
-     * @param toggle - reference to pointer to some controller.
+     * @param toggle Reference to pointer to some controller.
      */
     virtual void setToggle(Toggle*& toggle) = 0;
 

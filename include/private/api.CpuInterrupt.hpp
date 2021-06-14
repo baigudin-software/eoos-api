@@ -1,8 +1,7 @@
 /**
- * @brief A central processing unit interrupt resource interface.
- *
+ * @file      api.CpuInterrupt.hpp
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2016-2020, Sergey Baigudin, Baigudin Software
+ * @copyright 2016-2021, Sergey Baigudin, Baigudin Software
  */
 #ifndef API_CPU_INTERRUPT_HPP_
 #define API_CPU_INTERRUPT_HPP_
@@ -16,6 +15,10 @@ namespace eoos
 namespace api
 {
     
+/**
+ * @class CpuInterrupt
+ * @brief A central processing unit interrupt resource interface.
+ */
 class CpuInterrupt : public Interrupt
 {
 
@@ -29,9 +32,9 @@ public:
     /**
      * @brief Sets interrupt source handler.
      *
-     * @param handler - pointer to user class which implements an interrupt handler interface.
-     * @param source  - available interrupt source.
-     * @return true if handler is set successfully.
+     * @param handler Pointer to user class which implements an interrupt handler interface.
+     * @param source  Available interrupt source.
+     * @return True if handler is set successfully.
      */
     virtual bool_t setHandler(Task& handler, int32_t source) = 0;
 
@@ -47,7 +50,7 @@ public:
      * This method may be called in an user interrupt handler, it means
      * given conxet will be restored by the context restore procedure.
      *
-     * @param reg - a new registers context.
+     * @param reg A new registers context.
      */
     virtual void setContext(CpuRegisters& reg) = 0;
 

@@ -1,6 +1,5 @@
 /**
- * @brief Root interface of the system class hierarchy.
- *
+ * @file      api.Object.hpp
  * @author    Sergey Baigudin, sergey@baigudin.software
  * @copyright 2015-2021, Sergey Baigudin, Baigudin Software
  */
@@ -13,7 +12,11 @@ namespace eoos
 {
 namespace api
 {
-    
+
+/**
+ * @class Object
+ * @brief Root interface of the system class hierarchy.
+ */
 class Object
 {
 
@@ -27,7 +30,7 @@ public:
     /**
      * @brief Tests if this object has been constructed.
      *
-     * @return true if object has been constructed successfully.
+     * @return True if object has been constructed successfully.
      */
     virtual bool_t isConstructed() const = 0;
 

@@ -1,8 +1,7 @@
 /**
- * @brief A central processing unit registers resource interface.
- *
+ * @file      api.CpuRegisters.hpp
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2016-2020, Sergey Baigudin, Baigudin Software
+ * @copyright 2016-2021, Sergey Baigudin, Baigudin Software
  */
 #ifndef API_CPU_REGISTERS_HPP_
 #define API_CPU_REGISTERS_HPP_
@@ -15,6 +14,10 @@ namespace eoos
 namespace api
 {
     
+/**
+ * @class CpuRegisters
+ * @brief A central processing unit registers resource interface.
+ */
 class CpuRegisters : public Object
 {
 
@@ -30,16 +33,16 @@ public:
      *
      * The method is mostly used for restoring from an interrupt service routine.
      *
-     * @param stack    - a routine stack.
-     * @param entry    - a routine entry address.
-     * @param argument - a routine argument.
+     * @param stack    A routine stack.
+     * @param entry    A routine entry address.
+     * @param argument A routine argument.
      */
     virtual void setInitialization(SysStack<int64_t>& stack, void* entry, int32_t argument) = 0;
 
     /**
      * @brief Returns a pointer to the first register of CPU registers context.
      *
-     * @return memory address of registers order, or NULLPTR if an error has been occurred.
+     * @return Memory address of registers order, or NULLPTR if an error has been occurred.
      */
     virtual void* getRegisters() = 0;
 

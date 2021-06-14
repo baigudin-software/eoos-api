@@ -1,8 +1,7 @@
 /**
- * @brief Iterator interface.
- *
+ * @file      api.Iterator.hpp
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2016-2020, Sergey Baigudin, Baigudin Software
+ * @copyright 2016-2021, Sergey Baigudin, Baigudin Software
  */
 #ifndef API_ITERATOR_HPP_
 #define API_ITERATOR_HPP_
@@ -15,9 +14,10 @@ namespace api
 {
         
 /**
- * @brief Primary template implementation.
+ * @class Iterator<T>
+ * @brief Iterator interface.
  *
- * @tparam T - data type of iterator element.
+ * @tparam T Data type of iterator element.
  */
 template <typename T>
 class Iterator : public IllegalValue<T>
@@ -33,21 +33,21 @@ public:
     /**
      * @brief Returns next element and advances the cursor position.
      *
-     * @return reference to element.
+     * @return Reference to element.
      */
     virtual T& getNext() const = 0;
 
     /**
      * @brief Tests if this iteration may return a next element.
      *
-     * @return true if next element is had.
+     * @return True if next element is had.
      */
     virtual bool_t hasNext() const = 0;
 
     /**
      * @brief Removes the last element returned by this iterator.
      *
-     * @return true if an element is removed successfully.
+     * @return True if an element is removed successfully.
      */
     virtual bool_t remove() = 0;
 

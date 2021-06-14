@@ -1,6 +1,5 @@
 /**
- * @brief Semaphore interface.
- *
+ * @file      api.Semaphore.hpp
  * @author    Sergey Baigudin, sergey@baigudin.software
  * @copyright 2015-2021, Sergey Baigudin, Baigudin Software
  */
@@ -14,6 +13,10 @@ namespace eoos
 namespace api
 {
 
+/**
+ * @class Semaphore
+ * @brief Semaphore interface.
+ */
 class Semaphore : public Object
 {
 
@@ -30,7 +33,7 @@ public:
      * The method acquires one permit or waits
      * while the permit will be released.
      *
-     * @return true if the semaphore is acquired successfully.
+     * @return True if the semaphore is acquired successfully.
      */
     virtual bool_t acquire() = 0;
 
@@ -40,8 +43,8 @@ public:
      * The method acquires given permits number or waits
      * while the number will be released.
      *
-     * @param permits - the number of permits to acquire.
-     * @return true if the semaphore is acquired successfully.
+     * @param permits The number of permits to acquire.
+     * @return True if the semaphore is acquired successfully.
      */
     virtual bool_t acquire(int32_t permits) = 0;
 
@@ -57,14 +60,14 @@ public:
      *
      * The method releases from the permits and returns these to the semaphore.
      *
-     * @param permits - the number of permits to release.
+     * @param permits The number of permits to release.
      */
     virtual void release(int32_t permits) = 0;
 
     /**
      * @brief Tests if this semaphore is fair.
      *
-     * @return true if this semaphore has fairness set true.
+     * @return True if this semaphore has fairness set true.
      */
     virtual bool_t isFair() const = 0;
 

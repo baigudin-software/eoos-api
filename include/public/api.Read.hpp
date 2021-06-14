@@ -1,8 +1,7 @@
 /**
- * @brief Stream read interface.
- *
+ * @file      api.Read.hpp
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2020, Sergey Baigudin, Baigudin Software
+ * @copyright 2020-2021, Sergey Baigudin, Baigudin Software
  */
 #ifndef API_READ_HPP_
 #define API_READ_HPP_
@@ -13,7 +12,11 @@ namespace eoos
 {
 namespace api
 {
-        
+
+/**
+ * @class Read
+ * @brief Stream read interface.
+ */        
 class Read : public Object
 {
 
@@ -27,9 +30,9 @@ public:
     /**
      * @brief Reads data from a stream.
      *
-     * @param data - Pointer to data.
-     * @param size - Size of data in Bytes.
-     * @return number of read bytes.
+     * @param data Pointer to data.
+     * @param size Size of data in Bytes.
+     * @return Number of read bytes.
      */
     virtual size_t read(void* data, size_t size) const = 0;
     
