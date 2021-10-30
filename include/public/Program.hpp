@@ -24,10 +24,10 @@ public:
     /**
      * @brief Starts executing an operating system main program.
      *
-     * @param args Arguments passed to the program.
+     * @param args  Arguments passed to the program.
      * @return Zero, or error code if an error has been occurred.
      */
-    static int32_t start(const api::List<char_t*>* args);
+    static int32_t start(api::List<char_t*> const* args);
 
 };
 
