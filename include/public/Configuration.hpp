@@ -18,8 +18,6 @@ namespace eoos
 struct Configuration
 {
 
-public:
-
     /**
      * @brief Stack size in bytes for the first user thread to be created.
      */
@@ -48,18 +46,6 @@ public:
      * @brief CPU clock in Hz.
      */
     int64_t cpuClock;
-
-    /**
-     * @brief Constructor.
-     */
-    Configuration();
-
-    /**
-     * @brief Destructor.
-     */
-   ~Configuration()
-    {
-    }
 
 };
 

@@ -35,14 +35,6 @@ public:
      */
     virtual bool_t load(const char_t* path) = 0;
 
-    /**
-     * @brief Terminates a program execution.
-     *
-     * @param status A termination status.
-     * @todo This function shall be removed because AUTOSAR pohibits to explicitly terminate a program.
-     */
-    virtual void exit(int32_t status = 0) = 0;
-
 };
 
 inline Runtime::~Runtime() {}

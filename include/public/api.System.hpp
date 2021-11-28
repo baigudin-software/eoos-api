@@ -7,8 +7,6 @@
 #define API_SYSTEM_HPP_
 
 #include "api.Object.hpp"
-#include "api.Heap.hpp"
-#include "api.Runtime.hpp"
 #include "api.Scheduler.hpp"
 #include "api.Mutex.hpp"
 #include "api.Semaphore.hpp"
@@ -28,20 +26,6 @@ class System : public Object
 {
 
 public:
-
-    /**
-     * @brief Returns running time of the system in nanoseconds.
-     *
-     * @return Time in nanoseconds.
-     */
-    virtual int64_t getTime() const = 0;
-
-    /**
-     * @brief Returns the system heap memory.
-     *
-     * @return The heap memory.
-     */
-    virtual Heap& getHeap() const = 0;
 
     /**
      * @brief Returns the kernel scheduler.
