@@ -83,15 +83,10 @@ public:
 
     /**
      * @brief Waits for this thread to die.
-     */
-    virtual void join() = 0;
-
-    /**
-     * @brief Returns the identifier of this thread.
      *
-     * @return The thread identifier, or ID_WRONG if an error has been occurred.
+     * @return True, if this thread is dead.
      */
-    virtual int64_t getId() const = 0;
+    virtual bool_t join() = 0;
 
     /**
      * @brief Returns this thread priority.
