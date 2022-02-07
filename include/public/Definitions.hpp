@@ -54,10 +54,24 @@
 #endif
 
 /**
+ * @brief C++ language keywords re-definition.
+ */
+#if EOOS_CPP_STANDARD >= 2011
+    #define EOOS_KEYWORD_NOEXCEPT noexcept
+#else
+    #define EOOS_KEYWORD_NOEXCEPT
+#endif // __cplusplus
+
+
+
+
+/**
  * @brief Definitions of Data Model of a hardware system.
  *
  * Please, chose one of width in bits of the below Data Models.
  * No Data Model selected means C++ standard width in bits.
+ *
+ * @todo This must be removed in future, and Data Model model has to be defined based on compiler usage for HW.
  */
 // C++ Standard Library types usage
 //#define EOOS_TYPE_STDLIB

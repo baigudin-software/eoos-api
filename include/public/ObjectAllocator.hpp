@@ -31,7 +31,7 @@ public:
      * @param size A number of bytes to allocate.
      * @return Allocated memory address or a null pointer.
      */
-    void* operator new(size_t const size)
+    static void* operator new(size_t const size) EOOS_KEYWORD_NOEXCEPT 
     {
         return A::allocate(size);
     }
@@ -41,7 +41,7 @@ public:
      *
      * @param ptr An address of allocated memory block or a null pointer.
      */
-    void operator delete(void* const ptr)
+    static void operator delete(void* const ptr)
     {
         A::free(ptr);
     }    
@@ -52,7 +52,7 @@ public:
      * @param ptr A pointer to reserved memory area.
      * @return The given pointer.
      */
-    void* operator new(size_t, void* const ptr)
+    static void* operator new(size_t, void* const ptr) EOOS_KEYWORD_NOEXCEPT
     {
         return ptr;
     }
@@ -60,7 +60,7 @@ public:
     /**
      * @brief Operator delete.
      */
-    void operator delete(void*, void*)
+    static void operator delete(void*, void*)
     {
     }
 
