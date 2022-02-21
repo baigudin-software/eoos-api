@@ -30,11 +30,9 @@ public:
     virtual ~Task() = 0;
 
     /**
-     * @brief Starts executing an operating system prorgam in itsself context.
-     *
-     * @return Zero, or error code if an error has been occurred.
+     * @brief Starts executing an operating system task in itself context.
      */
-    virtual int32_t start() = 0;
+    virtual void start() = 0;
 
     /**
      * @brief Returns size of stack.

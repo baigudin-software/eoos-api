@@ -57,9 +57,13 @@ public:
      * @brief Thread available statuses.
      *
      * Thread status state machine:
+     *   |-- On any error of creation -->|
      * (NEW)->(RUNNABLE)<->(RUNNING)->(DEAD)
      *           |<-(SLEEPING)<-|
      *           |<-(BLOCKED) <-|
+     *
+     * @todo Currently there is no function to get a thread status for OS, as statuses 
+     *       of different OSs are different, and we need to align them to this.
      */
     enum Status
     {
@@ -78,8 +82,10 @@ public:
 
     /**
      * @brief Causes this thread to begin execution.
+     *
+     * @return True if execution of the thread initiated successfully.     
      */
-    virtual void execute() = 0;
+    virtual bool_t execute() = 0;
 
     /**
      * @brief Waits for this thread to die.
@@ -102,21 +108,7 @@ public:
      * @return True if priority is set.
      */
     virtual bool_t setPriority(int32_t priority) = 0;
-
-    /**
-     * @brief Returns a status of this thread.
-     *
-     * @return This thread status.
-     */
-    virtual Status getStatus() const = 0;
     
-    /**
-     * @brief Returns an error of this thread task execution.
-     *
-     * @return An execution error.
-     */
-    virtual int32_t getExecutionError() const = 0;
-
 };
 
 inline Thread::~Thread() {}
