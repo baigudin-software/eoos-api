@@ -41,10 +41,9 @@ public:
     /**
      * @brief Causes current thread to sleep.
      *
-     * @param millis A time to sleep in milliseconds.
-     * @param nanos  An additional nanoseconds to sleep.
+     * @param ms A time to sleep in milliseconds.
      */
-    virtual void sleep(int64_t millis, int32_t nanos = 0) = 0;    
+    virtual void sleep(int32_t ms) = 0;    
 
     /**
      * @brief Yields to next thread.

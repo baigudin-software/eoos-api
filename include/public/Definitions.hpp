@@ -38,6 +38,7 @@
     // @todo To refactor source code to use '!' instead of 'not'.
     // #include <iso646.h>
     #define not !
+    
     #ifdef _WIN64
         #define EOOS_TYPE_WIDTH_LLP64
         #define EOOS_SIZE_TYPE unsigned __int64
@@ -45,6 +46,14 @@
         #define EOOS_TYPE_WIDTH_ILP32
         #define EOOS_SIZE_TYPE unsigned int
     #endif
+    // Define Windows 10 if other is not set by using the /D compiler option.
+    #ifndef WINVER
+        #define WINVER 0x0A00
+    #endif    
+    #ifndef _WIN32_WINNT
+        #define _WIN32_WINNT 0x0A00
+    #endif
+    
 /**
  * @brief Undefined compiler 
  */ 
