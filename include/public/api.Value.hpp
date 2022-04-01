@@ -1,7 +1,7 @@
 /**
  * @file      api.Value.hpp
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2017-2021, Sergey Baigudin, Baigudin Software
+ * @copyright 2017-2022, Sergey Baigudin, Baigudin Software
  */
 #ifndef API_VALUE_HPP_
 #define API_VALUE_HPP_

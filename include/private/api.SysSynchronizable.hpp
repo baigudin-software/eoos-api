@@ -1,10 +1,10 @@
 /**
  * @file      api.SysSynchronizable.hpp
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2016-2021, Sergey Baigudin, Baigudin Software
+ * @copyright 2016-2022, Sergey Baigudin, Baigudin Software
  */
-#ifndef API_SYS_SYNCHRONIZABLE_HPP_
-#define API_SYS_SYNCHRONIZABLE_HPP_
+#ifndef API_SYSSYNCHRONIZABLE_HPP_
+#define API_SYSSYNCHRONIZABLE_HPP_
 
 #include "api.Object.hpp"
 
@@ -67,4 +67,4 @@ inline SysSynchronizable::~SysSynchronizable() {}
 
 } // namespace api
 } // namespace eoos
-#endif // API_SYS_SYNCHRONIZABLE_HPP_
+#endif // API_SYSSYNCHRONIZABLE_HPP_

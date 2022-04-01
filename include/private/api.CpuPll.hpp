@@ -1,10 +1,10 @@
 /**
  * @file      api.CpuPll.hpp
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2017-2021, Sergey Baigudin, Baigudin Software
+ * @copyright 2017-2022, Sergey Baigudin, Baigudin Software
  */
-#ifndef API_CPU_PLL_HPP_
-#define API_CPU_PLL_HPP_
+#ifndef API_CPUPLL_HPP_
+#define API_CPUPLL_HPP_
 
 #include "api.Object.hpp"
 
@@ -47,4 +47,4 @@ inline CpuPll::~CpuPll() {}
 
 } // namespace api
 } // namespace eoos
-#endif // API_CPU_PLL_HPP_
+#endif // API_CPUPLL_HPP_

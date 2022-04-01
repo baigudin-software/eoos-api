@@ -1,7 +1,7 @@
 /**
  * @file      api.Task.hpp
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2016-2021, Sergey Baigudin, Baigudin Software
+ * @copyright 2016-2022, Sergey Baigudin, Baigudin Software
  */
 #ifndef API_TASK_HPP_
 #define API_TASK_HPP_

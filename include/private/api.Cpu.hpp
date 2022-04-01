@@ -1,7 +1,7 @@
 /**
  * @file      api.Cpu.hpp
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2018-2021, Sergey Baigudin, Baigudin Software
+ * @copyright 2018-2022, Sergey Baigudin, Baigudin Software
  */
 #ifndef API_CPU_HPP_
 #define API_CPU_HPP_

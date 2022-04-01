@@ -1,10 +1,10 @@
 /**
  * @file      api.SysMutex.hpp
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2021, Sergey Baigudin, Baigudin Software
+ * @copyright 2021-2022, Sergey Baigudin, Baigudin Software
  */
-#ifndef API_SYS_MUTEX_HPP_
-#define API_SYS_MUTEX_HPP_
+#ifndef API_SYSMUTEX_HPP_
+#define API_SYSMUTEX_HPP_
 
 #include "api.Mutex.hpp"
 #include "api.SysResource.hpp"
@@ -34,4 +34,4 @@ inline SysMutex::~SysMutex() {}
 
 } // namespace api
 } // namespace eoos
-#endif // API_SYS_MUTEX_HPP_
+#endif // API_SYSMUTEX_HPP_

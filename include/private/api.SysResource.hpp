@@ -1,10 +1,10 @@
 /**
  * @file      api.SysResource.hpp
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2015-2021, Sergey Baigudin, Baigudin Software
+ * @copyright 2015-2022, Sergey Baigudin, Baigudin Software
  */
-#ifndef API_SYS_RESOURCE_HPP_
-#define API_SYS_RESOURCE_HPP_
+#ifndef API_SYSRESOURCE_HPP_
+#define API_SYSRESOURCE_HPP_
 
 #include "api.Object.hpp"
 
@@ -40,4 +40,4 @@ inline SysResource::~SysResource() {}
 
 } // namespace api
 } // namespace eoos
-#endif // API_SYS_RESOURCE_HPP_
+#endif // API_SYSRESOURCE_HPP_

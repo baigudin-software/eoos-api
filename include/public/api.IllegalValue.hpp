@@ -1,10 +1,10 @@
 /**
  * @file      api.IllegalValue.hpp
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2016-2021, Sergey Baigudin, Baigudin Software
+ * @copyright 2016-2022, Sergey Baigudin, Baigudin Software
  */
-#ifndef API_ILLEGAL_VALUE_HPP_
-#define API_ILLEGAL_VALUE_HPP_
+#ifndef API_ILLEGALVALUE_HPP_
+#define API_ILLEGALVALUE_HPP_
 
 #include "api.Object.hpp"
 
@@ -63,4 +63,4 @@ inline IllegalValue<T>::~IllegalValue() {}
 
 } // namespace api
 } // namespace eoos
-#endif // API_ILLEGAL_VALUE_HPP_
+#endif // API_ILLEGALVALUE_HPP_

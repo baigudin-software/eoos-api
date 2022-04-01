@@ -1,10 +1,10 @@
 /**
  * @file      api.OutStream.hpp
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2017-2021, Sergey Baigudin, Baigudin Software
+ * @copyright 2017-2022, Sergey Baigudin, Baigudin Software
  */
-#ifndef API_OUT_STREAM_HPP_
-#define API_OUT_STREAM_HPP_
+#ifndef API_OUTSTREAM_HPP_
+#define API_OUTSTREAM_HPP_
 
 #include "api.Object.hpp"
 #include "api.String.hpp"

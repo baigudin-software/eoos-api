@@ -1,10 +1,10 @@
 /**
  * @file      ObjectAllocator.hpp
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2021, Sergey Baigudin, Baigudin Software
+ * @copyright 2021-2022, Sergey Baigudin, Baigudin Software
  */
-#ifndef OBJECT_ALLOCATOR_HPP_
-#define OBJECT_ALLOCATOR_HPP_
+#ifndef OBJECTALLOCATOR_HPP_
+#define OBJECTALLOCATOR_HPP_
 
 #include "Allocator.hpp"
 
@@ -85,4 +85,4 @@ protected:
 };
 
 } // namespace eoos
-#endif // OBJECT_ALLOCATOR_HPP_
+#endif // OBJECTALLOCATOR_HPP_

@@ -1,10 +1,10 @@
 /**
  * @file      api.SysThread.hpp
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2014-2021, Sergey Baigudin, Baigudin Software
+ * @copyright 2014-2022, Sergey Baigudin, Baigudin Software
  */
-#ifndef API_SYS_THREAD_HPP_
-#define API_SYS_THREAD_HPP_
+#ifndef API_SYSTHREAD_HPP_
+#define API_SYSTHREAD_HPP_
 
 #include "api.Thread.hpp"
 #include "api.SysResource.hpp"
@@ -49,4 +49,4 @@ inline SysThread::~SysThread() {}
         
 } // namespace api
 } // namespace eoos
-#endif // API_SYS_THREAD_HPP_
+#endif // API_SYSTHREAD_HPP_

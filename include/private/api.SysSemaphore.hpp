@@ -1,10 +1,10 @@
 /**
  * @file      api.SysSemaphore.hpp
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2015-2021, Sergey Baigudin, Baigudin Software
+ * @copyright 2015-2022, Sergey Baigudin, Baigudin Software
  */
-#ifndef API_SYS_SEMAPHORE_HPP_
-#define API_SYS_SEMAPHORE_HPP_
+#ifndef API_SYSSEMAPHORE_HPP_
+#define API_SYSSEMAPHORE_HPP_
 
 #include "api.Semaphore.hpp"
 #include "api.SysResource.hpp"

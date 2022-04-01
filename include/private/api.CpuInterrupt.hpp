@@ -1,10 +1,10 @@
 /**
  * @file      api.CpuInterrupt.hpp
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2016-2021, Sergey Baigudin, Baigudin Software
+ * @copyright 2016-2022, Sergey Baigudin, Baigudin Software
  */
-#ifndef API_CPU_INTERRUPT_HPP_
-#define API_CPU_INTERRUPT_HPP_
+#ifndef API_CPUINTERRUPT_HPP_
+#define API_CPUINTERRUPT_HPP_
 
 #include "api.Interrupt.hpp"
 #include "api.Task.hpp"
@@ -69,4 +69,4 @@ inline CpuInterrupt::~CpuInterrupt() {}
 
 } // namespace api
 } // namespace eoos
-#endif // API_CPU_INTERRUPT_HPP_
+#endif // API_CPUINTERRUPT_HPP_

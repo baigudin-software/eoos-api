@@ -1,7 +1,7 @@
 /**
  * @file      api.Read.hpp
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2020-2021, Sergey Baigudin, Baigudin Software
+ * @copyright 2020-2022, Sergey Baigudin, Baigudin Software
  */
 #ifndef API_READ_HPP_
 #define API_READ_HPP_

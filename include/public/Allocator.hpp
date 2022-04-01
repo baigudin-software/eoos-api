@@ -1,7 +1,7 @@
 /**
  * @file      Allocator.hpp
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2016-2021, Sergey Baigudin, Baigudin Software
+ * @copyright 2016-2022, Sergey Baigudin, Baigudin Software
  */
 #ifndef ALLOCATOR_HPP_
 #define ALLOCATOR_HPP_

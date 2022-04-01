@@ -1,10 +1,10 @@
 /**
  * @file      api.SystemHeap.hpp
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2016-2021, Sergey Baigudin, Baigudin Software
+ * @copyright 2016-2022, Sergey Baigudin, Baigudin Software
  */
-#ifndef API_SYSTEM_HEAP_HPP_
-#define API_SYSTEM_HEAP_HPP_
+#ifndef API_SYSTEMHEAP_HPP_
+#define API_SYSTEMHEAP_HPP_
 
 #include "api.Heap.hpp"
 #include "api.Toggle.hpp"
@@ -52,4 +52,4 @@ inline SystemHeap::~SystemHeap() {}
 
 } // namespace api
 } // namespace eoos
-#endif // API_SYSTEM_HEAP_HPP_
+#endif // API_SYSTEMHEAP_HPP_

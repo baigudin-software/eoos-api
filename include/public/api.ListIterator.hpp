@@ -1,10 +1,10 @@
 /**
  * @file      api.ListIterator.hpp
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2016-2021, Sergey Baigudin, Baigudin Software
+ * @copyright 2016-2022, Sergey Baigudin, Baigudin Software
  */
-#ifndef API_LIST_ITERATOR_HPP_
-#define API_LIST_ITERATOR_HPP_
+#ifndef API_LISTITERATOR_HPP_
+#define API_LISTITERATOR_HPP_
 
 #include "api.Iterator.hpp"
 
@@ -82,4 +82,4 @@ inline ListIterator<T>::~ListIterator() {}
 
 } // namespace api
 } // namespace eoos
-#endif // API_LIST_ITERATOR_HPP_
+#endif // API_LISTITERATOR_HPP_

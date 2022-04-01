@@ -1,7 +1,7 @@
 /**
  * @file      Program.hpp
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2014-2021, Sergey Baigudin, Baigudin Software
+ * @copyright 2014-2022, Sergey Baigudin, Baigudin Software
  */
 #ifndef PROGRAM_HPP_
 #define PROGRAM_HPP_

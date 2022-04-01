@@ -1,10 +1,10 @@
 /**
  * @file      api.SysInterrupt.hpp
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2015-2021, Sergey Baigudin, Baigudin Software
+ * @copyright 2015-2022, Sergey Baigudin, Baigudin Software
  */
-#ifndef API_SYS_INTERRUPT_HPP_
-#define API_SYS_INTERRUPT_HPP_
+#ifndef API_SYSINTERRUPT_HPP_
+#define API_SYSINTERRUPT_HPP_
 
 #include "api.Toggle.hpp"
 
@@ -48,4 +48,4 @@ inline SysInterrupt::~SysInterrupt() {}
 
 } // namespace api
 } // namespace eoos
-#endif // API_SYS_INTERRUPT_HPP_
+#endif // API_SYSINTERRUPT_HPP_

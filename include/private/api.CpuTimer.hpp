@@ -1,10 +1,10 @@
 /**
  * @file      api.CpuTimer.hpp
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2016-2021, Sergey Baigudin, Baigudin Software
+ * @copyright 2016-2022, Sergey Baigudin, Baigudin Software
  */
-#ifndef API_CPU_TIMER_HPP_
-#define API_CPU_TIMER_HPP_
+#ifndef API_CPUTIMER_HPP_
+#define API_CPUTIMER_HPP_
 
 #include "api.SysTimer.hpp"
 
@@ -54,4 +54,4 @@ inline CpuTimer::~CpuTimer() {}
 
 } // namespace api
 } // namespace eoos
-#endif // API_CPU_TIMER_HPP_
+#endif // API_CPUTIMER_HPP_

@@ -1,10 +1,10 @@
 /**
  * @file      api.SysTimer.hpp
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2014-2021, Sergey Baigudin, Baigudin Software
+ * @copyright 2014-2022, Sergey Baigudin, Baigudin Software
  */
-#ifndef API_SYS_TIMER_HPP_
-#define API_SYS_TIMER_HPP_
+#ifndef API_SYSTIMER_HPP_
+#define API_SYSTIMER_HPP_
 
 #include "api.Object.hpp"
 
@@ -78,4 +78,4 @@ inline SysTimer::~SysTimer() {}
 
 } // namespace api
 } // namespace eoos
-#endif // API_SYS_TIMER_HPP_
+#endif // API_SYSTIMER_HPP_

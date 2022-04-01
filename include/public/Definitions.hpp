@@ -1,7 +1,7 @@
 /**
  * @file      Definitions.hpp
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2018-2020, Sergey Baigudin, Baigudin Software
+ * @copyright 2018-2022, Sergey Baigudin, Baigudin Software
  *
  * @brief Global definitions.
  */
