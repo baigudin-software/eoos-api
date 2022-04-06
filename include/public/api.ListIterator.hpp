@@ -33,8 +33,8 @@ public:
     /**
      * @brief Inserts the specified element into the list.
      *
-     * Method inserts given element before the element
-     * that will be returned by next method.
+     * Function inserts given element before the element
+     * that will be returned by next function.
      * Therefore subsequent call to next will be unaffected,
      * and a subsequent call to prev will return the inserted element.
      *

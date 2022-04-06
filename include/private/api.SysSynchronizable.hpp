@@ -33,7 +33,7 @@ public:
     /**
      * @brief Synchronizes an executing code section.
      *
-     * The method waits while other processor units get this program pointer
+     * The function waits while other processor units get this program pointer
      * and continues executing the program after this.
      */
     virtual void synchronize() = 0;
@@ -41,7 +41,7 @@ public:
     /**
      * @brief Recasts given data to a gauge.
      *
-     * The method compares given data with a gauge and recasts to it
+     * The function compares given data with a gauge and recasts to it
      * if the data does not equal to the gauge.
      *
      * @param ptr     Address of data for synchronizing.

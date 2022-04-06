@@ -31,7 +31,7 @@ public:
     /**
      * @brief Initializes the CPU registers.
      *
-     * The method is mostly used for restoring from an interrupt service routine.
+     * The function is mostly used for restoring from an interrupt service routine.
      *
      * @param stack    A routine stack.
      * @param entry    A routine entry address.

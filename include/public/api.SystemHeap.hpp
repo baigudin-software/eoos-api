@@ -31,7 +31,7 @@ public:
     /**
      * @brief Sets a context switching locker.
      *
-     * The method allows disabling and enabling thread context switching
+     * The function allows disabling and enabling thread context switching
      * when memory is being allocated or freed. Thus, the best way is
      * to pass an interface of global interrupt toggling. The parameter type
      * is reference to pointer, as when referenced pointer equals to NULLPTR,

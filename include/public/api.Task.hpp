@@ -37,7 +37,7 @@ public:
     /**
      * @brief Returns size of stack.
      *
-     * The method returns size of stack in bytes which should be allocated for the task.
+     * The function returns size of stack in bytes which should be allocated for the task.
      *
      * @return Stack size in bytes, or zero if OS default stack size is needed.
      */

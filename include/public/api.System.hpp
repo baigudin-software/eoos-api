@@ -45,10 +45,9 @@ public:
      * @brief Creates a new semaphore resource.
      *
      * @param permits The initial number of permits available.
-     * @param isFair  True if this semaphore will guarantee FIFO granting of permits under contention.
      * @return A new semaphore resource, or NULLPTR if an error has been occurred.
      */
-    virtual Semaphore* createSemaphore(int32_t permits, bool_t isFair) = 0;
+    virtual Semaphore* createSemaphore(int32_t permits) = 0;
     
 protected:
 

@@ -46,8 +46,8 @@ public:
     /**
      * @brief Sets new registers context for storing.
      *
-     * Method sets a new register context for storing the CPU registers to it.
-     * This method may be called in an user interrupt handler, it means
+     * Function sets a new register context for storing the CPU registers to it.
+     * This function may be called in an user interrupt handler, it means
      * given conxet will be restored by the context restore procedure.
      *
      * @param reg A new registers context.
@@ -57,8 +57,8 @@ public:
     /**
      * @brief Restores registers context for storing to the default.
      *
-     * Method restores default registers for storing the CPU registers to it.
-     * This method may be called in an user interrupt handler, it means
+     * Function restores default registers for storing the CPU registers to it.
+     * This function may be called in an user interrupt handler, it means
      * the default conxet will be restored with the context restore procedure.
      */
     virtual void restoreContext() = 0;

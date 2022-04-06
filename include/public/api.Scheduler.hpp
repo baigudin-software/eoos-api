@@ -33,7 +33,7 @@ public:
     /**
      * @brief Creates a new thread.
      *
-     * @param task An user task which main method will be invoked when created thread is started.
+     * @param task An user task which main function will be invoked when created thread is started.
      * @return A new thread.
      */
     virtual Thread* createThread(Task& task) = 0;
