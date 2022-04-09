@@ -44,7 +44,7 @@ public:
     static void operator delete(void* const ptr)
     {
         A::free(ptr);
-    }    
+    }
 
     /**
      * @brief Operator new.
