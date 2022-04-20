@@ -33,7 +33,6 @@
  * @brief Microsoft C/C++ compiler (MSVC).
  */
 #ifdef _MSC_VER
-    #define EOOS_WIN32
     // Resolves issue with error C2065: 'not': undeclared identifier.
     // @todo To refactor source code to use '!' instead of 'not'.
     // #include <iso646.h>
@@ -53,7 +52,19 @@
     #ifndef _WIN32_WINNT
         #define _WIN32_WINNT 0x0A00
     #endif
-    
+
+/**
+ * @brief GNU C/C++ compiler.
+ */
+#elif __GNUC__
+
+    #ifdef __LP64__
+        #define EOOS_TYPE_WIDTH_LP64
+        #define EOOS_SIZE_TYPE unsigned long int
+    #else
+        #error "Memory type is not supported"
+    #endif
+
 /**
  * @brief Undefined compiler 
  */ 
