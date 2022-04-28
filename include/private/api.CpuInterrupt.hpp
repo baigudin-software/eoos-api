@@ -6,7 +6,7 @@
 #ifndef API_CPUINTERRUPT_HPP_
 #define API_CPUINTERRUPT_HPP_
 
-#include "api.Interrupt.hpp"
+#include "api.SysInterrupt.hpp"
 #include "api.Task.hpp"
 #include "api.CpuRegisters.hpp"
 
@@ -19,7 +19,7 @@ namespace api
  * @class CpuInterrupt
  * @brief A central processing unit interrupt resource interface.
  */
-class CpuInterrupt : public Interrupt
+class CpuInterrupt : public SysInterrupt
 {
 
 public:
