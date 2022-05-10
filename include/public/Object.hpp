@@ -57,7 +57,7 @@ public:
      */       
     Object& operator=(const Object& obj)
     {
-        if( this != &obj && isConstructed() )
+        if( isConstructed() && (this != &obj) )
         {
             isConstructed_ = obj.isConstructed_;
         }

@@ -23,11 +23,6 @@ class Thread : public Object
 public:
     
     /**
-     * @brief Wrong thead ID.
-     */
-    static const int32_t ID_WRONG = -1;
-    
-    /**
      * @brief Wrong thead priority.
      */
     static const int32_t PRIORITY_WRONG = -1;     

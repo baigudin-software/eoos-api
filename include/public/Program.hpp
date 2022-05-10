@@ -27,7 +27,7 @@ public:
      * @param args  Arguments passed to the program.
      * @return Zero, or error code if an error has been occurred.
      */
-    static int32_t start(api::List<char_t*> const* args);
+    static int32_t start(api::List<char_t*> const* args); ///< SCA Justificated MISRA-C++:2008 Rule 3-2-2
 
 };
 
