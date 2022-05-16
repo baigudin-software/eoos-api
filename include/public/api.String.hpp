@@ -76,7 +76,7 @@ public:
 
 };
 
-template <typename T>
+template <typename T> ///< SCA MISRA-C++:2008 Defected Rule 7-3-1
 inline String<T>::~String() {}
         
 } // namespace api

@@ -61,12 +61,14 @@ public:
      * @brief Examines the head element of this container.
      *
      * @return The head element.
+     *
+     * @todo Declare constant function to satisfy MISRA-C++:2008 Rule 9–3–1
      */
-    virtual T& peek() const = 0;
+    virtual T& peek() = 0;
 
 };
 
-template <typename T>
+template <typename T> ///< SCA MISRA-C++:2008 Defected Rule 7-3-1
 inline Queue<T>::~Queue() {}
         
 } // namespace api

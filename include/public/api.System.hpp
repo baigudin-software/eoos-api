@@ -32,7 +32,7 @@ public:
      *
      * @return The kernel scheduler.
      */
-    virtual Scheduler& getScheduler() const = 0;
+    virtual Scheduler& getScheduler() = 0;
 
     /**
      * @brief Creates a new mutex resource.

@@ -38,12 +38,14 @@ public:
      * the iterating of a collection has been completed.
      *
      * @return Pointer to new iterator.
+     *
+     * @todo Declare constant function to satisfy MISRA-C++:2008 Rule 9–3–1     
      */
     virtual Iterator<T>* getIterator() = 0;
 
 };
 
-template <typename T>
+template <typename T> ///< SCA MISRA-C++:2008 Defected Rule 7-3-1
 inline Iterable<T>::~Iterable() {}
 
 } // namespace api

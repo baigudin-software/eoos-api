@@ -51,8 +51,10 @@ public:
      * @brief Returns previous element and advances the cursor backwards.
      *
      * @return Reference to element.
+     *
+     * @todo Declare constant function to satisfy MISRA-C++:2008 Rule 9–3–1     
      */
-    virtual T& getPrevious() const = 0;
+    virtual T& getPrevious() = 0;
 
     /**
      * @brief Tests if this iteration may return a previous element.
@@ -77,7 +79,7 @@ public:
 
 };
 
-template <typename T>
+template <typename T> ///< SCA MISRA-C++:2008 Defected Rule 7-3-1
 inline ListIterator<T>::~ListIterator() {}
 
 } // namespace api

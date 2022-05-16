@@ -97,22 +97,28 @@ public:
      *
      * @param index Position in this container.
      * @return Indexed element of this container.
+     *
+     * @todo Declare constant function to satisfy MISRA-C++:2008 Rule 9–3–1
      */
-    virtual T& get(int32_t index) const = 0;
+    virtual T& get(int32_t index) = 0;
 
     /**
      * @brief Returns the first element in this container.
      *
      * @return The first element in this container.
+     *
+     * @todo Declare constant function to satisfy MISRA-C++:2008 Rule 9–3–1
      */
-    virtual T& getFirst() const = 0;
+    virtual T& getFirst() = 0;
 
     /**
      * @brief Returns the last element in this container.
      *
      * @return The last element in this container.
+     *
+     * @todo Declare constant function to satisfy MISRA-C++:2008 Rule 9–3–1
      */
-    virtual T& getLast() const = 0;
+    virtual T& getLast() = 0;
 
     /**
      * @brief Returns a list iterator of this container elements.
@@ -122,6 +128,8 @@ public:
      *
      * @param index Start position in this container.
      * @return Pointer to new list iterator.
+     *
+     * @todo Declare constant function to satisfy MISRA-C++:2008 Rule 9–3–1
      */
     virtual ListIterator<T>* getListIterator(int32_t index) = 0;
 
@@ -143,7 +151,7 @@ public:
 
 };
 
-template <typename T>
+template <typename T> ///< SCA MISRA-C++:2008 Defected Rule 7-3-1
 inline List<T>::~List() {}
         
 } // namespace api

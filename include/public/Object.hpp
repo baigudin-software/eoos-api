@@ -27,7 +27,7 @@ public:
     /**
      * @brief Constructor.
      */
-    Object() :
+    Object() : ObjectAllocator<A>(), api::Object(),
         isConstructed_ (true){
     }
 
@@ -44,7 +44,7 @@ public:
      *
      * @param obj Reference to a source object.
      */
-    Object(const Object& obj) :
+    Object(const Object& obj) : ObjectAllocator<A>(obj), api::Object(obj),
         isConstructed_(obj.isConstructed_){
     }
     

@@ -35,7 +35,7 @@ public:
      *
      * @return Illegal element.
      */
-    virtual T& getIllegal() const = 0;
+    virtual T const& getIllegal() const = 0;
 
     /**
      * @brief Sets illegal element which will be returned as error value.
@@ -58,7 +58,7 @@ public:
 
 };
 
-template <typename T>
+template <typename T> ///< SCA MISRA-C++:2008 Defected Rule 7-3-1
 inline IllegalValue<T>::~IllegalValue() {}
 
 } // namespace api
