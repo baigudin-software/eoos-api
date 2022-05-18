@@ -33,10 +33,6 @@
  * @brief Microsoft C/C++ compiler (MSVC).
  */
 #ifdef _MSC_VER
-    // Resolves issue with error C2065: 'not': undeclared identifier.
-    // @todo To refactor source code to use '!' instead of 'not'.
-    // #include <iso646.h>
-    #define not !
     
     #ifdef _WIN64
         #define EOOS_TYPE_WIDTH_LLP64
