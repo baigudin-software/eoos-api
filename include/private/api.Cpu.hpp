@@ -41,7 +41,7 @@ public:
      *
      * @return A CPU name, or NULLPTR if an error has been occurred.
      */
-    virtual const char_t* getName() const = 0;
+    virtual char_t const* getName() const = 0;
 
     /**
      * @brief Returns an ID of CPU core executing this program code.

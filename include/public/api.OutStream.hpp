@@ -37,7 +37,7 @@ public:
      * @param source A source character string to be output.
      * @return This interface.
      */
-    virtual OutStream<T>& operator<<(const T* source) = 0;
+    virtual OutStream<T>& operator<<(T const* source) = 0;
 
 };
 

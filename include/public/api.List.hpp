@@ -42,7 +42,7 @@ public:
      * @param element An inserting element.
      * @return True if element is added.
      */
-    virtual bool_t add(const T& element) = 0;
+    virtual bool_t add(T const& element) = 0;
 
     /**
      * @brief Inserts new element to the specified position in this container.
@@ -55,7 +55,7 @@ public:
      * @param element An inserting element.
      * @return True if element is inserted.
      */
-    virtual bool_t add(int32_t index, const T& element) = 0;
+    virtual bool_t add(int32_t index, T const& element) = 0;
 
     /**
      * @brief Removes all elements from this container.
@@ -90,7 +90,7 @@ public:
      * @param element Reference to element.
      * @return True if an element is removed successfully.
      */
-    virtual bool_t removeElement(const T& element) = 0;
+    virtual bool_t removeElement(T const& element) = 0;
 
     /**
      * @brief Returns an element from this container by index.
@@ -139,7 +139,7 @@ public:
      * @param element Reference to the element.
      * @return Index or -1 if this container does not contain the element.
      */
-    virtual int32_t getIndexOf(const T& element) const = 0;
+    virtual int32_t getIndexOf(T const& element) const = 0;
 
     /**
      * @brief Tests if given index is available.

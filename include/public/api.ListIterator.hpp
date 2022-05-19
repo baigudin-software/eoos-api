@@ -45,7 +45,7 @@ public:
      * @param element An inserting element.
      * @return True if element is added.
      */
-    virtual bool_t add(const T& element) = 0;
+    virtual bool_t add(T const& element) = 0;
 
     /**
      * @brief Returns previous element and advances the cursor backwards.

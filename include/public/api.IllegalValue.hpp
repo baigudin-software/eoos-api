@@ -46,7 +46,7 @@ public:
      *
      * @param value An illegal value.
      */
-    virtual void setIllegal(const T& value) = 0;
+    virtual void setIllegal(T const& value) = 0;
 
     /**
      * @brief Tests if given value is an illegal.
@@ -54,7 +54,7 @@ public:
      * @param value A testing value.
      * @return True if value is an illegal.
      */
-    virtual bool_t isIllegal(const T& value) const = 0;
+    virtual bool_t isIllegal(T const& value) const = 0;
 
 };
 

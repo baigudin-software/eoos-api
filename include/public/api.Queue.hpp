@@ -48,7 +48,7 @@ public:
      * @param element An inserting element.
      * @return True if element is added.
      */
-    virtual bool_t add(const T& element) = 0;
+    virtual bool_t add(T const& element) = 0;
 
     /**
      * @brief Removes the head element of this container.

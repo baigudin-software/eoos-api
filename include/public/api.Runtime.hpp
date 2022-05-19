@@ -33,7 +33,7 @@ public:
      * @param path A system path to a program.
      * @return True if program has been loaded successfully.
      */
-    virtual bool_t load(const char_t* path) = 0;
+    virtual bool_t load(char_t const* path) = 0;
 
 };
 

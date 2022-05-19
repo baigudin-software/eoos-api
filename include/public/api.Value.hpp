@@ -39,7 +39,7 @@ public:
      *
      * @param value A value for setting.
      */
-    virtual void setValue(const T& value) = 0;
+    virtual void setValue(T const& value) = 0;
 
     /**
      * @brief Returns set value.

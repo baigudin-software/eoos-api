@@ -44,7 +44,7 @@ public:
      *
      * @param obj Reference to a source object.
      */
-    Object(const Object& obj) : ObjectAllocator<A>(obj), api::Object(obj),
+    Object(Object const& obj) : ObjectAllocator<A>(obj), api::Object(obj),
         isConstructed_(obj.isConstructed_){
     }
     
@@ -55,7 +55,7 @@ public:
      * @param obj Reference to a source object.
      * @return Reference to this object.
      */       
-    Object& operator=(const Object& obj)
+    Object& operator=(Object const& obj)
     {
         if( isConstructed() && (this != &obj) )
         {

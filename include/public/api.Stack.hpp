@@ -63,7 +63,7 @@ public:
      *
      * @return A memory address to top of this stack when object was built.
      */
-    virtual const T* getTos() = 0;
+    virtual T const* getTos() = 0;
 
     /**
      * @brief Returns an type of stack operation.

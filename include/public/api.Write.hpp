@@ -34,7 +34,7 @@ public:
      * @param size Size of data in Bytes.
      * @return Number of bytes written.
      */
-    virtual size_t write(const void* data, size_t size) = 0;
+    virtual size_t write(void const* data, size_t size) = 0;
     
 };
 

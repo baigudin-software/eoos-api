@@ -39,7 +39,7 @@ public:
      * @param string A string object interface to be copied.
      * @return True if a passed string has been copied successfully.
      */
-    virtual bool_t copy(const String<T>& string) = 0;
+    virtual bool_t copy(String<T> const& string) = 0;
 
     /**
      * @brief Concatenates a passed string to this string.
@@ -50,7 +50,7 @@ public:
      * @param string A string object interface to be appended.
      * @return True if a passed string has been appended successfully.
      */
-    virtual bool_t concatenate(const String<T>& string) = 0;
+    virtual bool_t concatenate(String<T> const& string) = 0;
 
     /**
      * @brief Compares this string with a passed string lexicographically.
@@ -61,7 +61,7 @@ public:
      *         a value greater than 0 if this string is greater than a passed string,
      *         or the minimum possible value if an error has been occurred.
      */
-    virtual int32_t compare(const String<T>& string) const = 0;
+    virtual int32_t compare(String<T> const& string) const = 0;
 
     /**
      * @brief Returns pointer to the first character of containing string.
@@ -72,7 +72,7 @@ public:
      *
      * @return First character of containing string characters, or NULLPTR if no string contained.
      */
-    virtual const T* getChar() const = 0;
+    virtual T const* getChar() const = 0;
 
 };
 
