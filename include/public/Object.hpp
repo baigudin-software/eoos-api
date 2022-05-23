@@ -110,13 +110,13 @@ public:
      */
     static bool_t isConstructed(api::Object* const obj)
     {
-        bool_t isConstructed = false;
+        bool_t isConstructed( false );
         if(obj != NULLPTR)
         {
             isConstructed = obj->isConstructed();
         }
         return isConstructed;
-    }    
+    }
 
 protected:
 
