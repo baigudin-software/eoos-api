@@ -41,10 +41,11 @@
         #define EOOS_TYPE_WIDTH_ILP32
         #define EOOS_SIZE_TYPE unsigned int
     #endif
+    
     // Define Windows 10 if other is not set by using the /D compiler option.
     #ifndef WINVER
         #define WINVER 0x0A00
-    #endif    
+    #endif
     #ifndef _WIN32_WINNT
         #define _WIN32_WINNT 0x0A00
     #endif
@@ -78,36 +79,10 @@
     #define EOOS_KEYWORD_NOEXCEPT
 #endif // __cplusplus
 
-
-
-
-/**
- * @brief Definitions of Data Model of a hardware system.
- *
- * Please, chose one of width in bits of the below Data Models.
- * No Data Model selected means C++ standard width in bits.
- *
- * @todo This must be removed in future, and Data Model model has to be defined based on compiler usage for HW.
- */
-// C++ Standard Library types usage
-//#define EOOS_TYPE_STDLIB
-
-// LP32 or 2/4/4 (int is 16-bit, long and pointer are 32-bit)
-// #define EOOS_TYPE_WIDTH_LP32
-
-// ILP32 or 4/4/4 (int, long, and pointer are 32-bit)
-// #define EOOS_TYPE_WIDTH_ILP32
-
-// LLP64 or 4/4/8 (int and long are 32-bit, pointer is 64-bit)
-// #define EOOS_TYPE_WIDTH_LLP64
-
-// LP64 or 4/8/8 (int is 32-bit, long and pointer are 64-bit)
-// #define EOOS_TYPE_WIDTH_LP64
-
 /**
  * @brief Definition of no strict MISRA C++:2008 rules usage.
  *
- * Commonly, the definition means that a system can use heap memory.
+ * Commonly, the definition means the system can use heap memory.
  */
 #ifndef EOOS_NO_STRICT_MISRA_RULES
     #define EOOS_NO_STRICT_MISRA_RULES

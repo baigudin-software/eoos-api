@@ -8,6 +8,7 @@
 
 #include "api.Object.hpp"
 #include "api.Scheduler.hpp"
+#include "api.Heap.hpp"
 #include "api.Mutex.hpp"
 #include "api.Semaphore.hpp"
 #include "api.Task.hpp"
@@ -33,6 +34,13 @@ public:
      * @return The kernel scheduler.
      */
     virtual Scheduler& getScheduler() = 0;
+
+    /**
+     * @brief Returns the kernel heap memory.
+     *
+     * @return The kernel heap memory.
+     */
+    virtual Heap& getHeap() = 0;
 
     /**
      * @brief Creates a new mutex resource.
