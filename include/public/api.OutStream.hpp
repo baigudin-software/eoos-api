@@ -18,7 +18,7 @@ namespace api
  * @class OutStream<T>
  * @brief Output stream interface.
  *
- * @tparam T Data type of string characters.
+ * @tparam T Data type to output.
  */
 template <typename T>
 class OutStream : public Object
@@ -38,6 +38,13 @@ public:
      * @return This interface.
      */
     virtual OutStream<T>& operator<<(T const* source) = 0;
+
+    /**
+     * @brief Flushs buffered data to a storage device.
+     *
+     * @return This interface.
+     */    
+    virtual OutStream<T>& flush() = 0;
 
 };
 

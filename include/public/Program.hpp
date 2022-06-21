@@ -24,10 +24,13 @@ public:
     /**
      * @brief Starts executing an operating system main program.
      *
-     * @param args  Arguments passed to the program.
+     * @param args  List of arguments passed to the main() function.
      * @return Zero, or error code if an error has been occurred.
+     *
+     * @todo Declare type args as reference to const to prevent the list modofocation, 
+     *       as soon as constant functions in api::List will be declared.
      */
-    static int32_t start(api::List<char_t*> const& args); ///< SCA MISRA-C++:2008 Justified Rule 3-2-2
+    static int32_t start(api::List<char_t*>& args); ///< SCA MISRA-C++:2008 Justified Rule 3-2-2
 
 };
 

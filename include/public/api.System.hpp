@@ -11,8 +11,7 @@
 #include "api.Heap.hpp"
 #include "api.Mutex.hpp"
 #include "api.Semaphore.hpp"
-#include "api.Task.hpp"
-#include "api.Toggle.hpp"
+#include "api.OutStream.hpp"
 
 namespace eoos
 {
@@ -29,18 +28,32 @@ class System : public Object
 public:
 
     /**
-     * @brief Returns the kernel scheduler.
+     * @brief Returns the system scheduler.
      *
-     * @return The kernel scheduler.
+     * @return The system scheduler.
      */
     virtual Scheduler& getScheduler() = 0;
 
     /**
-     * @brief Returns the kernel heap memory.
+     * @brief Returns the system heap memory.
      *
-     * @return The kernel heap memory.
+     * @return The system heap memory.
      */
     virtual Heap& getHeap() = 0;
+
+    /**
+     * @brief Returns system output character stream.
+     *
+     * @return The system output character stream.
+     */
+    virtual OutStream<char_t>& getOutStreamChar() = 0;
+
+    /**
+     * @brief Returns system error output character stream.
+     *
+     * @return The system error output character stream.
+     */
+    virtual OutStream<char_t>& getErrorStreamChar() = 0;
 
     /**
      * @brief Creates a new mutex resource.
