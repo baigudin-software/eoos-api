@@ -1,4 +1,4 @@
-# EOOS RT API.
+# EOOS API.
 #
 # @author    Sergey Baigudin, sergey@baigudin.software
 # @copyright 2019-2022, Sergey Baigudin, Baigudin Software
