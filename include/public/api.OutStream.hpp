@@ -40,7 +40,7 @@ public:
     virtual OutStream<T>& operator<<(T const* source) = 0;
 
     /**
-     * @brief Flushs buffered data to a storage device.
+     * @brief Flushes buffered data to a storage device.
      *
      * @return This interface.
      */    

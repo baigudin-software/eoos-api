@@ -39,7 +39,7 @@ public:
     virtual void* allocate(size_t size, void* ptr) = 0;
 
     /**
-     * @brief Frees an allocated memory.
+     * @brief Frees allocated memory.
      *
      * @param ptr Pointer to allocated memory.
      */

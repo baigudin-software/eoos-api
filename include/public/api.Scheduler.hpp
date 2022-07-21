@@ -9,7 +9,6 @@
 #include "api.Object.hpp"
 #include "api.Thread.hpp"
 #include "api.Task.hpp"
-#include "api.Toggle.hpp"
 
 namespace eoos
 {

@@ -32,13 +32,6 @@ public:
     virtual ~Queue() = 0;
 
     /**
-     * @brief Tests if this object has been constructed.
-     *
-     * @return True if object has been constructed successfully.
-     */
-    virtual bool_t isConstructed() const = 0;
-
-    /**
      * @brief Inserts a new element to this container.
      *
      * @note A passed element must be copied to an internal data structure of

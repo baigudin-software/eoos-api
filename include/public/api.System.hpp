@@ -20,7 +20,7 @@ namespace api
 
 /**
  * @class System
- * @brief The opearating system syscall interface.
+ * @brief The operating system syscall interface.
  */
 class System : public Object
 {
