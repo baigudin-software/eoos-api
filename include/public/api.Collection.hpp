@@ -33,14 +33,14 @@ public:
     /**
      * @brief Returns a number of elements in this container.
      *
-     * @return Number of elements.
+     * @return Number of elements, or always 0 if an error occurred.
      */
-     virtual int32_t getLength() const = 0;
+     virtual size_t getLength() const = 0;
 
      /**
       * @brief Tests if this collection has elements.
       *
-      * @return True if this collection does not contain any elements.
+      * @return True if this collection does not contain any elements, or always true if an error occurred.
       */
      virtual bool_t isEmpty() const = 0;
 

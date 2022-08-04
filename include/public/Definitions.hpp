@@ -80,12 +80,16 @@
 #endif // __cplusplus
 
 /**
- * @brief Definition of no strict MISRA C++:2008 rules usage.
+ * @brief Enable dynamic heap memory usage.
  *
- * Commonly, the definition means the system can use heap memory.
+ * MISRA-C++:2008 prohibits dynamic heap memory usage in Rule 18–4–1.
+ * AUTOSAR-C++14 allows dynamic heap memory allocation usage conditionally in Rules A18-5-1, A18-5-2, A18-5-3.
+ *
+ * @note Temporary cannot be disabled till it will be tested in an appropriate release.
+ * @todo Enable and test the mode.
  */
-#ifndef EOOS_NO_STRICT_MISRA_RULES
-    #define EOOS_NO_STRICT_MISRA_RULES
+#ifndef EOOS_ENABLE_DYNAMIC_HEAP_MEMORY
+    #define EOOS_ENABLE_DYNAMIC_HEAP_MEMORY
 #endif
 
 #endif // DEFINITIONS_HPP_

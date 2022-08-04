@@ -104,8 +104,6 @@ typedef unsigned char           uint8_t;
 typedef float                   float32_t;
 typedef double                  float64_t;
 typedef long double             float128_t;
-// Char type
-typedef char                    char_t;
 // Boolean type
 typedef bool                    bool_t;  
 // Type of minimal addressable memory cell
@@ -113,6 +111,8 @@ typedef signed char             cell_t;
 typedef unsigned char           ucell_t;	
 // Typy of the maximum size of a theoretically possible object of any types including array
 typedef EOOS_SIZE_TYPE          size_t;
+// Char type
+typedef char                    char_t;
 
 } // namespace eoos
 #endif // TYPES_HPP_
