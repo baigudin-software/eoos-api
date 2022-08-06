@@ -33,16 +33,32 @@ public:
     /**
      * @brief Returns a number of elements in this container.
      *
+     * For dynamic-size class implementation the return value depends on 
+     * length of containing data. For example, the String class shall return 
+     * length of containing string.
+     *
+     * From other side, for static-size class implementation the return value equals
+     * to number of element of such container. For example, the Buffer class shall return 
+     * number of its elements not relying on if element assigned a value.
+     *
      * @return Number of elements, or always 0 if an error occurred.
      */
-     virtual size_t getLength() const = 0;
-
-     /**
-      * @brief Tests if this collection has elements.
-      *
-      * @return True if this collection does not contain any elements, or always true if an error occurred.
-      */
-     virtual bool_t isEmpty() const = 0;
+    virtual size_t getLength() const = 0;
+    
+    /**
+     * @brief Tests if this collection has elements.
+     *
+     * For dynamic-size class implementation the return value depends on 
+     * length of containing data. For example, the String class shall return 
+     * true if containing string length is zero.
+     *
+     * From other side, for static-size class implementation the return value relies
+     * on number of its elements, which actually means that the Buffer class
+     * for example shall return always false if it's constructed.
+     *
+     * @return True if this collection does not contain any elements, or always true if an error occurred.
+     */
+    virtual bool_t isEmpty() const = 0;
 
 };
 
