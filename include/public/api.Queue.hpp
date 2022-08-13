@@ -32,7 +32,7 @@ public:
     virtual ~Queue() = 0;
 
     /**
-     * @brief Inserts a new element to this container.
+     * @brief Inserts a new element to the end of this container.
      *
      * @note A passed element must be copied to an internal data structure of
      * a realizing class by calling a copy constructor so that the element

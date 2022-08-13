@@ -27,6 +27,8 @@ class List : public Collection<T>, public IllegalValue<T>
 
 public:
 
+    static const int32_t ERROR_INDEX = 0x80000000;
+
     /**
      * @brief Destructor.
      */
@@ -123,21 +125,28 @@ public:
     /**
      * @brief Returns a list iterator of this container elements.
      *
-     * You have to call delete operator for returned iterator after it is used.
-     * Given index must not be out of bounds (index < 0 || index > length()).
+     * @note Either the delete operator must be called for returned value when
+     * the iterating of a collection has been completed, or returned raw pointer
+     * assigned to a smart pointer.
+     *
+     * @note Given index must not be out of bounds (index < 0 || index > length()) for LinkedList
+     *       and out of bounds (index < 0 || index >= length()) for CircularList
+     * 
+     * @note Modification of the list by the list functions is not desirable 
+     * if operability of the returned iterator has to be.
      *
      * @param index Start position in this container.
      * @return Pointer to new list iterator.
      *
      * @todo Declare constant function to satisfy MISRA-C++:2008 Rule 9–3–1
      */
-    virtual ListIterator<T>* getListIterator(int32_t index) = 0;
+    virtual ListIterator<T>* getListIterator(int32_t index=0) = 0;
 
     /**
      * @brief Returns the index of the first occurrence of the specified element in this container.
      *
      * @param element Reference to the element.
-     * @return Index or -1 if this container does not contain the element.
+     * @return Index or ERROR_INDEX if this container does not contain the element.
      */
     virtual int32_t getIndexOf(T const& element) const = 0;
 

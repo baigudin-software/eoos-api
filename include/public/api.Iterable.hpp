@@ -34,8 +34,12 @@ public:
     /**
      * @brief Returns an iterator of elements.
      *
-     * @note The delete operator must be called for returned value when
-     * the iterating of a collection has been completed.
+     * @note Either the delete operator must be called for returned value when
+     * the iterating of a collection has been completed, or returned raw pointer
+     * assigned to a smart pointer.
+     *
+     * @note Modification of the list by the list functions is not desirable 
+     * if operability of the returned iterator has to be.
      *
      * @return Pointer to new iterator.
      *

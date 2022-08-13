@@ -25,6 +25,8 @@ class ListIterator : public Iterator<T>
 
 public:
 
+    static const int32_t ERROR_INDEX = 0x80000001;
+
     /**
      * @brief Destructor.
      */
@@ -33,10 +35,10 @@ public:
     /**
      * @brief Inserts the specified element into the list.
      *
-     * Function inserts given element before the element
-     * that will be returned by next function.
-     * Therefore subsequent call to next will be unaffected,
-     * and a subsequent call to prev will return the inserted element.
+     * Function inserts a given element before the element
+     * that will be returned by the getNext() function.
+     * Therefore subsequent call to getNext() will be unaffected,
+     * and a subsequent call to getPrevious() will return the inserted element.
      *
      * @note A passed element must be copied to an internal data structure of
      * a realizing class by calling a copy constructor so that the element
@@ -64,16 +66,20 @@ public:
     virtual bool_t hasPrevious() const = 0;
 
     /**
-     * @brief Returns the index of the element that would be returned by a subsequent call to next().
+     * @brief Returns the index of the element that would be returned by a subsequent call to getNext().
      *
-     * @return Index of the next element or list size if the list iterator is at the end of the list.
+     * @return For LinkedList: Index of the next element or list size if the list iterator is at the end of the list.
+     *         For CircularList: Index of the previous element or -1 if the list is empty.
+     *         On error ERROR_INDEX is returned.
      */
     virtual int32_t getNextIndex() const = 0;
 
     /**
-     * @brief Returns the index of the element that would be returned by a subsequent call to prev().
+     * @brief Returns the index of the element that would be returned by a subsequent call to getPrevious().
      *
-     * @return Index of the previous element or -1 if the list iterator is at the beginning of the list.
+     * @return For LinkedList: Index of the previous element or -1 if the the iterator is at the beginning of the list.
+     *         For CircularList: Index of the previous element or -1 if the list is empty.
+     *         On error ERROR_INDEX is returned.
      */
     virtual int32_t getPreviousIndex() const = 0;
 

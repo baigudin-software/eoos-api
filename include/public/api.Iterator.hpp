@@ -49,6 +49,10 @@ public:
     /**
      * @brief Removes the last element returned by this iterator.
      *
+     * The function removes an element that was returned by last call of an element getter.
+     * In general such the element getter is the getNext() function, or a getPrevious() function
+     * of a child class.
+     *
      * @return True if an element is removed successfully.
      */
     virtual bool_t remove() = 0;
