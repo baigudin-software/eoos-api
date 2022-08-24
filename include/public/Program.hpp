@@ -30,7 +30,7 @@ public:
      * @todo Declare type args as reference to const to prevent the list modofocation, 
      *       as soon as constant functions in api::List will be declared.
      */
-    static int32_t start(api::List<char_t*>& args); ///< SCA MISRA-C++:2008 Justified Rule 3-2-2
+    static int32_t start(api::List<char_t*>& args); ///< SCA MISRA-C++:2008 Justified Rule 3-2-2 and Rule 3-2-4
 
 };
 

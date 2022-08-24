@@ -27,7 +27,7 @@ class List : public Collection<T>, public IllegalValue<T>
 
 public:
 
-    static const int32_t ERROR_INDEX = 0x80000000;
+    static const int32_t ERROR_INDEX = -2147483647;
 
     /**
      * @brief Destructor.

@@ -25,7 +25,7 @@ class ListIterator : public Iterator<T>
 
 public:
 
-    static const int32_t ERROR_INDEX = 0x80000001;
+    static const int32_t ERROR_INDEX = -2147483646;
 
     /**
      * @brief Destructor.
