@@ -39,6 +39,10 @@ public:
      *
      * The function returns size of stack in bytes which should be allocated for the task.
      *
+     * @note POSIX thread won't be created if the stack size is less than PTHREAD_STACK_MIN (16384) bytes.
+     *       On some systems, thread creation can fail with if stacksize is not a multiple of the system page size.
+     *
+     *
      * @return Stack size in bytes, or zero if OS default stack size is needed.
      */
     virtual size_t getStackSize() const = 0;
