@@ -9,7 +9,7 @@
 #include "api.Object.hpp"
 #include "api.Scheduler.hpp"
 #include "api.Heap.hpp"
-#include "api.Mutex.hpp"
+#include "api.SystemMutex.hpp"
 #include "api.Semaphore.hpp"
 #include "api.OutStream.hpp"
 
@@ -56,11 +56,11 @@ public:
     virtual OutStream<char_t>& getErrorStreamChar() = 0;
 
     /**
-     * @brief Creates a new mutex resource.
+     * @brief Returns mutex sub-system.
      *
-     * @return A new mutex resource, or NULLPTR if an error has been occurred.
+     * @return The mutex sub-system.
      */
-    virtual Mutex* createMutex() = 0;
+    virtual SystemMutex& getSystemMutex() = 0;
 
     /**
      * @brief Creates a new semaphore resource.
