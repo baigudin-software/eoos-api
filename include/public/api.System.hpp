@@ -1,7 +1,7 @@
 /**
  * @file      api.System.hpp
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2017-2022, Sergey Baigudin, Baigudin Software
+ * @copyright 2017-2023, Sergey Baigudin, Baigudin Software
  */
 #ifndef API_SYSTEM_HPP_
 #define API_SYSTEM_HPP_
@@ -9,9 +9,9 @@
 #include "api.Object.hpp"
 #include "api.Scheduler.hpp"
 #include "api.Heap.hpp"
-#include "api.SystemMutex.hpp"
-#include "api.Semaphore.hpp"
-#include "api.OutStream.hpp"
+#include "api.MutexManager.hpp"
+#include "api.SemaphoreManager.hpp"
+#include "api.StreamManager.hpp"
 
 namespace eoos
 {
@@ -42,33 +42,46 @@ public:
     virtual Heap& getHeap() = 0;
 
     /**
-     * @brief Returns system output character stream.
+     * @brief Test if system has the mutex manager.
      *
-     * @return The system output character stream.
+     * @return True if system has the mutex manager.
      */
-    virtual OutStream<char_t>& getOutStreamChar() = 0;
-
-    /**
-     * @brief Returns system error output character stream.
-     *
-     * @return The system error output character stream.
-     */
-    virtual OutStream<char_t>& getErrorStreamChar() = 0;
+    virtual bool_t hasMutexManager() = 0;
 
     /**
      * @brief Returns mutex sub-system.
      *
      * @return The mutex sub-system.
      */
-    virtual SystemMutex& getSystemMutex() = 0;
+    virtual MutexManager& getMutexManager() = 0;
 
     /**
-     * @brief Creates a new semaphore resource.
+     * @brief Test if system has the semaphore manager.
      *
-     * @param permits The initial number of permits available.
-     * @return A new semaphore resource, or NULLPTR if an error has been occurred.
+     * @return True if system has the semaphore manager.
      */
-    virtual Semaphore* createSemaphore(int32_t permits) = 0;
+    virtual bool_t hasSemaphoreManager() = 0;
+
+    /**
+     * @brief Returns semaphore sub-system.
+     *
+     * @return The semaphore sub-system.
+     */
+    virtual SemaphoreManager& getSemaphoreManager() = 0;
+
+    /**
+     * @brief Test if system has the stream manager.
+     *
+     * @return True if system has the stream manager.
+     */
+    virtual bool_t hasStreamManager() = 0;
+
+    /**
+     * @brief Returns stream sub-system.
+     *
+     * @return The stream sub-system.
+     */
+    virtual StreamManager& getStreamManager() = 0;
     
 protected:
 

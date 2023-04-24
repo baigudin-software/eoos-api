@@ -1,10 +1,10 @@
 /**
- * @file      api.SystemMutex.hpp
+ * @file      api.MutexManager.hpp
  * @author    Sergey Baigudin, sergey@baigudin.software
  * @copyright 2023, Sergey Baigudin, Baigudin Software
  */
-#ifndef API_SYSTEMMUTEX_HPP_
-#define API_SYSTEMMUTEX_HPP_
+#ifndef API_MUTEXMANAGER_HPP_
+#define API_MUTEXMANAGER_HPP_
 
 #include "api.Object.hpp"
 #include "api.Mutex.hpp"
@@ -15,10 +15,10 @@ namespace api
 {
 
 /**
- * @class SystemMutex
- * @brief Mutex sub-system interface.
+ * @class MutexManager
+ * @brief Mutex sub-system manager interface.
  */    
-class SystemMutex : public Object
+class MutexManager : public Object
 {
 
 public:
@@ -26,7 +26,7 @@ public:
     /**
      * @brief Destructor.
      */
-    virtual ~SystemMutex() = 0;
+    virtual ~MutexManager() = 0;
 
     /**
      * @brief Creates a new mutex resource.
@@ -44,8 +44,8 @@ public:
     
 };
 
-inline SystemMutex::~SystemMutex() {}
+inline MutexManager::~MutexManager() {}
 
 } // namespace api
 } // namespace eoos
-#endif // API_SYSTEMMUTEX_HPP_
+#endif // API_MUTEXMANAGER_HPP_
