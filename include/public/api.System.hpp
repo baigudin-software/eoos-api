@@ -28,18 +28,18 @@ class System : public Object
 public:
 
     /**
-     * @brief Returns the system scheduler.
-     *
-     * @return The system scheduler.
-     */
-    virtual Scheduler& getScheduler() = 0;
-
-    /**
      * @brief Returns the system heap memory.
      *
      * @return The system heap memory.
      */
     virtual Heap& getHeap() = 0;
+
+    /**
+     * @brief Returns the system scheduler.
+     *
+     * @return The system scheduler.
+     */
+    virtual Scheduler& getScheduler() = 0;
 
     /**
      * @brief Test if system has the mutex manager.
