@@ -24,13 +24,11 @@ public:
     /**
      * @brief Starts executing an operating system main program.
      *
-     * @param args  List of arguments passed to the main() function.
+     * @param argc The number of arguments passed to the program.
+     * @param argv An array of c-string of arguments where the last one - argc + 1 is null.
      * @return Zero, or error code if an error has been occurred.
-     *
-     * @todo Declare type args as reference to const to prevent the list modofocation, 
-     *       as soon as constant functions in api::List will be declared.
      */
-    static int32_t start(api::List<char_t*>& args); ///< SCA MISRA-C++:2008 Justified Rule 3-2-2 and Rule 3-2-4
+    static int32_t start(int32_t argc, char_t* argv[]);
 
 };
 
