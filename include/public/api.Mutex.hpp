@@ -6,7 +6,7 @@
 #ifndef API_MUTEX_HPP_
 #define API_MUTEX_HPP_
 
-#include "api.Object.hpp"
+#include "api.Resource.hpp"
 
 namespace eoos
 {
@@ -17,7 +17,7 @@ namespace api
  * @class Mutex
  * @brief Mutex interface.
  */    
-class Mutex : public Object
+class Mutex : public Resource
 {
 
 public:
