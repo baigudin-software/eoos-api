@@ -32,12 +32,20 @@ public:
     virtual ~OutStream() = 0;
 
     /**
-     * @brief Writes to an output stream.
+     * @brief Writes array to an output stream.
      *
      * @param source A source character string to be output.
      * @return This interface.
      */
     virtual OutStream<T>& operator<<(T const* source) = 0;
+
+    /**
+     * @brief Writes integer to an output stream.
+     *
+     * @param value An integer value.
+     * @return This interface.
+     */
+    virtual OutStream<T>& operator<<(int32_t value) = 0;
 
     /**
      * @brief Flushes buffered data to a storage device.
