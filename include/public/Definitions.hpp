@@ -80,7 +80,7 @@
 #endif // __cplusplus
 
 /**
- * @brief Enable no dynamic heap memory usage.
+ * @brief Enable no heap memory usage.
  *
  * MISRA-C++:2008 prohibits dynamic heap memory usage in Rule 18–4–1.
  * AUTOSAR-C++14 allows dynamic heap memory allocation usage conditionally in Rules A18-5-1, A18-5-2, A18-5-3.
@@ -88,8 +88,8 @@
  * @note The EOOS_GLOBAL_ENABLE_NO_HEAP shall be passed to the project build system through compile definition.
  */
 // #define EOOS_GLOBAL_ENABLE_NO_HEAP
-#ifdef EOOS_GLOBAL_ENABLE_NO_HEAP
-    #error "Heap memory usage cannot be disabled. The feature is being developed."
-#endif
+// #ifdef EOOS_GLOBAL_ENABLE_NO_HEAP
+//     #error "Heap memory usage cannot be disabled. The feature is being developed."
+// #endif
 
 #endif // DEFINITIONS_HPP_
