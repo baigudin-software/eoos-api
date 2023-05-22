@@ -88,8 +88,35 @@
  * @note The EOOS_GLOBAL_ENABLE_NO_HEAP shall be passed to the project build system through compile definition.
  */
 // #define EOOS_GLOBAL_ENABLE_NO_HEAP
-// #ifdef EOOS_GLOBAL_ENABLE_NO_HEAP
-//     #error "Heap memory usage cannot be disabled. The feature is being developed."
-// #endif
+
+/**
+ * @brief Define number of static allocated resources.
+ * 
+ * @note
+ *  - If EOOS_GLOBAL_NUMBER_OF_<resource_name> does not equal zero and EOOS_GLOBAL_ENABLE_NO_HEAP is any,
+ *    the resource will be allocated in pre-allocated pool memory.
+ *  - If EOOS_GLOBAL_NUMBER_OF_<resource_name> equals zero and EOOS_GLOBAL_ENABLE_NO_HEAP is not defined, 
+ *    the resource will be allocated in heap memory.
+ *  - If EOOS_GLOBAL_NUMBER_OF_<resource_name> equals zero and EOOS_GLOBAL_ENABLE_NO_HEAP is defined, 
+ *    the resource will NOT be allocated.
+ *  - EOOS_GLOBAL_NUMBER_OF_<resource_name> less then zero is prohibbited.
+ * 
+ * @note 
+ *  To compline MISRA-C++:2008 in Rule 18–4–1:
+ *  - EOOS_GLOBAL_NUMBER_OF_<resource_name> shall not equal zero
+ *  - EOOS_GLOBAL_ENABLE_NO_HEAP shall be defined.
+ *        
+ */
+#ifndef EOOS_GLOBAL_NUMBER_OF_MUTEXS
+    #define EOOS_GLOBAL_NUMBER_OF_MUTEXS (0)
+#endif
+
+#ifndef EOOS_GLOBAL_NUMBER_OF_SEMAPHORES
+    #define EOOS_GLOBAL_NUMBER_OF_SEMAPHORES (0)
+#endif
+
+#ifndef EOOS_GLOBAL_NUMBER_OF_THREADS
+    #define EOOS_GLOBAL_NUMBER_OF_THREADS (0)
+#endif
 
 #endif // DEFINITIONS_HPP_

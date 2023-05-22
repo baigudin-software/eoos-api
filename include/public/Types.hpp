@@ -26,14 +26,14 @@ typedef signed int nullptr_t;
 
 #ifndef NULL
 #if EOOS_CPP_STANDARD >= 2011
-static const nullptr_t NULL = nullptr;
+static const nullptr_t NULL( nullptr );
 #else
-static const nullptr_t NULL = 0;
+static const nullptr_t NULL( 0 );
 #endif
 #endif
 
 // NULLPTR definition for EOOS implenemtation
-static const nullptr_t NULLPTR = NULL;
+static const nullptr_t NULLPTR( NULL );
 
 #if defined (EOOS_TYPE_STDLIB)
 // C++ Standard Library types

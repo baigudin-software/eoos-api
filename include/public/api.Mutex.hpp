@@ -1,12 +1,12 @@
 /**
  * @file      api.Mutex.hpp
  * @author    Sergey Baigudin, sergey@baigudin.software
- * @copyright 2015-2022, Sergey Baigudin, Baigudin Software
+ * @copyright 2015-2023, Sergey Baigudin, Baigudin Software
  */
 #ifndef API_MUTEX_HPP_
 #define API_MUTEX_HPP_
 
-#include "api.Resource.hpp"
+#include "api.Object.hpp"
 
 namespace eoos
 {
@@ -17,7 +17,7 @@ namespace api
  * @class Mutex
  * @brief Mutex interface.
  */    
-class Mutex : public Resource
+class Mutex : public Object
 {
 
 public:
