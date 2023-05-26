@@ -102,10 +102,16 @@
  *  - EOOS_GLOBAL_NUMBER_OF_<resource_name> less then zero is prohibbited.
  * 
  * @note 
- *  To compline MISRA-C++:2008 in Rule 18–4–1:
+ *  To comply MISRA-C++:2008 in Rule 18–4–1:
  *  - EOOS_GLOBAL_NUMBER_OF_<resource_name> shall not equal zero
  *  - EOOS_GLOBAL_ENABLE_NO_HEAP shall be defined.
- *        
+ *
+ * @note 
+ * 	The EOOS_GLOBAL_NUMBER_OF_<resource_name> shall be passed to the project build system through compile definition.
+ *
+ * @note
+ *	Currently EOOS_GLOBAL_NUMBER_OF_<resource_name> feature supported only by EOOS POSIX.
+ *  For EOOS WIN32 these defines have no effects.
  */
 #ifndef EOOS_GLOBAL_NUMBER_OF_MUTEXS
     #define EOOS_GLOBAL_NUMBER_OF_MUTEXS (0)
