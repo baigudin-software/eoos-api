@@ -59,7 +59,7 @@ public:
 };
 
 template <typename T> ///< SCA MISRA-C++:2008 Defected Rule 7-3-1
-inline IllegalValue<T>::~IllegalValue() {}
+IllegalValue<T>::~IllegalValue() {}
 
 } // namespace api
 } // namespace eoos
