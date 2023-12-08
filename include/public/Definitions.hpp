@@ -95,7 +95,7 @@
  * MISRA-C++:2008 prohibits dynamic heap memory usage in Rule 18–4–1.
  * AUTOSAR-C++14 allows dynamic heap memory allocation usage conditionally in Rules A18-5-1, A18-5-2, A18-5-3.
  *
- * @note The EOOS_GLOBAL_ENABLE_NO_HEAP shall be passed to the project build system through compile definition.
+ * @note The definition shall be passed to the project build system through global compile definitions.
  * #define EOOS_GLOBAL_ENABLE_NO_HEAP
  */
 
