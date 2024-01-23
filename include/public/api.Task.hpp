@@ -6,7 +6,7 @@
 #ifndef API_TASK_HPP_
 #define API_TASK_HPP_
 
-#include "api.Object.hpp"
+#include "api.Runnable.hpp"
 
 namespace eoos
 {
@@ -19,7 +19,7 @@ namespace api
  *
  * The interface of a task that is being executed in self context.
  */        
-class Task : public Object
+class Task : public Runnable
 {
 
 public:
@@ -28,11 +28,6 @@ public:
      * @brief Destructor.
      */
     virtual ~Task() = 0;
-
-    /**
-     * @brief Starts executing an operating system task in itself context.
-     */
-    virtual void start() = 0;
 
     /**
      * @brief Returns size of stack.

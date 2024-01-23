@@ -8,7 +8,7 @@
 
 #include "api.Object.hpp"
 #include "api.CpuInterrupt.hpp"
-#include "api.Task.hpp"
+#include "api.Runnable.hpp"
 #include "api.Guard.hpp"
 
 namespace eoos
@@ -37,7 +37,7 @@ public:
      * @param source  Available interrupt source number.
      * @return A new interrupt resource, or NULL if an error has been occurred.
      */      
-    virtual CpuInterrupt* createResource(Task& handler, int32_t source) = 0;
+    virtual CpuInterrupt* createResource(Runnable& handler, int32_t source) = 0;
 
     /**
      * @brief Returns global interrupt controller.
