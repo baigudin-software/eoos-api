@@ -66,6 +66,13 @@ public:
      * @return SVCall source.
      */      
     virtual int32_t getNumberSupervisor() const = 0;
+    
+    /**
+     * @brief Gets a Pend Supervisor Call (PendSV) source for RTOS usage.
+     *
+     * @return PendSV source.
+     */      
+    virtual int32_t getNumberPendSupervisor() const = 0;
 
 };
 
